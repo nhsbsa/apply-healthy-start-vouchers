@@ -1,0 +1,129 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-hub.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  Apply for Healthy Start Vouchers
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+  
+      <!-- Change the page title here -->
+      <h1>
+        <span role="text">
+          Get money off milk, food and vitamins
+          <span class="nhsuk-caption-xl nhsuk-caption--bottom">
+            <span class="nhsuk-u-visually-hidden">
+              -
+            </span>
+            (Healthy Start)
+          </span>
+        </span>
+      </h1>
+
+      <nav class="nhsuk-contents-list" role="navigation" aria-label="Pages in this guide">
+        <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+        <ol class="nhsuk-contents-list__list">
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link" href="hub-overview">Overview</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link" href="hub-eligibility">Eligibility</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link" href="hub-what-you-get">What you'll get</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link" href="hub-what-you-can-buy">What you can buy</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link" href="hub-using-your-card">Using your card</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link" href="hub-apply">Apply for Healthy Start</a>
+          </li>
+          <li class="nhsuk-contents-list__item" aria-current="page">
+            <span class="nhsuk-contents-list__current">Report a change</span>
+          </li>
+        </ol>
+      </nav>
+  
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+  
+
+      <h2>
+        Report a change
+        </h2>
+        
+        <p>You must always report a change in your circumstances or personal details. This includes a: </p>      
+        
+        <ul>
+          <li>change of contact details</li> 
+          <li>new pregnancy</li>
+          </ul>
+        
+        <p>If you’re claiming any benefits you must also tell the <a href="https://www.gov.uk/report-benefits-change-circumstances"> benefit agencies</a> about these changes. </p>
+        
+        <div class="nhsuk-warning-callout nhsuk-u-margin-top-9">
+          <h3 class="nhsuk-warning-callout__label">Warning</h3>
+          <p>If you deliberately do not report changes to the benefit agencies, you’re committing <a href="https://www.gov.uk/benefit-fraud">benefit fraud</a>.</p>
+        </div>
+        
+         <h3>What you’ll need</h3>
+         <p>Make sure you have your:</p>
+        
+        <ul class="nhsuk-u-margin-bottom-6">
+          <li>National Insurance number </li>
+          <li>baby’s due date (if reporting a pregnancy)</li>
+          <li>mobile phone if you’re updating your number</li>
+          <li>access to your email if you’re updating your email address</li>
+        </ul>
+        
+        
+        
+        <button class="nhsuk-button" type="submit">
+          Start now
+        </button>    
+ 
+     
+         <!-- End of content -->
+
+      <nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
+        <ul class="nhsuk-list nhsuk-pagination__list">
+          <li class="nhsuk-pagination-item--previous">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev" href="hub-using-your-card">
+              <span class="nhsuk-pagination__title">Previous</span>
+              <span class="nhsuk-u-visually-hidden">:</span>
+              <span class="nhsuk-pagination__page">Apply for Healthy Start</span>
+              <svg class="nhsuk-icon nhsuk-icon__arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+  
+    </div>
+  </div>
+  {% endblock %}
