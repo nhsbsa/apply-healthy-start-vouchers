@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Was {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} take-home pay for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} last Universal Credit period £408 or less?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Was {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} take-home pay for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} last Universal Credit period £408 or less?
+        </h1>
+
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+
+        <form action="/v1/universal-credit" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="universalcredit" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="universalcredit" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Where to find {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} take-home pay
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                        <div class="nhsuk-grid-row">
+                                <div class="nhsuk-grid-column-one-half">
+                                    <div class="nhsuk-care-card nhsuk-care-card--non-urgent  nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-0">
+                                        <div class="nhsuk-care-card__heading-container">
+                                            <h3 class="nhsuk-care-card__heading"><span role="text">If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} have a Universal Credit account online</span></h3>
+                                            <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="nhsuk-care-card__content">
+
+                                            <p>{% if data['applyingfor'] == "myself" %}Your{% else %}Their{% endif %} take-home pay is shown on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} online Statement.</p>
+                                            <p>It's under the heading <strong>'Other support you may be able to get'</strong>.</p>
+                                            <br>
+
+                                            <img class="nhsuk-image__img" src="/images/uc-statement-online.svg"
+                                                alt="Example of online Universal Credit statement">
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nhsuk-grid-column-one-half">
+                                    <div class="nhsuk-care-card nhsuk-care-card--non-urgent nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-0">
+                                        <div class="nhsuk-care-card__heading-container">
+                                            <h3 class="nhsuk-care-card__heading"><span role="text">If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} get a monthly Universal Credit payment letter</span></h3>
+                                            <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="nhsuk-care-card__content">
+
+                                                <p>{% if data['applyingfor'] == "myself" %}Your{% else %}Their{% endif %} take-home pay is shown on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} Universal Credit monthly payment letter.</p>
+                                                <p>It's usually on page 2 under the heading <strong>'3. We then take account of your take-home pay'</strong>.</p>
+    
+                                                <img class="nhsuk-image__img" src="/images/uc-letter-statement.svg"
+                                                    alt="Example of monthly Universal Credit payment letter">
+
+                                                <br>
+    
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+    
+</div>
+
+{% endblock %}

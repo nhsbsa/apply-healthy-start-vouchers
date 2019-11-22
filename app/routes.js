@@ -10,40 +10,6 @@ module.exports = router;
 
 const today = new Date(Date.now());
 
-// DO NOT DETELE (YET!)
-
-router.post('/v1/...', function (req, res) {
-
-  var day = req.session.data['day']
-  var month = req.session.data['month']
-  var year = req.session.data['year']
-
-  var dob = new Date(year, month, day);
-  console.log(dob);
-
-  var ageDate =  new Date(today - dob.getTime());
-  console.log(ageDate);
-
-  var temp = ageDate.getFullYear();
-
-  var yrs = Math.abs(temp - 1970);
-
-  if (yrs < 18) {
-      res.redirect('/v1/apply/are-you-pregnant')
-  } else if (yrs <= 20) {
-      res.redirect('/v1/apply/full-time-education')
-  } else {
-      res.redirect('/v1/apply/are-you-pregnant')
-  }
-
-})
-
-
-
-
-
-
-
 // ********************************
 // APPLY (VERSION 1)
 // ********************************
@@ -180,7 +146,6 @@ router.post('/v1/children-under-four', function (req, res) {
       var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
       var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
 
-
       if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
         res.redirect('/v1/apply/children-under-four-answers')
       }
@@ -215,15 +180,10 @@ router.post('/v1/date-of-birth', function (req, res) {
   var dateofbirthday = req.session.data['dateofbirthday']
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
   var dateofbirthyear = req.session.data['dateofbirthyear']
-
   var pregnant = req.session.data['pregnant']
-
   var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-
   var ageDate =  new Date(today - dob.getTime())
-
   var temp = ageDate.getFullYear();
-
   var yrs = Math.abs(temp - 1970);
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
@@ -268,7 +228,6 @@ router.post('/v1/name', function (req, res) {
   var firstname = req.session.data['firstname']
   var lastname = req.session.data['lastname']
 
-
   if (firstname && lastname) {
     res.redirect('/v1/apply/address')
   }
@@ -277,3 +236,126 @@ router.post('/v1/name', function (req, res) {
   }
 
 })
+
+// What benefits do you receive?
+
+router.post('/v1/benefits', function (req, res) {
+
+  var benefits = req.session.data['benefits']
+
+  if (benefits) {
+    
+    if (benefits.includes('UC')) {
+      res.redirect('/v1/apply/universal-credit')
+    } else if (benefits.includes('CTC')) {
+      res.redirect('/v1/apply/child-tax-credits')
+    } else if (benefits.includes('JSA')) {
+      res.redirect('/v1/apply/jobseekers-allowance')
+    } else if (benefits.includes('ESA')) {
+      res.redirect('/v1/apply/employment-support-allowance')
+    } else if (benefits.includes('IS')) {
+      res.redirect('/v1/apply/name')
+    } else if (benefits.includes('PC')) {
+      res.redirect('/v1/apply/name')
+    } else if (benefits.includes('WTC')) {
+      res.redirect('/v1/apply/working-tax-credits')
+    } else if (benefits.includes('NONE')) {
+      res.redirect('/v1/apply/kickouts/not-eligible')
+    }
+
+  }
+  else if (!benefits) {
+    res.redirect('/v1/apply/benefits')
+  }
+
+})
+
+    // Universal credit
+
+    router.post('/v1/universal-credit', function (req, res) {
+
+      var universalcredit = req.session.data['universalcredit']
+
+      if (universalcredit === "yes") {
+        res.redirect('/v1/apply/name')
+      }
+      else if (universalcredit === "no") {
+        res.redirect('/v1/apply/kickouts/not-eligible')
+      }
+      else {
+        res.redirect('/v1/apply/universal-credit')
+      }
+
+    })
+
+    // Child tax credits
+
+    router.post('/v1/child-tax-credits', function (req, res) {
+
+      var childtaxcredits = req.session.data['childtaxcredits']
+
+      if (childtaxcredits === "yes") {
+        res.redirect('/v1/apply/name')
+      }
+      else if (childtaxcredits === "no") {
+        res.redirect('/v1/apply/kickouts/not-eligible')
+      }
+      else {
+        res.redirect('/v1/apply/child-tax-credits')
+      }
+
+    })
+
+    // JSA
+
+    router.post('/v1/jobseekers-allowance', function (req, res) {
+
+      var JSA = req.session.data['JSA']
+
+      if (JSA === "income") {
+        res.redirect('/v1/apply/name')
+      }
+      else if (JSA === "contribution") {
+        res.redirect('/v1/apply/kickouts/not-eligible')
+      }
+      else {
+        res.redirect('/v1/apply/jobseekers-allowance')
+      }
+
+    })
+
+    // ESA
+
+    router.post('/v1/employment-support-allowance', function (req, res) {
+
+      var ESA = req.session.data['ESA']
+
+      if (ESA === "income") {
+        res.redirect('/v1/apply/name')
+      }
+      else if (ESA === "contribution") {
+        res.redirect('/v1/apply/kickouts/not-eligible')
+      }
+      else {
+        res.redirect('/v1/apply/employment-support-allowance')
+      }
+
+    })
+
+    // ESA
+
+    router.post('/v1/working-tax-credits', function (req, res) {
+
+      var workingtaxcredits = req.session.data['workingtaxcredits']
+
+      if (workingtaxcredits === "yes") {
+        res.redirect('/v1/apply/name')
+      }
+      else if (workingtaxcredits === "no") {
+        res.redirect('/v1/apply/kickouts/not-eligible')
+      }
+      else {
+        res.redirect('/v1/apply/employment-support-allowance')
+      }
+
+    })
