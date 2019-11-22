@@ -5,6 +5,7 @@ What benefits do {% if data['applyingfor'] == "myself" %}you{% else %}they{% end
 {% endblock %}
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -81,8 +82,8 @@ What benefits do {% if data['applyingfor'] == "myself" %}you{% else %}they{% end
                         <div class="nhsuk-radios__divider">or</div>
                   
                         <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input deselect" id="ESA" name="benefits" type="checkbox" value="ESA">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="ESA">
+                          <input class="nhsuk-checkboxes__input deselect" id="NONE" name="benefits" type="checkbox" value="NONE">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="NONE">
                             No, {% if data['applyingfor'] == "myself" %}I{% else %}they{% endif %} do not get any of these
                           </label>
                         </div>
@@ -98,7 +99,19 @@ What benefits do {% if data['applyingfor'] == "myself" %}you{% else %}they{% end
             </button>
 
         </form>
-
+        <script>
+        var $others = $('input[name="benefits"]').not('#NONE')
+        $('#NONE').change(function () {
+          if (this.checked) {
+            $others.prop('checked', false)
+          }
+        });
+        $others.change(function () {
+          if (this.checked) {
+            $('#NONE').prop('checked', false)
+          }
+        })
+        </script>
     </div>
 </div>
 
