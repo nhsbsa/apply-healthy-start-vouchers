@@ -25,14 +25,14 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} n
                 <label class="nhsuk-label" for="firstname">
                     First name (given name)
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text" autocomplete="given-name">
             </div>
 
             <div class="nhsuk-form-group">
                     <label class="nhsuk-label" for="lastname">
                             Last name (surname or family name)
                     </label>
-                    <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text">
+                    <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text" autocomplete="family-name">
                 </div>
 
             <button class="nhsuk-button" type="submit">

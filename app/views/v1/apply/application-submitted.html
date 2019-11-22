@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Start page template - NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-panel nhsuk-u-margin-bottom-5" style="background: #005EB8; margin-top: 0;">
+
+            <h1 class="nhsuk-panel__title" style="color: white;">
+                Done
+            </h1>
+            
+            <span class="nhsuk-caption-xl nhsuk-caption--top" style="text-align: center; color: white;">You have completed {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application</span>
+
+        </div>
+				
+        <h2 class="nhsuk-heading-m">What happens next?</h2>
+
+        <p>We'll review and process {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application and let {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} know the outcome by email. This can take up to 5 working days.</p>
+
+        <p>We've sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} an email to confirm this.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

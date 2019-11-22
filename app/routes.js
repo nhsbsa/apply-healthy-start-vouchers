@@ -221,22 +221,6 @@ router.post('/v1/full-time-education', function (req, res) {
 
 })
 
-// What is your name?
-
-router.post('/v1/name', function (req, res) {
-
-  var firstname = req.session.data['firstname']
-  var lastname = req.session.data['lastname']
-
-  if (firstname && lastname) {
-    res.redirect('/v1/apply/address')
-  }
-  else {
-    res.redirect('/v1/apply/name')
-  }
-
-})
-
 // What benefits do you receive?
 
 router.post('/v1/benefits', function (req, res) {
@@ -359,3 +343,82 @@ router.post('/v1/benefits', function (req, res) {
       }
 
     })
+
+// What is your name?
+
+  router.post('/v1/name', function (req, res) {
+
+  var firstname = req.session.data['firstname']
+  var lastname = req.session.data['lastname']
+
+  if (firstname && lastname) {
+    res.redirect('/v1/apply/address')
+  }
+  else {
+    res.redirect('/v1/apply/name')
+  }
+
+})
+
+// What is your address?
+
+router.post('/v1/address', function (req, res) {
+
+  var addressline1 = req.session.data['addressline1']
+  var addressline2 = req.session.data['addressline2']
+  var towncity = req.session.data['towncity']
+  var postcode = req.session.data['postcode']
+
+  if (addressline1 && towncity && postcode) {
+    res.redirect('/v1/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/v1/apply/address')
+  }
+
+})
+
+// What is your national insurance number?
+
+router.post('/v1/national-insurance-number', function (req, res) {
+
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber']
+
+  if (nationalinsurancenumber) {
+    res.redirect('/v1/apply/telephone-number')
+  }
+  else {
+    res.redirect('/v1/apply/national-insurance-number')
+  }
+
+})
+
+// What is your telephone number?
+
+router.post('/v1/telephone-number', function (req, res) {
+
+  var telephonenumber = req.session.data['telephonenumber']
+
+  if (telephonenumber) {
+    res.redirect('/v1/apply/email-address')
+  }
+  else {
+    res.redirect('/v1/apply/telephone-number')
+  }
+
+})
+
+// What is your email address?
+
+router.post('/v1/email-address', function (req, res) {
+
+  var emailaddress = req.session.data['emailaddress']
+
+  if (emailaddress) {
+    res.redirect('/v1/apply/check-your-answers')
+  }
+  else {
+    res.redirect('/v1/apply/email-address')
+  }
+
+})
