@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} childs first name?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} childs first name?
+        </h1>
+
+        <form action="/v1/childs-first-name" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="childsfirstname">
+                    Childs first name
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childsfirstname" type="text">
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

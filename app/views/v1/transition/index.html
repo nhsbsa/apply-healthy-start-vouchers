@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+TRANSITION
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            IN PROGRESS
+        </h1>
+
+        <p>
+            Transferring from HS to HTBHF user journey goes here....
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

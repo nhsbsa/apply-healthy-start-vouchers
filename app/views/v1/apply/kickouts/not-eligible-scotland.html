@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+{% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} cannot apply if {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} live in Scotland
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} cannot apply if {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} live in Scotland
+        </h1>
+
+        <p>
+            {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} can only apply for this scheme if {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} live in England, Wales or Northern Ireland.
+        </p>
+
+        <p>
+            If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} live in Scotland {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} can <a href="https://www.mygov.scot/best-start-grant-new/">apply for Best Start Foods</a>.
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

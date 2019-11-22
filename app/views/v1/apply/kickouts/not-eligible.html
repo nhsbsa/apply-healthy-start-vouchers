@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+{% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} are not eligible for help to get money off milk, food and vitamins
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} are not eligible for help to get money off milk, food and vitamins
+        </h1>
+
+        <p>
+            Based on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} answers, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} are not eligible to get money off milk, food and vitamins.
+        </p>
+
+        <p>
+            Depending on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} circumstances, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} may however be entitled to a one off <a href="https://www.gov.uk/sure-start-maternity-grant/eligibility">Sure Start Maternity Grant</a> of £500.
+        </p>
+
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name?
+        </h1>
+
+        <p>Use the name that's on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} official documents, such as passport, driving licence, or any benefit claims.</p>
+
+        <form action="/v1/name" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="firstname">
+                    First name (given name)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="lastname">
+                            Last name (surname or family name)
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text">
+                </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
