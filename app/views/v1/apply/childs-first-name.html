@@ -17,6 +17,8 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} c
             What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} childs first name?
         </h1>
 
+        <p><p>If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} have more than one child under four, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} will be able to tell us about them later.</p></p>
+
         <form action="/v1/childs-first-name" method="post">
 
             <div class="nhsuk-form-group">
