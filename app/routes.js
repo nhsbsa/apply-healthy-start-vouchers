@@ -244,7 +244,7 @@ router.post('/v1/benefits', function (req, res) {
     } else if (benefits.includes('WTC')) {
       res.redirect('/v1/apply/working-tax-credits')
     } else if (benefits.includes('NONE')) {
-      res.redirect('/v1/apply/kickouts/not-eligible')
+      res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
     }
 
   }
@@ -264,7 +264,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (universalcredit === "no") {
-        res.redirect('/v1/apply/kickouts/not-eligible')
+        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
       }
       else {
         res.redirect('/v1/apply/universal-credit')
@@ -282,7 +282,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (childtaxcredits === "no") {
-        res.redirect('/v1/apply/kickouts/not-eligible')
+        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
       }
       else {
         res.redirect('/v1/apply/child-tax-credits')
@@ -300,7 +300,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (JSA === "contribution") {
-        res.redirect('/v1/apply/kickouts/not-eligible')
+        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
       }
       else {
         res.redirect('/v1/apply/jobseekers-allowance')
@@ -318,7 +318,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (ESA === "contribution") {
-        res.redirect('/v1/apply/kickouts/not-eligible')
+        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
       }
       else {
         res.redirect('/v1/apply/employment-support-allowance')
@@ -336,7 +336,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (workingtaxcredits === "no") {
-        res.redirect('/v1/apply/kickouts/not-eligible')
+        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
       }
       else {
         res.redirect('/v1/apply/employment-support-allowance')
@@ -421,4 +421,25 @@ router.post('/v1/email-address', function (req, res) {
     res.redirect('/v1/apply/email-address')
   }
 
+})
+
+
+
+
+
+
+
+
+router.get('/v1/find-address', function (req, res) {
+  if (req.session.data['postcode-for-council'] !== '') {
+    res.redirect(personDetailsPath+'select-your-address-list');
+  } else {
+    if (req.query.change === 'true') {
+      res.locals.formAction = 'select-address?change=true';
+    } else {
+      res.locals.formAction = 'select-address';
+    }
+    res.locals.submitLabel = 'Find address';
+    res.render(personDetailsTemplatePath+'your-address');
+  }
 })
