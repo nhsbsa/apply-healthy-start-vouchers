@@ -1,130 +1,86 @@
 <!-- Use this page as the index for your project -->
-
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-hub.html' %}
-<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout-hub.html' %} <!-- 
   In /views/layout.html you can:
     - change the header and footer 
     - add custom CSS and JavaScript
 -->
-
-<!-- Set the page title inside the pageTitle block -->
-{% block pageTitle %}
-  Apply for Healthy Start Vouchers
-{% endblock %}
-
-<!-- Breadcrumb goes inside the beforeContent block -->
-{% block beforeContent %}
-{% endblock %}
-
-<!-- Your page content goes inside the content block -->
-<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
-{% block content %}
-
-
-
-<div class="nhsuk-grid-row">
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %} Get help to buy milk, food and vitamins {% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+  <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-  
       <!-- Change the page title here -->
-      <h1>
-        <span role="text">
-          Get money off milk, food and vitamins
-          <span class="nhsuk-caption-xl nhsuk-caption--bottom">
-            <span class="nhsuk-u-visually-hidden">
-              -
-            </span>
-            (Healthy Start)
-          </span>
-        </span>
-      </h1>
-
-      <nav class="nhsuk-contents-list" role="navigation" aria-label="Pages in this guide">
+      <h1><span role="text">Get help to buy milk, food and vitamins <span class="nhsuk-caption-xl nhsuk-caption--bottom"><span class="nhsuk-u-visually-hidden">-</span> (Healthy Start)</span></span></h1>
+      <nav aria-label="Pages in this guide"
+           class="nhsuk-contents-list"
+           role="navigation">
         <h2 class="nhsuk-u-visually-hidden">Contents</h2>
         <ol class="nhsuk-contents-list__list">
-          <li class="nhsuk-contents-list__item" aria-current="page">
-            <span class="nhsuk-contents-list__current">Overview</span>
+          <li aria-current="page"
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">Overview</span></li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-eligibility">Eligibility</a>
           </li>
           <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link" href="hub-eligibility">Eligibility</a>
+            <a class="nhsuk-contents-list__link"
+                href="hub-what-you-get">What you’ll get</a>
           </li>
           <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link" href="hub-what-you-get">What you’ll get</a>
+            <a class="nhsuk-contents-list__link"
+                href="hub-what-you-can-buy">What you can buy</a>
           </li>
           <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link" href="hub-what-you-can-buy">What you can buy</a>
+            <a class="nhsuk-contents-list__link"
+                href="hub-using-your-card">Using your card</a>
           </li>
           <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link" href="hub-using-your-card">Using your card</a>
+            <a class="nhsuk-contents-list__link"
+                href="hub-apply">Apply for Healthy Start</a>
           </li>
           <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link" href="hub-apply">Apply for Healthy Start</a>
-          </li>
-          <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link" href="hub-report-a-change">Report a change</a>
+            <a class="nhsuk-contents-list__link"
+                href="hub-report-a-change">Report a change</a>
           </li>
         </ol>
-      </nav>
-  
-      <!-- Add your content here -->
+      </nav><!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
-  
       <h2>Overview</h2>
-      <p>
-        If you’re pregnant or have a child under 4 years old, you could get money for milk, fruit and vegetables.
-      </p>
-  
-      <p>
-        If you qualify (you’re eligible) you’ll be sent a money card (like a bank card) to use in some UK shops.
-      </p>
-
-      <p>
-        You can also get free vitamins.
-      </p>
-
+      <p>If you’re pregnant or have a child under 4 years old, you could get money for milk, fruit and vegetables.</p>
+      <p>If you qualify (you’re eligible) you’ll be sent a money card (like a bank card) to use in some UK shops.</p>
+      <p>You can also get free vitamins.</p>
       <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>
-          If you live in Scotland you must <a href="https://www.mygov.scot/best-start-grant-best-start-foods/">apply for Best Start Foods</a> instead.
-        </p>
+        <span class="nhsuk-u-visually-hidden">Information:</span>
+        <p>If you live in Scotland you must <a href="https://www.mygov.scot/best-start-grant-best-start-foods/">apply for Best Start Foods</a> instead.</p>
       </div>
-
-      <p>You usually qualify if you also get certain benefits.</p> 
-
-<p>If you’re not on benefits you could still qualify if you’re: 
-</p>
-
-<ul>
-  <li>under 18 and pregnant</li>
-  <li>under 20, pregnant and in full-time education</li>
-</ul>
-
-
-<h2>
-  If you’re already on the scheme
- </h2>
-
- <p>You’ll no longer get milk and food vouchers. You need to <a href="guidance-apply">apply for a Healthy Start</a> money card instead.</p>
-
- <p>It only takes 5 minutes to apply online and you no longer need a signature from your midwife or health visitor.</p>
-
- <p>There are new rules about how <a href="guidance-what-you-get">long you have to spend your money</a>.</p> 
-
-
- <h2>
-  Get advice on healthy eating
- </h2>
-
- <p>You can get advice on nutrition during pregnancy, birth and parenthood at <a href="https://www.nhs.uk/start4life">NHS Start 4 Life</a>.</p>
-  
-      <!-- End of content -->
-
-      <nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
+      <p>You usually qualify if you also get certain benefits.</p>
+      <p>If you’re not on benefits you could still qualify if you’re:</p>
+      <ul>
+        <li>under 18 and pregnant</li>
+        <li>under 20, pregnant and in full-time education</li>
+      </ul>
+      <h2>If you’re already on the scheme</h2>
+      <p>You’ll no longer get milk and food vouchers. You need to <a href="guidance-apply">apply for a Healthy Start</a> money card instead.</p>
+      <p>It only takes 5 minutes to apply online and you no longer need a signature from your midwife or health visitor.</p>
+      <p>There are new rules about how <a href="guidance-what-you-get">long you have to spend your money</a>.</p>
+      <h2>Get advice on healthy eating</h2>
+      <p>You can get advice on nutrition during pregnancy, birth and parenthood at <a href="https://www.nhs.uk/start4life">NHS Start 4 Life</a>.</p><!-- End of content -->
+      <nav aria-label="Pagination"
+           class="nhsuk-pagination"
+           role="navigation">
         <ul class="nhsuk-list nhsuk-pagination__list">
-          <!-- <li class="nhsuk-pagination-item--previous">
-            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev" href="/section/treatments">
+          <!-- <li class="nhsuk-pagination-item==previous">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link==prev" href="/section/treatments">
               <span class="nhsuk-pagination__title">Previous</span>
               <span class="nhsuk-u-visually-hidden">:</span>
               <span class="nhsuk-pagination__page">Treatments</span>
@@ -133,8 +89,8 @@
               </svg>
             </a>
           </li>
-          <li class="nhsuk-pagination-item--next">
-            <a class="nhsuk-pagination__link nhsuk-pagination__link--next" href="/section/symptoms">
+          <li class="nhsuk-pagination-item==next">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link==next" href="/section/symptoms">
               <span class="nhsuk-pagination__title">Next</span>
               <span class="nhsuk-u-visually-hidden">:</span>
               <span class="nhsuk-pagination__page">Symptoms</span>
@@ -144,18 +100,16 @@
             </a>
           </li> -->
           <li class="nhsuk-pagination-item--previous">
-            <a class="nhsuk-pagination__link nhsuk-pagination__link--next" href="hub-eligibility">
-              <span class="nhsuk-pagination__title">Next</span>
-              <span class="nhsuk-u-visually-hidden">:</span>
-              <span class="nhsuk-pagination__page">Eligibility</span>
-              <svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path>
-              </svg>
-            </a>
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
+                href="hub-eligibility"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Eligibility</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-right"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path></svg></a>
           </li>
         </ul>
       </nav>
-  
     </div>
-  </div>
-  {% endblock %}
+  </div>{% endblock %}
+</body>
+</html>

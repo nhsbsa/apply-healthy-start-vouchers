@@ -1,27 +1,16 @@
-{% extends 'layout.html' %}
-
-{% block pageTitle %}
-TRANSITION
-{% endblock %}
-
-{% block content %}
-<div class="nhsuk-grid-row">
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout.html' %} {% block pageTitle %} TRANSITION {% endblock %} {% block content %}
+  <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
-
-        <h1 class="nhsuk-fieldset__legend--xl">
-            IN PROGRESS
-        </h1>
-
-        <p>
-            Transferring from HS to HTBHF user journey goes here....
-        </p>
-
+      {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
+      <h1 class="nhsuk-fieldset__legend--xl">{% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} cannot apply if they already receive Healthy Start vouchers</h1>
+      <p>Users of the current scheme will be contacted in the future to discuss how to get their prepaid money card.</p>
     </div>
-</div>
-
-{% endblock %}
+  </div>{% endblock %}
+</body>
+</html>

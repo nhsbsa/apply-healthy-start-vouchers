@@ -13,19 +13,33 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} d
             "text": "Go back"
         }) }}
 
+        <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+          <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="nhsuk-error-summary__body">
+            <ul class="nhsuk-list nhsuk-error-summary__list">
+              <li>
+                <a href="#error1">{% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} must be at least 10 weeks pregnant to apply</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <h1 class="nhsuk-fieldset__legend--xl">
             What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} due date?
         </h1>
 
-        <p>If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} are unsure, or still awaiting a <a href="https://www.nhs.uk/conditions/pregnancy-and-baby/dating-scan-ultrasound-10-11-12-13-weeks-pregnant/" target="_blank">dating scan</a>, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} can work out when {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} might expect {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} baby to arrive using the <a href="https://www.nhs.uk/conditions/pregnancy-and-baby/due-date-calculator/" target="_blank">NHS pregnancy and due date calculator</a>.</p>
-
         <form action="/v1/due-date" method="post">
 
-            <div class="nhsuk-form-group">
+            <div class="nhsuk-form-group nhsuk-form-group--error">
                     <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
-
                       <span class="nhsuk-hint" id="hint">
                         For example, 21 8 2020
+                      </span>
+
+                      <span class="nhsuk-error-message" id="error1">
+                        <span class="nhsuk-u-visually-hidden">Error:</span> {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} must be at least 10 weeks pregnant to apply
                       </span>
                   
                       <div class="nhsuk-date-input">
@@ -34,7 +48,7 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} d
                             <label class="nhsuk-label nhsuk-date-input__label" for="duedateday">
                               Day
                             </label>
-                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedateday" name="duedateday" type="number" pattern="[0-9]*">
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="duedateday" name="duedateday" type="number" pattern="[0-9]*">
                           </div>
                         </div>
                         <div class="nhsuk-date-input__item">

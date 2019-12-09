@@ -1,6 +1,7 @@
 // External dependencies
 const express = require('express');
 const router = express.Router();
+const moment = require('moment')
 
 // Add your routes here - above the module.exports line
 
@@ -73,7 +74,7 @@ router.post('/v1/are-you-pregnant', function (req, res) {
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes") {
-      res.redirect('/v1/apply/due-date')
+      res.redirect('/v1/apply/children-under-four')
     }
     else if (pregnant === "no") {
       res.redirect('/v1/apply/children-under-four')
@@ -88,17 +89,36 @@ router.post('/v1/are-you-pregnant', function (req, res) {
 
         router.post('/v1/due-date', function (req, res) {
 
+            var childrenunderfour = req.session.data['childrenunderfour']
+
             var duedateday = req.session.data['duedateday']
             var duedatemonth = req.session.data['duedatemonth']
             var duedateyear = req.session.data['duedateyear']
- 
+  
+            var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+            var fulltermpregnancy = moment().add(30, 'weeks'); // 40 weeks from today is a full term pregnancy - 10 weeks
+
+            var fourtytwoweeksfromtoday = moment().add(42, 'weeks');
+            
             if (duedateday && duedatemonth && duedateyear) {
-            res.redirect('/v1/apply/children-under-four')
+
+
+
+              if (duedate > fourtytwoweeksfromtoday) { // If due date is greater than 42 weeks from today...
+                res.redirect('/v1/apply/due-date-42-weeks') // ...redirect to error screen because that is longer than a full term pregnancy...
+              } else if (duedate > fulltermpregnancy)  { // If due date is greater than 30 weeks from today, but less than 42 weeks from today...
+                res.redirect('/v1/apply/kickouts/not-eligible-due-date') // ...redirect to error screen because they are less than 10 weeks pregnant...
+              } else if (childrenunderfour === "yes") {
+                res.redirect('/v1/apply/childs-first-name')
+              } else {
+                res.redirect('/v1/apply/date-of-birth')
+              }
+                
             }
             else {
-            res.redirect('/v1/apply/due-date')
+              res.redirect('/v1/apply/due-date')
             }
-        
+ 
         })
 
 // Do you have any children under the age of 4?
@@ -108,16 +128,15 @@ router.post('/v1/children-under-four', function (req, res) {
     var childrenunderfour = req.session.data['childrenunderfour']
     var pregnant = req.session.data['pregnant']
   
-    if (childrenunderfour === "yes") {
+    if (pregnant === "yes" && childrenunderfour === "no") {
+      res.redirect('/v1/apply/due-date')
+    } else if (pregnant === "no" && childrenunderfour === "yes") {
       res.redirect('/v1/apply/childs-first-name')
-    }
-    else if (childrenunderfour === "no" && pregnant ==="no") {
+    } else if (pregnant === "yes" && childrenunderfour === "yes") {
+      res.redirect('/v1/apply/due-date')
+    } else if (childrenunderfour === "no" && pregnant ==="no") {
       res.redirect('/v1/apply/kickouts/not-eligible')
-    }
-    else if (childrenunderfour === "no" && pregnant ==="yes") {
-        res.redirect('/v1/apply/date-of-birth')
-      }
-    else {
+    } else {
       res.redirect('/v1/apply/children-under-four')
     }
   
@@ -146,8 +165,16 @@ router.post('/v1/children-under-four', function (req, res) {
       var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
       var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
 
+      var childsdateofbirth = moment(childsdateofbirthyear + '-' + childsdateofbirthmonth + '-' + childsdateofbirthday);
+
       if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
-        res.redirect('/v1/apply/children-under-four-answers')
+
+        if (childsdateofbirth < moment()) {
+          res.redirect('/v1/apply/children-under-four-answers')
+        } else {
+          res.redirect('/v1/apply/childs-date-of-birth')
+        }
+        
       }
       else {
         res.redirect('/v1/apply/childs-date-of-birth')

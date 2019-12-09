@@ -1,100 +1,70 @@
 <!-- Use this page as the index for your project -->
-
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
-<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout.html' %} <!-- 
   In /views/layout.html you can:
     - change the header and footer 
     - add custom CSS and JavaScript
 -->
-
-<!-- Set the page title inside the pageTitle block -->
-{% block pageTitle %}
-  Apply for Healthy Start Vouchers
-{% endblock %}
-
-<!-- Breadcrumb goes inside the beforeContent block -->
-{% block beforeContent %}
-{% endblock %}
-
-<!-- Your page content goes inside the content block -->
-<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
-{% block content %}
-<div class="nhsuk-grid-row">
+   <!-- Set the page title inside the pageTitle block -->
+  {% block pageTitle %} Get help to buy milk, food and vitamins {% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+  {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+  <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+  {% block content %}
+  <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-  
       <!-- Change the page title here -->
-      <h1>
-        Apply for Healthy Start Vouchers
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version 1.0</span>
-      </h1>
-  
-      <!-- Add your content here -->
+      <h1>Get help to buy milk, food and vitamins <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version 1.0</span></h1><!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
-  
-      <p class="nhsuk-body-l">
-        The Healthy Start scheme allows eligible applicants to get free vouchers every week to spend on milk, plain fresh and frozen fruit and vegetables, and infant formula milk. They are also entitled to free vitamins.
-      </p>
-  
-      <p class="nhsuk-body-l">
-        The 'Apply' service allows applicants to apply online for the service.
-      </p>
-  
+      <p class="nhsuk-body-l">The Healthy Start scheme allows eligible applicants to get free vouchers every week to spend on milk, plain fresh and frozen fruit and vegetables, and infant formula milk. They are also entitled to free vitamins.</p>
+      <p class="nhsuk-body-l">The 'Apply' service allows applicants to apply online for the service.</p>
       <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Discovery
-          </span>
+          <span class="nhsuk-details__summary-text">'Mini Discovery'</span>
         </summary>
         <div class="nhsuk-details__text">
-          <h2 class="nhsuk-heading-l">Designing an 'Apply' service
-          </h2>
+          <h2 class="nhsuk-heading-l">Designing an 'Apply' service</h2>
           <h3 class="nhsuk-heading-m">Hypothesis A</h3>
-          <p style="background: #DEE0E2; padding: 20px;"><strong>We
-              believe</strong> that allowing eligible applicants with the ability to apply online for Healthy Start vouchers
-            <strong>will
-              be a useful feature for</strong> anyone currently struggling to feed their children
-            <strong>as it will</strong> enable them with the finanacial support needed to buy healthy foods and milk. <strong>This
-              will</strong> increase uptake of the scheme by XX% by XX/XX/XXXX.
-          </p>
+          <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that allowing eligible applicants with the ability to apply online for Healthy Start vouchers <strong>will be a useful feature for</strong> anyone currently
+          struggling to feed their children <strong>as it will</strong> enable them with the finanacial support needed to buy healthy foods and milk. <strong>This will</strong> increase uptake of the scheme by XX% by XX/XX/XXXX.</p>
           <hr>
           <h3 class="nhsuk-heading-m">What we created:</h3>
           <ul class="nhsuk-list nhsuk-list--bullet">
-              <li>...</li>
+            <li>...</li>
           </ul>
           <h3 class="nhsuk-heading-m">What we plan to test:</h3>
           <ul class="nhsuk-list nhsuk-list--bullet">
-              <li>...</li>
+            <li>...</li>
           </ul>
-          <h3 class="nhsuk-heading-m">What we found:</h4>
-            <ul class="nhsuk-list nhsuk-list--bullet">
-              <li>...</li>
-            </ul>
-            <h3 class="nhsuk-heading-m">Any known issues?</h4>
-              <ul class="nhsuk-list nhsuk-list--bullet">
-                  <li>...</li>
-                </ul>
-              <hr>
-              <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                <a class="nhsuk-action-link__link" href="v1/hub-overview">
-                  <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                      d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
-                    </path>
-                  </svg>
-                  <span class="nhsuk-action-link__text">Apply for Healthy Start Vouchers (v1)</span>
-                </a>
-              </div>
-  
+          <h3 class="nhsuk-heading-m">What we found:</h3>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>...</li>
+          </ul>
+          <h3 class="nhsuk-heading-m">Any known issues?</h3>
+          <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>...</li>
+          </ul>
+          <hr>
+          <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+            <a class="nhsuk-action-link__link"
+                 href="v1/hub-overview"><svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z"
+                  fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path></svg> <span class="nhsuk-action-link__text">Get help
+            to buy milk, food and vitamins (v1)</span></a>
+          </div>
         </div>
-      </details>
-  
-      <!-- End of content -->
-  
+      </details><!-- End of content -->
     </div>
-  </div>
-  {% endblock %}
+  </div>{% endblock %}
+</body>
+</html>

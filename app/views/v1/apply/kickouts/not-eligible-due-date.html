@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+{% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} are not eligible for help to get money off milk, food and vitamins
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} are not eligible for help to get money off milk, food and vitamins
+        </h1>
+
+        <p>
+            Because {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} are less than 10 weeks pregnant, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} are not currently eligible to get money off milk, food and vitamins.
+        </p>
+
+
+    </div>
+</div>
+
+{% endblock %}
