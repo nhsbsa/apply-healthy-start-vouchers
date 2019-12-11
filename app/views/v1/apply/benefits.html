@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What benefits do {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} receive?
+Do {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} get any of these benefits?
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@ What benefits do {% if data['applyingfor'] == "myself" %}you{% else %}they{% end
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            What benefits do {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} receive?
+            Do {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} get any of these benefits?
         </h1>
 
         <form action="/v1/benefits" method="post">

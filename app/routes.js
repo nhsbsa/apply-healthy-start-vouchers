@@ -59,12 +59,34 @@ router.post('/v1/do-you-live-in-scotland', function (req, res) {
       res.redirect('/v1/apply/kickouts/not-eligible-scotland')
     }
     else if (scotland === "no") {
-      res.redirect('/v1/apply/are-you-pregnant')
+      res.redirect('/v1/apply/date-of-birth')
     }
     else {
       res.redirect('/v1/apply/do-you-live-in-scotland')
     }
   
+})
+
+// Date of birth
+
+router.post('/v1/date-of-birth', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dob.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
+  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+    res.redirect('/v1/apply/are-you-pregnant')
+  }
+  else {
+    res.redirect('/v1/apply/date-of-birth')
+  }
+
 })
 
 // Are you pregnant?
@@ -99,6 +121,16 @@ router.post('/v1/are-you-pregnant', function (req, res) {
             var fulltermpregnancy = moment().add(30, 'weeks'); // 40 weeks from today is a full term pregnancy - 10 weeks
 
             var fourtytwoweeksfromtoday = moment().add(42, 'weeks');
+
+
+            var dateofbirthday = req.session.data['dateofbirthday']
+            var dateofbirthmonth = req.session.data['dateofbirthmonth']
+            var dateofbirthyear = req.session.data['dateofbirthyear']
+
+            var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+            var ageDate =  new Date(today - dob.getTime())
+            var temp = ageDate.getFullYear();
+            var yrs = Math.abs(temp - 1970);
             
             if (duedateday && duedatemonth && duedateyear) {
 
@@ -110,8 +142,14 @@ router.post('/v1/are-you-pregnant', function (req, res) {
                 res.redirect('/v1/apply/kickouts/not-eligible-due-date') // ...redirect to error screen because they are less than 10 weeks pregnant...
               } else if (childrenunderfour === "yes") {
                 res.redirect('/v1/apply/childs-first-name')
+              } else if (childrenunderfour === "no" && yrs >= 18 && yrs <20) {
+                res.redirect('/v1/apply/full-time-education')
+              } else if (childrenunderfour === "no" && yrs < 18) {
+                res.redirect('/v1/apply/name')
+              } else if (childrenunderfour === "no" && yrs >= 20) {
+                res.redirect('/v1/apply/benefits')
               } else {
-                res.redirect('/v1/apply/date-of-birth')
+                res.redirect('/v1/apply/due-date')
               }
                 
             }
@@ -191,7 +229,7 @@ router.post('/v1/children-under-four', function (req, res) {
           
           console.log(childList)
           
-          console.log('They have', childList.length, 'children')
+          console.log('Number of children:', childList.length)
           
           // Redirect to the 'Do you get another?' page
           
@@ -216,47 +254,42 @@ router.post('/v1/children-under-four', function (req, res) {
 
       var childrenunderfouranswers = req.session.data['childrenunderfouranswers']
 
+      var dateofbirthday = req.session.data['dateofbirthday']
+      var dateofbirthmonth = req.session.data['dateofbirthmonth']
+      var dateofbirthyear = req.session.data['dateofbirthyear']
+      var pregnant = req.session.data['pregnant']
+      var childrenunderfour = req.session.data['childrenunderfour']
+      var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+      var ageDate =  new Date(today - dob.getTime())
+      var temp = ageDate.getFullYear();
+      var yrs = Math.abs(temp - 1970);
+
       if (childrenunderfouranswers === "yes") {
         res.redirect('/v1/apply/childs-first-name')
       }
-      else if (childrenunderfouranswers === "no") {
-        res.redirect('/v1/apply/date-of-birth')
+      else if (childrenunderfouranswers === "no" && pregnant === "yes" && yrs >= 18 && yrs <20) {
+        res.redirect('/v1/apply/full-time-education')
+      }
+      else if (childrenunderfouranswers === "no" && pregnant === "yes" && yrs < 18) {
+        res.redirect('/v1/apply/name')
+      }
+      else if (childrenunderfouranswers === "no" && pregnant === "yes" && yrs >= 20) {
+        res.redirect('/v1/apply/benefits')
+      }
+      else if (childrenunderfouranswers === "no" && childrenunderfour === "yes" && yrs >= 18 && yrs <20) {
+        res.redirect('/v1/apply/full-time-education')
+      }
+      else if (childrenunderfouranswers === "no" && childrenunderfour === "yes" && yrs < 18) {
+        res.redirect('/v1/apply/name')
+      }
+      else if (childrenunderfouranswers === "no" && childrenunderfour === "yes" && yrs >= 20) {
+        res.redirect('/v1/apply/benefits')
       }
       else {
         res.redirect('/v1/apply/children-under-four-answers')
       }
 
     })
-
-// Date of birth
-
-router.post('/v1/date-of-birth', function (req, res) {
-
-  var dateofbirthday = req.session.data['dateofbirthday']
-  var dateofbirthmonth = req.session.data['dateofbirthmonth']
-  var dateofbirthyear = req.session.data['dateofbirthyear']
-  var pregnant = req.session.data['pregnant']
-  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-  var ageDate =  new Date(today - dob.getTime())
-  var temp = ageDate.getFullYear();
-  var yrs = Math.abs(temp - 1970);
-
-  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-
-      if (pregnant === "yes" && yrs > 18 && yrs <20) {
-        res.redirect('/v1/apply/full-time-education')
-      } else if (pregnant === "yes" && yrs < 18) {
-        res.redirect('/v1/apply/name')
-      } else {
-        res.redirect('/v1/apply/benefits')
-      }
-
-  }
-  else {
-    res.redirect('/v1/apply/date-of-birth')
-  }
-
-})
 
 // Full time education
 
