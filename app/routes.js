@@ -166,11 +166,39 @@ router.post('/v1/children-under-four', function (req, res) {
       var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
 
       var childsdateofbirth = moment(childsdateofbirthyear + '-' + childsdateofbirthmonth + '-' + childsdateofbirthday);
+      var childsdateofbirthDisplay = childsdateofbirthday + '/' + childsdateofbirthmonth + '/' + childsdateofbirthyear;
+
 
       if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
 
         if (childsdateofbirth < moment()) {
-          res.redirect('/v1/apply/children-under-four-answers')
+          
+          var childList = req.session.data.childList
+          
+          // If no array exists, create one called 'childList'. If one already exists, do nothing.
+          
+          childList = ( typeof childList != 'undefined' && childList instanceof Array ) ? childList : []
+          
+          // Create a variable of the posted information
+          
+          var childsfirstname = req.session.data['childsfirstname']
+          
+          // Add the posted information into the 'childList' array
+          
+          childList.push({"Name": childsfirstname, "DOB": childsdateofbirthDisplay});
+          
+          req.session.data.childList = childList;
+          
+          console.log(childList)
+          
+          console.log('They have', childList.length, 'children')
+          
+          // Redirect to the 'Do you get another?' page
+          
+          res.redirect('/v1/apply/children-under-four-answers');          
+
+
+
         } else {
           res.redirect('/v1/apply/childs-date-of-birth')
         }
@@ -470,3 +498,8 @@ router.get('/v1/find-address', function (req, res) {
     res.render(personDetailsTemplatePath+'your-address');
   }
 })
+
+
+
+/////////////////////
+
