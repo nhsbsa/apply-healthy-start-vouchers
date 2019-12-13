@@ -183,6 +183,26 @@ Are {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} pregnan
                     </div>
                 {% endif %}
 
+                {% if (data['selectaddress']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Address
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['selectaddress'] | safe }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="address">
+                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
                 {% if (data['nationalinsurancenumber']) %}
                 <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
@@ -257,7 +277,7 @@ Are {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} pregnan
                         {% elseif data['benefits'] == "JSA" %}
                         Jobseeker's Allowance (JSA)<br>
                         {% elseif data['benefits'] == "ESA" %}
-                        Employment and Support Allowance (ESA),<br>
+                        Employment and Support Allowance (ESA)<br>
                         {% elseif data['benefits'] == "IS" %}
                         Income Support<br>
                         {% elseif data['benefits'] == "PC" %}

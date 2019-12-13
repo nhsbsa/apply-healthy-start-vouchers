@@ -1,7 +1,10 @@
 // External dependencies
 const express = require('express');
 const router = express.Router();
-const moment = require('moment')
+const moment = require('moment');
+const request = require('request');
+
+var addressLookupKey = 'fVVL6DvtzkGhkVo7Whyxsg22465';
 
 // Add your routes here - above the module.exports line
 
@@ -440,7 +443,7 @@ router.post('/v1/benefits', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/v1/apply/address')
+    res.redirect('/v1/apply/find-address')
   }
   else {
     res.redirect('/v1/apply/name')
@@ -448,9 +451,48 @@ router.post('/v1/benefits', function (req, res) {
 
 })
 
+// Find your address
+
+router.get('/v1/find-address', function (req, res) {
+
+  var postcode = req.session.data['postcode']
+
+  if (postcode) {
+    res.redirect('/v1/apply/select-address')
+  }
+  else {
+    res.redirect('/v1/apply/find-address')
+  }
+
+})
+
+// Select your address
+
+router.get('/v1/select-address', function (req, res) {
+
+  delete req.session.data['addressline1']
+  delete req.session.data['addressline2']
+  delete req.session.data['towncity']
+  delete req.session.data['postcode']
+
+  var selectaddress = req.session.data['selectaddress']
+
+  if (selectaddress === 'none') {
+    res.redirect('/v1/apply/address')
+  } else if (selectaddress) {
+    res.redirect('/v1/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/v1/apply/select-address')
+  }
+
+})
+
 // What is your address?
 
 router.post('/v1/address', function (req, res) {
+
+  delete req.session.data['selectaddress']
 
   var addressline1 = req.session.data['addressline1']
   var addressline2 = req.session.data['addressline2']
@@ -510,29 +552,3 @@ router.post('/v1/email-address', function (req, res) {
   }
 
 })
-
-
-
-
-
-
-
-
-router.get('/v1/find-address', function (req, res) {
-  if (req.session.data['postcode-for-council'] !== '') {
-    res.redirect(personDetailsPath+'select-your-address-list');
-  } else {
-    if (req.query.change === 'true') {
-      res.locals.formAction = 'select-address?change=true';
-    } else {
-      res.locals.formAction = 'select-address';
-    }
-    res.locals.submitLabel = 'Find address';
-    res.render(personDetailsTemplatePath+'your-address');
-  }
-})
-
-
-
-/////////////////////
-
