@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  {% extends 'layout.html' %} {% block pageTitle %} Start page template - NHS.UK prototype kit {% endblock %} {% block content %}
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+We’re considering {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application
+{% endblock %}
+
+{% block content %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <div class="nhsuk-panel nhsuk-u-margin-bottom-5"
            style="background: #005EB8; margin-top: 0;">
-        <h1 class="nhsuk-panel__title"
-            style="color: white;">Done</h1><span class="nhsuk-caption-xl nhsuk-caption--top"
-             style="text-align: center; color: white;">You have completed {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application</span>
+        <h1 class="nhsuk-panel__title" style="color: white;">We’re considering {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application</h1>
       </div>
       <h2 class="nhsuk-heading-m">What happens next?</h2>
-      <p>We'll review and process {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application and let {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} know the outcome by {% if data['emailaddress']
-      %}email{% else %}post{% endif %}. This can take up to 5 working days.</p>{% if data['emailaddress']%}
-      <p>We've sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} an email to confirm this.</p>{% endif %}
+      <p>We need to review {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application. We’ll send {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} a letter with our decision within 5 working days.</p>
+      <p>If {% if data['applyingfor'] == "myself" %}you’ve'{% else %}they’ve{% endif %} not heard from us in that time:</p>
+      <ul>
+        <li>call 0300 330 7010</li>
+        <li>select option 3</li>
+      </ul>
+      {% if data['email'] %}
+      <p>We’ve also sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} an email.</p>
+      {% endif %}
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+      <p><a href="#">What did {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} think of this service?</a> (takes 30 seconds).</p>
     </div>
-  </div>{% endblock %}
-</body>
-</html>
+  </div>
+
+{% endblock %}
