@@ -2,9 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
-const request = require('request');
-
-var addressLookupKey = 'fVVL6DvtzkGhkVo7Whyxsg22465';
 
 // Add your routes here - above the module.exports line
 
