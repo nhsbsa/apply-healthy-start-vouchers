@@ -17,6 +17,10 @@ Find {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} addr
             Find {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address
         </h1>
 
+        {% if data['benefits'] %}
+        <p>This must be the same address {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} have registered with the benefits agency (DWP or HMRC).</p>
+        {% endif %}
+
         <form action="/v1/find-address" method="get">
 
             <div class="nhsuk-form-group">
@@ -42,6 +46,18 @@ Find {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} addr
             <div class="nhsuk-form-group">
             <p><a href="address">Enter {% if data['applyingfor'] == "myself" %}my{% else %}their{% endif %} address manually</a></p>
             </div>
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Why we ask for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>We need this to confirm {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} identity and eligibility. We'll send {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} prepaid card to this address.</p>                      
+              </div>
+            </details>
+
 
             <button class="nhsuk-button" type="submit">
                 Continue

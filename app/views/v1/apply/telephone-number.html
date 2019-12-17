@@ -19,7 +19,6 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} t
 
         {% if data['benefits'] %}
         <p>This must be the same telephone number {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} have registered with the benefits agency (DWP or HMRC).</p>
-        {% else %}
         {% endif %}
 
         <form action="/v1/telephone-number" method="post">
@@ -30,6 +29,39 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} t
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="telephonenumber" name="telephonenumber" type="text" autocomplete="tel">
             </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Continue without providing a telephone number
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+
+                    <div class="nhsuk-form-group">
+
+                    <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+                            If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} don't provide a telephone number we won't be able to send updates on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application
+                        </legend>
+
+                        <div class="nhsuk-checkboxes">
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="telephoneskip" name="telephoneskip" type="checkbox" value="telephoneskip">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="telephoneskip">
+                            {% if data['applyingfor'] == "myself" %}I{% else %}They{% endif %} understand and want to continue without a telephone number
+                            </label>
+                        </div>
+
+                        </div>
+                    </fieldset>
+
+                    </div>
+
+
+                </div>
+            </details>
 
             <button class="nhsuk-button" type="submit">
                 Continue

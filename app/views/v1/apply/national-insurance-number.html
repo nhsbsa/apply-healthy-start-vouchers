@@ -28,6 +28,17 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} n
                 <input class="nhsuk-input nhsuk-input--width-20" id="nationalinsurancenumber" name="nationalinsurancenumber" type="text">
             </div>
 
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Why we ask for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} national insurance number
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>We need this to check {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} eligibility.</p>                      
+              </div>
+            </details>
+
             <button class="nhsuk-button" type="submit">
                 Continue
             </button>

@@ -35,6 +35,18 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} n
                     <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text" autocomplete="family-name">
                 </div>
 
+
+                  <details class="nhsuk-details">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                            Why we ask for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          <p>We use {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name to confirm {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} identity and eligibility. {% if data['applyingfor'] == "myself" %}Your{% else %}Their{% endif %} name will also appear on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} prepaid card.</p>                      
+                        </div>
+                      </details>
+
             <button class="nhsuk-button" type="submit">
                 Continue
             </button>

@@ -31,6 +31,39 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} e
                 <input class="nhsuk-input nhsuk-input--width-20" id="emailaddress" name="emailaddress" type="text" autocomplete="email">
             </div>
 
+                        <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Continue without providing an email address
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+
+                    <div class="nhsuk-form-group">
+
+                    <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+                            If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} don't provide an email address we won't be able to send updates on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application
+                        </legend>
+
+                        <div class="nhsuk-checkboxes">
+
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="emailskip" name="emailskip" type="checkbox" value="emailskip">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="emailskip">
+                            {% if data['applyingfor'] == "myself" %}I{% else %}They{% endif %} understand and want to continue without an email address
+                            </label>
+                        </div>
+
+                        </div>
+                    </fieldset>
+
+                    </div>
+
+
+                </div>
+            </details>
+
             <button class="nhsuk-button" type="submit">
                 Continue
             </button>
