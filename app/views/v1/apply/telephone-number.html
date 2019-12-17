@@ -5,6 +5,12 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} t
 {% endblock %}
 
 {% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
