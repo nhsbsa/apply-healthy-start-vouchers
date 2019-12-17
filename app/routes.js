@@ -341,7 +341,7 @@ router.post('/v1/benefits', function (req, res) {
     } else if (benefits.includes('WTC')) {
       res.redirect('/v1/apply/working-tax-credits')
     } else if (benefits.includes('NONE')) {
-      res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
+      res.redirect('/v1/apply/kickouts/not-eligible')
     }
 
   }
