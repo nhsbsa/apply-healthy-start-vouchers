@@ -481,11 +481,22 @@ router.get('/v1/select-address', function (req, res) {
   delete req.session.data['towncity']
   delete req.session.data['postcode']
 
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dob.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
   var selectaddress = req.session.data['selectaddress']
 
   if (selectaddress === 'none') {
     res.redirect('/v1/apply/address')
-  } else if (selectaddress) {
+  } else if (selectaddress && yrs < 16) {
+    res.redirect('/v1/apply/telephone-number')
+  } else if (selectaddress && yrs >= 16) {
     res.redirect('/v1/apply/national-insurance-number')
   }
   else {
@@ -505,10 +516,20 @@ router.post('/v1/address', function (req, res) {
   var towncity = req.session.data['towncity']
   var postcode = req.session.data['postcode']
 
-  if (addressline1 && towncity && postcode) {
-    res.redirect('/v1/apply/national-insurance-number')
-  }
-  else {
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dob.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
+  if (addressline1 && towncity && postcode && yrs < 16) {
+    res.redirect('/v1/apply/telephone-number')
+  } else if (addressline1 && towncity && postcode && yrs >= 16) {
+      res.redirect('/v1/apply/national-insurance-number')
+  } else {
     res.redirect('/v1/apply/address')
   }
 
