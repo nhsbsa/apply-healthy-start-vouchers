@@ -397,7 +397,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (JSA === "contribution") {
-        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
+        res.redirect('/v1/apply/kickouts/not-eligible')
       }
       else {
         res.redirect('/v1/apply/jobseekers-allowance')
@@ -415,7 +415,7 @@ router.post('/v1/benefits', function (req, res) {
         res.redirect('/v1/apply/name')
       }
       else if (ESA === "contribution") {
-        res.redirect('/v1/apply/kickouts/not-eligible-sure-start')
+        res.redirect('/v1/apply/kickouts/not-eligible')
       }
       else {
         res.redirect('/v1/apply/employment-support-allowance')
