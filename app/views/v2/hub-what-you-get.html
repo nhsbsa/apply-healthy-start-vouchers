@@ -1,0 +1,85 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout-hub.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %} Get help to buy food and milk {% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      <h1><span role="text">Get help to buy food and milk <span class="nhsuk-caption-xl nhsuk-caption--bottom"><span class="nhsuk-u-visually-hidden">-</span> (Healthy Start)</span></span></h1>
+      <nav aria-label="Pages in this guide"
+           class="nhsuk-contents-list"
+           role="navigation">
+        <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+        <ol class="nhsuk-contents-list__list">
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-how-it-works">How it works</a>
+          </li>
+          <li aria-current="page"
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">What you’ll get</span></li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-eligibility">Eligibility</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-what-you-can-buy">What you can buy</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-how-to-claim">How to claim</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-get-help">Get help with your claim</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-report-a-change">Make a change to your claim</a>
+          </li>
+        </ol>
+      </nav><!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>What you’ll get</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque feugiat molestie. Donec dapibus urna sit amet magna bibendum lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id scelerisque diam, nec consectetur tellus. Donec pretium massa quis orci viverra vehicula. Nulla lobortis sed mauris vitae vestibulum. Morbi dictum nisl sit amet volutpat suscipit. In volutpat rhoncus porta.</p>
+      <nav aria-label="Pagination"
+           class="nhsuk-pagination"
+           role="navigation">
+        <ul class="nhsuk-list nhsuk-pagination__list">
+          <li class="nhsuk-pagination-item--previous">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+                href="hub-how-it-works"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">How it works</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-left"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path></svg></a>
+          </li>
+          <li class="nhsuk-pagination-item--next">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
+                href="hub-eligibility"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Eligibility</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-right"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path></svg></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>{% endblock %}
+</body>
+</html>
