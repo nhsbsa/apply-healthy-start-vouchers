@@ -18,7 +18,7 @@
    <!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
    {% block header %} {{ header({ "service": { "name": "Get help to buy food and milk (Healthy Start)", "href": "/" }, "showNav": "false", "showSearch": "false" }) }} {% endblock %} <!-- Footer goes inside the footer block -->
    <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
-   {% block footer %} {{ footer({ "links": [ { "URL": "/", "label": "Home" }, { "URL": "/page-example", "label": "Example page" } ] })}} {% endblock %} {% block bodyEnd %} {% block scripts %} 
+   {% block footer %} {{ footer({ "links": [ { "URL": "/", "label": "Privacy" }, { "URL": "https://www.nhsbsa.nhs.uk/our-policies/cookies", "label": "Cookies" }, { "URL": "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions", "label": "Terms and conditions" }, { "URL": "/", "label": "Accessibility" } ], "copyright": "<a class='nhsuk-footer__list-item-link' href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/' target='_blank'>Open Government Licence v3.0</a>" })}} {% endblock %}{% block bodyEnd %} {% block scripts %} 
   <!-- Custom JavaScript files can be added to this file -->
    {% include "includes/scripts.html" %} <!-- For adding page specific JavsScript -->
    {% block pageScripts %}{% endblock %} {% endblock %} {% endblock %}
