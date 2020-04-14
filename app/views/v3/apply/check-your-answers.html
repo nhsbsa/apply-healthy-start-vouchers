@@ -1,0 +1,444 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About you</h2>
+
+        <dl class="nhsuk-summary-list">
+
+                    <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Currently pregnant
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="are-you-pregnant">
+                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Have children under four
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['childrenunderfour'] == "yes" %}Yes{% else %}No{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="children-under-four">
+                        Change<span class="nhsuk-u-visually-hidden"> if you have any children under the age of 4</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+                {% if (data['firstname']) and (data['lastname']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['firstname'] }} {{ data['lastname'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="name">
+                                Change<span class="nhsuk-u-visually-hidden"> your name</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Date of birth
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="date-of-birth">
+                                Change<span class="nhsuk-u-visually-hidden"> your date of birth</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if (data['addressline1']) and (data['towncity']) and (data['postcode']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Address
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['addressline1'] }},<br>
+                            {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
+                            {{ data['towncity'] }},<br>
+                            {{ data['postcode'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="address">
+                                Change<span class="nhsuk-u-visually-hidden"> your address</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if (data['selectaddress']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Address
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['selectaddress'] | safe }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="find-address">
+                                Change<span class="nhsuk-u-visually-hidden"> your address</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if (data['nationalinsurancenumber']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            National insurance number
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['nationalinsurancenumber'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="national-insurance-number">
+                                Change<span class="nhsuk-u-visually-hidden"> your national insurance number</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if (data['telephonenumber']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Telephone number
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['telephonenumber'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="telephone-number">
+                                Change<span class="nhsuk-u-visually-hidden"> your telephone number</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if (data['emailaddress']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['emailaddress'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="email-address">
+                                Change<span class="nhsuk-u-visually-hidden"> your email address</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+
+            {% if data['benefits'] %}
+            <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Benefits
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {% if data['benefits'] == "UC" %}
+                        Universal Credit<br>
+                        {% elseif data['benefits'] == "CTC" %}
+                        Child Tax Credit<br>
+                        {% elseif data['benefits'] == "JSA" %}
+                        Jobseeker's Allowance (JSA)<br>
+                        {% elseif data['benefits'] == "ESA" %}
+                        Employment and Support Allowance (ESA)<br>
+                        {% elseif data['benefits'] == "IS" %}
+                        Income Support<br>
+                        {% elseif data['benefits'] == "PC" %}
+                        Pension Credit<br>
+                        {% elseif data['benefits'] == "WTC" %}
+                        Working Tax Credit<br>
+                        {% else %}
+                        No, {% if data['applyingfor'] == "myself" %}I{% else %}they{% endif %} do not get any of these<br>
+                        {% endif %}
+                    </dd>
+    
+                    <dd class="nhsuk-summary-list__actions">
+    
+                        <a href="benefits">
+                            Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
+                        </a>
+    
+                    </dd>
+    
+                </div>
+            {% endif %}
+            
+
+        </dl>
+
+        {% if (data['pregnant'] == "yes") or (data['childrenunderfour'] == "yes") %}
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children</h2>
+        {% endif %}
+
+        <dl class="nhsuk-summary-list">
+
+                {% if data['pregnant'] == "yes" %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Due date
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="due-date">
+                                Change<span class="nhsuk-u-visually-hidden"> your due date</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                {% if data['childrenunderfour'] == "yes" %}
+
+
+
+                {% for item in data['childList'] %}
+<h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
+                
+                <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">Childs first name</dt>
+                            <dd class="nhsuk-summary-list__value">{{ item.Name }}</dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a href="childs-first-name">
+                                    Change<span class="nhsuk-u-visually-hidden"> your childs first name</span>
+                                </a>
+                            </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">Childs date of birth</dt>
+                            <dd class="nhsuk-summary-list__value">{{ item.DOB }}</dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a href="childs-date-of-birth">
+                                    Change<span class="nhsuk-u-visually-hidden"> your childs date of birth</span>
+                                </a>
+                            </dd>
+                </div>
+                {% endfor %}
+
+                {% endif %}
+
+        </dl>
+
+                         <h2 class="nhsuk-heading-m">Bank or building society account details</h2>
+
+          <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name on the account
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['accountname'] }}
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="bank-details#accountname">
+                  Change<span class="nhsuk-u-visually-hidden"> name on the account</span>
+                </a>
+
+              </dd>
+
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Sort code
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['sortcode'] }}
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="bank-details#sortcode">
+                  Change<span class="nhsuk-u-visually-hidden"> sort code</span>
+                </a>
+
+              </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Account number ending with
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <!-- {{ data['accountnumber'] | reverse | truncate(4, true, "****") | reverse }} -->
+                {{ data['accountnumber'].slice(4) }}
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="bank-details#accountnumber">
+                  Change<span class="nhsuk-u-visually-hidden"> account number</span>
+                </a>
+
+              </dd>
+
+            </div>
+
+
+
+            {% if data['buildingsocietynumber'] %}
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Building society roll number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ data['buildingsocietynumber'] }}
+              </dd>
+
+              <dd class="nhsuk-summary-list__actions">
+
+                <a href="bank-details#buildingsocietynumber">
+                  Change<span class="nhsuk-u-visually-hidden"> building society roll number</span>
+                </a>
+
+              </dd>
+
+            </div>
+
+            {% endif %}
+
+
+
+          </dl>
+
+        <div class="nhsuk-warning-callout">
+                <h3 class="nhsuk-warning-callout__label">Declaration</h3>
+                <p>I confirm that this information is correct and true in accordance with my records on <script>
+                        var today = new Date();
+                        var dd = today.getDate();
+        
+                        var month = new Array();
+                        month[0] = "January";
+                        month[1] = "February";
+                        month[2] = "March";
+                        month[3] = "April";
+                        month[4] = "May";
+                        month[5] = "June";
+                        month[6] = "July";
+                        month[7] = "August";
+                        month[8] = "September";
+                        month[9] = "October";
+                        month[10] = "November";
+                        month[11] = "December";
+        
+                        var mm = month[today.getMonth()]; //January is 0!
+        
+        
+                        var yyyy = today.getFullYear();
+        
+                        if (dd < 10) {
+                          dd = '0' + dd
+                        }
+        
+                        if (mm < 10) {
+                          mm = '0' + mm
+                        }
+        
+                        today = dd + ' ' + mm + ' ' + yyyy;
+                        document.write(today);
+                      </script>.</p>
+                <p>I confirm that I:</p>
+              <ul>
+                <li>have given permission for this application to be submitted</li>
+                <li>know the information submitted will be used by the NHS Business Services Authority and shared other organisations where necessary</li>
+                <li>understand my data will not be transferred outside of the European Economic Area and will be deleted within 24 months of the expiry date of the scheme</li>
+                <li>am aware that this is a pilot scheme</li>
+              </ul>
+              
+        </div>
+
+        <a href="application-submitted" class="nhsuk-button">
+            Submit
+        </a>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

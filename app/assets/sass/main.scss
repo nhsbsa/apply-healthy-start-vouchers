@@ -30,3 +30,19 @@
 .u-ratio--16x9::before {
     padding-top: 56.25%;
 }
+
+// Images
+
+.nhsuk-image__img__350 {
+    width: 100%;
+    @media (min-width: 48.0625em) {
+        width: 350px;
+    }
+}
+
+.nhsuk-image__img__150 {
+    width: 100%;
+    @media (min-width: 48.0625em) {
+        width: 150px;
+    }
+}

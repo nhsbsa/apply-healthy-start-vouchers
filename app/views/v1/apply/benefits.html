@@ -94,6 +94,26 @@ Do {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} get any 
                   
                   </div>
 
+            {% if data['yrs'] < "18" %}
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    {% if data['applyingfor'] == "myself" %}My{% else %}Their{% endif %} parents or guardians claim benefits
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+
+                <p>If one or both of {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} parents or guardians claim benefits or {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} get paid Child Tax Credit for {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %}, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} could be entitled to get help to buy food and milk (Healthy Start).</p>
+
+                <p>Check with {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} parents or guardians if {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} think {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} might be named on their claim.</p>
+
+                </div>
+            </details>
+
+          {% endif %}
+
+
             <button class="nhsuk-button" type="submit">
                 Continue
             </button>

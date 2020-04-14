@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your telephone number?
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your telephone number?
+        </h1>
+
+        <p>This must be the same telephone number you have registered with the benefits agency (DWP or HMRC).</p>
+
+        <form action="/v3/telephone-number" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="telephonenumber">
+                    Telephone number
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="telephonenumber" name="telephonenumber" type="text" autocomplete="tel">
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
