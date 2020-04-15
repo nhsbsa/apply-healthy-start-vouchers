@@ -209,8 +209,6 @@ router.post('/v1/children-under-four', function (req, res) {
       var childsdateofbirthDisplay = childsdateofbirthday + ' / ' + childsdateofbirthmonth + ' / ' + childsdateofbirthyear;
 
       var fouryearsfromtoday = moment().subtract(4, 'years');
-      console.log(fouryearsfromtoday)
-
 
       if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
 
@@ -766,7 +764,6 @@ router.post('/v3/childs-date-of-birth', function (req, res) {
   var childsdateofbirthDisplay = childsdateofbirthday + ' / ' + childsdateofbirthmonth + ' / ' + childsdateofbirthyear;
 
   var fouryearsfromtoday = moment().subtract(4, 'years');
-  console.log(fouryearsfromtoday)
 
 
   if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
