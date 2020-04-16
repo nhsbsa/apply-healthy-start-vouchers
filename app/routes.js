@@ -610,7 +610,7 @@ router.post('/v3/name', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/v3/apply/date-of-birth')
+    res.redirect('/v3/apply/address')
   }
   else {
     res.redirect('/v3/apply/name')
