@@ -714,13 +714,13 @@ router.post('/v3/due-date', function (req, res) {
 
   var today = moment();
 
-  var fourtytwoweeksfromtoday = moment().add(42, 'weeks');
+  var fulltermpregnancy = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
   
   if (duedateday && duedatemonth && duedateyear) {
 
     if (duedate < today) {
       res.redirect('/v3/apply/due-date')
-    } else if (duedate > fourtytwoweeksfromtoday) {
+    } else if (duedate > fulltermpregnancy) {
       res.redirect('/v3/apply/due-date')
     } else if (childrenunderfour === "yes") {
       res.redirect('/v3/apply/childs-first-name')
