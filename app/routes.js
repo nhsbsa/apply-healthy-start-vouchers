@@ -856,6 +856,29 @@ router.post('/v3/children-under-four-answers', function (req, res) {
 
 })
 
+// Remove child
+
+router.post('/v3/remove-child', function (req, res) {
+
+  var removeChild = req.session.data['removechild']
+
+  if (removeChild === "yes") {
+
+    var childList = req.session.data.childList
+    childList.pop()
+    console.log('Number of children:', childList.length)
+
+    res.redirect('/v3/apply/children-under-four-answers')
+  }
+  else if (removeChild === "no") {
+    res.redirect('/v3/apply/children-under-four-answers')
+  }
+  else {
+    res.redirect('/v1/apply/remove-child')
+  }
+
+})
+
 // Capture new applicant (Bank Details)
 router.post('/v3/bank-details', function (req, res) {
 
