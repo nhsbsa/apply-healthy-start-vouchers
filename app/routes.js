@@ -590,7 +590,7 @@ router.post('/v3/national-insurance-number', function (req, res) {
 
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
 
-  if (nationalinsurancenumber === 'QQ123456C') {
+  if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'QQ123456D') {
     res.redirect('/v3/apply/name')
   }
   else if (nationalinsurancenumber === '') {
@@ -610,29 +610,10 @@ router.post('/v3/name', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/v3/apply/address')
+    res.redirect('/v3/apply/date-of-birth')
   }
   else {
     res.redirect('/v3/apply/name')
-  }
-
-})
-
-// What is your address?
-
-router.post('/v3/address', function (req, res) {
-
-  delete req.session.data['selectaddress']
-
-  var addressline1 = req.session.data['addressline1']
-  var addressline2 = req.session.data['addressline2']
-  var towncity = req.session.data['towncity']
-  var postcode = req.session.data['postcode']
-
-  if (addressline1 && towncity && postcode) {
-    res.redirect('/v3/apply/date-of-birth')
-  } else {
-    res.redirect('/v3/apply/address')
   }
 
 })
@@ -836,19 +817,19 @@ router.post('/v3/children-under-four-answers', function (req, res) {
     res.redirect('/v3/apply/full-time-education')
   }
   else if (childrenunderfouranswers === "no" && pregnant === "yes" && yrs < 18) {
-    res.redirect('/v3/apply/bank-details')
+    res.redirect('/v3/apply/address')
   }
   else if (childrenunderfouranswers === "no" && pregnant === "yes" && yrs >= 20) {
-    res.redirect('/v3/apply/bank-details')
+    res.redirect('/v3/apply/address')
   }
   else if (childrenunderfouranswers === "no" && childrenunderfour === "yes" && yrs >= 18 && yrs <20) {
     res.redirect('/v3/apply/full-time-education')
   }
   else if (childrenunderfouranswers === "no" && childrenunderfour === "yes" && yrs < 18) {
-    res.redirect('/v3/apply/bank-details')
+    res.redirect('/v3/apply/address')
   }
   else if (childrenunderfouranswers === "no" && childrenunderfour === "yes" && yrs >= 20) {
-    res.redirect('/v3/apply/bank-details')
+    res.redirect('/v3/apply/address')
   }
   else {
     res.redirect('/v3/apply/children-under-four-answers')
@@ -879,20 +860,21 @@ router.post('/v3/remove-child', function (req, res) {
 
 })
 
-// Capture new applicant (Bank Details)
-router.post('/v3/bank-details', function (req, res) {
+// What is your address?
 
-  // Bank Details
+router.post('/v3/address', function (req, res) {
 
-  var accountName = req.session.data['accountname']
-  var sortCode = req.session.data['sortcode']
-  var accountNumber = req.session.data['accountnumber']
+  delete req.session.data['selectaddress']
 
-  if (accountName && sortCode && accountNumber){
-    res.redirect('/v3/apply/email-address')    
-  }
-  else {
-    res.redirect('/v3/apply/bank-details')
+  var addressline1 = req.session.data['addressline1']
+  var addressline2 = req.session.data['addressline2']
+  var towncity = req.session.data['towncity']
+  var postcode = req.session.data['postcode']
+
+  if (addressline1 && towncity && postcode) {
+    res.redirect('/v3/apply/email-address')
+  } else {
+    res.redirect('/v3/apply/address')
   }
 
 })
@@ -904,7 +886,7 @@ router.post('/v3/email-address', function (req, res) {
   var emailaddress = req.session.data['emailaddress']
 
   if (emailaddress) {
-    res.redirect('/v3/apply/telephone-number')
+    res.redirect('/v3/apply/bank-details')
   }
   else {
     res.redirect('/v3/apply/email-address')
@@ -912,17 +894,43 @@ router.post('/v3/email-address', function (req, res) {
 
 })
 
-// What is your telephone number?
+// Bank Details
 
-router.post('/v3/telephone-number', function (req, res) {
+router.post('/v3/bank-details', function (req, res) {
 
-  var telephonenumber = req.session.data['telephonenumber']
+  var accountName = req.session.data['accountname']
+  var sortCode = req.session.data['sortcode']
+  var accountNumber = req.session.data['accountnumber']
 
-  if (telephonenumber) {
-    res.redirect('/v3/apply/check-your-answers')
+  if (accountName && sortCode && accountNumber){
+    res.redirect('/v3/apply/check-your-answers')    
   }
   else {
-    res.redirect('/v3/apply/telephone-number')
+    res.redirect('/v3/apply/bank-details')
+  }
+
+})
+
+// Check your answers
+
+router.post('/v3/check-your-answers', function (req, res) {
+  res.redirect('/v3/apply/declaration')
+})
+
+// Declaration
+
+router.post('/v3/declaration', function (req, res) {
+
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+
+  if (nationalinsurancenumber === 'QQ123456C') {
+    res.redirect('/v3/apply/confirmation-successful')
+  }
+  else if (nationalinsurancenumber === 'QQ123456D') {
+    res.redirect('/v3/apply/confirmation-no-match')
+  }
+  else {
+    res.redirect('/v3/apply/declaration')
   }
 
 })
