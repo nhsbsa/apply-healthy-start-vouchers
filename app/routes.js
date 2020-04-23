@@ -885,12 +885,7 @@ router.post('/v3/email-address', function (req, res) {
 
   var emailaddress = req.session.data['emailaddress']
 
-  if (emailaddress) {
-    res.redirect('/v3/apply/bank-details')
-  }
-  else {
-    res.redirect('/v3/apply/email-address')
-  }
+  res.redirect('/v3/apply/bank-details')
 
 })
 
