@@ -42,7 +42,7 @@ Check your answers
 
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    Have children under four
+                    Have children under 4 years old
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                     {% if data['childrenunderfour'] == "yes" %}Yes{% else %}No{% endif %}
@@ -51,7 +51,7 @@ Check your answers
                 <dd class="nhsuk-summary-list__actions">
 
                     <a href="children-under-four">
-                        Change<span class="nhsuk-u-visually-hidden"> if you have any children under the age of 4</span>
+                        Change<span class="nhsuk-u-visually-hidden"> if you have any children under the age of 4 years old</span>
                     </a>
 
                 </dd>
@@ -61,7 +61,7 @@ Check your answers
                 {% if (data['nationalinsurancenumber']) %}
                 <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
-                            National insurance number
+                            National Insurance number
                         </dt>
                         <dd class="nhsuk-summary-list__value">
                             {{ data['nationalinsurancenumber'] }}
@@ -70,7 +70,7 @@ Check your answers
                         <dd class="nhsuk-summary-list__actions">
         
                             <a href="national-insurance-number">
-                                Change<span class="nhsuk-u-visually-hidden"> your national insurance number</span>
+                                Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
                             </a>
         
                         </dd>
@@ -274,24 +274,24 @@ Check your answers
 <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
                 
                 <div class="nhsuk-summary-list__row">
-                            <dt class="nhsuk-summary-list__key">Childs first name</dt>
+                            <dt class="nhsuk-summary-list__key">Child’s first name</dt>
                             <dd class="nhsuk-summary-list__value">{{ item.Name }}</dd>
                             <dd class="nhsuk-summary-list__actions">
                                 {% if data['childList'] | length  == 1 %}
-                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your childs first name</span></a>
+                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s first name</span></a>
                                 {% else %}
-                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your childs first name</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a></a>
+                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s first name</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a></a>
                                 {% endif %}
                             </dd>
                 </div>
                 <div class="nhsuk-summary-list__row">
-                            <dt class="nhsuk-summary-list__key">Childs date of birth</dt>
+                            <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
                             <dd class="nhsuk-summary-list__value">{{ item.DOB }}</dd>
                             <dd class="nhsuk-summary-list__actions">
                                 {% if data['childList'] | length  == 1 %}
-                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your childs date of birth</span></a>
+                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of birth</span></a>
                                 {% else %}
-                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your childs date of birth</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a></a>
+                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of birth</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a></a>
                                 {% endif %}
                             </dd>
                 </div>
