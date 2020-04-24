@@ -668,7 +668,7 @@ router.post('/v3/children-under-four', function (req, res) {
   var pregnant = req.session.data['pregnant']
 
   if (pregnant === "yes" && childrenunderfour === "no") {
-    res.redirect('/v3/apply/kickouts/not-eligible')
+    res.redirect('/v3/apply/kickouts/not-eligible-children-under-four')
   } else if (pregnant === "no" && childrenunderfour === "yes") {
     res.redirect('/v3/apply/childs-first-name')
   } else if (pregnant === "yes" && childrenunderfour === "yes") {
