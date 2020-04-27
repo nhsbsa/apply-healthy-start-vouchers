@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Sorry, there is a problem with the service
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">
+            Sorry, there is a problem with the service
+        </h1>
+
+        <p>
+            Try again later.
+        </p>
+
+        <p>
+            Email us if you need to speak to somebody about your claim.
+        </p>
+
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-2">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
+            <p>We aim to respond within 2 working days</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

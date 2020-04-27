@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Error
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">
+            Error
+        </h1>
+
+        <p>
+            You are not allowed to view this page.
+        </p>
+
+        <p>
+            Email us if you need to speak to somebody about your claim.
+        </p>
+
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-2">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
+            <p>We aim to respond within 2 working days</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

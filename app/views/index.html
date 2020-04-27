@@ -28,7 +28,7 @@
 
       <details class="nhsuk-details nhsuk-expander">
         <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">Private Beta <small>(Sprint 5)</small></span>
+          <span class="nhsuk-details__summary-text">Private Beta <small>(Sprint 5, 6 &amp; 7)</small></span>
         </summary>
         <div class="nhsuk-details__text">
           <h2 class="nhsuk-heading-l">Designing an 'Apply' service
@@ -42,6 +42,9 @@
           <ul class="nhsuk-list nhsuk-list--bullet">
             <li>To create a valid application (information matches), use National Insurance number; 'QQ 12 34 56 C'</li>
             <li>To create an invalid application (information does not match), use National Insurance number; 'QQ 12 34 56 D'</li>
+            <li>To create an invalid application (information does not match), use National Insurance number; 'QQ 12 34 56 D'</li>
+            <li>Created <a href="v3/errors/503">503 error (Service unavailable)</a>, <a href="v3/errors/500">500 error (There is a problem with the service)</a> and <a href="v3/errors/404">404 error (Page not found)</a> pages.</li>
+            <li>Created <a href="v3/errors/timeout">service timeout</a> flow. Flow mimicks 25 minutes of inactivity, a 5 minute warning to extend and finally a timeout screen.</li>
           </ul>
           <h3 class="nhsuk-heading-m">What we plan to test:</h3>
           <ul class="nhsuk-list nhsuk-list--bullet">

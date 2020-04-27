@@ -929,3 +929,9 @@ router.post('/v3/declaration', function (req, res) {
   }
 
 })
+
+// Feedback
+
+router.post('/v3/feedback', function (req, res) {
+  res.redirect('/v3/feedback')
+})
