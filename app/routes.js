@@ -1,7 +1,70 @@
+// Gov Notify
+
+var NotifyClient = require('notifications-node-client').NotifyClient,
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+
 // External dependencies
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
+
+// ****************************************
+// NOTIFICATIONS
+// ****************************************
+
+// Declaration
+
+router.post('/v3/declaration', function (req, res) {
+
+  var emailAddress = req.session.data['emailaddress']
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+  var firstName = req.session.data['firstname']
+
+  if (emailAddress != ""){
+
+    if (nationalinsurancenumber === 'QQ123456C') {
+
+      notify.sendEmail(
+        // this long string is the template ID, copy it from the template
+        // page in GOV.UK Notify. It's not a secret so it's fine to put it
+        // in your code.
+        '04b80198-632b-419f-8021-2764524429d9',
+        // `emailAddress` here needs to match the name of the form field in
+        // your HTML page
+        emailAddress, {
+          personalisation: {
+            'refNo': 'HDJ2123F',
+            'firstName': firstName,
+            'paymentAmount': '£12.40',
+            'childrenUnder4Payment': '£12.40 for children under 4'
+          }
+        }
+      );
+
+      res.redirect('/v3/apply/confirmation-successful')
+    }
+    else if (nationalinsurancenumber === 'QQ123456D') {
+      res.redirect('/v3/apply/confirmation-no-match')
+    }
+    else {
+      res.redirect('/v3/apply/declaration')
+    }
+
+  } else {
+
+    if (nationalinsurancenumber === 'QQ123456C') {
+      res.redirect('/v3/apply/confirmation-successful')
+    }
+    else if (nationalinsurancenumber === 'QQ123456D') {
+      res.redirect('/v3/apply/confirmation-no-match')
+    }
+    else {
+      res.redirect('/v3/apply/declaration')
+    }
+    
+  }
+
+})
 
 // Add your routes here - above the module.exports line
 
@@ -910,24 +973,6 @@ router.post('/v3/bank-details', function (req, res) {
 
 router.post('/v3/check-your-answers', function (req, res) {
   res.redirect('/v3/apply/declaration')
-})
-
-// Declaration
-
-router.post('/v3/declaration', function (req, res) {
-
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
-
-  if (nationalinsurancenumber === 'QQ123456C') {
-    res.redirect('/v3/apply/confirmation-successful')
-  }
-  else if (nationalinsurancenumber === 'QQ123456D') {
-    res.redirect('/v3/apply/confirmation-no-match')
-  }
-  else {
-    res.redirect('/v3/apply/declaration')
-  }
-
 })
 
 // Feedback
