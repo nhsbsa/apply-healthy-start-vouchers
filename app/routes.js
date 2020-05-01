@@ -12,7 +12,7 @@ const moment = require('moment');
 // NOTIFICATIONS
 // ****************************************
 
-// Declaration
+// V3 Declaration
 
 router.post('/v3/declaration', function (req, res) {
 
@@ -52,49 +52,45 @@ router.post('/v3/declaration', function (req, res) {
 
 })
 
-router.post('/v3/terms-and-conditions', function (req, res) {
+// V4 Declaration
 
-  var emailAddress = req.session.data['emailaddress']
-  var telephoneNumber = req.session.data['telephonenumber']
-  var firstName = req.session.data['firstname']
+router.post('/v4/declaration', function (req, res) {
 
-  if (emailAddress != ""){
+  var emailAddress = req.session.data['emailaddress'];
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+  var firstName = req.session.data['firstname'];
+  
+  var refNo = 'HDJ2123F';
+  var paymentAmount = '£12.40';
+  var childrenUnder4Payment = '£12.40 for children under 4';
+
+  if (nationalinsurancenumber === 'QQ123456C') {
     notify.sendEmail(
       // this long string is the template ID, copy it from the template
       // page in GOV.UK Notify. It's not a secret so it's fine to put it
       // in your code.
-      '93e5fbda-bc50-42c3-87cb-467cf0470862',
+      '04b80198-632b-419f-8021-2764524429d9',
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
       emailAddress, {
         personalisation: {
-          'firstName': firstName
+          'refNo': refNo,
+          'firstName': firstName,
+          'paymentAmount': paymentAmount,
+          'childrenUnder4Payment': childrenUnder4Payment
         }
       }
-    );
-    res.redirect('/v5/confirmation-over-10-weeks') 
+  );
+    res.redirect('/v4/apply/confirmation-successful')
   }
-  else if (telephoneNumber != "") {
-    notify.sendSms(
-      // this long string is the template ID, copy it from the template
-      // page in GOV.UK Notify. It's not a secret so it's fine to put it
-      // in your code.
-      '5dd2a61e-a740-4a58-a484-7fbc2b5454b7',
-      // `emailAddress` here needs to match the name of the form field in
-      // your HTML page
-      telephoneNumber, {
-        personalisation: {
-          'firstName': firstName
-        }
-      }
-    );
-    res.redirect('/v5/confirmation-over-10-weeks')
+  else if (nationalinsurancenumber === 'QQ123456D') {
+    res.redirect('/v4/apply/confirmation-no-match')
   }
   else {
-    res.redirect('/v5/confirmation-over-10-weeks')
+    res.redirect('/v4/apply/declaration')
   }
 
-});
+})
 
 // Add your routes here - above the module.exports line
 
@@ -1009,4 +1005,124 @@ router.post('/v3/check-your-answers', function (req, res) {
 
 router.post('/v3/feedback', function (req, res) {
   res.redirect('/v3/feedback')
+})
+
+// ********************************
+// APPLY (VERSION 4)
+// ********************************
+
+// What is your national insurance number?
+
+router.post('/v4/national-insurance-number', function (req, res) {
+
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+
+  if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'QQ123456D') {
+    res.redirect('/v4/apply/name')
+  }
+  else if (nationalinsurancenumber === '') {
+    res.redirect('/v4/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/v4/apply/kickouts/not-eligible-national-insurance-number')
+  }
+
+})
+
+// What is your name?
+
+router.post('/v4/name', function (req, res) {
+
+  var firstname = req.session.data['firstname']
+  var lastname = req.session.data['lastname']
+
+  if (firstname && lastname) {
+    res.redirect('/v4/apply/date-of-birth')
+  }
+  else {
+    res.redirect('/v4/apply/name')
+  }
+
+})
+
+// Date of birth
+
+router.post('/v4/date-of-birth', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dob.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
+  req.session.data.yrs = yrs;
+
+  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+    res.redirect('/v4/apply/confirmation-of-entitlement')
+  }
+  else {
+    res.redirect('/v4/apply/date-of-birth')
+  }
+
+})
+
+// What is your address?
+
+router.post('/v4/address', function (req, res) {
+
+  delete req.session.data['selectaddress']
+
+  var addressline1 = req.session.data['addressline1']
+  var addressline2 = req.session.data['addressline2']
+  var towncity = req.session.data['towncity']
+  var postcode = req.session.data['postcode']
+
+  if (addressline1 && towncity && postcode) {
+    res.redirect('/v4/apply/email-address')
+  } else {
+    res.redirect('/v4/apply/address')
+  }
+
+})
+
+// What is your email address?
+
+router.post('/v4/email-address', function (req, res) {
+
+  var emailaddress = req.session.data['emailaddress']
+
+  res.redirect('/v4/apply/bank-details')
+
+})
+
+// Bank Details
+
+router.post('/v4/bank-details', function (req, res) {
+
+  var accountName = req.session.data['accountname']
+  var sortCode = req.session.data['sortcode']
+  var accountNumber = req.session.data['accountnumber']
+
+  if (accountName && sortCode && accountNumber){
+    res.redirect('/v4/apply/check-your-answers')    
+  }
+  else {
+    res.redirect('/v4/apply/bank-details')
+  }
+
+})
+
+// Check your answers
+
+router.post('/v4/check-your-answers', function (req, res) {
+  res.redirect('/v4/apply/declaration')
+})
+
+// Feedback
+
+router.post('/v4/feedback', function (req, res) {
+  res.redirect('/v4/feedback')
 })

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your email address?
+        </h1>
+
+        <p>This must be the same email address you have registered with the benefits agency (DWP or HMRC).</p>
+
+        <form action="/v4/email-address" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="emailaddress">
+                    Email address (optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="emailaddress" name="emailaddress" type="text" autocomplete="email">
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

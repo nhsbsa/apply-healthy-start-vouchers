@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your invitation code?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your invitation code?
+        </h1>
+
+        <p>Your 8 digit invitation code will be displayed clearly on your invite letter.</p>
+    
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+
+        <form action="/v4/invitation-code" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="code">
+                    8 digit code
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="code" name="code" type="text">
+            </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Where to find your invitation code?
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+
+                    <div class="nhsuk-care-card nhsuk-care-card--non-urgent">
+                    <div class="nhsuk-care-card__heading-container">
+                        <h3 class="nhsuk-care-card__heading"><span role="text">Where to find your invitation code</span></h3>
+                        <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
+                    </div>
+                    <div class="nhsuk-care-card__content">
+
+                        <p><img class="nhsuk-image__img nhsuk-image__img__350" src="/images/ctc-invite.svg" alt="Example of Healthy Start invitation"></p>
+
+                    </div>
+                    </div>
+
+                </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
