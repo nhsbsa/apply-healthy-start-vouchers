@@ -16,55 +16,85 @@ const moment = require('moment');
 
 router.post('/v3/declaration', function (req, res) {
 
-  var emailAddress = req.session.data['emailaddress']
+  var emailAddress = req.session.data['emailaddress'];
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
-  var firstName = req.session.data['firstname']
+  var firstName = req.session.data['firstname'];
+  
+  var refNo = 'HDJ2123F';
+  var paymentAmount = '£12.40';
+  var childrenUnder4Payment = '£12.40 for children under 4';
 
-  if (emailAddress != ""){
-
-    if (nationalinsurancenumber === 'QQ123456C') {
-
-      notify.sendEmail(
-        // this long string is the template ID, copy it from the template
-        // page in GOV.UK Notify. It's not a secret so it's fine to put it
-        // in your code.
-        '04b80198-632b-419f-8021-2764524429d9',
-        // `emailAddress` here needs to match the name of the form field in
-        // your HTML page
-        emailAddress, {
-          personalisation: {
-            'refNo': 'HDJ2123F',
-            'firstName': firstName,
-            'paymentAmount': '£12.40',
-            'childrenUnder4Payment': '£12.40 for children under 4'
-          }
+  if (nationalinsurancenumber === 'QQ123456C') {
+    notify.sendEmail(
+      // this long string is the template ID, copy it from the template
+      // page in GOV.UK Notify. It's not a secret so it's fine to put it
+      // in your code.
+      '04b80198-632b-419f-8021-2764524429d9',
+      // `emailAddress` here needs to match the name of the form field in
+      // your HTML page
+      emailAddress, {
+        personalisation: {
+          'refNo': refNo,
+          'firstName': firstName,
+          'paymentAmount': paymentAmount,
+          'childrenUnder4Payment': childrenUnder4Payment
         }
-      );
-
-      res.redirect('/v3/apply/confirmation-successful')
-    }
-    else if (nationalinsurancenumber === 'QQ123456D') {
-      res.redirect('/v3/apply/confirmation-no-match')
-    }
-    else {
-      res.redirect('/v3/apply/declaration')
-    }
-
-  } else {
-
-    if (nationalinsurancenumber === 'QQ123456C') {
-      res.redirect('/v3/apply/confirmation-successful')
-    }
-    else if (nationalinsurancenumber === 'QQ123456D') {
-      res.redirect('/v3/apply/confirmation-no-match')
-    }
-    else {
-      res.redirect('/v3/apply/declaration')
-    }
-    
+      }
+  );
+    res.redirect('/v3/apply/confirmation-successful')
+  }
+  else if (nationalinsurancenumber === 'QQ123456D') {
+    res.redirect('/v3/apply/confirmation-no-match')
+  }
+  else {
+    res.redirect('/v3/apply/declaration')
   }
 
 })
+
+router.post('/v3/terms-and-conditions', function (req, res) {
+
+  var emailAddress = req.session.data['emailaddress']
+  var telephoneNumber = req.session.data['telephonenumber']
+  var firstName = req.session.data['firstname']
+
+  if (emailAddress != ""){
+    notify.sendEmail(
+      // this long string is the template ID, copy it from the template
+      // page in GOV.UK Notify. It's not a secret so it's fine to put it
+      // in your code.
+      '93e5fbda-bc50-42c3-87cb-467cf0470862',
+      // `emailAddress` here needs to match the name of the form field in
+      // your HTML page
+      emailAddress, {
+        personalisation: {
+          'firstName': firstName
+        }
+      }
+    );
+    res.redirect('/v5/confirmation-over-10-weeks') 
+  }
+  else if (telephoneNumber != "") {
+    notify.sendSms(
+      // this long string is the template ID, copy it from the template
+      // page in GOV.UK Notify. It's not a secret so it's fine to put it
+      // in your code.
+      '5dd2a61e-a740-4a58-a484-7fbc2b5454b7',
+      // `emailAddress` here needs to match the name of the form field in
+      // your HTML page
+      telephoneNumber, {
+        personalisation: {
+          'firstName': firstName
+        }
+      }
+    );
+    res.redirect('/v5/confirmation-over-10-weeks')
+  }
+  else {
+    res.redirect('/v5/confirmation-over-10-weeks')
+  }
+
+});
 
 // Add your routes here - above the module.exports line
 
