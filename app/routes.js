@@ -1,4 +1,5 @@
 // Gov Notify
+var NOTIFYAPIKEY = 'applicationsuccessful-4d6fccc6-0a85-4ac4-b15a-4f4ed5b0bd12-71642838-c7eb-40d9-b574-6542d9522010';
 
 var NotifyClient = require('notifications-node-client').NotifyClient,
     notify = new NotifyClient(process.env.NOTIFYAPIKEY);
@@ -57,38 +58,10 @@ router.post('/v3/declaration', function (req, res) {
 router.post('/v4/declaration', function (req, res) {
 
   var emailAddress = req.session.data['emailaddress'];
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
-  var firstName = req.session.data['firstname'];
-  
-  var refNo = 'HDJ2123F';
-  var paymentAmount = '£12.40';
-  var childrenUnder4Payment = '£12.40 for children under 4';
 
-  if (nationalinsurancenumber === 'QQ123456C') {
-    notify.sendEmail(
-      // this long string is the template ID, copy it from the template
-      // page in GOV.UK Notify. It's not a secret so it's fine to put it
-      // in your code.
-      '04b80198-632b-419f-8021-2764524429d9',
-      // `emailAddress` here needs to match the name of the form field in
-      // your HTML page
-      emailAddress, {
-        personalisation: {
-          'refNo': refNo,
-          'firstName': firstName,
-          'paymentAmount': paymentAmount,
-          'childrenUnder4Payment': childrenUnder4Payment
-        }
-      }
-  );
-    res.redirect('/v4/apply/confirmation-successful')
-  }
-  else if (nationalinsurancenumber === 'QQ123456D') {
-    res.redirect('/v4/apply/confirmation-no-match')
-  }
-  else {
-    res.redirect('/v4/apply/declaration')
-  }
+  notify.sendEmail('04b80198-632b-419f-8021-2764524429d9', emailAddress);
+
+  res.redirect('/v4/apply/confirmation-successful');
 
 })
 
@@ -1011,21 +984,6 @@ router.post('/v3/feedback', function (req, res) {
 // APPLY (VERSION 4)
 // ********************************
 
-// What is your national insurance number?
-
-router.post('/v4/national-insurance-number', function (req, res) {
-
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
-
-  if (nationalinsurancenumber) {
-    res.redirect('/v4/apply/name')
-  }
-  else {
-    res.redirect('/v4/apply/kickouts/national-insurance-number')
-  }
-
-})
-
 // What is your name?
 
 router.post('/v4/name', function (req, res) {
@@ -1050,8 +1008,6 @@ router.post('/v4/date-of-birth', function (req, res) {
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
   var dateofbirthyear = req.session.data['dateofbirthyear']
 
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
-
   var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
   var ageDate =  new Date(today - dob.getTime())
   var temp = ageDate.getFullYear();
@@ -1061,16 +1017,31 @@ router.post('/v4/date-of-birth', function (req, res) {
 
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+    res.redirect('/v4/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/v4/apply/date-of-birth')
+  }
+
+})
+
+// What is your national insurance number?
+
+router.post('/v4/national-insurance-number', function (req, res) {
+
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+
+  if (nationalinsurancenumber) {
 
     if (nationalinsurancenumber === 'QQ123456C') {
-      res.redirect('/v4/apply/confirmation-of-entitlement')
+      res.redirect('/v4/apply/address')
     } else {
       res.redirect('/v4/apply/kickouts/not-eligible-national-insurance-number')
     }
 
   }
   else {
-    res.redirect('/v4/apply/date-of-birth')
+    res.redirect('/v4/apply/kickouts/national-insurance-number')
   }
 
 })

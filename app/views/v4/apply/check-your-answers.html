@@ -21,26 +21,6 @@ Check your answers
 
         <dl class="nhsuk-summary-list">
 
-                {% if (data['nationalinsurancenumber']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            National Insurance number
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['nationalinsurancenumber'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="national-insurance-number">
-                                Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
-
                 {% if (data['firstname']) and (data['lastname']) %}
                 <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
@@ -61,7 +41,47 @@ Check your answers
                     </div>
                 {% endif %}
 
-                {% if (data['addressline1']) and (data['towncity']) and (data['postcode']) %}
+                {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Date of birth
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="date-of-birth">
+                                Change<span class="nhsuk-u-visually-hidden"> your date of birth</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+                
+                                {% if (data['nationalinsurancenumber']) %}
+                <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            National Insurance number
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['nationalinsurancenumber'] }}
+                        </dd>
+        
+                        <dd class="nhsuk-summary-list__actions">
+        
+                            <a href="national-insurance-number">
+                                Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
+                            </a>
+        
+                        </dd>
+        
+                    </div>
+                {% endif %}
+
+                               {% if (data['addressline1']) and (data['towncity']) and (data['postcode']) %}
                 <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
                             Address
@@ -97,26 +117,6 @@ Check your answers
         
                             <a href="find-address">
                                 Change<span class="nhsuk-u-visually-hidden"> your address</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
-
-                {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Date of birth
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="date-of-birth">
-                                Change<span class="nhsuk-u-visually-hidden"> your date of birth</span>
                             </a>
         
                         </dd>
