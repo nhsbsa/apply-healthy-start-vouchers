@@ -1017,14 +1017,11 @@ router.post('/v4/national-insurance-number', function (req, res) {
 
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
 
-  if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'QQ123456D') {
+  if (nationalinsurancenumber) {
     res.redirect('/v4/apply/name')
   }
-  else if (nationalinsurancenumber === '') {
-    res.redirect('/v4/apply/national-insurance-number')
-  }
   else {
-    res.redirect('/v4/apply/kickouts/not-eligible-national-insurance-number')
+    res.redirect('/v4/apply/kickouts/national-insurance-number')
   }
 
 })
@@ -1053,6 +1050,8 @@ router.post('/v4/date-of-birth', function (req, res) {
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
   var dateofbirthyear = req.session.data['dateofbirthyear']
 
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+
   var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
   var ageDate =  new Date(today - dob.getTime())
   var temp = ageDate.getFullYear();
@@ -1060,8 +1059,15 @@ router.post('/v4/date-of-birth', function (req, res) {
 
   req.session.data.yrs = yrs;
 
+
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-    res.redirect('/v4/apply/confirmation-of-entitlement')
+
+    if (nationalinsurancenumber === 'QQ123456C') {
+      res.redirect('/v4/apply/confirmation-of-entitlement')
+    } else {
+      res.redirect('/v4/apply/kickouts/not-eligible-national-insurance-number')
+    }
+
   }
   else {
     res.redirect('/v4/apply/date-of-birth')
