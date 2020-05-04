@@ -19,29 +19,14 @@ router.post('/v3/declaration', function (req, res) {
 
   var emailAddress = req.session.data['emailaddress'];
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
-  var firstName = req.session.data['firstname'];
-  
+
   var refNo = 'HDJ2123F';
+  var firstName = req.session.data['firstname'];
   var paymentAmount = '£12.40';
-  var childrenUnder4Payment = '£12.40 for children under 4';
+  var childrenUnder4Payment = '£3.10 every week for each of your children between the ages of 1 and 4 years old.';
 
   if (nationalinsurancenumber === 'QQ123456C') {
-    notify.sendEmail(
-      // this long string is the template ID, copy it from the template
-      // page in GOV.UK Notify. It's not a secret so it's fine to put it
-      // in your code.
-      '04b80198-632b-419f-8021-2764524429d9',
-      // `emailAddress` here needs to match the name of the form field in
-      // your HTML page
-      emailAddress, {
-        personalisation: {
-          'refNo': refNo,
-          'firstName': firstName,
-          'paymentAmount': paymentAmount,
-          'childrenUnder4Payment': childrenUnder4Payment
-        }
-      }
-  );
+    notify.sendEmail('f2653d20-a1d6-46be-978e-a6234cb6b674', emailAddress, { personalisation: { 'refNo': refNo, 'firstName': firstName, 'paymentAmount': paymentAmount, 'childrenUnder4Payment': childrenUnder4Payment } } );
     res.redirect('/v3/apply/confirmation-successful')
   }
   else if (nationalinsurancenumber === 'QQ123456D') {
@@ -58,7 +43,6 @@ router.post('/v3/declaration', function (req, res) {
 router.post('/v4/declaration', function (req, res) {
 
   var emailAddress = req.session.data['emailaddress'];
-
 
   var refNo = 'HDJ2123F';
   var firstName = req.session.data['firstname'];
