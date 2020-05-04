@@ -59,7 +59,13 @@ router.post('/v4/declaration', function (req, res) {
 
   var emailAddress = req.session.data['emailaddress'];
 
-  notify.sendEmail('04b80198-632b-419f-8021-2764524429d9', emailAddress);
+
+  var refNo = 'HDJ2123F';
+  var firstName = req.session.data['firstname'];
+  var paymentAmount = '£12.40';
+  var childrenUnder4Payment = '£3.10 every week for each of your children between the ages of 1 and 4 years old.';
+
+  notify.sendEmail('f2653d20-a1d6-46be-978e-a6234cb6b674', emailAddress, { personalisation: { 'refNo': refNo, 'firstName': firstName, 'paymentAmount': paymentAmount, 'childrenUnder4Payment': childrenUnder4Payment } } );
 
   res.redirect('/v4/apply/confirmation-successful');
 
