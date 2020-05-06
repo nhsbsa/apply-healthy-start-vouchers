@@ -32,7 +32,7 @@
     "gulp-sass": "^4.0.2",
     "keypather": "^3.0.0",
     "moment": "^2.24.0",
-    "nhsuk-frontend": "^3.0.2",
+    "nhsuk-frontend": "^3.1.0",
     "node-sass": "^4.13.0",
     "notifications-node-client": "^4.7.3",
     "nunjucks": "^3.2.0",
