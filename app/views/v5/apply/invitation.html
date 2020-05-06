@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have an invitation letter in your name?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Do you have an invitation letter in your name?
+        </h1>
+
+        <p><img class="nhsuk-image__img nhsuk-image__img__150 nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5" src="/images/ctc-invite-plain.svg" alt="Example of Healthy Start invitation"></p>
+
+        <form action="/v5/invitation" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="invitation" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="invitation" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

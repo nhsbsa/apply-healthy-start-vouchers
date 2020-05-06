@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Submit your application
+        </h1>
+
+        <div class="nhsuk-warning-callout">
+                <h3 class="nhsuk-warning-callout__label">Declaration</h3>
+                <p>I confirm that this information is correct and true in accordance with my records on <script>
+                        var today = new Date();
+                        var dd = today.getDate();
+        
+                        var month = new Array();
+                        month[0] = "January";
+                        month[1] = "February";
+                        month[2] = "March";
+                        month[3] = "April";
+                        month[4] = "May";
+                        month[5] = "June";
+                        month[6] = "July";
+                        month[7] = "August";
+                        month[8] = "September";
+                        month[9] = "October";
+                        month[10] = "November";
+                        month[11] = "December";
+        
+                        var mm = month[today.getMonth()]; //January is 0!
+        
+        
+                        var yyyy = today.getFullYear();
+        
+                        if (dd < 10) {
+                          dd = '0' + dd
+                        }
+        
+                        if (mm < 10) {
+                          mm = '0' + mm
+                        }
+        
+                        today = dd + ' ' + mm + ' ' + yyyy;
+                        document.write(today);
+                      </script>.</p>
+                <p>I confirm that I:</p>
+              <ul>
+                <li>have given permission for this application to be submitted</li>
+                <li>know the information submitted will be used by the NHS Business Services Authority and shared other organisations where necessary</li>
+                <li>understand my data will not be transferred outside of the European Economic Area and will be deleted within 24 months of the expiry date of the scheme</li>
+                <li>am aware that this is a pilot scheme</li>
+              </ul>
+              
+        </div>
+
+        <form action="/v5/declaration" method="post">
+
+            <button class="nhsuk-button" type="submit">
+                Submit
+            </button>
+
+        </form>
+
+
+    </div>
+</div>
+
+{% endblock %}

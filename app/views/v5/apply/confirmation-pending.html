@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+We’re considering your application
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-panel nhsuk-u-margin-bottom-5"
+           style="background: #005EB8; margin-top: 0;">
+        <h1 class="nhsuk-panel__title" style="color: white;">We’re considering your application</h1>
+        <div class="nhsuk-panel__body nhsuk-u-margin-top-5" style="color: white;">
+              Reference number:<br><strong>HDJ2123F</strong>
+            </div>
+      </div>
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+      <p>We need to review your application. We’ll send you a email with our decision within 5 working days.</p>
+      <p>If you've not heard from us in that time:</p>
+      <ul>
+        <li>email <a href="mailto:email@example.com" target="_blank">email@example.com</a></li>
+      </ul>
+      <p>We aim to respond within 2 working days.</p>
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+      <p><a href="../feedback">What did you think of this service?</a> (takes 30 seconds).</p>
+    </div>
+  </div>
+
+{% endblock %}
