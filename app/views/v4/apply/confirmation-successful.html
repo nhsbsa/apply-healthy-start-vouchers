@@ -11,8 +11,8 @@ We’re considering your application
 
         <div class="nhsuk-panel nhsuk-u-margin-bottom-5" style="background: #005EB8; margin-top: 0;">
 
-            <h1 class="nhsuk-panel__title" style="color: white;">Application successful</h1><span class="nhsuk-caption-xl nhsuk-caption--bottom" style="text-align: center; color: white;">You’re entitled to <strong>£3.10</strong> a week.<br>
-            Your first payment will be <strong>£12.40</strong>.</span>
+            <h1 class="nhsuk-panel__title" style="color: white;">Application successful</h1><span class="nhsuk-caption-xl nhsuk-caption--bottom" style="text-align: center; color: white;">You’re entitled to <strong>{% if data['pregnant'] == "yes" %}£6.20{% else %}£3.10{% endif %}</strong> a week.<br>
+            Your first payment will be <strong>{% if data['pregnant'] == "yes" %}£24.80{% else %}£12.40{% endif %}</strong>.</span>
 
             <div class="nhsuk-panel__body nhsuk-u-margin-top-5" style="color: white;">
               Reference number:<br><strong>HDJ2123F</strong>
@@ -22,7 +22,7 @@ We’re considering your application
 
           <h2 class="nhsuk-heading-m">What happens next</h2>
           
-          <p>We’ll pay £12.40 into your bank account within 7 days.</p>
+          <p>We’ll pay {% if data['pregnant'] == "yes" %}£24.80{% else %}£12.40{% endif %} into your bank account within 7 days.</p>
           <p>You’ll then get a payment every 4 weeks after that.</p>
           <p>{% if (data['emailaddress']) %}We’ve sent you an email with more information.{% else %}We’ve sent you a letter with more information.{% endif %}</p>      
 
