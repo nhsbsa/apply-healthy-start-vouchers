@@ -24,6 +24,7 @@ We’re considering your application
           
           <p>We’ll pay £12.40 into your bank account within 7 days.</p>
           <p>You’ll then get a payment every 4 weeks after that.</p>
+          <p>{% if (data['emailaddress']) %}We’ve sent you an email with more information.{% else %}We’ve sent you a letter with more information.{% endif %}</p>      
 
           <h2 class="nhsuk-heading-m">Any problems</h2>
 
