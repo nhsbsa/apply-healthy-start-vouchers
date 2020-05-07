@@ -690,7 +690,7 @@ router.post('/v3/are-you-pregnant', function (req, res) {
     res.redirect('/v3/apply/children-under-four')
   }
   else {
-    res.redirect('/v1/apply/are-you-pregnant')
+    res.redirect('/v3/apply/are-you-pregnant')
   }
 
 })
@@ -1031,9 +1031,58 @@ router.post('/v4/address', function (req, res) {
   var postcode = req.session.data['postcode']
 
   if (addressline1 && towncity && postcode) {
-    res.redirect('/v4/apply/bank-details')
+    res.redirect('/v4/apply/are-you-pregnant')
   } else {
     res.redirect('/v4/apply/address')
+  }
+
+})
+
+// Are you pregnant?
+
+router.post('/v4/are-you-pregnant', function (req, res) {
+
+  var pregnant = req.session.data['pregnant']
+
+  if (pregnant === "yes") {
+    res.redirect('/v4/apply/due-date')
+  }
+  else if (pregnant === "no") {
+    res.redirect('/v4/apply/bank-details')
+  }
+  else {
+    res.redirect('/v4/apply/are-you-pregnant')
+  }
+
+})
+
+// Are you pregnant? > Due Date
+
+router.post('/v4/due-date', function (req, res) {
+
+  var duedateday = req.session.data['duedateday']
+  var duedatemonth = req.session.data['duedatemonth']
+  var duedateyear = req.session.data['duedateyear']
+
+  var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+
+  var today = moment();
+
+  var fulltermpregnancy = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
+  
+  if (duedateday && duedatemonth && duedateyear) {
+
+    if (duedate < today) {
+      res.redirect('/v4/apply/due-date')
+    } else if (duedate > fulltermpregnancy) {
+      res.redirect('/v4/apply/due-date')
+    } else {
+      res.redirect('/v4/apply/bank-details')
+    }
+      
+  }
+  else {
+    res.redirect('/v4/apply/due-date')
   }
 
 })
