@@ -1049,7 +1049,9 @@ router.post('/v4/due-date', function (req, res) {
 
   var today = moment();
 
-  var fulltermpregnancy = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
+  var fulltermpregnancy = moment().add(42, 'weeks'); // 42 weeks from today is a full term pregnancy
+  var tenweekspregnant = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
+
   
   if (duedateday && duedatemonth && duedateyear) {
 
@@ -1058,9 +1060,16 @@ router.post('/v4/due-date', function (req, res) {
     } else if (duedate > fulltermpregnancy) {
       res.redirect('/v4/apply/due-date')
     } else {
+
+      if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
+        req.session.data.lessThanTenWeeksPregnant = true;
+      } else {
+        req.session.data.lessThanTenWeeksPregnant = false;
+      }
+      
       res.redirect('/v4/apply/address')
     }
-      
+
   }
   else {
     res.redirect('/v4/apply/due-date')
