@@ -210,6 +210,24 @@ Check your answers
 
         <dl class="nhsuk-summary-list">
 
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Currently pregnant
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="are-you-pregnant">
+                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
                 {% if data['pregnant'] == "yes" %}
                 <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
