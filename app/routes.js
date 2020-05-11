@@ -1011,29 +1011,10 @@ router.post('/v4/date-of-birth', function (req, res) {
 
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-    res.redirect('/v4/apply/address')
+    res.redirect('/v4/apply/are-you-pregnant')
   }
   else {
     res.redirect('/v4/apply/date-of-birth')
-  }
-
-})
-
-// What is your address?
-
-router.post('/v4/address', function (req, res) {
-
-  delete req.session.data['selectaddress']
-
-  var addressline1 = req.session.data['addressline1']
-  var addressline2 = req.session.data['addressline2']
-  var towncity = req.session.data['towncity']
-  var postcode = req.session.data['postcode']
-
-  if (addressline1 && towncity && postcode) {
-    res.redirect('/v4/apply/are-you-pregnant')
-  } else {
-    res.redirect('/v4/apply/address')
   }
 
 })
@@ -1048,7 +1029,7 @@ router.post('/v4/are-you-pregnant', function (req, res) {
     res.redirect('/v4/apply/due-date')
   }
   else if (pregnant === "no") {
-    res.redirect('/v4/apply/bank-details')
+    res.redirect('/v4/apply/address')
   }
   else {
     res.redirect('/v4/apply/are-you-pregnant')
@@ -1077,12 +1058,31 @@ router.post('/v4/due-date', function (req, res) {
     } else if (duedate > fulltermpregnancy) {
       res.redirect('/v4/apply/due-date')
     } else {
-      res.redirect('/v4/apply/bank-details')
+      res.redirect('/v4/apply/address')
     }
       
   }
   else {
     res.redirect('/v4/apply/due-date')
+  }
+
+})
+
+// What is your address?
+
+router.post('/v4/address', function (req, res) {
+
+  delete req.session.data['selectaddress']
+
+  var addressline1 = req.session.data['addressline1']
+  var addressline2 = req.session.data['addressline2']
+  var towncity = req.session.data['towncity']
+  var postcode = req.session.data['postcode']
+
+  if (addressline1 && towncity && postcode) {
+    res.redirect('/v4/apply/bank-details')
+  } else {
+    res.redirect('/v4/apply/address')
   }
 
 })
