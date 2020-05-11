@@ -1029,7 +1029,7 @@ router.post('/v4/are-you-pregnant', function (req, res) {
     res.redirect('/v4/apply/due-date')
   }
   else if (pregnant === "no") {
-    req.session.data.lessThanTenWeeksPregnant = false;
+    req.session.data.lessThanTenWeeksPregnant = true;
     res.redirect('/v4/apply/address')
   }
   else {
