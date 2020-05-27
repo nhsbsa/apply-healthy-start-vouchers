@@ -5,6 +5,7 @@ Are you pregnant?
 {% endblock %}
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -66,6 +67,15 @@ Are you pregnant?
 
                     </div>
 
+                    <div class="nhsuk-radios__divider">or</div>
+
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="NONE" name="contact" type="checkbox" value="NONE">
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="NONE">
+                            I prefer not to be contacted
+                        </label>
+                    </div>
+
                 </div>
             </fieldset>
 
@@ -76,6 +86,20 @@ Are you pregnant?
             </button>
 
         </form>
+
+        <script>
+        var $others = $('input[name="contact"]').not('#NONE')
+        $('#NONE').change(function () {
+          if (this.checked) {
+            $others.prop('checked', false)
+          }
+        });
+        $others.change(function () {
+          if (this.checked) {
+            $('#NONE').prop('checked', false)
+          }
+        })
+        </script>
 
     </div>
 </div>
