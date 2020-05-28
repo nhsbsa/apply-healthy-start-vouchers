@@ -1117,7 +1117,7 @@ router.post('/v4/bank-details', function (req, res) {
 // Check your answers
 
 router.post('/v4/check-your-answers', function (req, res) {
-  res.redirect('/v4/apply/declaration')
+  res.redirect('/v4/apply/confirmation-successful')
 })
 
 // Declaration

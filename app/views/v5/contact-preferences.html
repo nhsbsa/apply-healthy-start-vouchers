@@ -91,12 +91,18 @@ Are you pregnant?
         var $others = $('input[name="contact"]').not('#NONE')
         $('#NONE').change(function () {
           if (this.checked) {
-            $others.prop('checked', false)
+            $others.prop('checked', false);
+
+            $('#conditional-contact-1').addClass('nhsuk-checkboxes__conditional--hidden');
+            $('#contact-1').attr("aria-expanded","false");            
+            $('#conditional-contact-2').addClass('nhsuk-checkboxes__conditional--hidden');
+            $('#contact-2').attr("aria-expanded","false");
+
           }
         });
         $others.change(function () {
           if (this.checked) {
-            $('#NONE').prop('checked', false)
+            $('#NONE').prop('checked', false);
           }
         })
         </script>
