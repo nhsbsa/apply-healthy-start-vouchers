@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Are you pregnant?
+How would you prefer to be contacted?
 {% endblock %}
 
 {% block content %}
@@ -62,7 +62,7 @@ Are you pregnant?
                         <label class="nhsuk-label" for="mobile">
                             Mobile phone number
                         </label>
-                        <input class="nhsuk-input nhsuk-u-width-two-thirds" id="mobile" name="mobile" type="text">
+                        <input class="nhsuk-input nhsuk-u-width-two-thirds" id="mobile" name="mobile" type="number" pattern="[0-9]*">
                         </div>
 
                     </div>
@@ -94,9 +94,11 @@ Are you pregnant?
             $others.prop('checked', false);
 
             $('#conditional-contact-1').addClass('nhsuk-checkboxes__conditional--hidden');
-            $('#contact-1').attr("aria-expanded","false");            
+            $('#contact-1').attr("aria-expanded","false");
+            $('#emailaddress').val('');            
             $('#conditional-contact-2').addClass('nhsuk-checkboxes__conditional--hidden');
             $('#contact-2').attr("aria-expanded","false");
+            $('#mobile').val('');
 
           }
         });
