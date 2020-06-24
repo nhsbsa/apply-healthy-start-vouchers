@@ -218,17 +218,8 @@ Check your answers
                 </dd>
 
             </div>
-            
 
-        </dl>
-
-        {% if (data['pregnant'] == "yes") or (data['childrenunderfour'] == "yes") %}
-        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children</h2>
-        {% endif %}
-
-        <dl class="nhsuk-summary-list">
-
-                {% if data['pregnant'] == "yes" %}
+                            {% if data['pregnant'] == "yes" %}
                 <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
                             Due date
@@ -247,6 +238,17 @@ Check your answers
         
                     </div>
                 {% endif %}
+            
+
+        </dl>
+
+        {% if (data['childrenunderfour'] == "yes") %}
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children</h2>
+        {% endif %}
+
+        <dl class="nhsuk-summary-list">
+
+
 
                 {% if data['childrenunderfour'] == "yes" %}
 
