@@ -328,11 +328,11 @@ Check your answers
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Account number ending with
+                Account number
               </dt>
               <dd class="nhsuk-summary-list__value">
                 <!-- {{ data['accountnumber'] | reverse | truncate(4, true, "****") | reverse }} -->
-                {{ data['accountnumber'].slice(4) }}
+                {{ data['accountnumber'] }}
               </dd>
 
               <dd class="nhsuk-summary-list__actions">
