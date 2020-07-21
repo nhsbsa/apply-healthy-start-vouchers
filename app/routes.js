@@ -55,8 +55,8 @@ router.post('/v5/check-your-answers', function (req, res) {
   var pregnancyPayment = '• £12.40 for a pregnancy';
   var childrenUnder4Payment = '• £12.40 for children between 1 and 4';
 
-  var vitStart = moment().format(D, MMMM, YYYY);
-  var vitEnd = moment().add(8, 'weeks').format(D, MMMM, YYYY);
+  var vitStart = moment.format("D, MMMM, YYYY");
+  var vitEnd = moment.add(8, 'weeks').format("D, MMMM, YYYY");
   var vitTypeWomen = '• 1 pack(s) of vitamins for women';
 
   } else {
