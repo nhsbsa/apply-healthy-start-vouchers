@@ -1,5 +1,5 @@
 // Gov Notify
-var NOTIFYAPIKEY = 'researchkey-acbd9478-8c82-4007-adf4-326ad47dea6d-10c367a9-c099-480e-b55f-8fef2860a57c';
+var NOTIFYAPIKEY = 'researchkey-acbd9478-8c82-4007-adf4-326ad47dea6d-6ba67157-9779-4d55-b753-115c973cd6b3';
 
 var NotifyClient = require('notifications-node-client').NotifyClient,
     notify = new NotifyClient(process.env.NOTIFYAPIKEY);
