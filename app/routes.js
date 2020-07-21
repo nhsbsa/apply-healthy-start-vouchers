@@ -2,7 +2,7 @@
 var NOTIFYAPIKEY = 'researchkey-acbd9478-8c82-4007-adf4-326ad47dea6d-6ba67157-9779-4d55-b753-115c973cd6b3';
 
 var NotifyClient = require('notifications-node-client').NotifyClient,
-    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+    notify = new NotifyClient(NOTIFYAPIKEY);
 
 // External dependencies
 const express = require('express');
