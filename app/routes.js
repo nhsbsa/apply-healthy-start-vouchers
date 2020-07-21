@@ -1,8 +1,6 @@
 // Gov Notify
-var NOTIFYAPIKEY = 'researchkey-acbd9478-8c82-4007-adf4-326ad47dea6d-6ba67157-9779-4d55-b753-115c973cd6b3';
-
 var NotifyClient = require('notifications-node-client').NotifyClient,
-    notify = new NotifyClient(NOTIFYAPIKEY);
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 // External dependencies
 const express = require('express');
@@ -72,12 +70,24 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-      notify.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen } } );
+      notify
+      .sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, {
+        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen }
+      })
+      .then(response => console.log(response))
+      .catch(err => console.error(err))
+
       res.redirect('/v5/apply/confirmation-successful')
 
     } else {
 
-      notify.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment } } );
+      notify
+      .sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, {
+        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment }
+      })
+      .then(response => console.log(response))
+      .catch(err => console.error(err))
+
       res.redirect('/v5/apply/confirmation-successful')
   
     }
@@ -87,12 +97,24 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-      notify.sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', emailAddress, { personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen } } );
+      notify
+      .sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', mobile, {
+        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen }
+      })
+      .then(response => console.log(response))
+      .catch(err => console.error(err))
+
       res.redirect('/v5/apply/confirmation-successful')
 
     } else {
 
-      notify.sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', emailAddress, { personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment } } );
+      notify
+      .sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', mobile, {
+        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment }
+      })
+      .then(response => console.log(response))
+      .catch(err => console.error(err))
+
       res.redirect('/v5/apply/confirmation-successful')
   
     }
