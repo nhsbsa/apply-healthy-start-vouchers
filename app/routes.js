@@ -72,7 +72,8 @@ router.post('/v5/check-your-answers', function (req, res) {
 
       notify
       .sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, {
-        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen }
+        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen },
+        reference: null
       })
       .then(response => console.log(response))
       .catch(err => console.error(err))
@@ -83,7 +84,8 @@ router.post('/v5/check-your-answers', function (req, res) {
 
       notify
       .sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, {
-        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment }
+        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment },
+        reference: null
       })
       .then(response => console.log(response))
       .catch(err => console.error(err))
@@ -99,7 +101,8 @@ router.post('/v5/check-your-answers', function (req, res) {
 
       notify
       .sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', mobile, {
-        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen }
+        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen },
+        reference: null
       })
       .then(response => console.log(response))
       .catch(err => console.error(err))
@@ -110,7 +113,8 @@ router.post('/v5/check-your-answers', function (req, res) {
 
       notify
       .sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', mobile, {
-        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment }
+        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment },
+        reference: null
       })
       .then(response => console.log(response))
       .catch(err => console.error(err))
