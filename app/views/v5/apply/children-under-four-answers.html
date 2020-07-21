@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout.html' %} {% block pageTitle %} Children under four you have told us about {% endblock %} {% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
+      <h1 class="nhsuk-fieldset__legend--xl">Children under 4 years old you have told us about</h1>
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Children under 4 years old</h2>
+      <dl class="nhsuk-summary-list">
+          
+
+
+{% for item in data['childList'] %}
+<div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__value">{{ item.Name }}</dt>
+              <dd class="nhsuk-summary-list__value">Born on {{ item.DOB }}</dd>
+              <dd class="nhsuk-summary-list__actions">
+                {% if data['childList'] | length  == 1 %}
+                <a href="#">Edit<span class="nhsuk-u-visually-hidden"> child</span></a>
+                {% else %}
+                <a href="#">Edit<span class="nhsuk-u-visually-hidden"> child</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                {% endif %}
+              </dd>
+</div>
+{% endfor %}
+
+
+
+      </dl>
+      <h2 class="nhsuk-fieldset__legend--m">Do you have another child under 4 years old?</h2>
+      <form action="/v5/children-under-four-answers"
+            method="post">
+        <div class="nhsuk-form-group">
+          <fieldset aria-describedby="example-hint"
+                    class="nhsuk-fieldset">
+            <div class="nhsuk-radios nhsuk-radios--inline">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input"
+                     id="yes"
+                     name="childrenunderfouranswers"
+                     type="radio"
+                     value="yes"> <label class="nhsuk-label nhsuk-radios__label"
+                     for="yes">Yes</label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input"
+                     id="no"
+                     name="childrenunderfouranswers"
+                     type="radio"
+                     value="no"> <label class="nhsuk-label nhsuk-radios__label"
+                     for="no">No</label>
+              </div>
+            </div>
+          </fieldset>
+        </div><button class="nhsuk-button"
+              type="submit">Continue</button>
+      </form>
+    </div>
+  </div>{% endblock %}
+</body>
+</html>

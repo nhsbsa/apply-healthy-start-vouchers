@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot apply if you have not been invited
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            You cannot apply if you have not been invited
+        </h1>
+
+        
+        <p>
+            Only a small number of people are being invited to help us test our new service.
+        </p>
+
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>If you think there is a mistake, contact the benefits agency (HMRC) and check the details you have registered.</p>
+        </div>
+
+        
+        <!--
+
+        <p>Alternatively, if you are pregnant or have children under 4 and:</p>
+
+        <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>are on benefits, or</li>
+            <li>are under 18</li>
+        </ul>
+
+        <p>
+            Then you could still qualify <a target="_blank" href="https://www.healthystart.nhs.uk/">for Healthy Start vouchers</a>.
+        </p>
+
+        -->
+
+        
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}
