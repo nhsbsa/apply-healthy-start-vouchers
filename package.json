@@ -34,7 +34,7 @@
     "moment": "^2.24.0",
     "nhsuk-frontend": "^3.1.0",
     "node-sass": "^4.13.0",
-    "notifications-node-client": "^4.7.3",
+    "notifications-node-client": "^4.8.0",
     "nunjucks": "^3.2.0",
     "path": "^0.12.7"
   },

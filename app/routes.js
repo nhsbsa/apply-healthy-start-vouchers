@@ -1,6 +1,7 @@
 // Gov Notify
-var NotifyClient = require('notifications-node-client').NotifyClient,
-    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+
+var NotifyClient = require('notifications-node-client').NotifyClient
+var notifyClient = new NotifyClient(process.env.NOTIFYAPIKEY)
 
 // External dependencies
 const express = require('express');
@@ -24,7 +25,7 @@ router.post('/v3/declaration', function (req, res) {
   var childrenUnder4Payment = '£3.10 every week for each of your children between the ages of 1 and 4 years old.';
 
   if (nationalinsurancenumber === 'QQ123456C') {
-    notify.sendEmail('f2653d20-a1d6-46be-978e-a6234cb6b674', emailAddress, { personalisation: { 'refNo': refNo, 'firstName': firstName, 'paymentAmount': paymentAmount, 'childrenUnder4Payment': childrenUnder4Payment } } );
+    notifyClient.sendEmail('f2653d20-a1d6-46be-978e-a6234cb6b674', emailAddress, { personalisation: { 'refNo': refNo, 'firstName': firstName, 'paymentAmount': paymentAmount, 'childrenUnder4Payment': childrenUnder4Payment } } );
     res.redirect('/v3/apply/confirmation-successful')
   }
   else if (nationalinsurancenumber === 'QQ123456D') {
@@ -70,27 +71,15 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-      notify
-      .sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, {
-        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen },
-        reference: null
-      })
-      .then(response => console.log(response))
+      notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen } })
+      .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
-
-      res.redirect('/v5/apply/confirmation-successful')
 
     } else {
 
-      notify
-      .sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, {
-        personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment },
-        reference: null
-      })
-      .then(response => console.log(response))
+      notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment } })
+      .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
-
-      res.redirect('/v5/apply/confirmation-successful')
   
     }
 
@@ -99,27 +88,15 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-      notify
-      .sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', mobile, {
-        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen },
-        reference: null
-      })
-      .then(response => console.log(response))
+      notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen } })
+      .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
-
-      res.redirect('/v5/apply/confirmation-successful')
 
     } else {
 
-      notify
-      .sendSms('f2653d20-a1d6-46be-978e-a6234cb6b674', mobile, {
-        personalisation: { 'reference_number': refNo, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment },
-        reference: null
-      })
-      .then(response => console.log(response))
+      notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment } })
+      .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
-
-      res.redirect('/v5/apply/confirmation-successful')
   
     }
 
