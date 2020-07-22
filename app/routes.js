@@ -39,6 +39,8 @@ router.post('/v3/declaration', function (req, res) {
 
 // V5 Check Your Answers
 
+// N.B ALL PERSONALISATION VARIABLES NEED TO BE THERE, IF THEY'RE NOT REQUIRED YOU STILL NEED TO SEND AN EMPTY STRING ""
+
 router.post('/v5/check-your-answers', function (req, res) {
 
   var contact = req.session.data['contact'];
@@ -51,18 +53,18 @@ router.post('/v5/check-your-answers', function (req, res) {
 
   var refNo = 'HDJ2123F';
   var paymentAmount = '£24.80';
-  var pregnancyPayment = '• £12.40 for a pregnancy';
-  var childrenUnder4Payment = '• £12.40 for children between 1 and 4';
+  var pregnancyPayment = '\n* £12.40 for a pregnancy';
+  var childrenUnder4Payment = '\n* £12.40 for children between 1 and 4';
 
   var vitStart = moment().format('D MMMM YYYY');
   var vitEnd = moment().add(8, 'weeks').format("D MMMM YYYY");
-  var vitTypeWomen = '• 1 pack(s) of vitamins for women';
+  var vitTypeWomen = '\n* 1 pack(s) of vitamins for women';
 
   } else {
 
   var refNo = 'HDJ2123F';
   var paymentAmount = '£12.40';
-  var childrenUnder4Payment = '• £12.40 for children between 1 and 4';
+  var childrenUnder4Payment = '\n* £12.40 for children between 1 and 4';
   
   }
 
@@ -71,13 +73,13 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-      notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen } })
+      notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
 
     } else {
 
-      notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment } })
+      notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
   
@@ -88,13 +90,13 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-      notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen } })
+      notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', mobile, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
 
     } else {
 
-      notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'children_under_4_payment': childrenUnder4Payment } })
+      notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', mobile, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       .catch(err => console.error(err))
   
