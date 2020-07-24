@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your telephone number?
+What is your mobile phone number?
 {% endblock %}
 
 {% block content %}
@@ -20,19 +20,28 @@ What is your telephone number?
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            What is your telephone number?
+            What is your mobile phone number?
         </h1>
-
-        <p>This must be the same telephone number you have registered with the benefits agency (DWP or HMRC).</p>
 
         <form action="/v5/telephone-number" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="telephonenumber">
-                    Telephone number
+                    Mobile phone number (optional)
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="telephonenumber" name="telephonenumber" type="text" autocomplete="tel">
             </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Why we ask for your mobile phone number
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>We use this to send notifications about your application and payments.</p>
+                </div>
+            </details>
 
             <button class="nhsuk-button" type="submit">
                 Continue
