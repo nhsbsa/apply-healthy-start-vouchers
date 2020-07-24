@@ -45,7 +45,7 @@ router.post('/v5/check-your-answers', function (req, res) {
 
   var contact = req.session.data['contact'];
   var emailAddress = req.session.data['emailaddress'];
-  var telephoneNumber = req.session.data['telephonenumber'];
+  var mobilePhoneNumber = req.session.data['mobilephonenumber'];
   var pregnant = req.session.data['pregnant']
   var firstName = req.session.data['firstname'];
   
@@ -86,11 +86,11 @@ router.post('/v5/check-your-answers', function (req, res) {
     }
 
   }
-  else if (telephoneNumber) {
+  else if (mobilePhoneNumber) {
 
     if (pregnant === "yes") {
 
-      // notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', telephoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
+      // notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', mobilePhoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       // .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       // .catch(err => console.error(err))
 
@@ -98,7 +98,7 @@ router.post('/v5/check-your-answers', function (req, res) {
 
     } else {
 
-      // notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', telephoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
+      // notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', mobilePhoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       // .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
       // .catch(err => console.error(err))
 
@@ -1356,15 +1356,15 @@ router.post('/v5/email-address', function (req, res) {
 
   var emailaddress = req.session.data['emailaddress']
 
-  res.redirect('/v5/apply/telephone-number')
+  res.redirect('/v5/apply/mobile-phone-number')
 
 })
 
 // What is your mobile phone number?
 
-router.post('/v5/telephone-number', function (req, res) {
+router.post('/v5/mobile-phone-number', function (req, res) {
 
-  var telephonenumber = req.session.data['telephonenumber']
+  var mobilePhoneNumber = req.session.data['mobilephonenumber']
 
   res.redirect('/v5/apply/bank-details')
 
@@ -1409,12 +1409,6 @@ router.post('/v5/bank-details', function (req, res) {
     res.redirect('/v5/apply/bank-details')
   }
 
-})
-
-// Declaration
-
-router.post('/v5/declaration', function (req, res) {
-  res.redirect('/v5/apply/confirmation-successful')
 })
 
 // Feedback
