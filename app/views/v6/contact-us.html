@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Sorry, there is a problem with the service
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Sorry, there is a problem with the service
+        </h1>
+
+        <p>
+            Try again later.
+        </p>
+
+        <p>
+            Email us if you need to speak to somebody about your application.
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}
