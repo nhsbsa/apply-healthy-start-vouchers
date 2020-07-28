@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} due date?
+What is {% if data['applyingfor'] == "myself" %}your or your partner’s{% else %}their or their partner’s{% endif %} due date?
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} d
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} due date?
+            What is {% if data['applyingfor'] == "myself" %}your or your partner’s{% else %}their or their partner’s{% endif %} due date?
         </h1>
 
         <form action="/v6/due-date" method="post">

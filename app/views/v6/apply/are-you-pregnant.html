@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Are {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} pregnant?
+Are {% if data['applyingfor'] == "myself" %}you or your partner{% else %}they or their partner{% endif %} pregnant?
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@ Are {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} pregnan
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            Are {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} pregnant?
+            Are {% if data['applyingfor'] == "myself" %}you or your partner{% else %}they or their partner{% endif %} pregnant?
         </h1>
 
         <form action="/v6/are-you-pregnant" method="post">
@@ -42,6 +42,17 @@ Are {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} pregnan
 
 
             </div>
+
+            <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                If both {% if data['applyingfor'] == "myself" %}you and your partner{% else %}they and their partner{% endif %} are pregnant
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <p>If both {% if data['applyingfor'] == "myself" %}you and your partner{% else %}they and their partner{% endif %} are pregnant, email <a href="mailto:nhsbsa.applyforhealthystart@nhsbsa.nhs.uk">nhsbsa.applyforhealthystart@nhsbsa.nhs.uk<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>.</p>
+            </div>
+            </details>
 
             <button class="nhsuk-button" type="submit">
                 Continue
