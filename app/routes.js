@@ -779,7 +779,7 @@ router.post('/v1/email-address', function (req, res) {
 
 router.post('/v3/national-insurance-number', function (req, res) {
 
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
   if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'QQ123456D') {
     res.redirect('/v3/apply/name')
@@ -1117,7 +1117,7 @@ router.post('/v3/feedback', function (req, res) {
 
 router.post('/v4/national-insurance-number', function (req, res) {
 
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
   if (nationalinsurancenumber) {
 
@@ -1296,7 +1296,7 @@ router.post('/v4/feedback', function (req, res) {
 
 router.post('/v5/national-insurance-number', function (req, res) {
 
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
   if (nationalinsurancenumber) {
 
@@ -1524,7 +1524,7 @@ router.post('/v6/who-applying-for', function (req, res) {
 
 router.post('/v6/national-insurance-number', function (req, res) {
 
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].replace(/\s+/g, '');
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
   if (nationalinsurancenumber) {
 
