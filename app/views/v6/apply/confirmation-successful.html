@@ -24,6 +24,7 @@ Application successful
           
           <p>We’ll pay {% if data['lessThanTenWeeksPregnant'] == true %}£12.40{% else %}£24.80{% endif %} into {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} bank account within 12 days.</p>
           <p>{% if data['applyingfor'] == "myself" %}You’ll{% else %}They’ll{% endif %} then get a payment every 4 weeks after that.</p>
+          <p>{% if data['lessThanTenWeeksPregnant'] == false %}You’re also entitled to Healthy Start vitamins because you’re pregnant or responsible for children under 4 years old.{% endif %}</p>
           <p>{% if (data['emailaddress']) %}We’ve sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} an email with more information.{% elif (data['telephonenumber']) %}We’ve sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} a text message with more information.{% else %}We’ve sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} a letter with more information.{% endif %}</p>      
 
           <h2 class="nhsuk-heading-m">Any problems</h2>
