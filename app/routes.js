@@ -9,6 +9,38 @@ const router = express.Router();
 const moment = require('moment');
 
 // ****************************************
+// PERSONAS
+// ****************************************
+
+// Charlie
+
+// National Insurance number = AB 12 34 56 A
+// Pregnant? = YES
+// Children Under 1? = NO
+// Children Between 1 & 4? = YES
+
+// Riley
+
+// National Insurance number = CD 65 43 21 B
+// Pregnant? = NO
+// Children Under 1? = YES
+// Children Between 1 & 4? = NO
+
+// Alex
+
+// National Insurance number = EF 21 43 65 C
+// Pregnant? = YES
+// Children Under 1? = NO
+// Children Between 1 & 4? = NO
+
+// Tony
+
+// National Insurance number = GH 56 34 12 D
+// Pregnant? = NO
+// Children Under 1? = NO
+// Children Between 1 & 4? = YES
+
+// ****************************************
 // NOTIFICATIONS
 // ****************************************
 
@@ -1121,7 +1153,7 @@ router.post('/v4/national-insurance-number', function (req, res) {
 
   if (nationalinsurancenumber) {
 
-    if (nationalinsurancenumber === 'QQ123456C') {
+    if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'AB123456A' || nationalinsurancenumber === 'CD654321B' || nationalinsurancenumber === 'EF214365C' || nationalinsurancenumber === 'GH563412D') {
       res.redirect('/v4/apply/name')
     } else {
       res.redirect('/v4/apply/kickouts/not-eligible-national-insurance-number')
@@ -1300,7 +1332,7 @@ router.post('/v5/national-insurance-number', function (req, res) {
 
   if (nationalinsurancenumber) {
 
-    if (nationalinsurancenumber === 'QQ123456C') {
+    if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'AB123456A' || nationalinsurancenumber === 'CD654321B' || nationalinsurancenumber === 'EF214365C' || nationalinsurancenumber === 'GH563412D') {
       res.redirect('/v5/apply/name')
     } else {
       res.redirect('/v5/apply/kickouts/not-eligible-national-insurance-number')
@@ -1528,7 +1560,7 @@ router.post('/v6/national-insurance-number', function (req, res) {
 
   if (nationalinsurancenumber) {
 
-    if (nationalinsurancenumber === 'QQ123456C') {
+    if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'AB123456A' || nationalinsurancenumber === 'CD654321B' || nationalinsurancenumber === 'EF214365C' || nationalinsurancenumber === 'GH563412D') {
       res.redirect('/v6/apply/name')
     } else {
       res.redirect('/v6/apply/kickouts/not-eligible-national-insurance-number')
