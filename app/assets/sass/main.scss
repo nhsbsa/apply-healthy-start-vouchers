@@ -115,3 +115,19 @@
     position: relative;
     top: 2px
 }
+
+// Blue Button
+
+.nhsuk-button-blue {
+    background-color: $color_nhsuk-blue;
+    box-shadow: 0 4px 0 shade($color_nhsuk-blue, 40%);
+  &:hover {
+    background-color: shade($color_nhsuk-blue, 20%);
+  }
+  &:active {
+    background: shade($color_nhsuk-blue, 20%);
+    box-shadow: none;
+    color: #ffffff !important;
+    top: 4px;
+  }
+}

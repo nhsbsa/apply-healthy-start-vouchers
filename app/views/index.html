@@ -3,369 +3,547 @@
 <!-- Extends the layout from /views/layout.html -->
 <!DOCTYPE html>
 <html>
-   <head>
-      <title></title>
-   </head>
-   <body>
-      {% extends 'layout.html' %} <!-- 
+
+<head>
+   <title></title>
+</head>
+
+<body>
+   {% extends 'layout.html' %}
+   <!-- 
          In /views/layout.html you can:
            - change the header and footer 
            - add custom CSS and JavaScript
          -->
-      <!-- Set the page title inside the pageTitle block -->
-      {% block pageTitle %} Get help to buy food and milk{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
-      {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
-      <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
-      {% block content %}
-      <div class="nhsuk-grid-row">
-         <div class="nhsuk-grid-column-full">
-            <!-- Change the page title here -->
-            <h1>Get help to buy food and milk<span class="nhsuk-caption-xl nhsuk-caption--bottom">'Apply' Service</span></h1>
-            <!-- Add your content here -->
-            <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
-            <p class="nhsuk-body-l">The Healthy Start scheme allows eligible applicants to Get help to buy food and milk.</p>
-            <p class="nhsuk-body-l">The 'Apply' service allows applicants to apply for the service.</p>
-            <details class="nhsuk-details nhsuk-expander">
-               <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">Private Beta (Sprint 9 &amp; 13)</span>
-               </summary>
-               <div class="nhsuk-details__text">
-                  <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-                     <summary class="nhsuk-details__summary">
-                        <span class="nhsuk-details__summary-text"><small>Version 5</small></span>
-                     </summary>
-                     <div class="nhsuk-details__text">
-                        <h2 class="nhsuk-heading-l">Designing an 'Apply' service
-                           <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a household income of £16,190 or less)</span>
-                        </h2>
-                        <h3 class="nhsuk-heading-m">Hypothesis A</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that using Gov guidance pages <strong>will be a useful feature for</strong> all invited applicants <strong>as it will</strong> allow them to digest complex information e.g. eligibility criteria, a list of approved items, possible payment schedules etc... in a way they are used to, as well as evoke a high level of trust. <strong>This will</strong> help limit the potential of ineligible users from applying.</p>
-                        <h3 class="nhsuk-heading-m">Hypothesis B</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that using NHS guidance pages <strong>will be a useful feature for</strong> all invited applicants <strong>as it will</strong> allow them to digest complex information e.g. eligibility criteria, a list of approved items, possible payment schedules etc... in a way they are used to, as well as evoke a high level of trust. <strong>This will</strong> help limit the potential of ineligible users from applying.</p>
-                        <h3 class="nhsuk-heading-m">Hypothesis C</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that capturing email address and / or mobile phone number within the service <strong>will be a useful feature for</strong> all invited applicants <strong>as it will</strong> allow them to receive confirmation and further notifcations about their benefit much quicker than post. <strong>This will</strong> also cut down on the cost of letters within the service by %XX.</p>
-                        <hr>
-                        <h3 class="nhsuk-heading-m">What we created:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we plan to test:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we found:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">Any known issues?</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <hr>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="https://NHSBSA:NHSBSA@healthy-start-gov.herokuapp.com/overview">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">Gov - Guidance Pages</span>
-                           </a>
-                        </div>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v5/hub-overview">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">NHS - Guidance Pages</span>
-                           </a>
-                        </div>
-                        <hr>
-                        <p class="nhsuk-u-margin-bottom-0"><a href="v5/start"><button class="nhsuk-button" type="submit">Get help to buy food and milk (Healthy Start) (v5)</button></a></p>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v5/user-journey">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">View User Journey (v5)</span>
-                           </a>
-                        </div>
-                     </div>
-                  </details>
-               </div>
-            </details>            
-            <details class="nhsuk-details nhsuk-expander">
-               <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">Private Beta (Sprint 8)</span>
-               </summary>
-               <div class="nhsuk-details__text">
-                  <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-                     <summary class="nhsuk-details__summary">
-                        <span class="nhsuk-details__summary-text"><small>Version 4</small></span>
-                     </summary>
-                     <div class="nhsuk-details__text">
-                        <h2 class="nhsuk-heading-l">Designing an 'Apply' service
-                           <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a household income of £16,190 or less)</span>
-                        </h2>
-                        <h3 class="nhsuk-heading-m">Hypothesis A</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible applicants who receive Child Tax Credits the opportunity to apply online for help to buy milk, food and vitamins <strong>will be a useful feature for</strong> anyone currently
-                           struggling to feed their children <strong>as it will</strong> enable them with the finanacial support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall cost of providing the scheme by XX%.
-                        </p>
-                        <hr>
-                        <h3 class="nhsuk-heading-m">What we created:</h3>
-                        <h4 class="nhsuk-heading-xs">Application</h4>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>To create a valid application (information matches), use National Insurance number; 'QQ 12 34 56 C'</li>
-                           <li>To create an invalid application (information does not match), use National Insurance number; 'QQ 12 34 56 D'</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we plan to test:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>Are people wary of entering their bank account details in the fear that the service may be a scam? </li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we found:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">Any known issues?</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <hr>
-                        <p class="nhsuk-u-margin-bottom-0"><a href="v4/start"><button class="nhsuk-button" type="submit">Get help to buy food and milk (Healthy Start) (v4)</button></a></p>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v4/user-journey">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">View User Journey (v4)</span>
-                           </a>
-                        </div>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v4/invitation-letter">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">View Invitation Letter (v4)</span>
-                           </a>
-                        </div>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v4/application-successful-letter">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">View Application Successful Letter (v4)</span>
-                           </a>
-                        </div>
-                     </div>
-                  </details>
-               </div>
-            </details>
-            <details class="nhsuk-details nhsuk-expander">
-               <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">Private Beta (Sprint 5, 6 &amp; 7)</span>
-               </summary>
-               <div class="nhsuk-details__text">
-                  <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-                     <summary class="nhsuk-details__summary">
-                        <span class="nhsuk-details__summary-text"><small>Version 3</small></span>
-                     </summary>
-                     <div class="nhsuk-details__text">
-                        <h2 class="nhsuk-heading-l">Designing an 'Apply' service
-                           <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a household income of £16,190 or less)</span>
-                        </h2>
-                        <h3 class="nhsuk-heading-m">Hypothesis A</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible applicants who receive Child Tax Credits the opportunity to apply online for help to buy milk, food and vitamins <strong>will be a useful feature for</strong> anyone currently
-                           struggling to feed their children <strong>as it will</strong> enable them with the finanacial support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall cost of providing the scheme by XX%.
-                        </p>
-                        <hr>
-                        <h3 class="nhsuk-heading-m">What we created:</h3>
-                        <h4 class="nhsuk-heading-xs">Application</h4>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>To create a valid application (information matches), use National Insurance number; 'QQ 12 34 56 C'</li>
-                           <li>To create an invalid application (information does not match), use National Insurance number; 'QQ 12 34 56 D'</li>
-                        </ul>
-                        <h4 class="nhsuk-heading-xs">Error Pages</h4>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li><a href="v3/errors/503">503 error (Service unavailable)</a>.</li>
-                           <li><a href="v3/errors/500">500 error (There is a problem with the service)</a>.</li>
-                           <li><a href="v3/errors/404">404 error (Page not found)</a>.</li>
-                           <li><a href="v3/errors/403">403 error (Forbidden)</a>.</li>
-                        </ul>
-                        <h4 class="nhsuk-heading-xs">Timeout Flow</h4>
-                        <p>Flow mimics 25 minutes of inactivity, a 5 minute warning to extend and finally a timeout screen.</p>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>Created <a href="v3/errors/timeout">service timeout</a> flow.</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we plan to test:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we found:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">Any known issues?</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <hr>
-                        <p class="nhsuk-u-margin-bottom-0"><a href="v3/start"><button class="nhsuk-button" type="submit">Get help to buy food and milk (Healthy Start) (v3)</button></a></p>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v3/user-journey">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">View User Journey (v3)</span>
-                           </a>
-                        </div>
-                     </div>
-                  </details>
-               </div>
-            </details>
-            <details class="nhsuk-details nhsuk-expander">
-               <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">Private Beta (Sprint 3)</span>
-               </summary>
-               <div class="nhsuk-details__text">
-                  <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-                     <summary class="nhsuk-details__summary">
-                        <span class="nhsuk-details__summary-text"><small>Version 2</small></span>
-                     </summary>
-                     <div class="nhsuk-details__text">
-                        <h2 class="nhsuk-heading-l">Mini Hub (Private Beta)
-                           <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (pregnant under 18 year olds with a valid Maternity Exemption)</span>
-                        </h2>
-                        <h3 class="nhsuk-heading-m">Hypothesis A</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that creating a '<a href="https://service-manual.nhs.uk/design-system/patterns/mini-hub" target="_blank">mini-hub</a>' for the service <strong>will be a useful feature for</strong> all invited applicants <strong>as it will</strong> allow them to digest complex information e.g. eligibility criteria, a list of approved items, possible payment schedules etc..., in a way that meets their needs. <strong>This will</strong> help limit the potential of ineligible users from applying.</p>
-                        <hr>
-                        <h3 class="nhsuk-heading-m">What we created:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we plan to test:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we found:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">Any known issues?</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <hr>
-                        <p class="nhsuk-u-margin-bottom-0"><a href="v2/hub-how-it-works"><button class="nhsuk-button" type="submit">Get help to buy food and milk (Healthy Start) (v2)</button></a></p>
-                     </div>
-                  </details>
-               </div>
-            </details>
-            
-            <hr>
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %} Get help to buy food and milk{% endblock %}
+   <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %}
+   <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+   <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+         <!-- Change the page title here -->
+         <h1>Get help to buy food and milk<span class="nhsuk-caption-xl nhsuk-caption--bottom">'Apply' Service</span>
+         </h1>
+         <!-- Add your content here -->
+         <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+         <p class="nhsuk-body-l">The Healthy Start scheme allows eligible applicants to Get help to buy food and milk.
+         </p>
+         <p class="nhsuk-body-l">The 'Apply' service allows applicants to apply for the service.</p>
 
-            <details class="nhsuk-details nhsuk-expander">
-               <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">'Mini Discovery'</span>
-               </summary>
-               <div class="nhsuk-details__text">
-                  <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-                     <summary class="nhsuk-details__summary">
-                        <span class="nhsuk-details__summary-text"><small>Version 1</small></span>
-                     </summary>
-                     <div class="nhsuk-details__text">
-                        <h2 class="nhsuk-heading-l">Designing an 'Apply' service</h2>
-                        <h3 class="nhsuk-heading-m">Hypothesis A</h3>
-                        <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible applicants the opportunity to apply online for help to buy milk, food and vitamins <strong>will be a useful feature for</strong> anyone currently
-                           struggling to feed their children <strong>as it will</strong> enable them with the finanacial support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall cost of providing the scheme by XX%.
-                        </p>
-                        <p>This prototype is a close replica of the last 'Apply' prototype completed by Equal Experts:</p>
-                        <p><a href="https://htbhf-prototype.herokuapp.com/">https://htbhf-prototype.herokuapp.com/</a><br><strong>Username:</strong> htbhf-user<br><strong>Password:</strong> ?w*keWfh3Sh9</p>
-                        <p>...however instead of using Gov branding, it uses NHS branding.</p>
-                        <p>For all design thinking up to this point, EE have put together a <a href="/docs/EE - Apply Journey - Design Rationale.pdf" target="_blank">helpful list of design rationales</a>.</p>
-                        <hr>
-                        <h3 class="nhsuk-heading-m">What we created:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>Used the 'NHS Hub' pattern as the starting point for entering the service. This replicates the potential journey of an applicant entering the service via the NHS website. Idea is to use this content consistantly across all 3 entry points; GOV.uk, NHS.uk and nhsbsa.nhs.uk</li>
-                           <li>On the Low Income Scheme (another BSA service) we found that 16.4% of adults in England (or 1 in 6 adults) can be described as having ‘very poor literacy skills’. Because of this, users found it extremely helpful when we personalised / tailored the user journey depending on who is applying (main benificiary / third party). So given users of the Low Income Scheme and Healthy Start are from a similar demographic - it makes sense to provide a similar approach here. This is likely to come in very useful further down the line when we potentially need to know about Partner / Carer details.</li>
-                           <li>Replaced the EE pattern of selecting number of children under 4 years old via radio buttons, with the tested NHS BSA pattern for 'Adding another' e.g. 1. Do you have any children under 4 years old? 2. Enter child details 3. Do you have another child under 4 years old? (&larrlp; loop).</li>
-                           <li>Whilst we understand how achievable checking DWP / HMRC data is, we have added in additional questions in regards to the selected benefits e.g. Universal Credit (Was your take-home pay for your last Universal Credit period £408 or less?), Child Tax Credit (Is your household income £16,190 or less?), Jobseekers Allowance (Which type of Jobseeker's Allowance (JSA) do you get?), Employment and Support Allowance (Which type of Employment and Support Allowance (ESA) do you get?), Working Tax Credit (Is your family receiving the 4 week 'run-on' payment?).</li>
-                           <li>Changed the flow slightly so that we ask; Are you pregnant? and Do you have any children under 4 years old? after each other. If the answer to any of these is 'Yes' we then ask for further details.</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we plan to test:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">What we found:</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <h3 class="nhsuk-heading-m">Any known issues?</h3>
-                        <ul class="nhsuk-list nhsuk-list--bullet">
-                           <li>...</li>
-                        </ul>
-                        <hr>
-                        <p class="nhsuk-u-margin-bottom-0"><a href="v1/hub-overview"><button class="nhsuk-button" type="submit">Get help to buy food and milk (Healthy Start) (v1)</button></a></p>
-                        <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
-                           <a class="nhsuk-action-link__link"
-                              href="v1/user-journey">
-                              <svg aria-hidden="true"
-                                 class="nhsuk-icon nhsuk-icon__arrow-right-circle"
-                                 viewbox="0 0 24 24"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M0 0h24v24H0z"
-                                    fill="none"></path>
-                                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-                              </svg>
-                              <span class="nhsuk-action-link__text">View User Journey (v1)</span>
-                           </a>
-                        </div>
+<!--
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">'Future'</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 1</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service</h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> ... <strong>will be a
+                           useful feature for</strong> ... <strong>as it will</strong> ... <strong>This will</strong>
+                        ...
+                     </p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="future/v1/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v1)</button></a></p>
+                  </div>
+               </details>
+            </div>
+         </details>
+
+
+
+         <hr>
+
+
+-->
+
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 14)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 6</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a
+                           household income of £16,190 or less)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that allowing third party applications i.e. applications on behalf of a relative, somebody they care for etc... <strong>will be a useful feature for</strong> all invited applicants <strong>as it
+                           will</strong> other people to apply on behalf of the main benificiary. <strong>This will</strong> increase the success of the number of people applying.</p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>We added in a screen which asks 'Who are you applying for?'</li>
+                        <li>If someone is applying on behalf of someone else, we then ask 'Are you a parent, guardian or carer of the person applying?'</li>
+                        <li>If they are a parent, guardian or carer, we capture their National Insurance number, name and address</li>
+                        <li>The grammar used throughout the application then changes depending on who is applying i.e. you / their etc...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>Can people who are applying on behalf of someone else complete the application successfully?</li>
+                        <li>If they are a parent, guardian or carer of the person applying - do they understand the difference between us asking for their details, and the details of the main beneficiary</li> 
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v6/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v6)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v6/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View User Journey (v6)</span>
+                        </a>
                      </div>
-                  </details>
-               </div>
-            </details>
-            <!-- End of content -->
-         </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+
+
+
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 9 &amp; 13)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 5</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a
+                           household income of £16,190 or less)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that using Gov guidance
+                        pages <strong>will be a useful feature for</strong> all invited applicants <strong>as it
+                           will</strong> allow them to digest complex information e.g. eligibility criteria, a list of
+                        approved items, possible payment schedules etc... in a way they are used to, as well as evoke a
+                        high level of trust. <strong>This will</strong> help limit the potential of ineligible users
+                        from applying.</p>
+                     <h3 class="nhsuk-heading-m">Hypothesis B</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that using NHS guidance
+                        pages <strong>will be a useful feature for</strong> all invited applicants <strong>as it
+                           will</strong> allow them to digest complex information e.g. eligibility criteria, a list of
+                        approved items, possible payment schedules etc... in a way they are used to, as well as evoke a
+                        high level of trust. <strong>This will</strong> help limit the potential of ineligible users
+                        from applying.</p>
+                     <h3 class="nhsuk-heading-m">Hypothesis C</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that capturing email
+                        address and / or mobile phone number within the service <strong>will be a useful feature
+                           for</strong> all invited applicants <strong>as it will</strong> allow them to receive
+                        confirmation and further notifcations about their benefit much quicker than post. <strong>This
+                           will</strong> also cut down on the cost of letters within the service by %XX.</p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>We updated the content that will appear on www.gov.uk/healthy-start (existing page)</li>
+                        <li>We created the content that will appear on www.gov.uk/get-help-to-buy-food-and-milk (new page)</li>
+                        <li>We created the content for what <span style="font-style: italic; font-weight: bold;">could</span> appear on www.nhs.uk</li>
+                        <li>We added in the optional capturing of email address and mobile phone number</li>
+                        <li>Created seperate notifications (letter / email / text message) which includes information on how to collect vitamins if they are entitled</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link"
+                           href="https://NHSBSA:NHSBSA@healthy-start-gov.herokuapp.com/overview">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">Gov - Guidance Pages</span>
+                        </a>
+                     </div>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v5/hub-overview">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">NHS - Guidance Pages</span>
+                        </a>
+                     </div>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v5/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v5)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v5/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View User Journey (v5)</span>
+                        </a>
+                     </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 8)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 4</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a
+                           household income of £16,190 or less)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible
+                        applicants who receive Child Tax Credits the opportunity to apply online for help to buy milk,
+                        food and vitamins <strong>will be a useful feature for</strong> anyone currently
+                        struggling to feed their children <strong>as it will</strong> enable them with the finanacial
+                        support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall
+                        cost of providing the scheme by XX%.
+                     </p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <h4 class="nhsuk-heading-xs">Application</h4>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>To create a valid application (information matches), use National Insurance number; 'QQ 12
+                           34 56 C'</li>
+                        <li>To create an invalid application (information does not match), use National Insurance
+                           number; 'QQ 12 34 56 D'</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>Are people wary of entering their bank account details in the fear that the service may be a
+                           scam? </li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v4/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v4)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v4/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View User Journey (v4)</span>
+                        </a>
+                     </div>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v4/invitation-letter">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View Invitation Letter (v4)</span>
+                        </a>
+                     </div>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v4/application-successful-letter">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View Application Successful Letter (v4)</span>
+                        </a>
+                     </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 5, 6 &amp; 7)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 3</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (Child Tax Credits with a
+                           household income of £16,190 or less)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible
+                        applicants who receive Child Tax Credits the opportunity to apply online for help to buy milk,
+                        food and vitamins <strong>will be a useful feature for</strong> anyone currently
+                        struggling to feed their children <strong>as it will</strong> enable them with the finanacial
+                        support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall
+                        cost of providing the scheme by XX%.
+                     </p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <h4 class="nhsuk-heading-xs">Application</h4>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>To create a valid application (information matches), use National Insurance number; 'QQ 12
+                           34 56 C'</li>
+                        <li>To create an invalid application (information does not match), use National Insurance
+                           number; 'QQ 12 34 56 D'</li>
+                     </ul>
+                     <h4 class="nhsuk-heading-xs">Error Pages</h4>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li><a href="v3/errors/503">503 error (Service unavailable)</a>.</li>
+                        <li><a href="v3/errors/500">500 error (There is a problem with the service)</a>.</li>
+                        <li><a href="v3/errors/404">404 error (Page not found)</a>.</li>
+                        <li><a href="v3/errors/403">403 error (Forbidden)</a>.</li>
+                     </ul>
+                     <h4 class="nhsuk-heading-xs">Timeout Flow</h4>
+                     <p>Flow mimics 25 minutes of inactivity, a 5 minute warning to extend and finally a timeout screen.
+                     </p>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>Created <a href="v3/errors/timeout">service timeout</a> flow.</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v3/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v3)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v3/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View User Journey (v3)</span>
+                        </a>
+                     </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 3)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 2</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Mini Hub (Private Beta)
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Applicants (pregnant under 18 year
+                           olds with a valid Maternity Exemption)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that creating a '<a
+                           href="https://service-manual.nhs.uk/design-system/patterns/mini-hub"
+                           target="_blank">mini-hub</a>' for the service <strong>will be a useful feature for</strong>
+                        all invited applicants <strong>as it will</strong> allow them to digest complex information e.g.
+                        eligibility criteria, a list of approved items, possible payment schedules etc..., in a way that
+                        meets their needs. <strong>This will</strong> help limit the potential of ineligible users from
+                        applying.</p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v2/hub-how-it-works"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v2)</button></a></p>
+                  </div>
+               </details>
+            </div>
+         </details>
+
+         <hr>
+
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">'Mini Discovery'</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 1</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service</h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible
+                        applicants the opportunity to apply online for help to buy milk, food and vitamins <strong>will
+                           be a useful feature for</strong> anyone currently
+                        struggling to feed their children <strong>as it will</strong> enable them with the finanacial
+                        support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall
+                        cost of providing the scheme by XX%.
+                     </p>
+                     <p>This prototype is a close replica of the last 'Apply' prototype completed by Equal Experts:</p>
+                     <p><a
+                           href="https://htbhf-prototype.herokuapp.com/">https://htbhf-prototype.herokuapp.com/</a><br><strong>Username:</strong>
+                        htbhf-user<br><strong>Password:</strong> ?w*keWfh3Sh9</p>
+                     <p>...however instead of using Gov branding, it uses NHS branding.</p>
+                     <p>For all design thinking up to this point, EE have put together a <a
+                           href="/docs/EE - Apply Journey - Design Rationale.pdf" target="_blank">helpful list of design
+                           rationales</a>.</p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>Used the 'NHS Hub' pattern as the starting point for entering the service. This replicates
+                           the potential journey of an applicant entering the service via the NHS website. Idea is to
+                           use this content consistantly across all 3 entry points; GOV.uk, NHS.uk and nhsbsa.nhs.uk
+                        </li>
+                        <li>On the Low Income Scheme (another BSA service) we found that 16.4% of adults in England (or
+                           1 in 6 adults) can be described as having ‘very poor literacy skills’. Because of this, users
+                           found it extremely helpful when we personalised / tailored the user journey depending on who
+                           is applying (main benificiary / third party). So given users of the Low Income Scheme and
+                           Healthy Start are from a similar demographic - it makes sense to provide a similar approach
+                           here. This is likely to come in very useful further down the line when we potentially need to
+                           know about Partner / Carer details.</li>
+                        <li>Replaced the EE pattern of selecting number of children under 4 years old via radio buttons,
+                           with the tested NHS BSA pattern for 'Adding another' e.g. 1. Do you have any children under 4
+                           years old? 2. Enter child details 3. Do you have another child under 4 years old? (&larrlp;
+                           loop).</li>
+                        <li>Whilst we understand how achievable checking DWP / HMRC data is, we have added in additional
+                           questions in regards to the selected benefits e.g. Universal Credit (Was your take-home pay
+                           for your last Universal Credit period £408 or less?), Child Tax Credit (Is your household
+                           income £16,190 or less?), Jobseekers Allowance (Which type of Jobseeker's Allowance (JSA) do
+                           you get?), Employment and Support Allowance (Which type of Employment and Support Allowance
+                           (ESA) do you get?), Working Tax Credit (Is your family receiving the 4 week 'run-on'
+                           payment?).</li>
+                        <li>Changed the flow slightly so that we ask; Are you pregnant? and Do you have any children
+                           under 4 years old? after each other. If the answer to any of these is 'Yes' we then ask for
+                           further details.</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v1/hub-overview"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v1)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v1/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View User Journey (v1)</span>
+                        </a>
+                     </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+         <!-- End of content -->
       </div>
-      {% endblock %}
-   </body>
+   </div>
+   {% endblock %}
+</body>
+
 </html>

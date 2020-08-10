@@ -1535,7 +1535,7 @@ router.post('/v5/feedback', function (req, res) {
 // APPLY (VERSION 6)
 // ********************************
 
-// Do you get Healthy Start vouchers at the moment?
+// Who are you applying for?
 router.post('/v6/who-applying-for', function (req, res) {
 
   var applyingfor = req.session.data['applyingfor']
@@ -1544,13 +1544,82 @@ router.post('/v6/who-applying-for', function (req, res) {
     res.redirect('/v6/apply/national-insurance-number')
   }
   else if (applyingfor === "someoneelse") {
-    res.redirect('/v6/apply/national-insurance-number')
+    res.redirect('/v6/apply/parent-guardian-carer')
   }
   else {
     res.redirect('/v6/apply/who-applying-for')
   }
 
 })
+
+// Are you a parent, guardian or carer of the person applying?
+router.post('/v6/parent-guardian-carer', function (req, res) {
+
+  var parentguardiancarer = req.session.data['parentguardiancarer']
+
+  if (parentguardiancarer === "yes") {
+    res.redirect('/v6/apply/dependants-national-insurance-number')
+  }
+  else if (parentguardiancarer === "no") {
+    res.redirect('/v6/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/v6/apply/parent-guardian-carer')
+  }
+
+})
+
+      // DEPENDANTS
+
+      // What is your national insurance number?
+
+      router.post('/v6/dependants-national-insurance-number', function (req, res) {
+
+        var dependantsnationalinsurancenumber = req.session.data['dependantsnationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
+
+        if (dependantsnationalinsurancenumber) {
+          res.redirect('/v6/apply/dependants-name')
+        }
+        else {
+          res.redirect('/v6/apply/kickouts/dependants-national-insurance-number')
+        }
+
+      })
+
+      // What is your name?
+
+      router.post('/v6/dependants-name', function (req, res) {
+
+        var dependantsfirstname = req.session.data['dependantsfirstname']
+        var dependantslastname = req.session.data['dependantslastname']
+
+        if (dependantsfirstname && dependantslastname) {
+          res.redirect('/v6/apply/dependants-address')
+        }
+        else {
+          res.redirect('/v6/apply/dependants-name')
+        }
+
+      })
+
+      // What is your address?
+
+      router.post('/v6/dependants-address', function (req, res) {
+
+        delete req.session.data['dependantsselectaddress']
+
+        var dependantsaddressline1 = req.session.data['dependantsaddressline1']
+        var dependantsaddressline2 = req.session.data['dependantsaddressline2']
+        var dependantstowncity = req.session.data['dependantstowncity']
+        var dependantspostcode = req.session.data['dependantspostcode']
+
+        if (dependantsaddressline1 && dependantstowncity && dependantspostcode) {
+          res.redirect('/v6/apply/national-insurance-number')
+        } else {
+          res.redirect('/v6/apply/dependants-address')
+        }
+
+      })
 
 // What is your national insurance number?
 
@@ -1757,4 +1826,58 @@ router.post('/v6/bank-details', function (req, res) {
 
 router.post('/v6/feedback', function (req, res) {
   res.redirect('/v6/feedback')
+})
+
+// ********************************
+// APPLY (FUTURE)
+// ********************************
+
+// Do you get Healthy Start vouchers at the moment?
+router.post('/future/v1/who-applying-for', function (req, res) {
+
+  var applyingfor = req.session.data['applyingfor']
+
+  if (applyingfor === "myself") {
+    res.redirect('/future/v1/apply/do-you-have-NHS-login')
+  }
+  else if (applyingfor === "someoneelse") {
+    res.redirect('/v6/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/future/v1/apply/who-applying-for')
+  }
+
+})
+
+// Do you have an NHS login?
+router.post('/future/v1/do-you-have-NHS-login', function (req, res) {
+
+  var nhslogin = req.session.data['nhslogin']
+
+  if (nhslogin === "yes") {
+    res.redirect('/future/v1/apply/login')
+  }
+  else if (nhslogin === "no") {
+    res.redirect('/v6/apply/national-insurance-number')
+  }
+  else {
+    res.redirect('/future/v1/apply/who-applying-for')
+  }
+
+})
+
+// Login
+router.post('/future/v1/login', function (req, res) {
+
+  var email = req.session.data['email']
+  var password = req.session.data['password']
+
+
+  if (email && password) {
+    res.redirect('/future/v1/apply/two-factor')
+  }
+  else {
+    res.redirect('/future/v1/apply/login')
+  }
+
 })

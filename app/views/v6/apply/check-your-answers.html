@@ -17,188 +17,238 @@ Check your answers
             Check {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} answers
         </h1>
 
-        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %}</h2>
+        {% if data['parentguardiancarer'] == "yes" %}
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About you</h2>
 
         <dl class="nhsuk-summary-list">
 
-                                {% if (data['nationalinsurancenumber']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            National Insurance number
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['nationalinsurancenumber'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="national-insurance-number">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} National Insurance number</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}        
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">National Insurance number</dt>
+                <dd class="nhsuk-summary-list__value">{{ data['dependantsnationalinsurancenumber'] }}</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="dependants-national-insurance-number">Change<span class="nhsuk-u-visually-hidden"> your
+                            National Insurance number</span></a>
+                </dd>
+            </div>
 
-                {% if (data['firstname']) and (data['lastname']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Name
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['firstname'] }} {{ data['lastname'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="name">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Name</dt>
+                <dd class="nhsuk-summary-list__value">{{ data['dependantsfirstname'] }} {{ data['dependantslastname'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="dependants-name">Change<span class="nhsuk-u-visually-hidden"> your name</span></a>
+                </dd>
+            </div>
 
-                {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Date of birth
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="date-of-birth">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} date of birth</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
-            
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Address</dt>
+                <dd class="nhsuk-summary-list__value"> {{ data['dependantsaddressline1'] }},<br>
+                    {% if data['dependantsaddressline2'] %}{{ data['dependantsaddressline2'] }},<br>{% endif %}
+                    {{ data['dependantstowncity'] }},<br>
+                    {{ data['dependantspostcode'] }}</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="dependants-address">Change<span class="nhsuk-u-visually-hidden"> your address</span></a>
+                </dd>
+            </div>
 
-                               {% if (data['addressline1']) and (data['towncity']) and (data['postcode']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Address
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['addressline1'] }},<br>
-                            {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                            {{ data['towncity'] }},<br>
-                            {{ data['postcode'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="address">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
+        </dl>
 
-                {% if (data['selectaddress']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Address
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['selectaddress'] | safe }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="find-address">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
+        {% endif %}
 
-                                {% if (data['emailaddress']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Email address
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['emailaddress'] | safe }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="email-address">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} email address</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
 
-                                {% if (data['mobilephonenumber']) %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Mobile phone number
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['mobilephonenumber'] | safe }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="mobile-phone-number">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} mobile phone number</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About
+            {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %}</h2>
+
+        <dl class="nhsuk-summary-list">
+
+            {% if (data['nationalinsurancenumber']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National Insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['nationalinsurancenumber'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="national-insurance-number">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} National Insurance
+                            number</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+            {% if (data['firstname']) and (data['lastname']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['firstname'] }} {{ data['lastname'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="name">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+            {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="date-of-birth">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} date of birth</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+
+            {% if (data['addressline1']) and (data['towncity']) and (data['postcode']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['addressline1'] }},<br>
+                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
+                    {{ data['towncity'] }},<br>
+                    {{ data['postcode'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="address">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+            {% if (data['selectaddress']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['selectaddress'] | safe }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="find-address">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+            {% if (data['emailaddress']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['emailaddress'] | safe }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="email-address">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} email address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+            {% if (data['mobilephonenumber']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Mobile phone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['mobilephonenumber'] | safe }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="mobile-phone-number">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} mobile phone
+                            number</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
 
             {% if data['benefits'] %}
             <div class="nhsuk-summary-list__row">
-                    <dt class="nhsuk-summary-list__key">
-                        Benefits
-                    </dt>
-                    <dd class="nhsuk-summary-list__value">
-                        {% if data['benefits'] == "UC" %}
-                        Universal Credit<br>
-                        {% elseif data['benefits'] == "CTC" %}
-                        Child Tax Credit<br>
-                        {% elseif data['benefits'] == "JSA" %}
-                        Jobseeker's Allowance (JSA)<br>
-                        {% elseif data['benefits'] == "ESA" %}
-                        Employment and Support Allowance (ESA)<br>
-                        {% elseif data['benefits'] == "IS" %}
-                        Income Support<br>
-                        {% elseif data['benefits'] == "PC" %}
-                        Pension Credit<br>
-                        {% elseif data['benefits'] == "WTC" %}
-                        Working Tax Credit<br>
-                        {% else %}
-                        No, {% if data['applyingfor'] == "myself" %}I{% else %}they{% endif %} do not get any of these<br>
-                        {% endif %}
-                    </dd>
-    
-                    <dd class="nhsuk-summary-list__actions">
-    
-                        <a href="benefits">
-                            Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
-                        </a>
-    
-                    </dd>
-    
-                </div>
+                <dt class="nhsuk-summary-list__key">
+                    Benefits
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['benefits'] == "UC" %}
+                    Universal Credit<br>
+                    {% elseif data['benefits'] == "CTC" %}
+                    Child Tax Credit<br>
+                    {% elseif data['benefits'] == "JSA" %}
+                    Jobseeker's Allowance (JSA)<br>
+                    {% elseif data['benefits'] == "ESA" %}
+                    Employment and Support Allowance (ESA)<br>
+                    {% elseif data['benefits'] == "IS" %}
+                    Income Support<br>
+                    {% elseif data['benefits'] == "PC" %}
+                    Pension Credit<br>
+                    {% elseif data['benefits'] == "WTC" %}
+                    Working Tax Credit<br>
+                    {% else %}
+                    No, {% if data['applyingfor'] == "myself" %}I{% else %}they{% endif %} do not get any of these<br>
+                    {% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="benefits">
+                        Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
+                    </a>
+
+                </dd>
+
+            </div>
             {% endif %}
 
             <div class="nhsuk-summary-list__row">
@@ -219,129 +269,146 @@ Check your answers
 
             </div>
 
-                            {% if data['pregnant'] == "yes" %}
-                <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Due date
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
-                        </dd>
-        
-                        <dd class="nhsuk-summary-list__actions">
-        
-                            <a href="due-date">
-                                Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} due date</span>
-                            </a>
-        
-                        </dd>
-        
-                    </div>
-                {% endif %}
-            
+            {% if data['pregnant'] == "yes" %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Due date
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="due-date">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} due date</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
 
         </dl>
 
+
         {% if (data['childrenunderfour'] == "yes") %}
-        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} children</h2>
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About
+            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} children</h2>
         {% endif %}
 
         <dl class="nhsuk-summary-list">
 
 
 
-                {% if data['childrenunderfour'] == "yes" %}
+            {% if data['childrenunderfour'] == "yes" %}
 
 
 
-                {% for item in data['childList'] %}
-<h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
-                
-                <div class="nhsuk-summary-list__row">
-                            <dt class="nhsuk-summary-list__key">Child’s first name</dt>
-                            <dd class="nhsuk-summary-list__value">{{ item.Name }}</dd>
-                            <dd class="nhsuk-summary-list__actions">
-                                {% if data['childList'] | length  == 1 %}
-                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s first name</span></a>
-                                {% else %}
-                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s first name</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a></a>
-                                {% endif %}
-                            </dd>
-                </div>
-                <div class="nhsuk-summary-list__row">
-                            <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
-                            <dd class="nhsuk-summary-list__value">{{ item.DOB }}</dd>
-                            <dd class="nhsuk-summary-list__actions">
-                                {% if data['childList'] | length  == 1 %}
-                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s date of birth</span></a>
-                                {% else %}
-                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s date of birth</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a></a>
-                                {% endif %}
-                            </dd>
-                </div>
-                {% endfor %}
+            {% for item in data['childList'] %}
+            <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
 
-                {% endif %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Child’s first name</dt>
+                <dd class="nhsuk-summary-list__value">{{ item.Name }}</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    {% if data['childList'] | length  == 1 %}
+                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s first
+                            name</span></a>
+                    {% else %}
+                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s first
+                            name</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden">
+                            child</span></a></a>
+                    {% endif %}
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
+                <dd class="nhsuk-summary-list__value">{{ item.DOB }}</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    {% if data['childList'] | length  == 1 %}
+                    <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s date of
+                            birth</span></a>
+                    {% else %}
+                    <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} child’s date of
+                            birth</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden">
+                            child</span></a></a>
+                    {% endif %}
+                </dd>
+            </div>
+            {% endfor %}
+
+            {% endif %}
 
         </dl>
 
-                         <h2 class="nhsuk-heading-m">Bank or building society account details</h2>
+        <h2 class="nhsuk-heading-m">Bank or building society account details</h2>
 
-          <dl class="nhsuk-summary-list">
+        <dl class="nhsuk-summary-list">
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Name on the account
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['accountname'] }}
-              </dd>
+                <dt class="nhsuk-summary-list__key">
+                    Name on the account
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['accountname'] }}
+                </dd>
 
-              <dd class="nhsuk-summary-list__actions">
+                <dd class="nhsuk-summary-list__actions">
 
-                <a href="bank-details#accountname">
-                  Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name on the account</span>
-                </a>
+                    <a href="bank-details#accountname">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name on the
+                            account</span>
+                    </a>
 
-              </dd>
+                </dd>
 
             </div>
 
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Sort code
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['sortcode'] }}
-              </dd>
+                <dt class="nhsuk-summary-list__key">
+                    Sort code
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['sortcode'] }}
+                </dd>
 
-              <dd class="nhsuk-summary-list__actions">
+                <dd class="nhsuk-summary-list__actions">
 
-                <a href="bank-details#sortcode">
-                  Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} sort code</span>
-                </a>
+                    <a href="bank-details#sortcode">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} sort code</span>
+                    </a>
 
-              </dd>
+                </dd>
 
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Account number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                <!-- {{ data['accountnumber'] | reverse | truncate(4, true, "****") | reverse }} -->
-                {{ data['accountnumber'] }}
-              </dd>
+                <dt class="nhsuk-summary-list__key">
+                    Account number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    <!-- {{ data['accountnumber'] | reverse | truncate(4, true, "****") | reverse }} -->
+                    {{ data['accountnumber'] }}
+                </dd>
 
-              <dd class="nhsuk-summary-list__actions">
+                <dd class="nhsuk-summary-list__actions">
 
-                <a href="bank-details#accountnumber">
-                  Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} account number</span>
-                </a>
+                    <a href="bank-details#accountnumber">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} account number</span>
+                    </a>
 
-              </dd>
+                </dd>
 
             </div>
 
@@ -350,20 +417,22 @@ Check your answers
             {% if data['buildingsocietynumber'] %}
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Building society roll number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ data['buildingsocietynumber'] }}
-              </dd>
+                <dt class="nhsuk-summary-list__key">
+                    Building society roll number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['buildingsocietynumber'] }}
+                </dd>
 
-              <dd class="nhsuk-summary-list__actions">
+                <dd class="nhsuk-summary-list__actions">
 
-                <a href="bank-details#buildingsocietynumber">
-                  Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} uilding society roll number</span>
-                </a>
+                    <a href="bank-details#buildingsocietynumber">
+                        Change<span class="nhsuk-u-visually-hidden">
+                            {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} uilding society roll
+                            number</span>
+                    </a>
 
-              </dd>
+                </dd>
 
             </div>
 
@@ -371,7 +440,7 @@ Check your answers
 
 
 
-          </dl>
+        </dl>
 
         <form action="/v6/check-your-answers" method="post">
 
