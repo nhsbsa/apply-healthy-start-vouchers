@@ -1558,7 +1558,7 @@ router.post('/v6/parent-guardian-carer', function (req, res) {
   var parentguardiancarer = req.session.data['parentguardiancarer']
 
   if (parentguardiancarer === "yes") {
-    res.redirect('/v6/apply/dependants-national-insurance-number')
+    res.redirect('/v6/apply/dependants-name')
   }
   else if (parentguardiancarer === "no") {
     res.redirect('/v6/apply/national-insurance-number')
@@ -1571,21 +1571,6 @@ router.post('/v6/parent-guardian-carer', function (req, res) {
 
       // DEPENDANTS
 
-      // What is your national insurance number?
-
-      router.post('/v6/dependants-national-insurance-number', function (req, res) {
-
-        var dependantsnationalinsurancenumber = req.session.data['dependantsnationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-
-        if (dependantsnationalinsurancenumber) {
-          res.redirect('/v6/apply/dependants-name')
-        }
-        else {
-          res.redirect('/v6/apply/kickouts/dependants-national-insurance-number')
-        }
-
-      })
-
       // What is your name?
 
       router.post('/v6/dependants-name', function (req, res) {
@@ -1594,10 +1579,35 @@ router.post('/v6/parent-guardian-carer', function (req, res) {
         var dependantslastname = req.session.data['dependantslastname']
 
         if (dependantsfirstname && dependantslastname) {
-          res.redirect('/v6/apply/dependants-address')
+          res.redirect('/v6/apply/dependants-date-of-birth')
         }
         else {
           res.redirect('/v6/apply/dependants-name')
+        }
+
+      })
+
+      // What is your date of birth?
+
+      router.post('/v6/dependants-date-of-birth', function (req, res) {
+
+        var dependantsdateofbirthday = req.session.data['dependantsdateofbirthday']
+        var dependantsdateofbirthmonth = req.session.data['dependantsdateofbirthmonth']
+        var dependantsdateofbirthyear = req.session.data['dependantsdateofbirthyear']
+
+        var dependantsdob = new Date(dependantsdateofbirthyear, dependantsdateofbirthmonth, dependantsdateofbirthday);
+        var dependantsageDate =  new Date(today - dependantsdob.getTime())
+        var dependantstemp = dependantsageDate.getFullYear();
+        var dependantsyrs = Math.abs(dependantstemp - 1970);
+
+        req.session.data.yrs = dependantsyrs;
+
+
+        if (dependantsdateofbirthday && dependantsdateofbirthmonth && dependantsdateofbirthyear) {
+          res.redirect('/v6/apply/dependants-address')
+        }
+        else {
+          res.redirect('/v6/apply/dependants-date-of-birth')
         }
 
       })
