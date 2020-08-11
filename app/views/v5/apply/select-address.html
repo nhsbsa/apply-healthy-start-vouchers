@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Select your address
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Select your address
+        </h1>
+
+        <p>6 addresses found for {% if data['housenumber']  %}'{{ data['housenumber'] }}' and {% endif %} '{{ data['postcode'] }}'.</p>
+
+        <form action="/v5/select-address" method="get">
+
+            <div class="nhsuk-form-group">
+                <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-1" name="selectaddress" type="radio" value="{% if data['housenumber']  %}{{ data['housenumber'] }} Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% else %}1 Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% endif %}.">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-1">
+                    {% if data['housenumber']  %}{{ data['housenumber'] }} Main Street, Newcastle, {{ data['postcode'] }}{% else %}1 Main Street, Newcastle, {{ data['postcode'] }}{% endif %}.
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-2" name="selectaddress" type="radio" value="{% if data['housenumber']  %}{{ data['housenumber'] }} Bond Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% else %}2 Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% endif %}.">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-2">
+                    {% if data['housenumber']  %}{{ data['housenumber'] }} Bond Street, Newcastle, {{ data['postcode'] }}{% else %}2 Main Street, Newcastle, {{ data['postcode'] }}{% endif %}.
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-3" name="selectaddress" type="radio" value="{% if data['housenumber']  %}{{ data['housenumber'] }} Market Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% else %}3 Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% endif %}.">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-3">
+                    {% if data['housenumber']  %}{{ data['housenumber'] }} Market Street, Newcastle, {{ data['postcode'] }}{% else %}3 Main Street, Newcastle, {{ data['postcode'] }}{% endif %}.
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-4" name="selectaddress" type="radio" value="{% if data['housenumber']  %}{{ data['housenumber'] }} George Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% else %}4 Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% endif %}.">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-4">
+                    {% if data['housenumber']  %}{{ data['housenumber'] }} George Street, Newcastle, {{ data['postcode'] }}{% else %}4 Main Street, Newcastle, {{ data['postcode'] }}{% endif %}.
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-5" name="selectaddress" type="radio" value="{% if data['housenumber']  %}{{ data['housenumber'] }} Newgate Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% else %}5 Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% endif %}.">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-5">
+                    {% if data['housenumber']  %}{{ data['housenumber'] }} Newgate Street, Newcastle, {{ data['postcode'] }}{% else %}5 Main Street, Newcastle, {{ data['postcode'] }}{% endif %}.
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-6" name="selectaddress" type="radio" value="{% if data['housenumber']  %}{{ data['housenumber'] }} Railway Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% else %}6 Main Street,&lt;br/&gt;Newcastle,&lt;br/&gt;{{ data['postcode'] }}{% endif %}.">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-6">
+                    {% if data['housenumber']  %}{{ data['housenumber'] }} Railway Street, Newcastle, {{ data['postcode'] }}{% else %}6 Main Street, Newcastle, {{ data['postcode'] }}{% endif %}.
+                    </label>
+                </div>
+                <div class="nhsuk-radios__divider">or</div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-7" name="selectaddress" type="radio" value="none">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-7">
+                    The address is not listed here
+                    </label>
+                </div>
+                </div>
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+</div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

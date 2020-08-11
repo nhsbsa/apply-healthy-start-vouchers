@@ -1397,7 +1397,7 @@ router.post('/v5/are-you-pregnant', function (req, res) {
   }
   else if (pregnant === "no") {
     req.session.data.lessThanTenWeeksPregnant = true;
-    res.redirect('/v5/apply/address')
+    res.redirect('/v5/apply/find-address')
   }
   else {
     res.redirect('/v5/apply/are-you-pregnant')
@@ -1435,12 +1435,58 @@ router.post('/v5/due-date', function (req, res) {
         req.session.data.lessThanTenWeeksPregnant = false;
       }
 
-      res.redirect('/v5/apply/address')
+      res.redirect('/v5/apply/find-address')
     }
 
   }
   else {
     res.redirect('/v5/apply/due-date')
+  }
+
+})
+
+// Find your address
+
+router.get('/v5/find-address', function (req, res) {
+
+  var postcode = req.session.data['postcode']
+
+  if (postcode) {
+    res.redirect('/v5/apply/select-address')
+  }
+  else {
+    res.redirect('/v5/apply/find-address')
+  }
+
+})
+
+// Select your address
+
+router.get('/v5/select-address', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dob.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
+  var selectaddress = req.session.data['selectaddress']
+
+  if (selectaddress === 'none') {
+
+    delete req.session.data['addressline1']
+    delete req.session.data['addressline2']
+    delete req.session.data['towncity']
+    delete req.session.data['postcode']
+
+    res.redirect('/v5/apply/address')
+  } else if (selectaddress) {
+    res.redirect('/v5/apply/email-address')
+  } else {
+    res.redirect('/v5/apply/select-address')
   }
 
 })
