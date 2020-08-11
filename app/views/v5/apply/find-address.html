@@ -47,6 +47,8 @@ Find your address
             <p><a href="address">Enter my address manually</a></p>
             </div>
 
+<!--
+
             <details class="nhsuk-details">
               <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
@@ -58,6 +60,8 @@ Find your address
               </div>
             </details>
 
+-->
+
 
             <button class="nhsuk-button" type="submit">
                 Continue
@@ -67,35 +71,5 @@ Find your address
 
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-      var mapitJson = "https://mapit.mysociety.org/postcode/";
-      $('#findCouncilForm').on('submit', function(e) {
-        e.preventDefault();
-        var postcodeEntered = $('#postcode').val().replace(" ", ""),
-            $this = $(this);
-        if(postcodeEntered.slice(0, 2).toLowerCase() === "bt") {
-          location = "nir-explain";
-        } else {
-          $.getJSON( mapitJson + postcodeEntered, {
-            format: "json"
-          })
-          .done(function( data ) {
-            $.each( data.areas, function( i, area ) {
-              var councilName = area.name;
-              if(area.type === "LBO" ||
-                 area.type === "UTA" ||
-                 area.type === "CTY" ||
-                 area.type === "MTD") {
-                $("#council-found").val(councilName);
-              }
-            });
-            $this.unbind('submit').submit();
-          });
-        }
-      });
-    });
-  </script>
 
 {% endblock %}
