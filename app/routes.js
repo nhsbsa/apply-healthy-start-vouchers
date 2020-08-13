@@ -8,6 +8,10 @@ const express = require('express');
 const router = express.Router();
 const moment = require('moment');
 
+// API
+
+const axios = require('axios');
+
 // ****************************************
 // PERSONAS
 // ****************************************
@@ -1449,12 +1453,49 @@ router.post('/v5/due-date', function (req, res) {
 
 router.get('/v5/find-address', function (req, res) {
 
+  var houseNumberName = req.session.data['housenumber']
   var postcode = req.session.data['postcode']
 
-  if (postcode) {
-    res.redirect('/v5/apply/select-address')
-  }
-  else {
+  const regex = RegExp('^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z])))) [0-9][A-Za-z]{2})$');
+
+  if (regex.test(postcode) === true) {
+
+
+
+    if (houseNumberName) {
+
+      axios.get("https://api.getAddress.io/find/" + postcode + "/" + houseNumberName + "?api-key="+ process.env.POSTCODEAPIKEY)
+      .then(response => {
+        console.log(response.data.addresses);
+        var items = response.data.addresses;
+        res.render('v5/apply/select-address', {items: items});
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    } else {
+
+      axios.get("https://api.getAddress.io/find/" + postcode + "?api-key="+ process.env.POSTCODEAPIKEY)
+      .then(response => {
+        console.log(response.data.addresses);
+        var items = response.data.addresses;
+        res.render('v5/apply/select-address', {items: items});
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    }
+    
+    
+
+
+
+
+  
+
+  } else {
     res.redirect('/v5/apply/find-address')
   }
 
@@ -1463,15 +1504,6 @@ router.get('/v5/find-address', function (req, res) {
 // Select your address
 
 router.get('/v5/select-address', function (req, res) {
-
-  var dateofbirthday = req.session.data['dateofbirthday']
-  var dateofbirthmonth = req.session.data['dateofbirthmonth']
-  var dateofbirthyear = req.session.data['dateofbirthyear']
-
-  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-  var ageDate =  new Date(today - dob.getTime())
-  var temp = ageDate.getFullYear();
-  var yrs = Math.abs(temp - 1970);
 
   var selectaddress = req.session.data['selectaddress']
 
