@@ -30,7 +30,7 @@ What is your email address?
                     House number or name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    11
+                    {% if data['housenumber'] %}{{ data['housenumber'] }}{% else %}11{% endif %}
                 </dd>
 
                 <dd class="nhsuk-summary-list__actions">
@@ -48,7 +48,7 @@ What is your email address?
                     Postcode
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    NE15 8NY
+                    {% if data['postcode'] %}{{ data['postcode'] }}{% else %}NE15 8NY{% endif %}
                 </dd>
 
                 <dd class="nhsuk-summary-list__actions">

@@ -1472,6 +1472,7 @@ router.get('/v5/find-address', function (req, res) {
       })
       .catch(error => {
         console.log(error);
+        res.redirect('/v5/apply/no-address-found')
       });
 
     } else {
@@ -1484,6 +1485,7 @@ router.get('/v5/find-address', function (req, res) {
       })
       .catch(error => {
         console.log(error);
+        res.redirect('/v5/apply/no-address-found')
       });
 
     }
