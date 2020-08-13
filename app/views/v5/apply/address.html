@@ -23,7 +23,7 @@ What is your address?
                 <label class="nhsuk-label" for="addressline1">
                     Address line 1
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1" value="{{ data['housenumber'] }}">
             </div>
 
             <div class="nhsuk-form-group">
@@ -44,7 +44,7 @@ What is your address?
                     <label class="nhsuk-label" for="postcode">
                     Postcode
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code" value="{{ data['postcode'] }}">
             </div>
 
             <details class="nhsuk-details">
