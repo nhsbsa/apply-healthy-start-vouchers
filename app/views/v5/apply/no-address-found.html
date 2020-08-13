@@ -25,6 +25,10 @@ What is your email address?
 
         <dl class="nhsuk-summary-list">
 
+
+
+{% if data['housenumber'] %}
+
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     House number or name
@@ -42,6 +46,9 @@ What is your email address?
                 </dd>
 
             </div>
+
+{% endif %}
+
 
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
