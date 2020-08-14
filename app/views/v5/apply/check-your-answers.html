@@ -81,7 +81,43 @@ Check your answers
             </div>
             {% endif %}
 
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Currently pregnant
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
+                </dd>
 
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="are-you-pregnant">
+                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            {% if data['pregnant'] == "yes" %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Due date
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="due-date">
+                        Change<span class="nhsuk-u-visually-hidden"> your due date</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
 
 
             {% if (data['selectaddress']) %}
@@ -200,44 +236,6 @@ Check your answers
 
                     <a href="benefits">
                         Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
-                    </a>
-
-                </dd>
-
-            </div>
-            {% endif %}
-
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Currently pregnant
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="are-you-pregnant">
-                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
-                    </a>
-
-                </dd>
-
-            </div>
-
-            {% if data['pregnant'] == "yes" %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Due date
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="due-date">
-                        Change<span class="nhsuk-u-visually-hidden"> your due date</span>
                     </a>
 
                 </dd>
