@@ -1335,7 +1335,7 @@ router.post('/v5/national-insurance-number', function (req, res) {
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
   if (nationalinsurancenumber) {
-
+    
     if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'AB123456A' || nationalinsurancenumber === 'CD654321B' || nationalinsurancenumber === 'EF214365C' || nationalinsurancenumber === 'GH563412D') {
       res.redirect('/v5/apply/name')
     } else {
