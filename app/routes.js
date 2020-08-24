@@ -1784,7 +1784,7 @@ router.post('/v6/are-you-pregnant', function (req, res) {
   }
   else if (pregnant === "no") {
     req.session.data.lessThanTenWeeksPregnant = true;
-    res.redirect('/v6/apply/address')
+    res.redirect('/v6/apply/find-address')
   }
   else {
     res.redirect('/v6/apply/are-you-pregnant')
@@ -1822,12 +1822,88 @@ router.post('/v6/due-date', function (req, res) {
         req.session.data.lessThanTenWeeksPregnant = false;
       }
 
-      res.redirect('/v6/apply/address')
+      res.redirect('/v6/apply/find-address')
     }
 
   }
   else {
     res.redirect('/v6/apply/due-date')
+  }
+
+})
+
+// Find your address
+
+router.get('/v6/find-address', function (req, res) {
+
+  var houseNumberName = req.session.data['housenumber']
+  var postcode = req.session.data['postcode']
+
+  const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+  if (regex.test(postcode) === true) {
+
+
+
+    if (houseNumberName) {
+
+      axios.get("https://api.getAddress.io/find/" + postcode + "/" + houseNumberName + "?api-key="+ process.env.POSTCODEAPIKEY)
+      .then(response => {
+        console.log(response.data.addresses);
+        var items = response.data.addresses;
+        res.render('v6/apply/select-address', {items: items});
+      })
+      .catch(error => {
+        console.log(error);
+        res.redirect('/v6/apply/no-address-found')
+      });
+
+    } else {
+
+      axios.get("https://api.getAddress.io/find/" + postcode + "?api-key="+ process.env.POSTCODEAPIKEY)
+      .then(response => {
+        console.log(response.data.addresses);
+        var items = response.data.addresses;
+        res.render('v6/apply/select-address', {items: items});
+      })
+      .catch(error => {
+        console.log(error);
+        res.redirect('/v6/apply/no-address-found')
+      });
+
+    }
+    
+    
+
+
+
+
+  
+
+  } else {
+    res.redirect('/v6/apply/find-address')
+  }
+
+})
+
+// Select your address
+
+router.get('/v6/select-address', function (req, res) {
+
+  var selectaddress = req.session.data['selectaddress']
+
+  if (selectaddress === 'none') {
+
+    delete req.session.data['addressline1']
+    delete req.session.data['addressline2']
+    delete req.session.data['towncity']
+    delete req.session.data['postcode']
+
+    res.redirect('/v6/apply/address')
+  } else if (selectaddress) {
+    res.redirect('/v6/apply/email-address')
+  } else {
+    res.redirect('/v6/apply/select-address')
   }
 
 })
