@@ -7,15 +7,15 @@ What are your bank or building society account details?
 {% block content %}
 
 <script>
-        setTimeout("location.href = '/v6/errors/timed-out';", 15000);
+        setTimeout("location.href = '/v5/errors/timed-out';", 15000);
 </script>
 
 <div id="overlay">
-  <div id="text">
+  <div id="text" role="dialog" tabindex="-1" aria-labelledby="timeout-message" aria-live="polite">
   
     <h2 class="nhsuk-heading-l">Do you want to continue with your application?</h2>
 
-    <p>For security reasons, you will be timed out of this service in <span class="nhsuk-u-font-weight-bold">5 minutes</span></p>
+    <p id="timeout-message">For security reasons, you will be timed out of this service in <span class="nhsuk-u-font-weight-bold">5 minutes</span></p>
 
     <p class="nhsuk-u-margin-bottom-3"><a href="timeout" class="nhsuk-button nhsuk-u-margin-bottom-0">Continue</a></p>
 
@@ -35,7 +35,7 @@ What are your bank or building society account details?
             What are your bank or building society account details?
         </h1>
 
-        <form novalidate="novalidate" action="/v6/bank-details" method="post">
+        <form novalidate="novalidate" action="/v5/bank-details" method="post">
 
           <fieldset class="nhsuk-fieldset">
 
