@@ -13,7 +13,7 @@
     - add custom CSS and JavaScript
 -->
    <!-- Set the page title inside the pageTitle block -->
-   {% block pageTitle %} Get help to buy food and milk {% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block pageTitle %}What you can buy - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
    {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
    <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
    {% block content %}
@@ -28,47 +28,84 @@
         <ol class="nhsuk-contents-list__list">
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="hub-overview">Overview</a>
+                href="overview">Overview</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="hub-eligibility">Eligibility</a>
+                href="eligibility">Eligibility</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="hub-what-you-get">What you’ll get</a>
-          </li>
-          <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link"
-                href="hub-what-you-can-buy">What you can buy</a>
-          </li>
-          <li class="nhsuk-contents-list__item">
-            <a class="nhsuk-contents-list__link"
-                href="hub-how-to-apply">How to apply</a>
+                href="what-youll-get">What you’ll get</a>
           </li>
           <li aria-current="page"
-              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">Get help with your claim</span></li>
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">What you can buy</span></li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="hub-terms-and-conditions">Terms and conditions</a>
+                href="how-to-apply">How to apply</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="help-with-claim">Get help with your claim</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="terms-conditions">Terms and conditions</a>
           </li>
         </ol>
       </nav><!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
-      <h2>Get help with your claim</h2>
+      <h2>What you can buy</h2>
 
-      <p>You must tell us about a change in your circumstances.</p>
+      <p>You’re only allowed to buy certain types of milk, infant formula, fruit and vegetables.</p>
 
-      <p>This is to make sure you can still get the help you’re entitled to.</p>
+      <h3>Plain cow’s milk</h3>
 
-      <div class="nhsuk-inset-text">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>Email: <a href="mailto:nhsbsa.applyforhealthystart@nhsbsa.nhs.uk">nhsbsa.applyforhealthystart@nhsbsa.nhs.uk</a></p>
-      </div>
+      <p>This can be skimmed, semi-skimmed or whole cow’s milk.</p>
 
-      <p>If you’re claiming benefits, you’ll also need to <a target="_blank" href="https://www.gov.uk/report-benefits-change-circumstances">report a pregnancy and birth to the benefits agencies<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a>.</p>
+      <p>It cannot be:</p>
 
-      <!-- End of content -->
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>flavoured</li>
+        <li>coloured</li>
+        <li>evaporated</li>
+        <li>condensed</li>
+        <li>goat’s</li>
+        <li>soya</li>
+        <li>powdered (unless it’s stage one infant formula)</li>
+      </ul>
+
+      <h3>Infant formula</h3>
+
+      <p>This must be:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>stage one only (first infant formula)</li>
+        <li>made from cow’s milk</li>
+        <li>nutritionally complete</li>
+      </ul>
+
+      <p>Look for ‘complete nutrition’, ‘from birth’, ‘from birth to 6 months’, or ‘from birth to 12 months’ on the label.</p>
+
+      <p>It cannot be follow-on formula or milk (‘from 6 months’, or ‘from 6 to 12 months’).</p>
+
+      <h3>Fruit and vegetables</h3>
+
+      <p>These can be:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>fresh or frozen</li>
+        <li>whole or chopped</li>
+        <li>packaged or loose</li>
+      </ul>
+
+      <p>They cannot:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>have added ingredients like fat (oil), salt, sugar or flavourings, such as oven chips and battered onion rings</li>
+        <li>be dried, canned, juiced or pre-cooked</li>
+        <li>be smoothies</li>
+      </ul>
 
       <nav aria-label="Pagination"
            class="nhsuk-pagination"
@@ -76,7 +113,7 @@
         <ul class="nhsuk-list nhsuk-pagination__list">
           <li class="nhsuk-pagination-item--previous">
             <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
-                href="hub-how-to-apply"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">How to apply</span> <svg aria-hidden="true"
+                href="what-youll-get"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">What you’ll get</span> <svg aria-hidden="true"
                  class="nhsuk-icon nhsuk-icon__arrow-left"
                  viewbox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +121,7 @@
           </li>
           <li class="nhsuk-pagination-item--next">
             <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
-                href="hub-terms-and-conditions"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Terms and conditions</span> <svg aria-hidden="true"
+                href="how-to-apply"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">How to apply</span> <svg aria-hidden="true"
                  class="nhsuk-icon nhsuk-icon__arrow-right"
                  viewbox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
