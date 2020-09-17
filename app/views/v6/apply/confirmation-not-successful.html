@@ -17,19 +17,24 @@ We’re considering your application
       <p>If {% if data['applyingfor'] == "myself" %}you’re{% else %}they’re{% endif %} on a qualifying benefit make sure {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} enter the same details {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} registered with the benefits
           agencies (DWP or HMRC).</p>
 
-      {% if (data['yrs'] < "20") or (data['partneryrs'] < "20") %}
         
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            {% if data['applyingfor'] == "myself" %}My{% else %}Their{% endif %} parent, guardian or carer claims a qualifying benefit
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>If {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} parents, guardian or carer claims benefits, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} could be entitled to get help to buy food and milk (Healthy Start).</p>
-          <p>Check with {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} parent, guardian or carer if {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} think {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} might be named on their claim and ask them to apply on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} behalf.</p>
-        </div>
-      </details>
+      {% if data['parentguardiancarer'] == "no" %}
+
+        {% if (data['yrs'] < "20") or (data['partneryrs'] < "20") %}
+          
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              {% if data['applyingfor'] == "myself" %}My{% else %}Their{% endif %} parent, guardian or carer claims a qualifying benefit
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>If {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} parents, guardian or carer claims benefits, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} could be entitled to get help to buy food and milk (Healthy Start).</p>
+            <p>Check with {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} parent, guardian or carer if {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} think {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} might be named on their claim and ask them to apply on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} behalf.</p>
+          </div>
+        </details>
+
+        {% endif %}
 
       {% endif %}
 
