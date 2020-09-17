@@ -1684,10 +1684,79 @@ router.post('/v6/parent-guardian-carer', function (req, res) {
 
 
         if (dependantsdateofbirthday && dependantsdateofbirthmonth && dependantsdateofbirthyear) {
-          res.redirect('/v6/apply/dependants-address')
+          res.redirect('/v6/apply/dependants-find-address')
         }
         else {
           res.redirect('/v6/apply/dependants-date-of-birth')
+        }
+
+      })
+
+      // Find your address
+
+      router.get('/v6/dependants-find-address', function (req, res) {
+
+        var dependantshouseNumberName = req.session.data['dependantshousenumber']
+        var dependantspostcode = req.session.data['dependantspostcode']
+
+        const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+        if (regex.test(dependantspostcode) === true) {
+
+
+
+          if (dependantshouseNumberName) {
+
+            axios.get("https://api.getAddress.io/find/" + dependantspostcode + "/" + dependantshouseNumberName + "?api-key="+ process.env.POSTCODEAPIKEY)
+            .then(response => {
+              console.log(response.data.addresses);
+              var items = response.data.addresses;
+              res.render('v6/apply/dependants-select-address', {items: items});
+            })
+            .catch(error => {
+              console.log(error);
+              res.redirect('/v6/apply/dependants-no-address-found')
+            });
+
+          } else {
+
+            axios.get("https://api.getAddress.io/find/" + dependantspostcode + "?api-key="+ process.env.POSTCODEAPIKEY)
+            .then(response => {
+              console.log(response.data.addresses);
+              var items = response.data.addresses;
+              res.render('v6/apply/dependants-select-address', {items: items});
+            })
+            .catch(error => {
+              console.log(error);
+              res.redirect('/v6/apply/dependants-no-address-found')
+            });
+
+          }
+
+        } else {
+          res.redirect('/v6/apply/dependants-find-address')
+        }
+
+      })
+
+      // Select your address
+
+      router.get('/v6/dependants-select-address', function (req, res) {
+
+        var dependantsselectaddress = req.session.data['dependantsselectaddress']
+
+        if (dependantsselectaddress === 'none') {
+
+          delete req.session.data['dependantsaddressline1']
+          delete req.session.data['dependantsaddressline2']
+          delete req.session.data['dependantstowncity']
+          delete req.session.data['dependantspostcode']
+
+          res.redirect('/v6/apply/dependants-address')
+        } else if (dependantsselectaddress) {
+          res.redirect('/v6/apply/national-insurance-number')
+        } else {
+          res.redirect('/v6/apply/dependants-select-address')
         }
 
       })
@@ -1765,10 +1834,69 @@ router.post('/v6/date-of-birth', function (req, res) {
 
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-    res.redirect('/v6/apply/are-you-pregnant')
+    res.redirect('/v6/apply/do-you-live-with-a-partner')
   }
   else {
     res.redirect('/v6/apply/date-of-birth')
+  }
+
+})
+
+// Do you live with a partner?
+
+router.post('/v6/do-you-live-with-a-partner', function (req, res) {
+
+  var liveWithPartner = req.session.data['partner']
+
+  if (liveWithPartner === "yes") {
+    res.redirect('/v6/apply/partners-name')
+  }
+  else if (liveWithPartner === "no") {
+    res.redirect('/v6/apply/are-you-pregnant')
+  }
+  else {
+    res.redirect('/v6/apply/do-you-live-with-a-partner')
+  }
+
+})
+
+// What is your partners name?
+
+router.post('/v6/partners-name', function (req, res) {
+
+  var partnersfirstname = req.session.data['partnersfirstname']
+  var partnerslastname = req.session.data['partnerslastname']
+
+  if (partnersfirstname && partnerslastname) {
+    res.redirect('/v6/apply/partners-date-of-birth')
+  }
+  else {
+    res.redirect('/v6/apply/partners-name')
+  }
+
+})
+
+// Partners date of birth
+
+router.post('/v6/partners-date-of-birth', function (req, res) {
+
+  var partnersdateofbirthday = req.session.data['partnersdateofbirthday']
+  var partnersdateofbirthmonth = req.session.data['partnersdateofbirthmonth']
+  var partnersdateofbirthyear = req.session.data['partnersdateofbirthyear']
+
+  var dob = new Date(partnersdateofbirthyear, partnersdateofbirthmonth, partnersdateofbirthday);
+  var ageDate =  new Date(today - dob.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
+  req.session.data.yrs = yrs;
+
+
+  if (partnersdateofbirthday && partnersdateofbirthmonth && partnersdateofbirthyear) {
+    res.redirect('/v6/apply/are-you-pregnant')
+  }
+  else {
+    res.redirect('/v6/apply/partners-date-of-birth')
   }
 
 })

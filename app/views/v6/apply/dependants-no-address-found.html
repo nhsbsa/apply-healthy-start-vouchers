@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            No results found for
+        </h1>
+
+        <dl class="nhsuk-summary-list">
+
+
+
+{% if data['dependantshousenumber'] %}
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    House number or name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['dependantshousenumber'] %}{{ data['dependantshousenumber'] }}{% else %}11{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="dependants-find-address#housenumber">
+                        Change<span class="nhsuk-u-visually-hidden"> your house number or name</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+{% endif %}
+
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Postcode
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['dependantspostcode'] %}{{ data['dependantspostcode'] }}{% else %}NE15 8NY{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="dependants-find-address#postcode">
+                        Change<span class="nhsuk-u-visually-hidden"> your postcode</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+        </dl>
+
+        <p>If you are sure the information you gave is correct, then you can <a href="dependants-address">enter your address manually</a>.</p>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
