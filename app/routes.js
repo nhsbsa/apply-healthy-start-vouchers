@@ -1887,9 +1887,9 @@ router.post('/v6/partners-date-of-birth', function (req, res) {
   var dob = new Date(partnersdateofbirthyear, partnersdateofbirthmonth, partnersdateofbirthday);
   var ageDate =  new Date(today - dob.getTime())
   var temp = ageDate.getFullYear();
-  var yrs = Math.abs(temp - 1970);
+  var partneryrs = Math.abs(temp - 1970);
 
-  req.session.data.yrs = yrs;
+  req.session.data.partneryrs = partneryrs;
 
 
   if (partnersdateofbirthday && partnersdateofbirthmonth && partnersdateofbirthyear) {
