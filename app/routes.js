@@ -2029,7 +2029,7 @@ router.get('/v6/select-address', function (req, res) {
 
     res.redirect('/v6/apply/address')
   } else if (selectaddress) {
-    res.redirect('/v6/apply/email-address')
+    res.redirect('/v6/apply/contact-preferences')
   } else {
     res.redirect('/v6/apply/select-address')
   }
@@ -2048,7 +2048,7 @@ router.post('/v6/address', function (req, res) {
   var postcode = req.session.data['postcode']
 
   if (addressline1 && towncity && postcode) {
-    res.redirect('/v6/apply/email-address')
+    res.redirect('/v6/apply/contact-preferences')
   } else {
     res.redirect('/v6/apply/address')
   }

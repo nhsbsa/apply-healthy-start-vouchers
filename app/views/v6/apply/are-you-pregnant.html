@@ -1,7 +1,20 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Are {% if data['applyingfor'] == "myself" %}you or your partner{% else %}they or their partner{% endif %} pregnant?
+Are
+{% if (data['applyingfor'] == "myself") and (data['partner'] == "yes") %}
+ you or your partner 
+{% endif %}
+{% if (data['applyingfor'] == "myself") and (data['partner'] == "no") %}
+ you 
+{% endif %}
+{% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "yes") %}
+ they or their partner 
+{% endif %}
+{% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "no") %}
+ they 
+{% endif %}
+pregnant?
 {% endblock %}
 
 {% block content %}
@@ -14,7 +27,20 @@ Are {% if data['applyingfor'] == "myself" %}you or your partner{% else %}they or
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            Are {% if data['applyingfor'] == "myself" %}you or your partner{% else %}they or their partner{% endif %} pregnant?
+            Are
+            {% if (data['applyingfor'] == "myself") and (data['partner'] == "yes") %}
+             you or your partner 
+            {% endif %}
+            {% if (data['applyingfor'] == "myself") and (data['partner'] == "no") %}
+             you 
+            {% endif %}
+            {% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "yes") %}
+             they or their partner 
+            {% endif %}
+            {% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "no") %}
+             they 
+            {% endif %}
+            pregnant?
         </h1>
 
         <form action="/v6/are-you-pregnant" method="post">
