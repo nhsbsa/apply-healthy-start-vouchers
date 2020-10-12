@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-How would you prefer to be contacted?
+How would {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} prefer to be contacted?
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@ How would you prefer to be contacted?
             <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
                 <h1 class="nhsuk-label-wrapper">
                     <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="contactpreferences">
-                        How would you prefer to be contacted?
+                        How would {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} prefer to be contacted?
                     </label>
                 </h1>
 
