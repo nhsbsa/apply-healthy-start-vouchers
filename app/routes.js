@@ -2149,7 +2149,7 @@ router.post('/future/v1/do-you-have-NHS-login', function (req, res) {
   var nhslogin = req.session.data['nhslogin']
 
   if (nhslogin === "yes") {
-    res.redirect('/future/v1/apply/login')
+    res.redirect('/future/v1/apply/email')
   }
   else if (nhslogin === "no") {
     res.redirect('/v6/apply/national-insurance-number')
@@ -2160,18 +2160,44 @@ router.post('/future/v1/do-you-have-NHS-login', function (req, res) {
 
 })
 
-// Login
-router.post('/future/v1/login', function (req, res) {
+// Email
+router.post('/future/v1/email', function (req, res) {
 
   var email = req.session.data['email']
-  var password = req.session.data['password']
 
-
-  if (email && password) {
-    res.redirect('/future/v1/apply/two-factor')
+  if (email) {
+    res.redirect('/future/v1/apply/password')
   }
   else {
-    res.redirect('/future/v1/apply/login')
+    res.redirect('/future/v1/apply/email')
+  }
+
+})
+
+// Password
+router.post('/future/v1/password', function (req, res) {
+
+  var password = req.session.data['password']
+
+  if (password) {
+    res.redirect('/future/v1/apply/check-code')
+  }
+  else {
+    res.redirect('/future/v1/apply/password')
+  }
+
+})
+
+// Check code
+router.post('/future/v1/security-code', function (req, res) {
+
+  var securitycode = req.session.data['securitycode']
+
+  if (securitycode) {
+    res.redirect('/future/v1/apply/authorise')
+  }
+  else {
+    res.redirect('/future/v1/apply/check-code')
   }
 
 })

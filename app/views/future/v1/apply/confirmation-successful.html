@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Application successful
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-panel nhsuk-u-margin-bottom-5" style="background: #005EB8; margin-top: 0;">
+
+            <h1 class="nhsuk-panel__title" style="color: white;">Application successful</h1><span class="nhsuk-caption-xl nhsuk-caption--bottom" style="text-align: center; color: white;">You’re entitled to <strong>{% if data['lessThanTenWeeksPregnant'] == true %}£3.10{% else %}£6.20{% endif %}</strong> a week.<br>
+            Your first payment will be <strong>{% if data['lessThanTenWeeksPregnant'] == true %}£12.40{% else %}£24.80{% endif %}</strong>.</span>
+
+            <div class="nhsuk-panel__body nhsuk-u-margin-top-5" style="color: white;">
+              Reference number:<br><strong>HDJ2123F</strong>
+            </div>
+                                
+        </div>
+
+          <h2 class="nhsuk-heading-m">What happens next</h2>
+          
+          <p>We’ll pay {% if data['lessThanTenWeeksPregnant'] == true %}£12.40{% else %}£24.80{% endif %} into your bank account within 12 days.</p>
+          <p>You’ll then get a payment every 4 weeks after that.</p>
+          {% if data['lessThanTenWeeksPregnant'] == false %}<p>You’re also entitled to Healthy Start vitamins because you’re pregnant or responsible for children under 4 years old.</p>{% endif %}
+          <p>{% if (data['emailaddress']) %}We’ve sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} an email with more information about your payment{% if data['lessThanTenWeeksPregnant'] == false %} and how to collect your vitamins{% endif %}.{% elif (data['telephonenumber']) %}We’ve sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} a text message with more information about your payment{% if data['lessThanTenWeeksPregnant'] == false %} and how to collect your vitamins{% endif %}.{% else %}We’ve sent {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} a letter with more information about your payment{% if data['lessThanTenWeeksPregnant'] == false %} and how to collect your vitamins{% endif %}.{% endif %}</p>      
+
+          <h2 class="nhsuk-heading-m">Any problems</h2>
+
+          <p>If you do not get your money, there’s a change in your circumstances or you think a mistake has been made, email <a href="mailto:nhsbsa.applyforhealthystart@nhsbsa.nhs.uk">nhsbsa.applyforhealthystart@nhsbsa.nhs.uk<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>.</p>
+
+          <p>We aim to respond within 2 working days</p>
+
+          <h2 class="nhsuk-heading-m">Give feedback</h2>
+          <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

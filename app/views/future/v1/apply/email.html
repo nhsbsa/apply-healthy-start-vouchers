@@ -26,36 +26,29 @@ Get help to buy food and milk (Healthy Start)
     <div class="nhsuk-grid-column-two-thirds">
 
 
-        <h1 class="nhsuk-heading-l">Enter your NHS login details</h1>
+        <h1 class="nhsuk-heading-l">Enter your email address</h1>
 
         <!-- <p class="nhsuk-body">Sign in or <a href="#">create an account</a> to get started.</p> -->
 
-        <form action="/future/v1/login" method="post">
+        <form action="/future/v1/email" method="post">
 
         <div class="nhsuk-form-group">
             <label class="nhsuk-label" for="email">Email address</label>
             <input class="nhsuk-input nhsuk-input--width-20" name="email" id="email">
         </div>
 
-        <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="password">Password</label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="password" type="password" name="password">
-        </div>
-
-        <div class="nhsuk-form-group">
-            <p><a href="#">Forgotten your password?</a></p>
-        </div>
-
         <button class="nhsuk-button" type="submit">
             Continue
         </button>
 
-        <div class="nhsuk-form-group">
-            <p><a href="#">Set up an NHS login</a></p>
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-1 nhsuk-u-margin-bottom-5">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <h3>What is NHS login?</h3>
+            <p>You can use your NHS login to access health websites and apps that have the NHS login button. If you do
+                not have an NHS login, enter your email address to set one up.</p>
         </div>
 
         </form>
-
 
     </div>
 

@@ -4,6 +4,8 @@
 // Components that are not in the NHS.UK frontend library
 @import 'components/panel-confirmation';
 @import 'components/related-nav';
+@import 'components/spinner';
+
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below... 
@@ -131,3 +133,78 @@
     top: 4px;
   }
 }
+
+
+///////
+
+.nhs-app-panel-heading {
+    margin-bottom: 0; }
+    @media (max-width: 48.0525em) {
+      .nhs-app-panel-heading {
+        margin: 0 -1em 0; } }
+    .nhs-app-panel-heading h1, .nhs-app-panel-heading h2, .nhs-app-panel-heading h3, .nhs-app-panel-heading h4, .nhs-app-panel-heading h5 {
+      background-color: white;
+      padding: 0.5em 16px 0.5em 16px;
+      border-top: 1px solid #d8dde0;
+      margin-bottom: 0; }
+
+      ul.list-menu {
+        border-top: 1px #D8DDE0 solid;
+        list-style: none;
+        padding-left: 0; }
+      
+      .list-menu li {
+        box-sizing: border-box;
+        background: #f0f4f5 url("../images/icon_arrow_left.svg") no-repeat center right;
+        background-position: right 1em center;
+        position: relative;
+        margin-bottom: 0em;
+        margin-left: 0em;
+        padding: 0.5em 0em 0.5em 0;
+        border-bottom: 1px #D8DDE0 solid; }
+      
+      .list-menu li a {
+        font-size: 1em;
+        display: block;
+        padding: 0;
+        text-decoration: none; }
+      
+      .list-menu li a h2 {
+        margin: 0em;
+        padding-right: 1em; }
+      
+      .list-menu li a h3 {
+        margin: 0em;
+        padding-right: 1em;
+        padding-bottom: 6px; }
+      
+      .list-menu li p {
+        margin-bottom: 0;
+        padding-right: 3em;
+        color: #212b32; }
+        
+
+
+        .list-menu {
+            margin-bottom: 1em; }
+            @media (max-width: 48.0525em) {
+              .list-menu {
+                margin: 0 -1em 1em; } }
+            .list-menu li {
+              background-color: white;
+              padding: 0;
+              margin-bottom: .2em; }
+            .list-menu li a {
+              font-weight: 600;
+              padding: 10.5px 2em 4px 1em;
+              min-height: 46px; }
+            .list-menu li a h2 {
+              padding-bottom: 6px; }
+            .list-menu li p {
+              padding-top: 0; }
+          
+          .list-menu li a:focus, .list-menu li a:hover {
+            background-color: transparent;
+            box-shadow: inset 0 0 0 4px #ffcd60; }
+            .list-menu li a:focus h2, .list-menu li a:focus h3, .list-menu li a:hover h2, .list-menu li a:hover h3 {
+              text-decoration: underline; }
