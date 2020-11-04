@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your email address?
+No address found
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@ What is your email address?
         }) }}
 
         <h1 class="nhsuk-u-margin-bottom-5">
-            No results found for
+            No results found for that {% if (data['housenumber']) and (data['postcode']) %}building number or name and postcode{% else %}postcode{% endif %}
         </h1>
 
         <dl class="nhsuk-summary-list">
@@ -31,7 +31,7 @@ What is your email address?
 
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    House number or name
+                    Building number or name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                     {% if data['housenumber'] %}{{ data['housenumber'] }}{% else %}11{% endif %}
@@ -40,7 +40,7 @@ What is your email address?
                 <dd class="nhsuk-summary-list__actions">
 
                     <a href="find-address#housenumber">
-                        Change<span class="nhsuk-u-visually-hidden"> your house number or name</span>
+                        Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} house number or name</span>
                     </a>
 
                 </dd>
@@ -61,7 +61,7 @@ What is your email address?
                 <dd class="nhsuk-summary-list__actions">
 
                     <a href="find-address#postcode">
-                        Change<span class="nhsuk-u-visually-hidden"> your postcode</span>
+                        Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} postcode</span>
                     </a>
 
                 </dd>
@@ -70,7 +70,7 @@ What is your email address?
 
         </dl>
 
-        <p>If you are sure the information you gave is correct, then you can <a href="address">enter your address manually</a>.</p>
+        <p><a href="address">Enter {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} address manually</a> if {% if data['applyingfor'] == "someoneelse" %}they're{% else %}you're{% endif %} sure the information {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} gave is correct.</p>
 
 
 
