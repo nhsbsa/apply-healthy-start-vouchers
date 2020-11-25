@@ -6,18 +6,28 @@
 <!-- Extends the layout from /docs/views/template.html -->
 <!DOCTYPE html>
 <html>
+
 <head>
   <title></title>
 </head>
+
 <body>
-  {% extends "template-overlay.html" %} <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-   {% block headCSS %}
-  <link href="/css/main.css"
-        rel="stylesheet">{% endblock %} <!-- Set the page title inside the pageTitle block -->
-   {% block pageTitle %} NHS.UK prototype kit {% endblock %} <!-- Header goes inside the header block -->
-   <!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
-   {% block header %} {{ header({ "service": { "name": "Get help to buy food and milk (Healthy Start)", "href": "/" }, "showNav": "false", "showSearch": "false" }) }} {% endblock %} <!-- Footer goes inside the footer block -->
-   <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
+
+  {% extends "template-cookies.html" %}
+
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  {% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">{% endblock %}
+  <!-- Set the page title inside the pageTitle block -->
+  {% block pageTitle %} NHS.UK prototype kit {% endblock %}
+  <!-- Header goes inside the header block -->
+  <!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
+  {% block header %}
+
+  {{ header({ "service": { "name": "Get help to buy food and milk (Healthy Start)", "href": "/" }, "showNav": "false", "showSearch": "false" }) }}
+  {% endblock %}
+  <!-- Footer goes inside the footer block -->
+  <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
   {% block footer %}
   {{ footer({
     "links": [
@@ -50,10 +60,14 @@
     </div>
   </div>
   {% endblock %}
-   
-   {% block bodyEnd %} {% block scripts %} 
-  <!-- Custom JavaScript files can be added to this file -->
-   {% include "includes/scripts.html" %} <!-- For adding page specific JavsScript -->
-   {% block pageScripts %}{% endblock %} {% endblock %} {% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
+
 </body>
+
 </html>
