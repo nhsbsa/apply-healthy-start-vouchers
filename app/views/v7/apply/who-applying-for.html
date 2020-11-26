@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Who are you applying for?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Who are you applying for?
+        </h1>
+
+        <form action="/v7/who-applying-for" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="myself" name="applyingfor" type="radio" value="myself">
+                            <label class="nhsuk-label nhsuk-radios__label" for="myself">
+                                Myself or my partner
+                            </label>
+                            <span class="nhsuk-hint nhsuk-radios__hint" id="myself">
+                                I need help to buy milk, food and vitamins
+                            </span>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="someoneelse" name="applyingfor" type="radio" value="someoneelse">
+                            <label class="nhsuk-label nhsuk-radios__label" for="someoneelse">
+                                Someone else
+                            </label>
+                            <span class="nhsuk-hint nhsuk-radios__hint" id="someoneelse">
+                                I am applying for a relative, somebody I care for, or somebody that needs help to buy milk, food and vitamins
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

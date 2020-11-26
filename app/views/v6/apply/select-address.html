@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Select {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address
+Select your address
 {% endblock %}
 
 {% block content %}
@@ -13,46 +13,56 @@ Select {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} ad
             "text": "Go back"
         }) }}
 
-        <h1 class="nhsuk-fieldset__legend--xl">
-            Select {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address
-        </h1>
-
-        <p>{{ items | length }} {% if (items | length > 1)  %}addresses{% else %}address{% endif %} found for {% if data['housenumber']  %}'{{ data['housenumber'] }}' and {% endif %} '{{ data['postcode'] }}'.</p>
-
         <form action="/v6/select-address" method="get">
 
-            <div class="nhsuk-form-group">
-                <div class="nhsuk-radios">
+            <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Select your address
+                    </h1>
+                </legend>
 
-{% for item in items %}
-                <div class="nhsuk-radios__item">
-                    <input class="nhsuk-radios__input" id="selectaddress-{{ loop.index }}" name="selectaddress" type="radio" value="{{ item | replace(" ,", "") }}, {{ data['postcode'] }}">
-                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-{{ loop.index }}">
-                    {{ item | replace(" ,", "") }}, {{ data['postcode'] }}
-                    </label>
+                <p>{{ items | length }} {% if (items | length > 1)  %}addresses{% else %}address{% endif %} found for
+                    {% if data['housenumber']  %}'{{ data['housenumber'] }}' and {% endif %} '{{ data['postcode'] }}'.
+                </p>
+
+                <div class="nhsuk-form-group">
+
+                    <div class="nhsuk-radios">
+
+                        {% for item in items %}
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="selectaddress-{{ loop.index }}" name="selectaddress"
+                                type="radio" value="{{ item | replace(" ,", "") }}, {{ data['postcode'] }}">
+                            <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-{{ loop.index }}">
+                                {{ item | replace(" ,", "") }}, {{ data['postcode'] }}
+                            </label>
+                        </div>
+                        {% endfor %}
+
+                        <div class="nhsuk-radios__divider">or</div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="selectaddress-none" name="selectaddress" type="radio"
+                                value="none">
+                            <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-none">
+                                The address is not listed here
+                            </label>
+                        </div>
+
+                    </div>
                 </div>
-{% endfor %}
 
-                <div class="nhsuk-radios__divider">or</div>
-                <div class="nhsuk-radios__item">
-                    <input class="nhsuk-radios__input" id="selectaddress-none" name="selectaddress" type="radio" value="none">
-                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-none">
-                    The address is not listed here
-                    </label>
-                </div>
+                <button class="nhsuk-button" type="submit">
+                    Continue
+                </button>
 
-                </div>
-            </div>
-
-            <button class="nhsuk-button" type="submit">
-                Continue
-            </button>
+            </fieldset>
 
         </form>
 
-</div>
-
     </div>
+
+</div>
 </div>
 
 

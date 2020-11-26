@@ -1,20 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Are
-{% if (data['applyingfor'] == "myself") and (data['partner'] == "yes") %}
- you or your partner 
-{% endif %}
-{% if (data['applyingfor'] == "myself") and (data['partner'] == "no") %}
- you 
-{% endif %}
-{% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "yes") %}
- they or their partner 
-{% endif %}
-{% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "no") %}
- they 
-{% endif %}
-pregnant?
+Are you pregnant?
 {% endblock %}
 
 {% block content %}
@@ -26,28 +13,17 @@ pregnant?
             "text": "Go back"
         }) }}
 
-        <h1 class="nhsuk-fieldset__legend--xl">
-            Are
-            {% if (data['applyingfor'] == "myself") and (data['partner'] == "yes") %}
-             you or your partner 
-            {% endif %}
-            {% if (data['applyingfor'] == "myself") and (data['partner'] == "no") %}
-             you 
-            {% endif %}
-            {% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "yes") %}
-             they or their partner 
-            {% endif %}
-            {% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "no") %}
-             they 
-            {% endif %}
-            pregnant?
-        </h1>
-
         <form action="/v6/are-you-pregnant" method="post">
 
             <div class="nhsuk-form-group">
 
-                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <fieldset class="nhsuk-fieldset">
+
+                                                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Are you pregnant?
+                    </h1>
+                </legend>
 
                     <div class="nhsuk-radios nhsuk-radios--inline">
                         <div class="nhsuk-radios__item">
@@ -68,17 +44,6 @@ pregnant?
 
 
             </div>
-
-            <details class="nhsuk-details">
-            <summary class="nhsuk-details__summary">
-                <span class="nhsuk-details__summary-text">
-                If both {% if data['applyingfor'] == "myself" %}you and your partner{% else %}they and their partner{% endif %} are pregnant
-                </span>
-            </summary>
-            <div class="nhsuk-details__text">
-                <p>If both {% if data['applyingfor'] == "myself" %}you and your partner{% else %}they and their partner{% endif %} are pregnant, email <a href="mailto:nhsbsa.applyforhealthystart@nhsbsa.nhs.uk">nhsbsa.applyforhealthystart@nhsbsa.nhs.uk<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>.</p>
-            </div>
-            </details>
 
             <button class="nhsuk-button" type="submit">
                 Continue

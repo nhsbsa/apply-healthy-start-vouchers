@@ -1,0 +1,104 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout-hub-slim.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %}Terms and conditions - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      <h1>Get help to buy food and milk <span class="nhsuk-caption-xl nhsuk-caption--bottom"><span class="nhsuk-u-visually-hidden">-</span> (Healthy Start)</span></h1>
+      <nav aria-label="Pages in this guide"
+           class="nhsuk-contents-list"
+           role="navigation">
+        <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+        <ol class="nhsuk-contents-list__list">
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="overview">Overview</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="eligibility">Eligibility</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="what-youll-get">What you’ll get</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="what-you-can-buy">What you can buy</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="how-to-apply">How to apply</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="help-with-claim">Get help with your claim</a>
+          </li>
+          <li aria-current="page"
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">Terms and conditions</span></li>
+        </ol>
+      </nav><!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Terms and conditions</h2>
+
+      <p>You must tell us if your circumstances or personal details change.</p>
+
+      <p>You understand that you must only buy permitted items with the money you’re given.</p>
+
+      <p>You understand that we’re acting on behalf of the Department of Health and Social Care (DHSC).</p>
+
+      <p>You confirm that you:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>give us permission to submit this application on your behalf</li>
+        <li>know we’ll use your information and share it with other organisations where necessary</li>
+        <li>understand your data will not be transferred outside the European Economic Area and will be delete within 24 months after your eligibility ends</li>
+        <li>know this is a pilot scheme and consent to your data being used to evaluate it</li>
+      </ul>
+
+      <p>You understand and agree that the DHSC can:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>check with other organisations associated with the service that the information you’ve given is correct</li>
+        <li>stop your payments and ask you to repay the money if you apply illegally</li>
+      </ul>      
+
+      <p>You can read more in our <a target="_blank" href="https://www.nhsbsa.nhs.uk/our-policies/privacy/healthy-start-privacy-notice">privacy policy<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a>.</p>
+
+
+      <!-- End of content -->
+
+      <nav aria-label="Pagination"
+           class="nhsuk-pagination"
+           role="navigation">
+        <ul class="nhsuk-list nhsuk-pagination__list">
+          <li class="nhsuk-pagination-item--previous">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+                href="help-with-claim"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Get help with your claim</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-left"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path></svg></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>{% endblock %}
+</body>
+</html>

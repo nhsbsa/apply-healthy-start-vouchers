@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you a parent, guardian or carer of the person applying?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Are you a parent, guardian or carer of the person applying?
+        </h1>
+
+        <form action="/v7/parent-guardian-carer" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="parentguardiancarer" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="parentguardiancarer" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                What is a parent, guardian or carer?
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <h2 class="nhsuk-heading-s">What is a parent?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis magna et purus elementum dictum convallis sit amet orci. Quisque egestas blandit mollis.</p>
+                <h2 class="nhsuk-heading-s">What is a guardian?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis magna et purus elementum dictum convallis sit amet orci. Quisque egestas blandit mollis.</p>
+                <h2 class="nhsuk-heading-s">What is a carer?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis magna et purus elementum dictum convallis sit amet orci. Quisque egestas blandit mollis.</p>
+            </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

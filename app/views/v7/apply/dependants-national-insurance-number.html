@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your national insurance number?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="/v7/dependants-national-insurance-number" method="post">
+
+            <div class="nhsuk-form-group">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="nationalinsurancenumber">
+                    What is your National Insurance number?
+                    </label>
+                </h1>
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                    It's on your National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'.
+                </span>
+                <input class="nhsuk-input nhsuk-input--width-20" id="nationalinsurancenumber" name="dependantsnationalinsurancenumber" type="text">
+            </div>
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Why we ask for your National Insurance number
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>We use this to check {% if data['firstname'] == "myself" %}{{ data['firstname'] }}'s{% else %}their{% endif %} eligibility for the service with other government departments when required.</p>                      
+              </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

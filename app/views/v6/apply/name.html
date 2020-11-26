@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name?
+What is your name?
 {% endblock %}
 
 {% block content %}
@@ -14,10 +14,10 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} n
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name?
+            What is your name?
         </h1>
 
-        <p>Use the name that’s on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} official documents, such as passport, driving licence, or any benefit claims.</p>
+        <p>Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.</p>
 
         <form action="/v6/name" method="post">
 
@@ -39,11 +39,11 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} n
                   <details class="nhsuk-details">
                         <summary class="nhsuk-details__summary">
                           <span class="nhsuk-details__summary-text">
-                            Why we ask for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name
+                            Why we ask for your name
                           </span>
                         </summary>
                         <div class="nhsuk-details__text">
-                          <p>We use {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} name to confirm {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} identity and eligibility.</p>                      
+                          <p>We use your name to confirm your identity and eligibility.</p>                      
                         </div>
                       </details>
 

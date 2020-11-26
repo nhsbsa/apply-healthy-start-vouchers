@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your child’s first name?
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">What is your child’s first name?</h1>
+
+        <p>If you have more than one child under 4 years old, you will be able to tell us about them later.</p>
+
+        <form action="/v7/childs-first-name" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                  <label class="nhsuk-label" for="childsfirstname">Child’s first name</label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childsfirstname" type="text">
+
+                </fieldset>
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">Continue</button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

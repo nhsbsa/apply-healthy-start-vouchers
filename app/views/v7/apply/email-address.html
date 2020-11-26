@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} email address?
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="/v7/email-address" method="post">
+
+        <div class="nhsuk-form-group">
+            <h1 class="nhsuk-label-wrapper">
+                <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="emailaddress">
+                What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} email address? (optional)
+                </label>
+            </h1>
+            <input class="nhsuk-input nhsuk-input--width-20" id="emailaddress" name="emailaddress" type="text" autocomplete="email">
+        </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Why we ask for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} email address
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>We use this to send notifications about {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} application and payments.</p>
+                </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

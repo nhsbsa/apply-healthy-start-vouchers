@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Find your address
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Find your address
+        </h1>
+
+        {% if data['benefits'] %}
+        <p>This must be the same address you have registered with the benefits agency (DWP or HMRC).</p>
+        {% endif %}
+
+        <form action="/v7/dependants-find-address" method="get">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="housenumber">
+                    House number or name (optional)
+                </label>
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                   for example, Flat 20A
+                  </span>
+                <input class="nhsuk-input nhsuk-input--width-20" id="housenumber" name="dependantshousenumber" type="text" autocomplete="address-line1">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                    for example, WA4 1AB
+                   </span>
+                <input class="nhsuk-input nhsuk-input--width-20" id="postcode" name="dependantspostcode" type="text" autocomplete="postal-code">
+            </div>
+
+            <div class="nhsuk-form-group">
+            <p><a href="dependants-address">Enter my address manually</a></p>
+            </div>
+
+<!--
+
+            <details class="nhsuk-details">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Why we ask for your address
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.</p>                      
+              </div>
+            </details>
+
+-->
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

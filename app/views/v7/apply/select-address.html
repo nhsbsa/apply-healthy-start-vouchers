@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Select {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Select {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} address
+        </h1>
+
+        <p>{{ items | length }} {% if (items | length > 1)  %}addresses{% else %}address{% endif %} found for {% if data['housenumber']  %}'{{ data['housenumber'] }}' and {% endif %} '{{ data['postcode'] }}'.</p>
+
+        <form action="/v7/select-address" method="get">
+
+            <div class="nhsuk-form-group">
+                <div class="nhsuk-radios">
+
+{% for item in items %}
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-{{ loop.index }}" name="selectaddress" type="radio" value="{{ item | replace(" ,", "") }}, {{ data['postcode'] }}">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-{{ loop.index }}">
+                    {{ item | replace(" ,", "") }}, {{ data['postcode'] }}
+                    </label>
+                </div>
+{% endfor %}
+
+                <div class="nhsuk-radios__divider">or</div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="selectaddress-none" name="selectaddress" type="radio" value="none">
+                    <label class="nhsuk-label nhsuk-radios__label" for="selectaddress-none">
+                    The address is not listed here
+                    </label>
+                </div>
+
+                </div>
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+</div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

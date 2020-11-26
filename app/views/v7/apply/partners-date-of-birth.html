@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} partner’s date of birth?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} partner’s date of birth?
+        </h1>
+
+        <form action="/v7/partners-date-of-birth" method="post">
+
+            <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
+                      <span class="nhsuk-hint" id="hint">
+                        For example, 15 3 1984
+                      </span>
+                  
+                      <div class="nhsuk-date-input">
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="partnersdateofbirthday">
+                              Day
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthday" name="partnersdateofbirthday" type="number" pattern="[0-9]*">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="partnersdateofbirthmonth">
+                              Month
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthmonth" name="partnersdateofbirthmonth" type="number" pattern="[0-9]*">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="partnersdateofbirthyear">
+                              Year
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateofbirthyear" name="partnersdateofbirthyear" type="number" pattern="[0-9]*">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  
+                  </div>
+
+                  <details class="nhsuk-details">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                            Why we ask for {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} partner’s date of birth
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          <p>We use this to work out {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} partner’s age and check {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} partner’s eligibility.</p>                      
+                        </div>
+                      </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

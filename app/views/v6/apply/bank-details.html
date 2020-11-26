@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What {% if data['applyingfor'] == "myself" %}are your{% else %}is their{% endif %} bank or building society account details?
+What are your bank or building society account details?
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@ What {% if data['applyingfor'] == "myself" %}are your{% else %}is their{% endif 
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            What {% if data['applyingfor'] == "myself" %}are your{% else %}is their{% endif %} bank or building society account details?
+            What are your bank or building society account details?
         </h1>
 
         <form novalidate="novalidate" action="/v6/bank-details" method="post">
@@ -53,7 +53,7 @@ What {% if data['applyingfor'] == "myself" %}are your{% else %}is their{% endif 
                 Building society roll number (optional)
               </label>
               <span class="nhsuk-hint" id="roll-number-hint">
-                {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} can find it on {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} card, statement or passbook
+                You can find it on your card, statement or passbook
               </span>
               <input class="nhsuk-input nhsuk-input--width-10" id="buildingsocietynumber" name="buildingsocietynumber" type="text" aria-describedby="roll-number-hint" spellcheck="false" value="{{ data['buildingsocietynumber'] }}">
             </div>

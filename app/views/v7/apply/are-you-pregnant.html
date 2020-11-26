@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are
+{% if (data['applyingfor'] == "myself") and (data['partner'] == "yes") %}
+ you or your partner 
+{% endif %}
+{% if (data['applyingfor'] == "myself") and (data['partner'] == "no") %}
+ you 
+{% endif %}
+{% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "yes") %}
+ they or their partner 
+{% endif %}
+{% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "no") %}
+ they 
+{% endif %}
+pregnant?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Are
+            {% if (data['applyingfor'] == "myself") and (data['partner'] == "yes") %}
+             you or your partner 
+            {% endif %}
+            {% if (data['applyingfor'] == "myself") and (data['partner'] == "no") %}
+             you 
+            {% endif %}
+            {% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "yes") %}
+             they or their partner 
+            {% endif %}
+            {% if (data['applyingfor'] == "someoneelse") and (data['partner'] == "no") %}
+             they 
+            {% endif %}
+            pregnant?
+        </h1>
+
+        <form action="/v7/are-you-pregnant" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="pregnant" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="pregnant" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                If both {% if data['applyingfor'] == "myself" %}you and your partner{% else %}they and their partner{% endif %} are pregnant
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <p>If both {% if data['applyingfor'] == "myself" %}you and your partner{% else %}they and their partner{% endif %} are pregnant, email <a href="mailto:nhsbsa.applyforhealthystart@nhsbsa.nhs.uk">nhsbsa.applyforhealthystart@nhsbsa.nhs.uk<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>.</p>
+            </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
