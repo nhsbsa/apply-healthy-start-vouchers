@@ -1,0 +1,70 @@
+<!-- 
+  This is the main layout where you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+<!-- Extends the layout from /docs/views/template.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+</head>
+
+<body>
+  {% extends "template.html" %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  {% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">{% endblock %}
+  <!-- Set the page title inside the pageTitle block -->
+  {% block pageTitle %} NHS.UK prototype kit {% endblock %}
+  <!-- Header goes inside the header block -->
+  <!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
+  {% block header %}
+  {{ header({ "service": { "name": "Mynnwch help i brynu bwyd a llaeth (Cychwyn Iach)", "href": "/" }, "showNav": "false", "showSearch": "false" }) }}
+  {% endblock %}
+  <!-- Footer goes inside the footer block -->
+  <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
+  {% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "https://www.nhsbsa.nhs.uk/our-policies/privacy/healthy-start-privacy-notice",
+        "label": "Preifatrwydd"
+      },
+      {
+        "URL": "/cookies/cookies",
+        "label": "Cwcis"
+      },
+      {
+        "URL": "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions",
+        "label": "Telerau ac Amodau"
+      },
+      {
+        "URL": "https://www.nhsbsa.nhs.uk/our-policies/accessibility/accessibility-statement-get-help-buy-food-and-milk-healthy-start",
+        "label": "Hygyrchedd"
+      }
+    ]
+  })}}
+  <div class="app-ogl-footer">
+    <div class="nhsuk-width-container">
+      <p class="app-ogl-footer--text">
+        <svg xmlns="http://www.w3.org/2000/svg" height="17" width="41" role="presentation" focusable="false" viewBox="0 0 483.2 195.7">
+          <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"></path>
+        </svg>
+        Mae'r holl gynnwys ar gael o dan <a class="nhsuk-footer__list-item-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" target="_blank">Drwydded Llywodraeth Agored v3.0<span class="nhsuk-u-visually-hidden"> (yn agor mewn tab newydd)</span></a>, ac eithrio lle nodir yn wahanol.
+      </p>
+    </div>
+  </div>
+  {% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
+
+</body>
+
+</html>

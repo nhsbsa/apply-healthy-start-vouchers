@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your due date?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="/v9/due-date" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              What is your due date?
+            </h1>
+          </legend>
+
+          <span class="nhsuk-hint" id="hint">
+            For example, 21 8 2020
+          </span>
+
+          <div class="nhsuk-date-input">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="duedateday">
+                  Day
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedateday"
+                  name="duedateday" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="duedatemonth">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedatemonth"
+                  name="duedatemonth" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="duedateyear">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="duedateyear"
+                  name="duedateyear" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+      </div>
+
+      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>If you are unsure, or still awaiting a <a
+          href="https://www.nhs.uk/conditions/pregnancy-and-baby/dating-scan-ultrasound-10-11-12-13-weeks-pregnant/"
+          target="_blank">dating scan<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>, you
+        can work out when you might expect your baby to arrive using the <a
+          href="https://www.nhs.uk/conditions/pregnancy-and-baby/due-date-calculator/" target="_blank">NHS pregnancy
+          and due date calculator<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>.</p>
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
