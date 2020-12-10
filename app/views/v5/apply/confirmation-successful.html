@@ -24,8 +24,9 @@ Application successful
           
           <p>We’ll pay {% if data['lessThanTenWeeksPregnant'] == true %}£12.40{% else %}£24.80{% endif %} into your bank account within 12 days.</p>
           <p>You’ll then get a payment every 4 weeks after that.</p>
-          <p>{% if (data['emailaddress']) %}We’ve sent you an email with more information about your payment.{% elif (data['telephonenumber']) %}We’ve sent you a text message with more information about your payment.{% else %}We’ve sent you a letter with more information about your payment.{% endif %}</p>      
-
+          {% if data['lessThanTenWeeksPregnant'] == false %}<p>You’re also entitled to Healthy Start vitamins because you’re pregnant or responsible for children under 4 years old.</p>{% endif %}
+          <p>{% if (data['emailaddress']) %}We’ve sent {% if data['applyingfor'] == "someoneelse" %}them{% else %}you{% endif %} an email with more information about your payment{% if data['lessThanTenWeeksPregnant'] == false %} and how to collect your vitamins{% endif %}.{% elif (data['telephonenumber']) %}We’ve sent {% if data['applyingfor'] == "someoneelse" %}them{% else %}you{% endif %} a text message with more information about your payment{% if data['lessThanTenWeeksPregnant'] == false %} and how to collect your vitamins{% endif %}.{% else %}We’ve sent {% if data['applyingfor'] == "someoneelse" %}them{% else %}you{% endif %} a letter with more information about your payment{% if data['lessThanTenWeeksPregnant'] == false %} and how to collect your vitamins{% endif %}.{% endif %}</p>      
+          
           <h2 class="nhsuk-heading-m">Any problems</h2>
 
           <p>If you do not get your money, there’s a change in your circumstances or you think a mistake has been made, email <a href="mailto:nhsbsa.applyforhealthystart@nhsbsa.nhs.uk">nhsbsa.applyforhealthystart@nhsbsa.nhs.uk<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a>.</p>
