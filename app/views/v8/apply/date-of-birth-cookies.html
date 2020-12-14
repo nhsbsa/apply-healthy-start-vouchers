@@ -1,4 +1,4 @@
-{% extends 'layout-cookies.html' %}
+{% extends 'layout.html' %}
 
 {% block pageTitle %}
 What is your date of birth?
@@ -35,7 +35,7 @@ What is your date of birth?
                   Day
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthday"
-                  name="dateofbirthday" type="number" pattern="[0-9]*">
+                  name="dateofbirthday" type="number" pattern="[0-9]*" value="01">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -44,7 +44,7 @@ What is your date of birth?
                   Month
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthmonth"
-                  name="dateofbirthmonth" type="number" pattern="[0-9]*">
+                  name="dateofbirthmonth" type="number" pattern="[0-9]*" value="01">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -53,7 +53,7 @@ What is your date of birth?
                   Year
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateofbirthyear"
-                  name="dateofbirthyear" type="number" pattern="[0-9]*">
+                  name="dateofbirthyear" type="number" pattern="[0-9]*" value="1985">
               </div>
             </div>
           </div>
