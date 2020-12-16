@@ -18,14 +18,67 @@ Are you pregnant?
 
         <form action="/v9/national-insurance-number" method="post">
 
-          <div class="nhsuk-form-group">
-              <h1 class="nhsuk-label-wrapper">
-                  <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="nationalinsurancenumber">
-                  What is your nationality?
-                  </label>
-              </h1>
-              <div id="my-autocomplete-container" class="codecomplete nhsuk-input--width-20"></div>
 
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                <h1 class="nhsuk-fieldset__heading">
+                  What is your nationality?
+                </h1>
+              </legend>
+          
+              <div class="nhsuk-hint" id="contact-hint">
+                Select one option
+              </div>
+          
+              <div class="nhsuk-radios nhsuk-radios--conditional">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact-1" name="contact" type="radio" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                    British
+                  </label>
+                  <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                    including English, Scottish, Welsh or Northern Irish
+                  </div>
+                </div>
+          
+                <!--
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+                    Irish
+                  </label>
+                  <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                    including from Northern Ireland
+                  </div>
+                </div>
+                -->
+
+                <div class="nhsuk-radios__divider">or</div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact-3" name="contact" type="radio" value="text" aria-controls="conditional-contact-3" aria-expanded="false">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
+                    Citizen of a different country
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-3">
+          
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="mobile">
+                      Select your nationality
+                    </label>
+                    <div id="my-autocomplete-container" class="codecomplete nhsuk-input--width-20"></div>
+                  </div>
+          
+                </div>
+          
+              </div>
+            </fieldset>
+          
           </div>
 
           <details class="nhsuk-details">
@@ -35,7 +88,7 @@ Are you pregnant?
               </span>
             </summary>
             <div class="nhsuk-details__text">
-              <p>We use your nationality to check your eligibility.</p>                      
+              <p>We use your nationality to check your identity.</p>                      
             </div>
           </details>
 
@@ -72,7 +125,6 @@ Are you pregnant?
           'Bolivian',
           'Botswanan',
           'Brazilian',
-          'British',
           'British Virgin Islander',
           'Bruneian',
           'Bulgarian',
@@ -115,7 +167,6 @@ Are you pregnant?
           'Ecuadorean',
           'Egyptian',
           'Emirati',
-          'English',
           'Equatorial Guinean',
           'Eritrean',
           'Estonian',
@@ -199,7 +250,6 @@ Are you pregnant?
           'Nigerien',
           'Niuean',
           'North Korean',
-          'Northern Irish',
           'Norwegian',
           'Omani',
           'Pakistani',
@@ -223,7 +273,6 @@ Are you pregnant?
           'Samoan',
           'Sao Tomean',
           'Saudi Arabian',
-          'Scottish',
           'Senegalese',
           'Serbian',
           'Sierra Leonean',
@@ -268,7 +317,6 @@ Are you pregnant?
           'Vietnamese',
           'Vincentian',
           'Wallisian',
-          'Welsh',
           'Yemeni',
           'Zambian',
           'Zimbabwean'

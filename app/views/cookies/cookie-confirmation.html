@@ -23,9 +23,15 @@ Get help to buy food and milk (Healthy Start)
                 <p>You can also change your settings at any time using our <a
                         href="/cookies/cookies">cookies page</a>.</p>
                 <p>Select 'Continue' to go back to the page you were looking at.</p>
-                <a href="/current/start" type="submit" class="nhsuk-button nhsuk-u-margin-top-3">
-                    Continue
-                </a>
+
+                <form action="/cookies/cookie-confirmation" method="post">
+
+                    <button class="nhsuk-button" type="submit">
+                        Continue
+                    </button>
+        
+                </form>
+
     </div>
 </div>
 {% endblock %}

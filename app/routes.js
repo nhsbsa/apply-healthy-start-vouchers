@@ -394,6 +394,8 @@ router.post('/v7/check-your-answers', function (req, res) {
 
 router.post('/v8/check-your-answers', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/check-your-answers";
+
   var contact = req.session.data['contact'];
   var emailAddress = req.session.data['emailaddress'];
   var mobilePhoneNumber = req.session.data['mobilephonenumber'];
@@ -2820,6 +2822,8 @@ router.post('/v7/feedback', function (req, res) {
 
 router.post('/v8/national-insurance-number', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/national-insurance-number";
+
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
   if (nationalinsurancenumber) {
@@ -2841,6 +2845,8 @@ router.post('/v8/national-insurance-number', function (req, res) {
 
 router.post('/v8/name', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/name";
+
   var firstname = req.session.data['firstname']
   var lastname = req.session.data['lastname']
 
@@ -2856,6 +2862,8 @@ router.post('/v8/name', function (req, res) {
 // Date of birth
 
 router.post('/v8/date-of-birth', function (req, res) {
+
+  req.session.data['referrer'] = "/v8/apply/date-of-birth";
 
   var dateofbirthday = req.session.data['dateofbirthday']
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
@@ -2882,6 +2890,8 @@ router.post('/v8/date-of-birth', function (req, res) {
 
 router.post('/v8/are-you-pregnant', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/are-you-pregnant";
+
   var pregnant = req.session.data['pregnant']
 
   if (pregnant === "yes") {
@@ -2900,6 +2910,8 @@ router.post('/v8/are-you-pregnant', function (req, res) {
 // Are you pregnant? > Due Date
 
 router.post('/v8/due-date', function (req, res) {
+
+  req.session.data['referrer'] = "/v8/apply/due-date";
 
   var duedateday = req.session.data['duedateday']
   var duedatemonth = req.session.data['duedatemonth']
@@ -2940,6 +2952,8 @@ router.post('/v8/due-date', function (req, res) {
 // Find your address
 
 router.get('/v8/find-address', function (req, res) {
+
+  req.session.data['referrer'] = "/v8/apply/find-address";
 
   var houseNumberName = req.session.data['housenumber']
   var postcode = req.session.data['postcode']
@@ -2995,6 +3009,8 @@ router.get('/v8/find-address', function (req, res) {
 
 router.get('/v8/select-address', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/select-address";
+
   var selectaddress = req.session.data['selectaddress']
 
   if (selectaddress === 'none') {
@@ -3017,6 +3033,8 @@ router.get('/v8/select-address', function (req, res) {
 
 router.post('/v8/address', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/address";
+
   delete req.session.data['selectaddress']
 
   var addressline1 = req.session.data['addressline1']
@@ -3036,6 +3054,8 @@ router.post('/v8/address', function (req, res) {
 
 router.post('/v8/email-address', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/email-address";
+
   var emailaddress = req.session.data['emailaddress']
 
   res.redirect('/v8/apply/mobile-phone-number')
@@ -3045,6 +3065,8 @@ router.post('/v8/email-address', function (req, res) {
 // What is your mobile phone number?
 
 router.post('/v8/mobile-phone-number', function (req, res) {
+  
+  req.session.data['referrer'] = "/v8/apply/mobile-phone-number";
 
   var mobilePhoneNumber = req.session.data['mobilephonenumber']
 
@@ -3055,6 +3077,8 @@ router.post('/v8/mobile-phone-number', function (req, res) {
 // Contact Preferences
 
 router.post('/v8/contact-preferences', function (req, res) {
+
+  req.session.data['referrer'] = "/v8/apply/contact-preferences";
 
   var contact = req.session.data['contact']
   var emailAddress = req.session.data['emailaddress']
@@ -3080,6 +3104,8 @@ router.post('/v8/contact-preferences', function (req, res) {
 
 router.post('/v8/bank-details', function (req, res) {
 
+  req.session.data['referrer'] = "/v8/apply/bank-details";
+
   var accountName = req.session.data['accountname']
   var sortCode = req.session.data['sortcode']
   var accountNumber = req.session.data['accountnumber']
@@ -3096,7 +3122,23 @@ router.post('/v8/bank-details', function (req, res) {
 // Feedback
 
 router.post('/v8/feedback', function (req, res) {
+
+  req.session.data['referrer'] = "/v8/feedback";
+
   res.redirect('/v8/feedback')
+})
+
+// Cookies
+
+router.post('/cookies/cookie-confirmation', function (req, res) {
+
+  if (!req.session.data['referrer']){
+    res.redirect('/current/start')    
+  }
+  else {
+    res.redirect(req.session.data['referrer'])
+  }
+
 })
 
 // ********************************
@@ -3465,3 +3507,5 @@ router.post('/v9/bank-details', function (req, res) {
 router.post('/v9/feedback', function (req, res) {
   res.redirect('/v9/feedback')
 })
+
+
