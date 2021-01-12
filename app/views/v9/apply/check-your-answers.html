@@ -81,6 +81,26 @@ Check your answers
             </div>
             {% endif %}
 
+            {% if (data['input-autocomplete']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Nationality
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['input-autocomplete'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="nationality">
+                        Change<span class="nhsuk-u-visually-hidden"> your nationality</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Currently pregnant

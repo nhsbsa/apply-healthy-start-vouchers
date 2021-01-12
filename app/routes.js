@@ -3279,10 +3279,25 @@ router.post('/v9/date-of-birth', function (req, res) {
 
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-    res.redirect('/v9/apply/are-you-pregnant')
+    res.redirect('/v9/apply/nationality')
   }
   else {
     res.redirect('/v9/apply/date-of-birth')
+  }
+
+})
+
+// What is your nationality?
+
+router.post('/v9/nationality', function (req, res) {
+
+  var nationality = req.session.data['input-autocomplete']
+
+  if (nationality) {
+    res.redirect('/v9/apply/are-you-pregnant')
+  }
+  else {
+    res.redirect('/v9/apply/nationality')
   }
 
 })
