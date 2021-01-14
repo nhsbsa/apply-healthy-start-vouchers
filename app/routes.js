@@ -3472,7 +3472,7 @@ router.post('/v9/mobile-phone-number', function (req, res) {
 
   var mobilePhoneNumber = req.session.data['mobilephonenumber']
 
-  res.redirect('/v9/apply/bank-details')
+  res.redirect('/v9/apply/check-your-answers')
 
 })
 
