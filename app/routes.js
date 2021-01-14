@@ -1,9 +1,9 @@
 // Gov Notify
 const { NotifyClient } = require('notifications-node-client');
-let notify = null;
+let notifyClient = null;
 
 if (process.env.NOTIFYAPIKEY) {
-  notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+  notifyClient = new NotifyClient(process.env.NOTIFYAPIKEY);
 };
 
 // External dependencies
