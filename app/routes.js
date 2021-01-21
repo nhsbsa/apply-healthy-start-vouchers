@@ -3381,7 +3381,7 @@ router.post('/v9/due-date', function (req, res) {
         req.session.data.lessThanTenWeeksPregnant = false;
       }
 
-      res.redirect('/v9/apply/find-address')
+      res.redirect('/v9/apply/email-address')
     }
 
   }
