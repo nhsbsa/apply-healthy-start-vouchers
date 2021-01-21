@@ -3694,8 +3694,8 @@ router.post('/v10/date-of-birth', function (req, res) {
   var dob = moment((dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear), "DD-MM-YYYY");
   var dateofbirth = dob.format();
 
-  var lastname = req.session.data['lastname']
-  var addressline1 = req.session.data['addressline1']
+  var lastname = req.session.data['lastname'].trim()
+  var addressline1 = req.session.data['addressline1'].trim()
   var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
