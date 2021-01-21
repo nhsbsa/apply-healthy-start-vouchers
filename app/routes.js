@@ -3381,7 +3381,7 @@ router.post('/v9/due-date', function (req, res) {
         req.session.data.lessThanTenWeeksPregnant = false;
       }
 
-      res.redirect('/v9/apply/email-address')
+      res.redirect('/v9/apply/find-address')
     }
 
   }
@@ -3755,7 +3755,7 @@ router.post('/v10/are-you-pregnant', function (req, res) {
   }
   else if (pregnant === "no") {
     req.session.data.lessThanTenWeeksPregnant = true;
-    res.redirect('/v10/apply/find-address')
+    res.redirect('/v10/apply/email-address')
   }
   else {
     res.redirect('/v10/apply/are-you-pregnant')
@@ -3793,7 +3793,7 @@ router.post('/v10/due-date', function (req, res) {
         req.session.data.lessThanTenWeeksPregnant = false;
       }
 
-      res.redirect('/v10/apply/find-address')
+      res.redirect('/v10/apply/email-address')
     }
 
   }
