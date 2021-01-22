@@ -21,26 +21,6 @@ Check your answers
 
         <dl class="nhsuk-summary-list">
 
-            {% if (data['nationalinsurancenumber']) %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    National Insurance number
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['nationalinsurancenumber'] }}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="national-insurance-number">
-                        Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
-                    </a>
-
-                </dd>
-
-            </div>
-            {% endif %}
-
             {% if (data['firstname']) and (data['lastname']) %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -54,6 +34,70 @@ Check your answers
 
                     <a href="name">
                         Change<span class="nhsuk-u-visually-hidden"> your name</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% endif %}
+
+            {% if (data['selectaddress']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['selectaddress'] | replace(", ", ",<br>") | safe }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="find-address">
+                        Change<span class="nhsuk-u-visually-hidden"> your address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+            {% else %}
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['addressline1'] }},<br>
+                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
+                    {{ data['towncity'] }},<br>
+                    {{ data['postcode'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="address">
+                        Change<span class="nhsuk-u-visually-hidden"> your address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+
+            {% endif %}
+
+            {% if (data['nationalinsurancenumber']) %}
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National Insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['nationalinsurancenumber'] }}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="national-insurance-number">
+                        Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
                     </a>
 
                 </dd>
@@ -101,6 +145,7 @@ Check your answers
             </div>
             {% endif %}
 
+
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Currently pregnant
@@ -140,49 +185,7 @@ Check your answers
             {% endif %}
 
 
-            {% if (data['selectaddress']) %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['selectaddress'] | replace(", ", ",<br>") | safe }}
-                </dd>
 
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="find-address">
-                        Change<span class="nhsuk-u-visually-hidden"> your address</span>
-                    </a>
-
-                </dd>
-
-            </div>
-            {% else %}
-
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['addressline1'] }},<br>
-                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                    {{ data['towncity'] }},<br>
-                    {{ data['postcode'] }}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="address">
-                        Change<span class="nhsuk-u-visually-hidden"> your address</span>
-                    </a>
-
-                </dd>
-
-            </div>
-
-
-            {% endif %}
 
 
 
