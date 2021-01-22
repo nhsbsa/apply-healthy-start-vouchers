@@ -3678,7 +3678,7 @@ router.post('/v10/national-insurance-number', function (req, res) {
     res.redirect('/v10/apply/date-of-birth')
   }
   else {
-    res.redirect('/v10/apply/kickouts/national-insurance-number')
+    res.redirect('/v10/apply/national-insurance-number')
   }
 
 })
