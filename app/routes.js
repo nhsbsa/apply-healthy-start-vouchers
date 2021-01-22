@@ -1780,7 +1780,7 @@ router.post('/v4/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/v4/apply/kickouts/national-insurance-number')
+    res.redirect('/v4/apply/national-insurance-number')
   }
 
 })
@@ -1959,7 +1959,7 @@ router.post('/v5/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/v5/apply/kickouts/national-insurance-number')
+    res.redirect('/v5/apply/national-insurance-number')
   }
 
 })
@@ -2146,7 +2146,7 @@ router.post('/v6/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/v6/apply/kickouts/national-insurance-number')
+    res.redirect('/v6/apply/national-insurance-number')
   }
 
 })
@@ -2598,7 +2598,7 @@ router.post('/v7/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/v7/apply/kickouts/national-insurance-number')
+    res.redirect('/v7/apply/national-insurance-number')
   }
 
 })
@@ -2946,7 +2946,7 @@ router.post('/v8/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/v8/apply/kickouts/national-insurance-number')
+    res.redirect('/v8/apply/national-insurance-number')
   }
 
 })
@@ -3271,7 +3271,7 @@ router.post('/v9/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/v9/apply/kickouts/national-insurance-number')
+    res.redirect('/v9/apply/national-insurance-number')
   }
 
 })
@@ -3565,7 +3565,7 @@ router.post('/v10/name', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/v10/apply/address')
+    res.redirect('/v10/apply/address-v2')
   }
   else {
     res.redirect('/v10/apply/name')
@@ -3640,7 +3640,7 @@ router.get('/v10/select-address', function (req, res) {
     delete req.session.data['towncity']
     delete req.session.data['postcode']
 
-    res.redirect('/v10/apply/address')
+    res.redirect('/v10/apply/address-v2')
   } else if (selectaddress) {
     res.redirect('/v10/apply/national-insurance-number')
   } else {
@@ -3663,7 +3663,7 @@ router.post('/v10/address', function (req, res) {
   if (addressline1 && towncity && postcode) {
     res.redirect('/v10/apply/national-insurance-number')
   } else {
-    res.redirect('/v10/apply/address')
+    res.redirect('/v10/apply/address-v2')
   }
 
 })
