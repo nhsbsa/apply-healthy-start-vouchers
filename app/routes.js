@@ -686,7 +686,7 @@ router.post('/current/national-insurance-number', function (req, res) {
 
   }
   else {
-    res.redirect('/current/apply/kickouts/national-insurance-number')
+    res.redirect('/current/apply/national-insurance-number')
   }
 
 })
