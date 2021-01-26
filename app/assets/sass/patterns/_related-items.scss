@@ -1,0 +1,11 @@
+// This is a GOV.UK Publishing specific component that
+// can be seen at http://govuk-static.herokuapp.com/component-guide/related_items
+
+.app-related-items {
+  border-top: 2px solid nhsuk-colour("blue");
+  padding-top: nhsuk-spacing(2);
+}
+
+.app-related-items .nhsuk-list > li {
+  margin-bottom: nhsuk-spacing(2);
+}
