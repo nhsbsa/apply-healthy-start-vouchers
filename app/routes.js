@@ -3696,15 +3696,17 @@ router.post('/v10/date-of-birth', function (req, res) {
 
   var lastname = req.session.data['lastname'].trim()
   var addressline1 = req.session.data['addressline1'].trim()
+  var addressline2 = req.session.data['addressline2'].trim()
   var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
-  console.log(lastname);
-  console.log(addressline1);
-  console.log(postcode);
-  console.log(nationalinsurancenumber);
-  console.log(dateofbirth);
+  const addressRegex = RegExp('^[0-9]+$'); 
 
+  if (addressRegex.test(addressline1) === true) {
+
+    var addressline1 = [addressline1,addressline2].join(" ");
+
+  }
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
 
