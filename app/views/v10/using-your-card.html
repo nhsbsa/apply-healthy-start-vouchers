@@ -13,7 +13,7 @@
     - add custom CSS and JavaScript
 -->
    <!-- Set the page title inside the pageTitle block -->
-   {% block pageTitle %}How to apply - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block pageTitle %}What you can buy - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
    {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
    <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
    {% block content %}
@@ -42,12 +42,12 @@
             <a class="nhsuk-contents-list__link"
                 href="what-you-can-buy">What you can buy</a>
           </li>
+          <li aria-current="page"
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">Using your card</span></li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="using-your-card">Using your card</a>
+                href="how-to-apply">How to apply</a>
           </li>
-          <li aria-current="page"
-              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">How to apply</span></li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
                 href="help-with-claim">Get help with your claim</a>
@@ -59,29 +59,9 @@
         </ol>
       </nav><!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
-      <h2>How to apply</h2>
+      <h2>Using your card</h2>
 
-      <h3 class="nhsuk-heading-s">If you’ve received a letter from the NHS and get Child Tax Credit with a household income of £16,190 or less</h3>
-
-      <p>You can apply online. To apply, you will need your:</p>
-
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>name</li>
-        <li>address</li>
-        <li>date of birth</li>
-        <li>National Insurance number</li>
-        <li>baby’s due date (if you’re pregnant)</li>
-      </ul>
-
-      <p><a href="/v10/start"><button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">Apply now</button></a></p>
-
-      <!-- <p><a href="https://services.nhsbsa.nhs.uk/apply-for-healthy-start/"><button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">Apply now</button></a></p> -->
-
-      <div class="nhsuk-inset-text">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>If you’ve not received a letter from the NHS or you get <a target="_blank" href="https://www.gov.uk/healthy-start/eligibility">another qualifying benefit</a>, you can apply for <a target="_blank" href="https://www.gov.uk/healthy-start">Healthy Start vouchers<span class="nhsuk-u-visually-hidden">
-          (opens in a new tab)</span></a> instead.</p>
-      </div>
+      <p>...</p>
 
       <nav aria-label="Pagination"
            class="nhsuk-pagination"
@@ -89,7 +69,7 @@
         <ul class="nhsuk-list nhsuk-pagination__list">
           <li class="nhsuk-pagination-item--previous">
             <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
-                href="using-your-card"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Using your card</span> <svg aria-hidden="true"
+                href="what-you-can-buy"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">What you can buy</span> <svg aria-hidden="true"
                  class="nhsuk-icon nhsuk-icon__arrow-left"
                  viewbox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +77,7 @@
           </li>
           <li class="nhsuk-pagination-item--next">
             <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
-                href="help-with-claim"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Get help with your claim</span> <svg aria-hidden="true"
+                href="how-to-apply"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">How to apply</span> <svg aria-hidden="true"
                  class="nhsuk-icon nhsuk-icon__arrow-right"
                  viewbox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">

@@ -3,7 +3,7 @@
 
 .app-step-nav-related {
   @include nhsuk-text-color;
-  border-top: 2px solid nhsuk-colour("blue");
+  border-top: 2px solid $color_nhsuk-blue;
   margin-bottom: nhsuk-spacing(6);
 }
 

@@ -1,0 +1,406 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %} Get help to buy food and milk {% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+
+   {% block pageScripts %}
+   <script src="/js/step-by-step-nav.js"></script>
+   <script type="text/javascript">
+     var $element = $('#step-by-step-navigation')
+     var stepByStepNavigation = new NHSUK.Modules.AppStepNav()
+     stepByStepNavigation.start($element)
+   </script>
+   {% endblock %}
+
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      <h1><span role="text">Get help to buy food and milk <span class="nhsuk-caption-xl nhsuk-caption--bottom"><span class="nhsuk-u-visually-hidden">-</span> (Healthy Start)</span></span></h1>
+      <nav aria-label="Pages in this guide"
+           class="nhsuk-contents-list"
+           role="navigation">
+        <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+        <ol class="nhsuk-contents-list__list">
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-how-it-works">How it works</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-what-you-get">What you’ll get</a>
+          </li>
+          <li aria-current="page"
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">Eligibility</span></li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-what-you-can-buy">What you can buy</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-how-to-claim">How to claim</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-get-help">Get help with your claim</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="hub-report-a-change">Make a change to your claim</a>
+          </li>
+        </ol>
+      </nav><!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Eligibility</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque feugiat molestie. Donec dapibus urna sit amet magna bibendum lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id scelerisque diam, nec consectetur tellus. Donec pretium massa quis orci viverra vehicula. Nulla lobortis sed mauris vitae vestibulum. Morbi dictum nisl sit amet volutpat suscipit. In volutpat rhoncus porta.</p>
+      <nav aria-label="Pagination"
+           class="nhsuk-pagination"
+           role="navigation">
+        <ul class="nhsuk-list nhsuk-pagination__list">
+          <li class="nhsuk-pagination-item--previous">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+                href="hub-what-you-get"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">What you’ll get</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-left"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path></svg></a>
+          </li>
+          <li class="nhsuk-pagination-item--next">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
+                href="hub-what-you-can-buy"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">What you can buy</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-right"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path></svg></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="nhsuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+          <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Part of</span>
+              <a href="#">
+                  Learn to drive a car: step by step
+              </a>
+          </h2>
+      </div>
+
+      <div id="step-by-step-navigation" data-module="gemstepnav" class="app-step-nav js-hidden "
+          data-id="e01e924b-9c7c-4c71-8241-66a575c2f61f" data-show-text="show" data-hide-text="hide"
+          data-show-all-text="Show all" data-hide-all-text="Hide all">
+          <ol class="app-step-nav__steps">
+              <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show
+                  id="check-youre-allowed-to-drive">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--number">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 1
+                                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden"
+                                          aria-hidden="true">:</span>
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              Check you're allowed to drive
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-check-youre-allowed-to-drive-1">
+                      <p class="app-step-nav__paragraph">Most people can start learning to drive when they’re 17.</p>
+
+                      <ol class="app-step-nav__list " data-length="3">
+                          <li class="app-step-nav__list-item js-list-item app-step-nav__list-item--active">
+                              <a data-position="1.1" class="app-step-nav__link js-link" href="#content">
+                                  <span class="app-step-nav__link-active-context nhsuk-u-visually-hidden">You are
+                                      currently viewing: </span>Check what age you can drive </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="1.2" class="app-step-nav__link js-link" href="#">Requirements for
+                                  driving legally </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="1.3" class="app-step-nav__link js-link" href="#">Driving eyesight rules
+                              </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+              <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--number">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 2
+                                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden"
+                                          aria-hidden="true">:</span>
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              Get a provisional licence
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
+                      <ol class="app-step-nav__list " data-length="1">
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="2.1" class="app-step-nav__link js-link" href="#">Apply for your first
+                                  provisional driving licence <span class="app-step-nav__context">£34 to
+                                      £43</span></span>
+                              </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+              <li class="app-step-nav__step js-step" id="driving-lessons-and-practice">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="3">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--number">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 3
+                                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden"
+                                          aria-hidden="true">:</span>
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              Driving lessons and practice
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-driving-lessons-and-practice-3">
+                      <p class="app-step-nav__paragraph">You need a provisional driving licence to take lessons or
+                          practice.</p>
+
+                      <ol class="app-step-nav__list " data-length="4">
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="3.1" class="app-step-nav__link js-link" href="#">The Highway Code </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="3.2" class="app-step-nav__link js-link" href="#">Taking driving lessons
+                              </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="3.3" class="app-step-nav__link js-link" href="#">Find driving schools,
+                                  lessons and instructors </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="3.4" class="app-step-nav__link js-link" href="#">Practise vehicle safety
+                                  questions </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+              <li class="app-step-nav__step js-step" id="prepare-for-your-theory-test">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="4">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--logic">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      and
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              Prepare for your theory test
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-prepare-for-your-theory-test-4">
+                      <ol class="app-step-nav__list " data-length="3">
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="4.1" class="app-step-nav__link js-link" href="#">Theory test revision
+                                  and practice </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="4.2" class="app-step-nav__link js-link" href="#">Take a practice theory
+                                  test </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a rel="external" data-position="4.3" class="app-step-nav__link js-link"
+                                  href="https://www.safedrivingforlife.info/shop/product/official-dvsa-theory-test-kit-app-app">Theory
+                                  and hazard perception test app </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+              <li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="5">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--number">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 4
+                                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden"
+                                          aria-hidden="true">:</span>
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              Book and manage your theory test
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
+                      <p class="app-step-nav__paragraph">You need a provisional driving licence to book your theory
+                          test.</p>
+
+                      <ol class="app-step-nav__list " data-length="5">
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="5.1" class="app-step-nav__link js-link" href="#">Book your theory test
+                                  <span class="app-step-nav__context">£23</span></a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="5.2" class="app-step-nav__link js-link" href="#">What to take to your
+                                  test </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="5.3" class="app-step-nav__link js-link" href="#">Change your theory test
+                                  appointment </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="5.4" class="app-step-nav__link js-link" href="#">Check your theory test
+                                  appointment details </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="5.5" class="app-step-nav__link js-link" href="#">Cancel your theory test
+                              </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+              <li class="app-step-nav__step js-step" id="book-and-manage-your-driving-test">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="6">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--number">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 5
+                                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden"
+                                          aria-hidden="true">:</span>
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              Book and manage your driving test
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-driving-test-6">
+                      <p class="app-step-nav__paragraph">You must pass your theory test before you can book your driving
+                          test.</p>
+
+                      <ol class="app-step-nav__list " data-length="5">
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="6.1" class="app-step-nav__link js-link" href="#">Book your driving test
+                                  <span class="app-step-nav__context">£62 to £75</span></a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="6.2" class="app-step-nav__link js-link" href="#">What to take to your
+                                  test </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="6.3" class="app-step-nav__link js-link" href="#">Change your driving
+                                  test appointment </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="6.4" class="app-step-nav__link js-link" href="#">Check your driving test
+                                  appointment details </a>
+                          </li>
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="6.5" class="app-step-nav__link js-link" href="#">Cancel your driving
+                                  test </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+              <li class="app-step-nav__step js-step" id="when-you-pass">
+                  <div class="app-step-nav__header js-toggle-panel" data-position="7">
+                      <h3 class="app-step-nav__title">
+                          <span class="app-step-nav__circle app-step-nav__circle--number">
+                              <span class="app-step-nav__circle-inner">
+                                  <span class="app-step-nav__circle-background">
+                                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 6
+                                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden"
+                                          aria-hidden="true">:</span>
+                                  </span>
+                              </span>
+                          </span>
+
+                          <span class="js-step-title">
+                              When you pass
+                          </span>
+                      </h3>
+                  </div>
+
+                  <div class="app-step-nav__panel js-panel" id="step-panel-when-you-pass-7">
+                      <p class="app-step-nav__paragraph">You can start driving as soon as you pass your driving test.
+                      </p>
+
+                      <p class="app-step-nav__paragraph">You must have an insurance policy that allows you to drive
+                          without supervision.</p>
+
+                      <ol class="app-step-nav__list " data-length="1">
+                          <li class="app-step-nav__list-item js-list-item ">
+                              <a data-position="7.1" class="app-step-nav__link js-link" href="#">Find out about Pass
+                                  Plus training courses </a>
+                          </li>
+                      </ol>
+
+                  </div>
+
+              </li>
+          </ol>
+      </div>
+
+
+  </div>
+
+  </div>{% endblock %}
+</body>
+</html>
