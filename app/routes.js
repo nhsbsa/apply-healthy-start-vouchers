@@ -3565,7 +3565,7 @@ router.post('/v10/name', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/v10/apply/address-v2')
+    res.redirect('/v10/apply/address')
   }
   else {
     res.redirect('/v10/apply/name')
