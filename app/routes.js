@@ -3640,7 +3640,7 @@ router.get('/v10/select-address', function (req, res) {
     delete req.session.data['towncity']
     delete req.session.data['postcode']
 
-    res.redirect('/v10/apply/address-v2')
+    res.redirect('/v10/apply/address')
   } else if (selectaddress) {
     res.redirect('/v10/apply/date-of-birth')
   } else {
@@ -3663,7 +3663,7 @@ router.post('/v10/address', function (req, res) {
   if (addressline1 && towncity && postcode) {
     res.redirect('/v10/apply/date-of-birth')
   } else {
-    res.redirect('/v10/apply/address-v2')
+    res.redirect('/v10/apply/address')
   }
 
 })
