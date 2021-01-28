@@ -3642,7 +3642,7 @@ router.get('/v10/select-address', function (req, res) {
 
     res.redirect('/v10/apply/address-v2')
   } else if (selectaddress) {
-    res.redirect('/v10/apply/national-insurance-number')
+    res.redirect('/v10/apply/date-of-birth')
   } else {
     res.redirect('/v10/apply/select-address')
   }
@@ -3661,24 +3661,9 @@ router.post('/v10/address', function (req, res) {
   var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
 
   if (addressline1 && towncity && postcode) {
-    res.redirect('/v10/apply/national-insurance-number')
+    res.redirect('/v10/apply/date-of-birth')
   } else {
     res.redirect('/v10/apply/address-v2')
-  }
-
-})
-
-// What is your national insurance number?
-
-router.post('/v10/national-insurance-number', function (req, res) {
-
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-
-  if (nationalinsurancenumber) {
-    res.redirect('/v10/apply/date-of-birth')
-  }
-  else {
-    res.redirect('/v10/apply/national-insurance-number')
   }
 
 })
@@ -3686,6 +3671,74 @@ router.post('/v10/national-insurance-number', function (req, res) {
 // Date of birth
 
 router.post('/v10/date-of-birth', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = moment((dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear), "DD-MM-YYYY");
+  var dateofbirth = dob.format();
+
+  var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dobYrs.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+
+  var lastname = req.session.data['lastname'].trim()
+  var addressline1 = req.session.data['addressline1'].trim()
+  var addressline2 = req.session.data['addressline2'].trim()
+  var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
+
+  const addressRegex = RegExp('^[0-9]+$'); 
+
+  if (addressRegex.test(addressline1) === true) {
+
+    var addressline1 = [addressline1,addressline2].join(" ");
+
+  }
+
+
+  if (yrs < 16) {
+
+    if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+
+      if (lastname === 'Smith' && dateofbirth === '2000-01-01T00:00:00+00:00' && addressline1 === '55 Peachfield Road' && postcode === 'LL673SN') {
+          res.redirect('/v10/apply/nationality')
+      } else if (lastname === 'Jones' && dateofbirth === '1999-02-02T00:00:00+00:00' && addressline1 === '49 Park Terrace' && postcode === 'NR334GT') {
+          res.redirect('/v10/apply/nationality')
+      } else if (lastname === 'Johnson' && dateofbirth === '1998-03-03T00:00:00+00:00' && addressline1 === '140 Cambridge Road' && postcode === 'AB558NL') {
+          res.redirect('/v10/apply/nationality')
+      } else if (lastname === 'Brown' && dateofbirth === '1997-04-04T00:00:00+00:00' && addressline1 === '124 West Lane' && postcode === 'KA248PE') {
+          res.redirect('/v10/apply/nationality')
+      } else if (lastname === 'Miller' && dateofbirth === '1996-05-05T00:00:00+00:00' && addressline1 === '85 Broad Street' && postcode === 'WA43AS') {
+          res.redirect('/v10/apply/kickouts/confirmation-no-match')
+      } else {
+          res.redirect('/v10/apply/kickouts/confirmation-no-match')
+      }   
+
+    }
+    else {
+      res.redirect('/v10/apply/date-of-birth')
+    }    
+
+  }
+  else {
+
+    if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+      res.redirect('/v10/apply/national-insurance-number')
+    }
+    else {
+      res.redirect('/v10/apply/date-of-birth')
+    }    
+
+  }
+
+
+})
+
+// What is your national insurance number?
+
+router.post('/v10/national-insurance-number', function (req, res) {
 
   var dateofbirthday = req.session.data['dateofbirthday']
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
@@ -3708,7 +3761,7 @@ router.post('/v10/date-of-birth', function (req, res) {
 
   }
 
-  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+  if (nationalinsurancenumber) {
 
     if (lastname === 'Smith' && nationalinsurancenumber === 'AB123456A' && dateofbirth === '2000-01-01T00:00:00+00:00' && addressline1 === '55 Peachfield Road' && postcode === 'LL673SN') {
         res.redirect('/v10/apply/nationality')
@@ -3726,7 +3779,7 @@ router.post('/v10/date-of-birth', function (req, res) {
 
   }
   else {
-    res.redirect('/v10/apply/date-of-birth')
+    res.redirect('/v10/apply/national-insurance-number')
   }
 
 })
