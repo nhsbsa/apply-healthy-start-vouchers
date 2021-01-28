@@ -8,11 +8,19 @@ We’re considering your application
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <div class="nhsuk-panel nhsuk-u-margin-bottom-5" style="background: #4c6272;margin-top: 0;">
-          <h1 class="nhsuk-panel__title" style="color: white;">Application not successful</h1><span
-              class="nhsuk-caption-xl nhsuk-caption--bottom" style="text-align: center; color: white;">{% if data['applyingfor'] == "myself" %}You’re{% else %}They’re{% endif %} not
-              entitled to get help to buy food and milk (Healthy Start)</span>
+
+      <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            Application not successful
+          </h1>
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            {% if data['applyingfor'] == "myself" %}You’re{% else %}They’re{% endif %} not
+              entitled to get help to buy food and milk (Healthy Start)
+          </h2>
+        </div>
       </div>
+
       <p>We cannot find {% if data['applyingfor'] == "myself" %}you{% else %}them{% endif %} in our records. {% if data['applyingfor'] == "myself" %}You{% else %}They{% endif %} may have entered something wrong.</p>
       <p>If {% if data['applyingfor'] == "myself" %}you’re{% else %}they’re{% endif %} on a qualifying benefit make sure {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} enter the same details {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} registered with the benefits
           agencies (DWP or HMRC).</p>
