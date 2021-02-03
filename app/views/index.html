@@ -125,11 +125,14 @@
                      <hr>
                      <h3 class="nhsuk-heading-m">What we created:</h3>
                      <ul class="nhsuk-list nhsuk-list--bullet">
-                        <li>To prove somebodies identity we need to match their last name, 1st line of address, postcode, date of birth and National Insurance number. Reworked flow to do identity check AFTER name, address, date of birth and National Insurance number entered.</li>
+                        <li>To prove somebodies identity we need a 100% match against their last name, postcode, date of birth and National Insurance number. We also require a 50% matc against their first name and 1st line of address.</li>
+                        <li>As part of the above, we have reworked the flow to do this identity check AFTER name, address, date of birth and National Insurance number (if over 16) have been entered.</li>
+                        <li>Amended our manual address input to ask for 'Building name and street' rather than just 'Address line 1'.</li>
                      </ul>
                      <h3 class="nhsuk-heading-m">What we plan to test:</h3>
                      <ul class="nhsuk-list nhsuk-list--bullet">
                         <li>Does our manual address input set applicants up for failure given that we have to match their 1st line of address exactly e.g. Does somebody split this over 2 fields?</li>
+                        <li>Does our amended manual address input get more accurate results?</li>
                      </ul>
                      <h3 class="nhsuk-heading-m">What we found:</h3>
                      <ul class="nhsuk-list nhsuk-list--bullet">
