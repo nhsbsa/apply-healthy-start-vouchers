@@ -37,7 +37,8 @@
     "node-sass": "^4.14.1",
     "notifications-node-client": "^5.1.0",
     "nunjucks": "^3.2.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "string-similarity": "^4.0.4"
   },
   "devDependencies": {}
 }
