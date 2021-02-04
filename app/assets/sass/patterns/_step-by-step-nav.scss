@@ -372,6 +372,10 @@ $top-border: solid 1px $color_nhsuk-grey-2;
 
 .app-step-nav__list-item {
   margin-bottom: 10px;
+}
+
+.app-step-nav__list-item--small {
+  margin-bottom: 10px;
   font-size: 16px; // MANUAL ENTRY TO FIX RENDERING
   line-height: 24px; // MANUAL ENTRY TO FIX RENDERING
 }
