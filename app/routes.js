@@ -147,13 +147,13 @@ router.post('/current/check-your-answers', function (req, res) {
 
       notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
   
     }
 
@@ -225,13 +225,13 @@ router.post('/v5/check-your-answers', function (req, res) {
 
       notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v5/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v5/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v5/apply/confirmation-successful'); })
   
     }
 
@@ -303,13 +303,13 @@ router.post('/v6/check-your-answers', function (req, res) {
 
       notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/v6/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v6/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v6/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v6/apply/confirmation-successful'); })
   
     }
 
@@ -381,13 +381,13 @@ router.post('/v7/check-your-answers', function (req, res) {
 
       notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/v7/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v7/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v7/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v7/apply/confirmation-successful'); })
   
     }
 
@@ -461,13 +461,13 @@ router.post('/v8/check-your-answers', function (req, res) {
 
       notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
       .then(response => { console.log(response); res.redirect('/v8/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v8/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v8/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v8/apply/confirmation-successful'); })
   
     }
 
@@ -545,13 +545,13 @@ router.post('/v9/check-your-answers', function (req, res) {
 
     notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
     .then(response => { console.log(response); res.redirect('/v9/apply/confirmation-successful'); })
-    .catch(err => console.error(err))
+    .catch(err => { console.error(err); res.redirect('/v9/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v9/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v9/apply/confirmation-successful'); })
   
     }
 
@@ -629,13 +629,13 @@ router.post('/v10/check-your-answers', function (req, res) {
 
     notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
     .then(response => { console.log(response); res.redirect('/v10/apply/confirmation-successful'); })
-    .catch(err => console.error(err))
+    .catch(err => { console.error(err); res.redirect('/v10/apply/confirmation-successful'); })
 
     } else {
 
       notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/v10/apply/confirmation-successful'); })
-      .catch(err => console.error(err))
+      .catch(err => { console.error(err); res.redirect('/v10/apply/confirmation-successful'); })
   
     }
 
