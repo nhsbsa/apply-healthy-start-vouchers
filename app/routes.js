@@ -11,10 +11,16 @@ const express = require('express');
 const router = express.Router();
 const moment = require('moment');
 const stringSimilarity = require("string-similarity");
+const geolib = require('geolib');
 
 // API
 
 const axios = require('axios');
+
+// CONSTANTS
+
+const today = new Date(Date.now());
+let vitaminProviders = require('./data/vitamin-locations')
 
 // ****************************************
 // PERSONAS
@@ -543,7 +549,7 @@ router.post('/v9/check-your-answers', function (req, res) {
     //  .then(response => { console.log(response); res.redirect('/v9/apply/confirmation-successful'); })
     //  .catch(err => console.error(err))
 
-    notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
+    notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
     .then(response => { console.log(response); res.redirect('/v9/apply/confirmation-successful'); })
     .catch(err => { console.error(err); res.redirect('/v9/apply/confirmation-successful'); })
 
@@ -596,6 +602,7 @@ router.post('/v10/check-your-answers', function (req, res) {
   var mobilePhoneNumber = req.session.data['mobilephonenumber'];
   var pregnant = req.session.data['pregnant']
   var firstName = req.session.data['firstname'];
+  var postcode = req.session.data['postcode'];
   
   if (pregnant === "yes") {
 
@@ -621,15 +628,27 @@ router.post('/v10/check-your-answers', function (req, res) {
 
     if (pregnant === "yes") {
 
-    // UNCOMMENT OUT WHEN WE DO VITAMINS
-    
-    //  notifyClient.sendEmail('a555749d-0f67-4fbd-b787-0bb158eb34bc', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
-    //  .then(response => { console.log(response); res.redirect('/v10/apply/confirmation-successful'); })
-    //  .catch(err => console.error(err))
+      // Map postcode to Lat & Long, then find their nearest vitamin provider - uncomment out when we do vitamins
 
-    notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-    .then(response => { console.log(response); res.redirect('/v10/apply/confirmation-successful'); })
-    .catch(err => { console.error(err); res.redirect('/v10/apply/confirmation-successful'); })
+      // axios.get('https://api.postcodes.io/postcodes/' + postcode)
+      // .then(function (response) {
+      //  var nearestProvider = geolib.findNearest({ latitude: response.data.result.latitude, longitude: response.data.result.longitude }, vitaminProviders)
+      //  console.log(nearestProvider.address);
+
+      //  notifyClient.sendEmail('a555749d-0f67-4fbd-b787-0bb158eb34bc', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "", 'vitaminAddress': nearestProvider.address }, reference: null })
+      //  .then(response => { console.log(response); res.redirect('/v10/apply/confirmation-successful'); })
+      //  .catch(err => console.error(err))
+
+      // })
+      // .catch(function (error) {
+      //  console.log(error);
+      // })
+      // .then(function () {
+      // });
+
+      notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
+      .then(response => { console.log(response); res.redirect('/v10/apply/confirmation-successful'); })
+      .catch(err => { console.error(err); res.redirect('/v10/apply/confirmation-successful'); })
 
     } else {
 
@@ -673,9 +692,7 @@ router.post('/v10/check-your-answers', function (req, res) {
 
 module.exports = router;
 
-// CONSTANTS
 
-const today = new Date(Date.now());
 
 // ********************************
 // APPLY (CURRENT)
