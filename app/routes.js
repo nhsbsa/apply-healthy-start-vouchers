@@ -3733,17 +3733,17 @@ router.post('/v10/date-of-birth', function (req, res) {
   var temp = ageDate.getFullYear();
   var yrs = Math.abs(temp - 1970);
 
-  var firstname = req.session.data['firstname'].trim()
-  var lastname = req.session.data['lastname'].trim()
-  var addressline1 = req.session.data['addressline1'].trim()
-  var addressline2 = req.session.data['addressline2'].trim()
+  var firstname = req.session.data['firstname'].trim().toUpperCase()
+  var lastname = req.session.data['lastname'].trim().toUpperCase()
+  var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
+  var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
   var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
 
   const addressRegex = RegExp('^[0-9]+$'); 
 
   if (addressRegex.test(addressline1) === true) {
 
-    var addressline1 = [addressline1,addressline2].join(" ");
+    var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
 
   }
 
@@ -3751,33 +3751,21 @@ router.post('/v10/date-of-birth', function (req, res) {
 
     if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
 
-      if ((stringSimilarity.compareTwoStrings(firstname, 'Charlie') > 0.5) && (lastname === 'Smith' && dateofbirth === '01/01/2000' && postcode === 'LL673SN') && (stringSimilarity.compareTwoStrings(addressline1, '55 Peachfield Road') > 0.5)) {
-        console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Charlie'))
-        console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '55 Peachfield Road'))
+      if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
         res.redirect('/v10/apply/are-you-pregnant')
-      } else if ((stringSimilarity.compareTwoStrings(firstname, 'Riley') > 0.5) && (lastname === 'Jones' && dateofbirth === '02/02/1999' && postcode === 'NR334GT') && (stringSimilarity.compareTwoStrings(addressline1, '49 Park Terrace') > 0.5)) {
-        console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Riley'))
-        console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '49 Park Terrace'))
+      } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
         res.redirect('/v10/apply/are-you-pregnant')
-      } else if ((stringSimilarity.compareTwoStrings(firstname, 'Alex') > 0.5) && (lastname === 'Johnson' && dateofbirth === '03/03/1998' && postcode === 'AB558NL') && (stringSimilarity.compareTwoStrings(addressline1, '140 Cambridge Road') > 0.5)) {
-        console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Alex'))
-        console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '140 Cambridge Road'))
+      } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == '140 CAMBRIDGE ROAD') {
         res.redirect('/v10/apply/are-you-pregnant')
-      } else if ((stringSimilarity.compareTwoStrings(firstname, 'Tony') > 0.5) && (lastname === 'Brown' && dateofbirth === '04/04/1997' && postcode === 'KA248PE') && (stringSimilarity.compareTwoStrings(addressline1, '124 West Lane') > 0.5)) {
-        console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Tony'))
-        console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '124 West Lane'))
+      } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == '124 WEST LANE') {
         res.redirect('/v10/apply/are-you-pregnant')
-      } else if ((stringSimilarity.compareTwoStrings(firstname, 'Samantha') > 0.5) && (lastname === 'Miller' && dateofbirth === '05/05/1996' && postcode === 'WA43AS') && (stringSimilarity.compareTwoStrings(addressline1, '85 Broad Street') > 0.5)) {
-        console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Samantha'))
-        console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '85 Broad Street'))
+      } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
         res.redirect('/v10/apply/kickouts/confirmation-no-match')
-      } else if ((stringSimilarity.compareTwoStrings(firstname, 'Dennis') > 0.5) && (lastname === 'Mitchell' && dateofbirth === '06/06/1995' && postcode === 'CR86GJ') && (stringSimilarity.compareTwoStrings(addressline1, '107 Station Road') > 0.5)) {
-        console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Dennis'))
-        console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '107 Station Road'))
+      } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
         res.redirect('/v10/apply/kickouts/confirmation-no-match')
       } else {
         res.redirect('/v10/apply/kickouts/confirmation-no-match')
-      } 
+      }  
 
     }
     else {
@@ -3810,10 +3798,10 @@ router.post('/v10/national-insurance-number', function (req, res) {
   var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
   var dateofbirth = moment(dob).format('MM/DD/YYYY');
 
-  var firstname = req.session.data['firstname'].trim()
-  var lastname = req.session.data['lastname'].trim()
-  var addressline1 = req.session.data['addressline1'].trim()
-  var addressline2 = req.session.data['addressline2'].trim()
+  var firstname = req.session.data['firstname'].trim().toUpperCase()
+  var lastname = req.session.data['lastname'].trim().toUpperCase()
+  var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
+  var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
   var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
 
@@ -3821,35 +3809,23 @@ router.post('/v10/national-insurance-number', function (req, res) {
 
   if (addressRegex.test(addressline1) === true) {
 
-    var addressline1 = [addressline1,addressline2].join(" ");
+    var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
 
   }
 
   if (nationalinsurancenumber) {
 
-    if ((stringSimilarity.compareTwoStrings(firstname, 'Charlie') > 0.5) && (lastname == 'Smith' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN') && (stringSimilarity.compareTwoStrings(addressline1, '55 Peachfield Road') > 0.5)) {
-      console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Charlie'))
-      console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '55 Peachfield Road'))
+    if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
       res.redirect('/v10/apply/are-you-pregnant')
-    } else if ((stringSimilarity.compareTwoStrings(firstname, 'Riley') > 0.5) && (lastname == 'Jones' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT') && (stringSimilarity.compareTwoStrings(addressline1, '49 Park Terrace') > 0.5)) {
-      console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Riley'))
-      console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '49 Park Terrace'))
+    } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
       res.redirect('/v10/apply/are-you-pregnant')
-    } else if ((stringSimilarity.compareTwoStrings(firstname, 'Alex') > 0.5) && (lastname == 'Johnson' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL') && (stringSimilarity.compareTwoStrings(addressline1, '140 Cambridge Road') > 0.5)) {
-      console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Alex'))
-      console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '140 Cambridge Road'))
+    } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == '140 CAMBRIDGE ROAD') {
       res.redirect('/v10/apply/are-you-pregnant')
-    } else if ((stringSimilarity.compareTwoStrings(firstname, 'Tony') > 0.5) && (lastname == 'Brown' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE') && (stringSimilarity.compareTwoStrings(addressline1, '124 West Lane') > 0.5)) {
-      console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Tony'))
-      console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '124 West Lane'))
+    } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == '124 WEST LANE') {
       res.redirect('/v10/apply/are-you-pregnant')
-    } else if ((stringSimilarity.compareTwoStrings(firstname, 'Samantha') > 0.5) && (lastname == 'Miller' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS') && (stringSimilarity.compareTwoStrings(addressline1, '85 Broad Street') > 0.5)) {
-      console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Samantha'))
-      console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '85 Broad Street'))
+    } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
       res.redirect('/v10/apply/kickouts/confirmation-no-match')
-    } else if ((stringSimilarity.compareTwoStrings(firstname, 'Dennis') > 0.5) && (lastname == 'Mitchell' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ') && (stringSimilarity.compareTwoStrings(addressline1, '107 Station Road') > 0.5)) {
-      console.log('First Name Score: ', stringSimilarity.compareTwoStrings(firstname, 'Dennis'))
-      console.log('Address Line 1 Score: ', stringSimilarity.compareTwoStrings(addressline1, '107 Station Road'))
+    } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
       res.redirect('/v10/apply/kickouts/confirmation-no-match')
     } else {
       res.redirect('/v10/apply/kickouts/confirmation-no-match')
