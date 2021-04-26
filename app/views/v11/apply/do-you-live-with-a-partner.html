@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you live with a partner?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="/v11/do-you-live-with-a-partner" method="post">
+
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+        
+                <div class="nhsuk-form-group">
+                    <h1 class="nhsuk-label-wrapper">
+                        <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="partner">
+                            Do you live with a partner?
+                        </label>
+                    </h1>
+                    <span class="nhsuk-hint">
+                        This means you live together as a couple, you don't have to be married or in a civil partnership.
+                    </span>
+        
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="partner" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="partner" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+        
+                </div>
+        
+            </fieldset>
+        
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+        
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

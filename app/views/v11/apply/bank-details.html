@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are your bank or building society account details?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What are your bank or building society account details?
+        </h1>
+
+        <form novalidate="novalidate" action="/v11/bank-details" method="post">
+
+          <fieldset class="nhsuk-fieldset">
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="accountname">
+                Name on account
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="accountname" name="accountname" type="text" spellcheck="false" value="{{ data['accountname'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="sortcode">
+                Sort code
+              </label>
+              <span class="nhsuk-hint" id="sort-code-hint">
+                Must be 6 digits long
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-5" id="sortcode" name="sortcode" type="text" aria-describedby="sort-code-hint" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['sortcode'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="accountnumber">
+                Account number
+              </label>
+              <span class="nhsuk-hint" id="account-number-hint">
+                Must be between 6 and 10 digits long
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" id="accountnumber" name="accountnumber" type="text" aria-describedby="account-number-hint" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['accountnumber'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="buildingsocietynumber">
+                Building society roll number (optional)
+              </label>
+              <span class="nhsuk-hint" id="roll-number-hint">
+                You can find it on your card, statement or passbook
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" id="buildingsocietynumber" name="buildingsocietynumber" type="text" aria-describedby="roll-number-hint" spellcheck="false" value="{{ data['buildingsocietynumber'] }}">
+            </div>
+
+          </fieldset>
+
+          <button class="nhsuk-button nhsuk-u-margin-top-4" type="submit">
+            Continue
+          </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

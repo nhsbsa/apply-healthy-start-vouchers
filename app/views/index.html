@@ -100,6 +100,135 @@
 
          <hr>
 
+         <!-- 
+
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 31)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 12</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Single &amp; Partner Applicants (Over 18 and on an eligible HMRC or DWP benefit)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible
+                        applicants the opportunity to apply online for help to buy milk, food and vitamins <strong>will
+                           be a useful feature for</strong> anyone currently
+                        struggling to feed their children <strong>as it will</strong> enable them with the finanacial
+                        support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall
+                        cost of providing the scheme by XX%.
+                     </p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v12/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v12)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v12/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View user journey (v12)</span>
+                        </a>
+                     </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+
+         -->
+
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Private Beta (Sprint 30)</span>
+            </summary>
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Version 11</small></span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                     <h2 class="nhsuk-heading-l">Designing an 'Apply' service
+                        <span class="nhsuk-caption-l nhsuk-caption--bottom">Invited Single Applicants (Over 18 and on an eligible HMRC or DWP benefit)</span>
+                     </h2>
+                     <h3 class="nhsuk-heading-m">Hypothesis A</h3>
+                     <p style="background: #DEE0E2; padding: 20px;"><strong>We believe</strong> that giving eligible
+                        applicants the opportunity to apply online for help to buy milk, food and vitamins <strong>will
+                           be a useful feature for</strong> anyone currently
+                        struggling to feed their children <strong>as it will</strong> enable them with the finanacial
+                        support needed to buy healthy foods and milk. <strong>This will</strong> decrease the overall
+                        cost of providing the scheme by XX%.
+                     </p>
+                     <hr>
+                     <h3 class="nhsuk-heading-m">What we created:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>To prove somebodies identity, business rules state we need a 100% match against their first name, last name, 1st line of address, postcode, date of birth and National Insurance number.</li>
+                        <li>After proving somebodies identity, we check for any existing claims, whether they are from an invited area and whether that person is alive and on an eligible HMRC or DWP benefit.</li>
+                        <li>If they are on a DWP benefit, we ask whether the applicant has any children under 4 years old, and if they do, we capture their childs name and date of birth.</li>
+                        <li>After capturing this information we compare this against the data that DWP hold. If there are no eligible children we stop the application at this point, but if there are - we allow them to complete their application and calculate their entitlement based on the data DWP has.</li>
+                        <li>If they are on an HMRC benefit, they are immediately passported without giving any further information on the basis that they definitely do have children under 4 years old as this is the only cut of data that we currently hold.</li>
+                        <!-- <li>Finally, the decision screen has been improved to show a breakdown of how we have calculated their entitlement. This will help people to check whether their circumstances align with the data we hold. If not, they are encouraged to get in touch to discuss further.</li> -->
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we plan to test:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>Does our strict matching increase the number of legitimate applicants who fail the application process?</li>
+                        <li>Does our amended manual address input help improve data accuracy?</li>
+                        <li>Can people on an eligble DWP benefit successfully tell us about any children they have under 4 years old?</li>
+                        <!-- <li>Does our amended decision screen make it clear to people how we have calculated their benefit and allow them to challenge things if they believe it to be incorrect?</li> -->
+                     </ul>
+                     <h3 class="nhsuk-heading-m">What we found:</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <h3 class="nhsuk-heading-m">Any known issues?</h3>
+                     <ul class="nhsuk-list nhsuk-list--bullet">
+                        <li>...</li>
+                     </ul>
+                     <hr>
+                     <p class="nhsuk-u-margin-bottom-0"><a href="v11/start"><button class="nhsuk-button"
+                              type="submit">Get help to buy food and milk (Healthy Start) (v11)</button></a></p>
+                     <div class="nhsuk-action-link nhsuk-u-margin-bottom-3">
+                        <a class="nhsuk-action-link__link" href="v11/user-journey">
+                           <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" viewbox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                 d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z">
+                              </path>
+                           </svg>
+                           <span class="nhsuk-action-link__text">View user journey (v11)</span>
+                        </a>
+                     </div>
+                  </div>
+               </details>
+            </div>
+         </details>
+
+
          <details class="nhsuk-details nhsuk-expander">
             <summary class="nhsuk-details__summary">
                <span class="nhsuk-details__summary-text">Private Beta (Sprint 26)</span>
@@ -125,7 +254,7 @@
                      <hr>
                      <h3 class="nhsuk-heading-m">What we created:</h3>
                      <ul class="nhsuk-list nhsuk-list--bullet">
-                        <li>To prove somebodies identity business rules state we need a 100% match against their first name, last name, 1st line of address, postcode, date of birth and National Insurance number.</li>
+                        <li>To prove somebodies identity, business rules state we need a 100% match against their first name, last name, 1st line of address, postcode, date of birth and National Insurance number.</li>
                         <li>As part of the above, we have reworked the flow to do this identity check AFTER name, address, date of birth and National Insurance number (if over 16) have been entered.</li>
                         <li>Amended our manual address input to ask for 'Building name and street' rather than just 'Address line 1'.</li>
                         <li>If only a numeric value is entered in the 'Building name and street' input, we join it up with 'Address line 2'.</li>
