@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Find {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} address
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Find {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} address
+        </h1>
+
+        {% if data['benefits'] %}
+        <p>This must be the same address {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} have registered with the benefits agency (DWP or HMRC).</p>
+        {% endif %}
+
+        <form action="/v12/find-address" method="get">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="housenumber">
+                    Building number or name (optional)
+                </label>
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                   For example, Flat 20A
+                  </span>
+                <input class="nhsuk-input nhsuk-input--width-20" id="housenumber" name="housenumber" type="text" autocomplete="address-line1">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                    For example, WA4 1AB
+                   </span>
+                <input class="nhsuk-input nhsuk-input--width-20" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+            </div>
+
+            <div class="nhsuk-form-group">
+            <p><a href="address">Enter {% if data['applyingfor'] == "someoneelse" %}their{% else %}my{% endif %} address manually</a></p>
+            </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        If {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} do not know which address to use
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <h2 class="nhsuk-heading-s">If {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} have more than one address</h2>
+                    <p>{% if data['applyingfor'] == "someoneelse" %}They{% else %}You{% endif %} should use the address that {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} GP or dentist holds for {% if data['applyingfor'] == "someoneelse" %}them{% else %}you{% endif %}. For example, if {% if data['applyingfor'] == "someoneelse" %}they're{% else %}you're{% endif %} a student living away from home, this could be {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} home or term time address.</p>                  
+                    <h2 class="nhsuk-heading-s">If {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} do not have a permanent address</h2>
+                    <p>If {% if data['applyingfor'] == "someoneelse" %}they're{% else %}you're{% endif %} homeless and living in temporary accommodation (for example, a long term hostel), {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} should use the address that {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} GP or dentist holds for {% if data['applyingfor'] == "someoneelse" %}them{% else %}you{% endif %}.</p>                          
+                </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

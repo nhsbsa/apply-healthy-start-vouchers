@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your address?
+        </h1>
+
+        <p>If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).</p>
+
+        <form action="/v12/address" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="addressline1">
+                    Building and street
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="addressline2">
+                    Address line 2 (optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline2" name="addressline2" type="text" autocomplete="address-line2">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="towncity">
+                    Town or city
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level2">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+            </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        If you do not know which address to use
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <h2 class="nhsuk-heading-s">If you have more than one address</h2>
+                    <p>You should use the address that your GP or dentist holds for you. For example, if you're a student living away from home, this could be your home or term time address.</p>                  
+                    <h2 class="nhsuk-heading-s">If you don't have a permanent address</h2>
+                    <p>If you're homeless and living in temporary accommodation (for example, a long term hostel), you should use the address that your GP or dentist holds for you.</p>                          
+                </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
