@@ -1077,24 +1077,7 @@ router.post('/current/mobile-phone-number', function (req, res) {
 
   var mobilePhoneNumber = req.session.data['mobilephonenumber']
 
-  res.redirect('/current/apply/bank-details')
-
-})
-
-// Bank Details
-
-router.post('/current/bank-details', function (req, res) {
-
-  var accountName = req.session.data['accountname']
-  var sortCode = req.session.data['sortcode']
-  var accountNumber = req.session.data['accountnumber']
-
-  if (accountName && sortCode && accountNumber){
-    res.redirect('/current/apply/check-your-answers')    
-  }
-  else {
-    res.redirect('/current/apply/bank-details')
-  }
+  res.redirect('/current/apply/check-your-answers')
 
 })
 
