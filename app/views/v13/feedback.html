@@ -1,0 +1,189 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Get help to buy food and milk (Healthy Start)
+{% endblock %}
+
+{% block content %}    
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1><span role="text">Get help to buy food and milk <span class="nhsuk-caption-xl nhsuk-caption--bottom"><span class="nhsuk-u-visually-hidden">-</span> (Healthy Start)</span></span></h1>
+
+    </div>
+</div>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h2 class="nhsuk-heading-s">
+            Thank you for taking part in the pilot for our service. Help us improve by telling us about your experience.
+        </h2>
+
+        <p class="nhsuk-u-margin-bottom-6">
+            Do not include any personal details, for example, your name or National Insurance number. We cannot reply to individual queries made through this survey.
+        </p>
+
+        <form action="/v13/feedback" method="post">
+
+            <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--m nhsuk-u-margin-bottom-3" for="how-easy">
+                    How easy was it to complete the application form?
+                    </label>
+                </h1>
+
+            <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-1" name="how-easy" type="radio" value="extremely-easy">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-1">
+                    Extremely easy
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-2" name="how-easy" type="radio" value="very-easy">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-2">
+                    Very easy
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-3" name="how-easy" type="radio" value="fairly-easy">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-3">
+                    Fairly easy
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-4" name="how-easy" type="radio" value="neither-easy">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-4">
+                    Neither easy nor difficult
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-5" name="how-easy" type="radio" value="fairly-difficult">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-5">
+                    Fairly difficult
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-6" name="how-easy" type="radio" value="very-difficult">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-6">
+                    Very difficult
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="easy-7" name="how-easy" type="radio" value="extremely-difficult">
+                    <label class="nhsuk-label nhsuk-radios__label" for="easy-7">
+                    Extremely difficult
+                    </label>
+                </div>
+            </div>
+
+            </div>
+
+            <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--m nhsuk-u-margin-bottom-3" for="how-easy">
+                    How satisfied are you with your overall experience of using this service?
+                    </label>
+                </h1>
+
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                    On a scale of 1 to 10 where 10 is completely satisfied and 1 is completely dissatisfied
+                </span>
+
+            <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-10" name="satisfied" type="radio" value="10">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-10">
+                    10 (Completely satisfied)
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-9" name="satisfied" type="radio" value="9">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-9">
+                    9
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-8" name="satisfied" type="radio" value="8">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-8">
+                    8
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-7" name="satisfied" type="radio" value="7">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-7">
+                    7
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-6" name="satisfied" type="radio" value="6">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-6">
+                    6
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-5" name="satisfied" type="radio" value="5">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-5">
+                    5
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-4" name="satisfied" type="radio" value="4">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-4">
+                    4
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-3" name="satisfied" type="radio" value="3">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-3">
+                    3
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-2" name="satisfied" type="radio" value="2">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-2">
+                    2
+                    </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="satisfied-1" name="satisfied" type="radio" value="1">
+                    <label class="nhsuk-label nhsuk-radios__label" for="satisfied-1">
+                    1 (Completely dissatisfied)
+                    </label>
+                </div>
+            </div>
+
+            </div>
+
+            <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--m nhsuk-u-margin-bottom-3" for="why">
+                    Why did you choose these ratings?
+                    </label>
+                </h1>
+
+                <textarea class="nhsuk-textarea" id="why" name="why" rows="5"></textarea>
+
+            </div>
+
+            <div class="nhsuk-form-group nhsuk-u-margin-bottom-6">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--m nhsuk-u-margin-bottom-3" for="improve">
+                    How could we improve this service?
+                    </label>
+                </h1>
+
+                <textarea class="nhsuk-textarea" id="improve" name="improve" rows="5"></textarea>
+
+            </div>
+
+
+
+            <button class="nhsuk-button" type="submit">
+                Submit
+            </button>
+
+        </form>
+
+</div>
+{% endblock %}

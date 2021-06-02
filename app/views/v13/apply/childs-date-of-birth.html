@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is {{ data['childsfirstname'] }}’s date of birth?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is {{ data['childsfirstname'] }}’s date of birth?
+        </h1>
+
+        <form action="/v13/childs-date-of-birth" method="post">
+
+            <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
+                      <span class="nhsuk-hint" id="hint">
+                        For example, 11 7 2017
+                      </span>
+                  
+                      <div class="nhsuk-date-input">
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="childsdateofbirthday">
+                              Day
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="childsdateofbirthday" name="childsdateofbirthday" type="number" pattern="[0-9]*">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="childsdateofbirthmonth">
+                              Month
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="childsdateofbirthmonth" name="childsdateofbirthmonth" type="number" pattern="[0-9]*">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="childsdateofbirthyear">
+                              Year
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="childsdateofbirthyear" name="childsdateofbirthyear" type="number" pattern="[0-9]*">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  
+                  </div>
+
+                  <details class="nhsuk-details">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                            Why we ask for your child’s date of birth
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          <p>We use your child’s date of birth to work out their age. Your child’s age could entitle you to get help to buy milk, food and vitamins.</p>                      
+                        </div>
+                      </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

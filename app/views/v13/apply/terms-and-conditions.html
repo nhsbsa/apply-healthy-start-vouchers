@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you pregnant?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1>Terms and conditions</h1>
+
+        <div class="nhsuk-warning-callout">
+            <h3 class="nhsuk-warning-callout__label">Declaration</h3>
+
+  <!-- 
+
+            <p>You confirm that this information is correct as of
+              <script>
+                var today = new Date();
+                var dd = today.getDate();
+
+                var month = new Array();
+                month[0] = "January";
+                month[1] = "February";
+                month[2] = "March";
+                month[3] = "April";
+                month[4] = "May";
+                month[5] = "June";
+                month[6] = "July";
+                month[7] = "August";
+                month[8] = "September";
+                month[9] = "October";
+                month[10] = "November";
+                month[11] = "December";
+
+                var mm = month[today.getMonth()]; //January is 0!
+
+
+                var yyyy = today.getFullYear();
+
+                if (dd < 10) {
+                  dd = '0' + dd
+                }
+
+                if (mm < 10) {
+                  mm = '0' + mm
+                }
+
+                today = dd + ' ' + mm + ' ' + yyyy;
+                document.write(today);
+              </script>.</p>
+
+-->
+
+            <p>By submitting this application, I acknowledge that I have read and understood the following terms and conditions:</p>
+            <h2 class="nhsuk-heading-s">About your application</h2>
+            <ul>
+              <li>I declare that my current benefit claim is correct, complete and up to date as far as I know and believe.</li>
+              <li>I declare that I’m responsible for any dependants listed on this claim or the person entitled to the qualifying benefits is responsible for the dependants listed on the claim.</li>
+              <li>I understand that I may be prosecuted if I provide details that are neither complete nor correct.</li>
+              <li>I agree to update the NHS Business Services Authority if any of the details given in this application change.</li>
+              <li>I have read and understood the rules of the Healthy Start scheme and will abide by the obligations under the scheme.</li>
+            </ul>
+            <p>The <a href="https://www.nhsbsa.nhs.uk/our-policies/privacy" target="_blank">NHSBSA privacy notice</a> sets out how we process and protect personal data and your rights in respect of your own information. For more information, you can also email <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a>.</p>
+            
+            <!--
+            <h2 class="nhsuk-heading-s">About your card</h2>
+            <ul>
+              <li>You’re provided with access to money on the card, but the money remains beneficially owned by the Department of Health and Social Care.</li>
+              <li>Any money on the card belongs solely to the Department of Health and Social Care (DHSC). This money may be reclaimed at any point by the DHSC.</li>
+              <li>The card you will receive is a prepaid card that is issued by allpay Limited pursuant to license by Mastercard International Incorporated. Allpay Limited is a company regulated by the Financial Conduct Authority (FRN 900539) for the issuance of electronic money.</li>
+              <li>The company number is 0293319. Mastercard is a registered trademark of Mastercard International Incorporated.</li>
+            </ul>
+            <p>Allpay Limited head office registered address:</p>
+            <p>Fortis et Fides<br>Whitestone Business Park<br>Whitestone Hereford, Herefordshire<br>HR1 3SE.</p>
+            <h2 class="nhsuk-heading-s">If your card is lost or stolen</h2>
+            <p>If your card is lost or stolen, you need to report this as soon as possible by emailing <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a>.</p>
+            <p>Your card will then be immediately blocked, protecting you from unauthorised usage. Transactions made before you report the card as lost or stolen will be charged to your account.</p>
+            -->
+
+          </div>
+
+          <!--
+          <p class="nhsuk-u-margin-bottom-6">By submitting your application, you’re agreeing to accept the terms and conditions.</p>
+          -->
+
+          <form action="/v13/check-your-answers" method="post">
+
+            <button class="nhsuk-button" type="submit">
+                Accept and send
+            </button>
+
+          </form>
+
+    </div>
+</div>
+
+{% endblock %}
