@@ -4586,8 +4586,10 @@ router.post('/v11/children-under-four', function (req, res) {
     router.post('/v11/childs-first-name', function (req, res) {
 
       var childsfirstname = req.session.data['childsfirstname']
+      var childslastname = req.session.data['childslastname']
 
-      if (childsfirstname) {
+
+      if (childsfirstname && childslastname) {
         res.redirect('/v11/apply/childs-date-of-birth')
       }
       else {
@@ -4629,10 +4631,11 @@ router.post('/v11/children-under-four', function (req, res) {
               // Create a variable of the posted information
               
               var childsfirstname = req.session.data['childsfirstname']
+              var childslastname = req.session.data['childslastname']
               
               // Add the posted information into the 'childList' array
               
-              childList.push({"Name": childsfirstname, "DOB": childsdateofbirthDisplay});
+              childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
               
               req.session.data.childList = childList;
               
@@ -5056,7 +5059,12 @@ router.post('/v12/are-you-pregnant', function (req, res) {
 
   var pregnant = req.session.data['pregnant']
   var firstname = req.session.data['firstname'].trim().toUpperCase()
-  var partnersfirstname = req.session.data['partnersfirstname'].trim().toUpperCase()
+  var partner = req.session.data['partner']
+
+  if (partner === "yes") {
+    var partnersfirstname = req.session.data['partnersfirstname'].trim().toUpperCase()
+  }
+  
 
   if (pregnant === "yes") {
     res.redirect('/v12/apply/due-date')
@@ -5099,7 +5107,12 @@ router.post('/v12/due-date', function (req, res) {
   var tenweekspregnant = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
 
   var firstname = req.session.data['firstname'].trim().toUpperCase()
-  var partnersfirstname = req.session.data['partnersfirstname'].trim().toUpperCase()
+
+  var partner = req.session.data['partner']
+
+  if (partner === "yes") {
+    var partnersfirstname = req.session.data['partnersfirstname'].trim().toUpperCase()
+  }
 
 
   
@@ -5164,8 +5177,9 @@ router.post('/v12/children-under-four', function (req, res) {
     router.post('/v12/childs-first-name', function (req, res) {
 
       var childsfirstname = req.session.data['childsfirstname']
+      var childslastname = req.session.data['childslastname']
 
-      if (childsfirstname) {
+      if (childsfirstname && childslastname) {
         res.redirect('/v12/apply/childs-date-of-birth')
       }
       else {
@@ -5207,10 +5221,11 @@ router.post('/v12/children-under-four', function (req, res) {
               // Create a variable of the posted information
               
               var childsfirstname = req.session.data['childsfirstname']
+              var childslastname = req.session.data['childslastname']
               
               // Add the posted information into the 'childList' array
               
-              childList.push({"Name": childsfirstname, "DOB": childsdateofbirthDisplay});
+              childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
               
               req.session.data.childList = childList;
               
@@ -5257,7 +5272,12 @@ router.post('/v12/children-under-four', function (req, res) {
       var yrs = Math.abs(temp - 1970);
 
       var firstname = req.session.data['firstname'].trim().toUpperCase();
-      var partnersfirstname = req.session.data['partnersfirstname'].trim().toUpperCase()
+
+      var partner = req.session.data['partner']
+
+      if (partner === "yes") {
+        var partnersfirstname = req.session.data['partnersfirstname'].trim().toUpperCase()
+      }
 
 
       if (childrenunderfouranswers === "yes") {
@@ -5649,8 +5669,9 @@ router.post('/v13/children-under-four', function (req, res) {
     router.post('/v13/childs-first-name', function (req, res) {
 
       var childsfirstname = req.session.data['childsfirstname']
+      var childslastname = req.session.data['childslastname']
 
-      if (childsfirstname) {
+      if (childsfirstname && childslastname) {
         res.redirect('/v13/apply/childs-date-of-birth')
       }
       else {
@@ -5692,10 +5713,11 @@ router.post('/v13/children-under-four', function (req, res) {
               // Create a variable of the posted information
               
               var childsfirstname = req.session.data['childsfirstname']
+              var childslastname = req.session.data['childslastname']
               
               // Add the posted information into the 'childList' array
               
-              childList.push({"Name": childsfirstname, "DOB": childsdateofbirthDisplay});
+              childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
               
               req.session.data.childList = childList;
               

@@ -14,22 +14,32 @@ What is your child’s first name?
             "text": "Go back"
         }) }}
 
-        <h1 class="nhsuk-fieldset__legend--xl">What is your child’s first name?</h1>
+        <h1 class="nhsuk-fieldset__legend--xl">What is your child’s name?</h1>
 
         <p>If you have more than one child under 4 years old, you will be able to tell us about them later.</p>
 
         <form action="/v11/childs-first-name" method="post">
 
-            <div class="nhsuk-form-group">
+            
 
                 <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                <div class="nhsuk-form-group">
 
                   <label class="nhsuk-label" for="childsfirstname">Child’s first name</label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childsfirstname" type="text">
 
+                </div>
+
+                <div class="nhsuk-form-group">
+
+                  <label class="nhsuk-label" for="childslastname">Child’s last name</label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childslastname" type="text">          
+                  
+                </div>
+
                 </fieldset>
 
-            </div>
 
             <button class="nhsuk-button" type="submit">Continue</button>
 

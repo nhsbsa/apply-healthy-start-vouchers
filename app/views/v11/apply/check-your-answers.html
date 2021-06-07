@@ -306,22 +306,20 @@ Check your answers
             <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
 
             <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Child’s first name</dt>
-                <dd class="nhsuk-summary-list__value">{{ item.Name }}</dd>
+                <dt class="nhsuk-summary-list__key">Child’s name</dt>
+                <dd class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dd>
                 <dd class="nhsuk-summary-list__actions">
                     {% if data['childList'] | length  == 1 %}
-                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s first
-                            name</span></a>
+                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s name</span></a>
                     {% else %}
-                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s first
-                            name</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden">
+                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s name</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden">
                             child</span></a></a>
                     {% endif %}
                 </dd>
             </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
-                <dd class="nhsuk-summary-list__value">{{ item.DOB }}</dd>
+                <dd class="nhsuk-summary-list__value">{{ item.ChildsDOB }}</dd>
                 <dd class="nhsuk-summary-list__actions">
                     {% if data['childList'] | length  == 1 %}
                     <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of
