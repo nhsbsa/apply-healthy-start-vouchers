@@ -17,6 +17,14 @@
    {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
    <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
    {% block content %}
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+  
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <!-- Change the page title here -->
@@ -42,11 +50,15 @@
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
+                href="using-your-card">Using your card</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
                 href="how-to-apply">How to apply</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="help-with-claim">Get help with your claim</a>
+                href="contact-us">Contact us</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
@@ -57,14 +69,14 @@
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
       <h2>What you’ll get</h2>
 
-      <p>You’ll get money paid into your bank account every 4 weeks to spend on certain food and milk.</p>
+      <p>You’ll get money added onto your card every 4 weeks to spend on certain food and milk.</p>
 
       <p>You’ll get:</p>
 
       <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>£3.10 each week of your pregnancy from the 10th week</li>
-        <li>£6.20 each week for children from birth to 1</li>
-        <li>£3.10 each week for children between 1 and 4</li>
+        <li>£4.25 each week of your pregnancy from the 10th week</li>
+        <li>£8.50 each week for children from birth to 1</li>
+        <li>£4.25 each week for children between 1 and 4</li>
       </ul>
 
       <p>Your money will stop when your child is 4, or if you no longer receive benefits.</p>
@@ -77,7 +89,7 @@
       <p>You can find out where to collect your vitamins:</p>
 
       <ul class="nhsuk-list nhsuk-list--bullet">
-        <li><a target="_blank" href="https://www.nhs.uk/Service-Search/Healthy-start-vitamins/LocationSearch/348">NHS Choices<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a> if you live in England (or ask your midwife or health visitor)</li>
+        <li>on <a target="_blank" href="https://www.nhs.uk/Service-Search/Healthy-start-vitamins/LocationSearch/348">NHS Choices<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a> if you live in England (or ask your midwife or health visitor)</li>
         <li>from your midwife or health visitor, if you live in Wales</li>
         <li>on <a target="_blank" href="https://www.healthystart.nhs.uk/for-health-professionals/vitamins/vitamins-in-northern-ireland/">NHS Healthy Start<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a>, if you live in Northern Ireland</li>
       </ul>

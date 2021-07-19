@@ -17,6 +17,14 @@
    {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
    <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
    {% block content %}
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+  
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <!-- Change the page title here -->
@@ -44,11 +52,15 @@
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
+                href="using-your-card">Using your card</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
                 href="how-to-apply">How to apply</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="help-with-claim">Get help with your claim</a>
+                href="contact-us">Contact us</a>
           </li>
           <li aria-current="page"
               class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">Terms and conditions</span></li>
@@ -56,33 +68,42 @@
       </nav><!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
       <h2>Terms and conditions</h2>
-
-      <p>You must tell us if your circumstances or personal details change.</p>
-
-      <p>You understand that you must only buy permitted items with the money you’re given.</p>
-
-      <p>You understand that we’re acting on behalf of the Department of Health and Social Care (DHSC).</p>
-
-      <p>You confirm that you:</p>
-
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>give us permission to submit this application on your behalf</li>
-        <li>know we’ll use your information and share it with other organisations where necessary</li>
-        <li>understand your data will not be transferred outside the European Economic Area and will be delete within 24 months after your eligibility ends</li>
-        <li>know this is a pilot scheme and consent to your data being used to evaluate it</li>
+      <p>You agree that:</p>
+      <ul>
+          <li>all the data you’ve provided is correct</li>
+          <li>you’ll tell us if your circumstances or personal details change</li>
+          <li>we can check with other organisations that the data you’ve provided is correct</li>
       </ul>
-
-      <p>You understand and agree that the DHSC can:</p>
-
+      
+      <p>You’ve read and understand:</p>
       <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>check with other organisations associated with the service that the information you’ve given is correct</li>
-        <li>stop your payments and ask you to repay the money if you apply illegally</li>
-      </ul>      
-
-      <p>You can read more in our <a target="_blank" href="https://www.nhsbsa.nhs.uk/our-policies/privacy/healthy-start-privacy-notice">privacy policy<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a>.</p>
-
-
-      <!-- End of content -->
+          <li>what you’re allowed to buy with your Healthy Start benefit</li>
+          <li>your obligations under the Healthy Start scheme</li>
+          <li>the rules of the Healthy Start scheme</li>
+      </ul>
+      
+      <p>You agree that you meet at least one of the following conditions:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>If you’re applying and are pregnant, you’re also either:
+            <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-top-2">
+                <li>receiving a qualifying benefit</li>
+                <li>under 18</li>
+            </ul>
+          </li>
+      </ul>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>If you’re applying and are responsible for children under the age of 4, you receive a qualifying benefit.</li>
+      </ul>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>If you’re applying for someone else, a member of the household is either:
+            <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-top-2">
+                <li>receiving a qualifying benefit</li>
+                <li>under 18 and pregnant</li>
+            </ul>
+          </li>
+      </ul>
+      
+      <p>We use your information in multiple ways. You can read more about <a target="_blank" href="https://www.nhsbsa.nhs.uk/our-policies/privacy/healthy-start-privacy-notice">how we use your information in our privacy policy<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a>.</p>          
 
       <nav aria-label="Pagination"
            class="nhsuk-pagination"
@@ -90,7 +111,7 @@
         <ul class="nhsuk-list nhsuk-pagination__list">
           <li class="nhsuk-pagination-item--previous">
             <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
-                href="help-with-claim"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Get help with your claim</span> <svg aria-hidden="true"
+                href="contact-us"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Contact us</span> <svg aria-hidden="true"
                  class="nhsuk-icon nhsuk-icon__arrow-left"
                  viewbox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">

@@ -17,6 +17,14 @@
    {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
    <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
    {% block content %}
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+  
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <!-- Change the page title here -->
@@ -42,11 +50,15 @@
               class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__current">What you can buy</span></li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
+                href="using-your-card">Using your card</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
                 href="how-to-apply">How to apply</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="help-with-claim">Get help with your claim</a>
+                href="contact-us">Contact us</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
@@ -57,7 +69,7 @@
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
       <h2>What you can buy</h2>
 
-      <p>You’re only allowed to buy certain types of milk, infant formula, fruit and vegetables.</p>
+      <p>You’re only allowed to buy certain types of milk, infant formula, fruit, vegetables, and pulses.</p>
 
       <h3>Plain cow’s milk</h3>
 
@@ -85,7 +97,14 @@
         <li>nutritionally complete</li>
       </ul>
 
-      <p>Look for ‘complete nutrition’, ‘from birth’, ‘from birth to 6 months’, or ‘from birth to 12 months’ on the label.</p>
+      <p>On the label, look for:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>‘complete nutrition’</li>
+        <li>‘from birth’</li>
+        <li>‘from birth to 6 months’</li>
+        <li>‘from birth to 12 months’</li>
+      </ul>
 
       <p>It cannot be follow-on formula or milk (‘from 6 months’, or ‘from 6 to 12 months’).</p>
 
@@ -97,15 +116,23 @@
         <li>fresh or frozen</li>
         <li>whole or chopped</li>
         <li>packaged or loose</li>
+        <li>tinned</li>
+        <li>in fruit juice or water</li>
       </ul>
 
       <p>They cannot:</p>
 
       <ul class="nhsuk-list nhsuk-list--bullet">
         <li>have added ingredients like fat (oil), salt, sugar or flavourings, such as oven chips and battered onion rings</li>
-        <li>be dried, canned, juiced or pre-cooked</li>
+        <li>be dried or pre-cooked</li>
         <li>be smoothies</li>
       </ul>
+
+      <h3>Pulses</h3>
+
+      <p>These can be fresh, dried or tinned.</p>
+
+      <p>This includes things like lentils, beans, peas and chickpeas. However, they must not contain added ingredients such as fat, salt, sugar or flavouring.</p>
 
       <nav aria-label="Pagination"
            class="nhsuk-pagination"
@@ -121,7 +148,7 @@
           </li>
           <li class="nhsuk-pagination-item--next">
             <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
-                href="how-to-apply"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">How to apply</span> <svg aria-hidden="true"
+                href="using-your-card"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Using your card</span> <svg aria-hidden="true"
                  class="nhsuk-icon nhsuk-icon__arrow-right"
                  viewbox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">

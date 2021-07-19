@@ -17,13 +17,15 @@ What is your address?
             What is your address?
         </h1>
 
+        <p>If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).</p>
+
         <form action="/current/address" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="addressline1">
-                    Address line 1
+                    Building and street
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1" value="{{ data['housenumber'] }}">
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
             </div>
 
             <div class="nhsuk-form-group">
@@ -37,14 +39,14 @@ What is your address?
                     <label class="nhsuk-label" for="towncity">
                     Town or city
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level1">
+                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level2">
             </div>
 
             <div class="nhsuk-form-group">
                     <label class="nhsuk-label" for="postcode">
                     Postcode
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code" value="{{ data['postcode'] }}">
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
             </div>
 
             <details class="nhsuk-details">

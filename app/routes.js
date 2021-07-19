@@ -126,6 +126,7 @@ router.post('/current/check-your-answers', function (req, res) {
   var mobilePhoneNumber = req.session.data['mobilephonenumber'];
   var pregnant = req.session.data['pregnant']
   var firstName = req.session.data['firstname'];
+  var postcode = req.session.data['postcode'];
   
   if (pregnant === "yes") {
 
@@ -148,16 +149,38 @@ router.post('/current/check-your-answers', function (req, res) {
 
   if (emailAddress) {
 
-
     if (pregnant === "yes") {
 
-      notifyClient.sendEmail('fa19ba1e-138c-456c-9c11-791f772a4975', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
-      .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-      .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
+      /*    
+
+      // Map postcode to Lat & Long, then find their nearest vitamin provider N.B. Uncomment out when we do vitamins!
+
+      axios.get('https://api.postcodes.io/postcodes/' + postcode)
+      .then(function (response) {
+          var nearestProvider = geolib.findNearest({ latitude: response.data.result.latitude, longitude: response.data.result.longitude }, vitaminProviders)
+          console.log(nearestProvider.address);
+
+          notifyClient.sendEmail('a555749d-0f67-4fbd-b787-0bb158eb34bc', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "", 'vitaminAddress': nearestProvider.address }, reference: null })
+          .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
+          .catch(err => console.error(err))
+      })
+      .catch(function (error) {
+          console.log(error); 
+          res.redirect('/current/apply/confirmation-successful');
+      })
+      .then(function () {
+
+      });
+            
+      */
+
+     notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
+     .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
+     .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
 
     } else {
 
-      notifyClient.sendEmail('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
+      notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
       .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
       .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
   
@@ -1022,27 +1045,6 @@ module.exports = router;
 // APPLY (CURRENT)
 // ********************************
 
-// What is your national insurance number?
-
-router.post('/current/national-insurance-number', function (req, res) {
-
-  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-
-  if (nationalinsurancenumber) {
-    
-    if (nationalinsurancenumber === 'QQ123456C' || nationalinsurancenumber === 'AB123456A' || nationalinsurancenumber === 'CD654321B' || nationalinsurancenumber === 'EF214365C' || nationalinsurancenumber === 'GH563412D') {
-      res.redirect('/current/apply/name')
-    } else {
-      res.redirect('/current/apply/kickouts/not-eligible-national-insurance-number')
-    }
-
-  }
-  else {
-    res.redirect('/current/apply/national-insurance-number')
-  }
-
-})
-
 // What is your name?
 
 router.post('/current/name', function (req, res) {
@@ -1051,10 +1053,105 @@ router.post('/current/name', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/current/apply/date-of-birth')
+    res.redirect('/current/apply/address')
   }
   else {
     res.redirect('/current/apply/name')
+  }
+
+})
+
+// Find your address
+
+router.get('/current/find-address', function (req, res) {
+
+  var houseNumberName = req.session.data['housenumber']
+  var postcode = req.session.data['postcode']
+
+  const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+  if (regex.test(postcode) === true) {
+
+
+
+    if (houseNumberName) {
+
+      axios.get("https://api.getAddress.io/find/" + postcode + "/" + houseNumberName + "?api-key="+ process.env.POSTCODEAPIKEY)
+      .then(response => {
+        console.log(response.data.addresses);
+        var items = response.data.addresses;
+        res.render('current/apply/select-address', {items: items});
+      })
+      .catch(error => {
+        console.log(error);
+        res.redirect('/current/apply/no-address-found')
+      });
+
+    } else {
+
+      axios.get("https://api.getAddress.io/find/" + postcode + "?api-key="+ process.env.POSTCODEAPIKEY)
+      .then(response => {
+        console.log(response.data.addresses);
+        var items = response.data.addresses;
+        res.render('current/apply/select-address', {items: items});
+      })
+      .catch(error => {
+        console.log(error);
+        res.redirect('/current/apply/no-address-found')
+      });
+
+    }
+    
+    
+
+
+
+
+  
+
+  } else {
+    res.redirect('/current/apply/find-address')
+  }
+
+})
+
+// Select your address
+
+router.get('/current/select-address', function (req, res) {
+
+  var selectaddress = req.session.data['selectaddress']
+
+  if (selectaddress === 'none') {
+
+    delete req.session.data['addressline1']
+    delete req.session.data['addressline2']
+    delete req.session.data['towncity']
+    delete req.session.data['postcode']
+
+    res.redirect('/current/apply/address')
+  } else if (selectaddress) {
+    res.redirect('/current/apply/date-of-birth')
+  } else {
+    res.redirect('/current/apply/select-address')
+  }
+
+})
+
+// What is your address?
+
+router.post('/current/address', function (req, res) {
+
+  delete req.session.data['selectaddress']
+
+  var addressline1 = req.session.data['addressline1']
+  var addressline2 = req.session.data['addressline2']
+  var towncity = req.session.data['towncity']
+  var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
+
+  if (addressline1 && towncity && postcode) {
+    res.redirect('/current/apply/date-of-birth')
+  } else {
+    res.redirect('/current/apply/address')
   }
 
 })
@@ -1067,19 +1164,130 @@ router.post('/current/date-of-birth', function (req, res) {
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
   var dateofbirthyear = req.session.data['dateofbirthyear']
 
-  var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-  var ageDate =  new Date(today - dob.getTime())
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = moment(dob).format('MM/DD/YYYY');
+
+  var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate =  new Date(today - dobYrs.getTime())
   var temp = ageDate.getFullYear();
   var yrs = Math.abs(temp - 1970);
 
-  req.session.data.yrs = yrs;
+  var firstname = req.session.data['firstname'].trim().toUpperCase()
+  var lastname = req.session.data['lastname'].trim().toUpperCase()
+  var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
+  var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
+  var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
+
+  const addressRegex = RegExp('^[0-9]+$'); 
+
+  if (addressRegex.test(addressline1) === true) {
+
+    var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
+
+  }
+
+  if (yrs < 16) {
+
+    if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+
+      if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
+        res.redirect('/current/apply/are-you-pregnant')
+      } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
+        res.redirect('/current/apply/are-you-pregnant')
+      } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == 'CEDAR HOUSE') {
+        res.redirect('/current/apply/are-you-pregnant')
+      } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
+        res.redirect('/current/apply/are-you-pregnant')
+      } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
+        res.redirect('/current/apply/kickouts/confirmation-no-match')
+      } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
+        res.redirect('/current/apply/kickouts/confirmation-no-match')
+      } else {
+        res.redirect('/current/apply/kickouts/confirmation-no-match')
+      }  
+
+    }
+    else {
+      res.redirect('/current/apply/date-of-birth')
+    }    
+
+  }
+  else {
+
+    if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+      res.redirect('/current/apply/national-insurance-number')
+    }
+    else {
+      res.redirect('/current/apply/date-of-birth')
+    }    
+
+  }
 
 
-  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+})
+
+// What is your national insurance number?
+
+router.post('/current/national-insurance-number', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = moment(dob).format('MM/DD/YYYY');
+
+  var firstname = req.session.data['firstname'].trim().toUpperCase()
+  var lastname = req.session.data['lastname'].trim().toUpperCase()
+  var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
+  var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
+  var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
+
+  const addressRegex = RegExp('^[0-9]+$'); 
+
+  if (addressRegex.test(addressline1) === true) {
+
+    var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
+
+  }
+
+  if (nationalinsurancenumber) {
+
+    if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
+      res.redirect('/current/apply/are-you-pregnant')
+    } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
+      res.redirect('/current/apply/are-you-pregnant')
+    } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == 'CEDAR HOUSE') {
+      res.redirect('/current/apply/are-you-pregnant')
+    } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
+      res.redirect('/current/apply/are-you-pregnant')
+    } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
+      res.redirect('/current/apply/kickouts/confirmation-no-match')
+    } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
+      res.redirect('/current/apply/kickouts/confirmation-no-match')
+    } else {
+      res.redirect('/current/apply/kickouts/confirmation-no-match')
+    }  
+
+  }
+  else {
+    res.redirect('/current/apply/national-insurance-number')
+  }
+
+})
+
+// What is your nationality?
+
+router.post('/current/nationality', function (req, res) {
+
+  var nationality = req.session.data['input-autocomplete']
+
+  if (nationality) {
     res.redirect('/current/apply/are-you-pregnant')
   }
   else {
-    res.redirect('/current/apply/date-of-birth')
+    res.redirect('/current/apply/nationality')
   }
 
 })
@@ -1095,7 +1303,7 @@ router.post('/current/are-you-pregnant', function (req, res) {
   }
   else if (pregnant === "no") {
     req.session.data.lessThanTenWeeksPregnant = true;
-    res.redirect('/current/apply/address')
+    res.redirect('/current/apply/email-address')
   }
   else {
     res.redirect('/current/apply/are-you-pregnant')
@@ -1133,7 +1341,7 @@ router.post('/current/due-date', function (req, res) {
         req.session.data.lessThanTenWeeksPregnant = false;
       }
 
-      res.redirect('/current/apply/address')
+      res.redirect('/current/apply/email-address')
     }
 
   }
@@ -1143,24 +1351,6 @@ router.post('/current/due-date', function (req, res) {
 
 })
 
-// What is your address?
-
-router.post('/current/address', function (req, res) {
-
-  delete req.session.data['selectaddress']
-
-  var addressline1 = req.session.data['addressline1']
-  var addressline2 = req.session.data['addressline2']
-  var towncity = req.session.data['towncity']
-  var postcode = req.session.data['postcode']
-
-  if (addressline1 && towncity && postcode) {
-    res.redirect('/current/apply/email-address')
-  } else {
-    res.redirect('/current/apply/address')
-  }
-
-})
 
 // What is your email address?
 
@@ -1179,6 +1369,47 @@ router.post('/current/mobile-phone-number', function (req, res) {
   var mobilePhoneNumber = req.session.data['mobilephonenumber']
 
   res.redirect('/current/apply/check-your-answers')
+
+})
+
+// Contact Preferences
+
+router.post('/current/contact-preferences', function (req, res) {
+
+  var contact = req.session.data['contact']
+  var emailAddress = req.session.data['emailaddress']
+  var mobile = req.session.data['mobile']
+
+  if (contact) {
+
+    if (emailAddress || mobile || contact === 'NONE'){
+      res.redirect('/current/apply/bank-details')    
+    }
+    else {
+      res.redirect('/current/apply/contact-preferences')
+    }
+
+  }
+  else {
+    res.redirect('/current/apply/contact-preferences')
+  }
+
+})
+
+// Bank Details
+
+router.post('/current/bank-details', function (req, res) {
+
+  var accountName = req.session.data['accountname']
+  var sortCode = req.session.data['sortcode']
+  var accountNumber = req.session.data['accountnumber']
+
+  if (accountName && sortCode && accountNumber){
+    res.redirect('/current/apply/check-your-answers')    
+  }
+  else {
+    res.redirect('/current/apply/bank-details')
+  }
 
 })
 

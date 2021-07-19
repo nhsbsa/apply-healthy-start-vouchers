@@ -17,6 +17,14 @@
    {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
    <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
    {% block content %}
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+  
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <!-- Change the page title here -->
@@ -42,11 +50,15 @@
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
+                href="using-your-card">Using your card</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
                 href="how-to-apply">How to apply</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
-                href="help-with-claim">Get help with your claim</a>
+                href="contact-us">Contact us</a>
           </li>
           <li class="nhsuk-contents-list__item">
             <a class="nhsuk-contents-list__link"
@@ -61,7 +73,7 @@
 
 <p>If you’re pregnant or have a child under 4, you can get help to buy healthy food and milk.</p>
 
-<p>If you’re eligible, you’ll be paid money into your bank account to spend on food and milk.</p>
+<p>If you’re eligible, you’ll be sent a Healthy Start card with money on it that you can use in some UK shops. </p>
 
 <p>You can also collect:</p>
 
@@ -71,7 +83,7 @@
   <li>vitamins for children aged 6 months to 4 years old</li>
 </ul>
 
-<p>This service won't affect any of your other benefits</p>
+<p>This service will not affect any of your other benefits</p>
 
 <h3>If you live in Scotland</h3>
 
