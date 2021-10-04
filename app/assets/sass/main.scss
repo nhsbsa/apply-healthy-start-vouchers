@@ -17,6 +17,14 @@
 // Add your custom CSS/Sass styles below... 
 ///////////////////////////////////////////
 
+
+// Reusable CSS
+.no-bottom-border {
+  dt, dd {
+    border-bottom: none;
+  }
+}
+
 .u-ratio {
     position: relative;
     overflow: hidden;
@@ -378,4 +386,13 @@
     }
   }
   
+}
+
+.child-header {
+  h3, a {
+    display: inline-block
+  }
+  a {
+    display: inline-block;
+  }
 }
