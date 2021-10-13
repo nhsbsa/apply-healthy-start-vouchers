@@ -20,8 +20,9 @@ Check your answers
         <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About you</h2>
 
         <dl class="nhsuk-summary-list">
+            
 
-            {% if (data['firstname']) and (data['lastname']) %}
+        {% if (data['firstname']) and (data['lastname']) %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Name
@@ -39,9 +40,8 @@ Check your answers
                 </dd>
 
             </div>
-            {% endif %}
-
-            {% if (data['selectaddress']) %}
+        {% endif %}
+        {% if (data['selectaddress']) %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Address
@@ -59,8 +59,7 @@ Check your answers
                 </dd>
 
             </div>
-            {% else %}
-
+        {% else %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Address
@@ -81,31 +80,8 @@ Check your answers
                 </dd>
 
             </div>
-
-
-            {% endif %}
-
-            {% if (data['nationalinsurancenumber']) %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    National Insurance number
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['nationalinsurancenumber'] }}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="national-insurance-number">
-                        Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
-                    </a>
-
-                </dd>
-
-            </div>
-            {% endif %}
-
-            {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
+        {% endif %}
+        {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Date of birth
@@ -123,71 +99,47 @@ Check your answers
                 </dd>
 
             </div>
-            {% endif %}
-
-            {% if (data['input-autocomplete']) %}
+        {% endif %}
+        {% if (data['nationalinsurancenumber']) %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    Country of nationality
+                    National Insurance number
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['input-autocomplete'] }}
+                    {{ data['nationalinsurancenumber'] }}
                 </dd>
 
                 <dd class="nhsuk-summary-list__actions">
 
-                    <a href="nationality">
-                        Change<span class="nhsuk-u-visually-hidden"> your nationality</span>
+                    <a href="national-insurance-number">
+                        Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
                     </a>
 
                 </dd>
 
             </div>
-            {% endif %}
+        {% endif %}
+        <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Currently pregnant
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
+            </dd>
 
+            <dd class="nhsuk-summary-list__actions">
 
+                <a href="are-you-pregnant">
+                    Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
+                </a>
+
+            </dd>   
+        </div>
+
+        {% if data['childrenunderfour'] == "yes" %}
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    Currently pregnant
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="are-you-pregnant">
-                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
-                    </a>
-
-                </dd>
-
-            </div>
-
-            {% if data['pregnant'] == "yes" %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Due date
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="due-date">
-                        Change<span class="nhsuk-u-visually-hidden"> your due date</span>
-                    </a>
-
-                </dd>
-
-            </div>
-            {% endif %}
-
-            {% if data['childrenunderfour'] == "yes" %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Children under 4 years old
+                    Have children under 4
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                     {% if data['childrenunderfour'] == "yes" %}Yes{% else %}No{% endif %}
@@ -202,53 +154,76 @@ Check your answers
                 </dd>
 
             </div>
+        {% endif %}
+        {% if (data['emailaddress']) %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Email address
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['emailaddress'] | safe }}
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+
+                        <a href="email-address">
+                            Change<span class="nhsuk-u-visually-hidden"> your email address</span>
+                        </a>
+
+                    </dd>
+
+                </div>
             {% endif %}
-
-
-
-
-
-
-
-            {% if (data['emailaddress']) %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Email address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['emailaddress'] | safe }}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="email-address">
-                        Change<span class="nhsuk-u-visually-hidden"> your email address</span>
-                    </a>
-
-                </dd>
-
-            </div>
-            {% endif %}
-
             {% if (data['mobilephonenumber']) %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Mobile phone number
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['mobilephonenumber'] | safe }}
-                </dd>
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Mobile phone number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['mobilephonenumber'] | safe }}
+                    </dd>
 
-                <dd class="nhsuk-summary-list__actions">
+                    <dd class="nhsuk-summary-list__actions">
 
-                    <a href="mobile-phone-number">
-                        Change<span class="nhsuk-u-visually-hidden"> your mobile phone number</span>
-                    </a>
+                        <a href="mobile-phone-number">
+                            Change<span class="nhsuk-u-visually-hidden"> your telephone number</span>
+                        </a>
 
-                </dd>
+                    </dd>
 
-            </div>
+                </div>
             {% endif %}
+
+            
+
+            
+
+            
+
+            
+
+            {% if (data['input-autocomplete']) %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Country of nationality
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['input-autocomplete'] }}
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+
+                        <a href="nationality">
+                            Change<span class="nhsuk-u-visually-hidden"> your nationality</span>
+                        </a>
+
+                    </dd>
+                </div>
+            {% endif %}
+
+            
+
+            
 
             {% if data['benefits'] %}
             <div class="nhsuk-summary-list__row">
@@ -291,48 +266,72 @@ Check your answers
 
         {% if (data['childrenunderfour'] == "yes") %}
 
-        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children</h2>
+            <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your pregnancy</h2>
 
 
-        <dl class="nhsuk-summary-list">
-
-
-
-            {% if data['childrenunderfour'] == "yes" %}
+            <dl class="nhsuk-summary-list">
 
 
 
-            {% for item in data['childList'] %}
-            <div class="nhsuk-summary-list__row no-bottom-border child-header">
-                <dt class="nhsuk-summary-list__key">
-                <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
-                </dt>
-                <dd class="nhsuk-summary-list__value"></dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="#" class="nhsuk-u-margin-top-4">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
-                </dd>
-            </div>
+                {% if data['childrenunderfour'] == "yes" %}
 
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Child’s name</dt>
-                <dd class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s name</span></a>
-                </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
-                <dd class="nhsuk-summary-list__value">{{ item.ChildsDOB }}</dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of
-                            birth</span></a>
-                </dd>
-            </div>
-            {% endfor %}
+                    {% if data['pregnant'] == "yes" %}
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                            Due date
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                                {{ data['duedateday'] }} / {{ data['duedatemonth'] }} / {{ data['duedateyear'] }}
+                            </dd>
 
-            {% endif %}
+                            <dd class="nhsuk-summary-list__actions">
 
-        </dl>
+                                <a href="due-date">
+                                    Change<span class="nhsuk-u-visually-hidden"> your pregnancy due date</span>
+                                </a>
+
+                            </dd>
+
+                        </div>
+                    {% endif %}
+
+            </dl>
+            <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children under 4 years old</h2>
+            <dl class="nhsuk-summary-list">
+
+
+
+                    {% for item in data['childList'] %}
+                        <div class="nhsuk-summary-list__row no-bottom-border child-header">
+                            <dt class="nhsuk-summary-list__key">
+                            <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child {{ loop.index }} </h3>
+                            </dt>
+                            <dd class="nhsuk-summary-list__value"></dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a href="#" class="nhsuk-u-margin-top-4">Remove<span class="nhsuk-u-visually-hidden"> this child's details</span></a>
+                            </dd>
+                        </div>
+
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">Child’s first name</dt>
+                            <dd class="nhsuk-summary-list__value">{{ item.ChildsFirstName }}</dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s name</span></a>
+                            </dd>
+                        </div>
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
+                            <dd class="nhsuk-summary-list__value">{{ item.ChildsDOB }}</dd>
+                            <dd class="nhsuk-summary-list__actions">
+                                <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of
+                                        birth</span></a>
+                            </dd>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+
+            </dl>
 
         {% endif %}
 

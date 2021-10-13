@@ -4,11 +4,11 @@
   <title></title>
 </head>
 <body>
-  {% extends 'layout.html' %} {% block pageTitle %} Children under four you have told us about {% endblock %} {% block content %}
+  {% extends 'layout.html' %} {% block pageTitle %} Children under 4 years old that you have told us about {% endblock %} {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
-      <h1 class="nhsuk-fieldset__legend--xl">Children under 4 years old you have told us about</h1>
+      <h1 class="nhsuk-fieldset__legend--xl">Children under 4 years old that you have told us about</h1>
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Children under 4 years old</h2>
       <dl class="nhsuk-summary-list">
           
@@ -19,7 +19,7 @@
               <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>
               <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
               <dd class="nhsuk-summary-list__actions">
-                {% if data['childList'] | length  == 1 %}
+                {% if data['childList'] | length  == 0 %}
                 <a href="#">Edit<span class="nhsuk-u-visually-hidden"> child</span></a>
                 {% else %}
                 <a href="#">Edit<span class="nhsuk-u-visually-hidden"> child</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
@@ -31,7 +31,7 @@
 
 
       </dl>
-      <h2 class="nhsuk-fieldset__legend--m">Do you have another child under 4 years old?</h2>
+      <h2 class="nhsuk-fieldset__legend--m">Do you have any other children under 4 years old?</h2>
       <form action="/v13/children-under-four-answers"
             method="post">
         <div class="nhsuk-form-group">

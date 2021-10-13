@@ -20,23 +20,39 @@ What is your child’s first name?
 
         <form action="/v13/childs-first-name" method="post">
 
+        <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
 
                 <div class="nhsuk-form-group">
 
-                  <label class="nhsuk-label" for="childsfirstname">Child’s first name</label>
+                  <label class="nhsuk-label" for="childsfirstname">First name</label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childsfirstname" type="text">
 
                 </div>
 
                 <div class="nhsuk-form-group">
 
-                  <label class="nhsuk-label" for="childslastname">Child’s last name</label>
+                  <label class="nhsuk-label" for="childslastname">Last name</label>
                   <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childslastname" type="text">          
                   
                 </div>
 
-                </fieldset>
+            </fieldset>
+
+            </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Why do we ask for your child’s name
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>We use your child’s name to confirm your eligibility.</p>
+                </div>
+            </details>
+
+                
 
             <button class="nhsuk-button" type="submit">Continue</button>
 
