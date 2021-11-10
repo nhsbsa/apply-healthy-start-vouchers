@@ -12,6 +12,7 @@ const router = express.Router();
 const moment = require('moment');
 const stringSimilarity = require("string-similarity");
 const geolib = require('geolib');
+const https = require("https");
 
 // API
 
@@ -20,7 +21,8 @@ const axios = require('axios');
 // CONSTANTS
 
 const today = new Date(Date.now());
-let vitaminProviders = require('./data/vitamin-locations')
+let vitaminProviders = require('./data/vitamin-locations');
+const { listenerCount } = require('gulp');
 
 // ****************************************
 // PERSONAS
@@ -84,6 +86,30 @@ let vitaminProviders = require('./data/vitamin-locations')
 // Postcode = CR8 6GJ
 // Pregnant? = NO
 // Children Under 1? = NO
+// Children Between 1 & 4? = NO
+
+// ****************************************
+// Under 18 Persona
+// ****************************************
+
+// Sarah Green (not on universal credit)
+
+// National Insurance number = MN 98 75 44 G
+// Date of birth = 01 / 01 / 2004
+// 1st Line of Address = 13 Palm Road
+// Postcode = NR33 4GT
+// Pregnant? = YES or NO
+// Children Under 1? = NO
+// Children Between 1 & 4? = NO
+
+// Sarah Blue (on universal credit)
+
+// National Insurance number = OP 97 74 43 H
+// Date of birth = 01 / 01 / 2004
+// 1st Line of Address = 13 Palm Road
+// Postcode = NR33 4GT
+// Pregnant? = YES or NO
+// Children Under 1? = YES
 // Children Between 1 & 4? = NO
 
 // ****************************************
@@ -5957,6 +5983,7 @@ router.post('/v13/due-date', function (req, res) {
 
       if (lastname == 'SMITH') {
         res.redirect('/v13/apply/email-address')
+        console.log(lessThanTenWeeksPregnant);
       } else if (lastname == 'JONES') {
         res.redirect('/v13/apply/children-under-four')
       } else if (lastname == 'JOHNSON') {
@@ -6169,8 +6196,21 @@ router.post('/v13/feedback', function (req, res) {
 
 
 // ********************************
-// APPLY (VERSION 13)
+// APPLY (VERSION 14)
 // ********************************
+
+// Do you live in England, Wales or Northern Ireland?
+router.post('/v14/where-do-you-live', function (req, res) {
+
+  const whereDoYouLive = req.session.data['where-do-you-live']
+
+  if (whereDoYouLive == 'yes') {
+    res.redirect('/v14/apply/name');
+  } else {
+    res.redirect('/v14/apply/kickouts/not-eligible-country');
+  }
+
+})
 
 // What is your name?
 
@@ -6229,13 +6269,6 @@ router.get('/v14/find-address', function (req, res) {
 
     }
     
-    
-
-
-
-
-  
-
   } else {
     res.redirect('/v14/apply/find-address')
   }
@@ -6305,10 +6338,13 @@ router.post('/v14/date-of-birth', function (req, res) {
   var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
   var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
 
+  // Checking the actual age of the beneficiary 
+  var ageInMilliseconds = new Date() - new Date(dateofbirth);
+  var actualAge = Math.floor(ageInMilliseconds/1000/60/60/24/365); // convert to years
+
     if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-      res.redirect('/v14/apply/national-insurance-number')
-    }
-    else {
+        res.redirect('/v14/apply/national-insurance-number')
+    } else {
       res.redirect('/v14/apply/date-of-birth')
     }    
 
@@ -6352,6 +6388,10 @@ router.post('/v14/national-insurance-number', function (req, res) {
     } else if (lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL') {
       res.redirect('/v14/apply/are-you-pregnant')
     } else if (lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE') {
+      res.redirect('/v14/apply/are-you-pregnant')
+    } else if (lastname == 'GREEN' && nationalinsurancenumber == 'MN987544G' && dateofbirth == '01/01/2004' && postcode == 'NR334GP') {
+      res.redirect('/v14/apply/are-you-pregnant')
+    } else if (lastname == 'BLUE' && nationalinsurancenumber == 'OP977443H' && dateofbirth == '01/01/2004' && postcode == 'NR334GT') {
       res.redirect('/v14/apply/are-you-pregnant')
     } else if (lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS') {
       res.redirect('/v14/apply/kickouts/confirmation-no-match')
@@ -6398,6 +6438,10 @@ router.post('/v14/are-you-pregnant', function (req, res) {
       res.redirect('/v14/apply/children-under-four')
     } else if (lastname == 'BROWN') {
       res.redirect('/v14/apply/children-under-four')
+    } else if (lastname == 'GREEN') {
+      res.redirect('/v14/apply/kickouts/not-eligible-less-ten-weeks')
+    } else if (lastname == 'BLUE') {
+        res.redirect('/v14/apply/children-under-four')
     } else {
       res.redirect('/v14/apply/are-you-pregnant')
     }  
@@ -6419,7 +6463,7 @@ router.post('/v14/due-date', function (req, res) {
 
   var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
 
-  var today = moment();
+  var today = moment()
 
   var fulltermpregnancy = moment().add(42, 'weeks'); // 42 weeks from today is a full term pregnancy
   var tenweekspregnant = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
@@ -6431,8 +6475,10 @@ router.post('/v14/due-date', function (req, res) {
 
     if (duedate < today) {
       res.redirect('/v14/apply/due-date')
+      console.log('DUE DATE LESS THAN TODAY')
     } else if (duedate > fulltermpregnancy) {
       res.redirect('/v14/apply/due-date')
+      console.log('DUE DATE MORE THAN FULL TERM')
     } else {
 
       if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
@@ -6449,14 +6495,29 @@ router.post('/v14/due-date', function (req, res) {
         res.redirect('/v14/apply/children-under-four')
       } else if (lastname == 'BROWN') {
         res.redirect('/v14/apply/children-under-four')
+      } else if (lastname == 'GREEN') {
+          // Less than 10 weeks pregnant
+          if (duedate > tenweekspregnant) {
+            res.redirect('/v14/apply/kickouts/not-eligible-less-ten-weeks')
+          } else {
+            res.redirect('/v14/apply/evidence-type')
+          }
+      } else if (lastname == 'BLUE') {
+          if (duedate > tenweekspregnant) {
+            res.redirect('/v14/apply/under-ten-weeks-uc')
+          } else {
+            res.redirect('/v14/apply/children-under-four')
+          }
       } else {
         res.redirect('/v14/apply/due-date')
+        console.log('RUNNING THIS ELSE')
       } 
 
     }
 
   }
   else {
+    console.log('running else');
     res.redirect('/v14/apply/due-date')
   }
 
@@ -6469,8 +6530,14 @@ router.post('/v14/children-under-four', function (req, res) {
   var childrenunderfour = req.session.data['childrenunderfour']
   var pregnant = req.session.data['pregnant']
 
+  var lastname = req.session.data['lastname'].trim().toUpperCase()
+
   if (pregnant === "yes" && childrenunderfour === "no") {
-    res.redirect('/v14/apply/email-address')
+    if (lastname === 'BLUE') {
+      res.redirect('/v14/apply/evidence-type') 
+    } else {
+      res.redirect('/v14/apply/email-address')
+    }
   } else if (pregnant === "no" && childrenunderfour === "yes") {
     res.redirect('/v14/apply/childs-first-name')
   } else if (pregnant === "yes" && childrenunderfour === "yes") {
@@ -6590,6 +6657,9 @@ router.post('/v14/children-under-four', function (req, res) {
       else if (childrenunderfouranswers === "no" && lastname == 'JONES') {
         res.redirect('/v14/apply/email-address')
       }
+      else if (childrenunderfouranswers === "no" && lastname == 'BLUE') {
+        res.redirect('/v14/apply/evidence-type')
+      }
       else if (childrenunderfouranswers === "no" && lastname == 'JOHNSON') {
         res.redirect('/v14/apply/kickouts/no-eligible-children')
       }
@@ -6602,6 +6672,37 @@ router.post('/v14/children-under-four', function (req, res) {
 
     })
 
+  router.post('/v14/evidence-type', (req, res) => {
+
+    const evidenceType = req.session.data['evidence']
+
+    if (evidenceType) {
+      res.redirect('/v14/apply/file-upload')
+    } else {
+      res.redirect('/v14/apply/evidence-type')
+    }
+
+  })
+
+  router.post('/v14/file-upload', (req, res) => {
+    const file = req.session.data['file-upload']
+    res.redirect('/v14/apply/file-upload-cya')
+  })
+
+  router.post('/v14/additional-evidence', (req, res) => {
+    const additionalFile = req.session.data['optional-evidence']
+
+    if (additionalFile == 'yes') {
+      res.redirect('/v14/apply/file-upload-ni-nino')
+    } else {
+      res.redirect('/v14/apply/email-address')
+    }
+  })
+
+  router.post('/v14/file-upload-ni-nino', (req, res) => {
+    const file = req.session.data['file-upload']
+    res.redirect('/v14/apply/file-upload-cya-ni-nino')
+  })
 
 // What is your email address?
 

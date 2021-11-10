@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Under 10 weeks 
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-heading-xl">Under 10 weeks pregnant</h1>
+        <p>You are under 10 weeks pregnant, therefore you will not be eligible for your pregnancy until after 10 weeks.</p>
+        <p>You may still be eligible for any children under 4 years old.</p>
+        <a class="nhsuk-button" href="/v14/apply/children-under-four">Continue</a>
+
+    </div>
+</div>
+
+{% endblock %}

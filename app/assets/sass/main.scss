@@ -396,3 +396,27 @@
     display: inline-block;
   }
 }
+
+// ***********************************
+// GOVUK FILE UPLOAD
+// ***********************************
+
+.nhsuk-file-upload {
+	font-family: "GDS Transport", arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: 400;
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+	color: #0b0c0c;
+	max-width: 100%;
+	margin-left: -5px;
+	padding: 5px;
+
+	&:focus {
+		outline: 3px
+		solid #ffdd00;
+		box-shadow: inset 0 0 0 4px #0b0c0c;
+	}
+}

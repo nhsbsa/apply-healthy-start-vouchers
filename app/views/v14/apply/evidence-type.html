@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Evidence type
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="/v14/evidence-type" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Upload evidence
+                    </h1>
+                </legend>
+
+                <p>You are required to provide evidence.</p>
+
+                <h2 class="nhsuk-heading-m">Select an option</h2>
+
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="birth-cert" name="evidence" type="radio" value="Birth certificate">
+                            <label class="nhsuk-label nhsuk-radios__label" for="birth-cert">
+                                Birth certificate (full or short version)
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="passport" name="evidence" type="radio" value="Passport">
+                            <label class="nhsuk-label nhsuk-radios__label" for="passport">
+                                Passport
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="evidence" type="radio" value="Driving license">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                Driving license (full or provisional)
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

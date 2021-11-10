@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="/v14/file-upload-ni-nino" method="post">
+
+            
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="file-upload">
+                    <h1 class="nhsuk-heading-xl">Upload evidence</h1>
+                </label>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis ullam labore perferendis sunt dolore culpa ab doloribus, cumque possimus natus quas beatae quos quia excepturi veritatis! Illum nisi quas asperiores</p>
+                <input class="nhsuk-file-upload" id="file-upload" name="file-upload" type="file">
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

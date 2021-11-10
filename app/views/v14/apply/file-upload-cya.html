@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Evidence uploaded
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="/v14/additional-evidence" method="post">
+
+            <h1 class="nhsuk-heading-xl">Evidence uploaded</h1>
+
+            <h2 class="nhsuk-heading-m">Files added</h2>
+
+            <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    {{ data['evidence'] }}
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    <a download href="#">your-file.pdf</a> (1MB)
+                  </dd>
+              
+                  <dd class="nhsuk-summary-list__actions">
+              
+                    <a href="/v14/apply/evidence-type">
+                      Change<span class="nhsuk-u-visually-hidden"> evidence</span>
+                    </a>
+              
+                  </dd>
+              
+                </div>
+
+              </dl>
+
+              <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                    <h2 class="nhsuk-fieldset__heading">
+                        Can you provide your NHS Number or National insurance number as evidence (optional) ?
+                    </h2>
+                </legend>
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="optional-evidence" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="optional-evidence" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

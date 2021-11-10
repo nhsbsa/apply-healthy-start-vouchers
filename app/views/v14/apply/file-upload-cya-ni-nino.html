@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Evidence uploaded
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        
+
+            <h1 class="nhsuk-heading-xl">Evidence uploaded</h1>
+
+            <h2 class="nhsuk-heading-m">Files added</h2>
+
+            <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    {{ data['evidence'] }}
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    <a download href="#">your-file</a> (1MB)
+                  </dd>
+              
+                  <dd class="nhsuk-summary-list__actions">
+              
+                    <a href="#">
+                      Change<span class="nhsuk-u-visually-hidden"> file</span>
+                    </a>
+              
+                  </dd>
+              
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    National insurance number / NHS number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    <a download href="#">your-file.jpg</a> (500KB)
+                  </dd>
+              
+                  <dd class="nhsuk-summary-list__actions">
+              
+                    <a href="#">
+                      Change<span class="nhsuk-u-visually-hidden"> file</span>
+                    </a>
+              
+                  </dd>
+              
+                </div>
+
+              </dl>
+
+            <a class="nhsuk-button" href="/v14/apply/email-address">
+                Continue
+            </a>
+
+        
+
+    </div>
+</div>
+
+{% endblock %}

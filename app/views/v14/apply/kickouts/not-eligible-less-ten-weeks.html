@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you live in England, Wales or Northern Ireland?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-heading-xl">You cannot apply for Healthy Start</h1>
+        <p>This is because you are less than 10 weeks pregnant. You must be at least 10 weeks pregnant to be eligible.</p>
+
+    </div>
+</div>
+
+{% endblock %}
