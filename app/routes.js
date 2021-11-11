@@ -1073,6 +1073,7 @@ router.post('/v14/check-your-answers', function (req, res) {
   var mobilePhoneNumber = req.session.data['mobilephonenumber'];
   var pregnant = req.session.data['pregnant']
   var firstName = req.session.data['firstname'];
+  var lastname = req.session.data['lastname']
   var postcode = req.session.data['postcode'];
   
   if (pregnant === "yes") {
@@ -1094,71 +1095,12 @@ router.post('/v14/check-your-answers', function (req, res) {
   
   }
 
-  if (emailAddress) {
-
-    if (pregnant === "yes") {
-
-      /*    
-
-      // Map postcode to Lat & Long, then find their nearest vitamin provider N.B. Uncomment out when we do vitamins!
-
-      axios.get('https://api.postcodes.io/postcodes/' + postcode)
-      .then(function (response) {
-          var nearestProvider = geolib.findNearest({ latitude: response.data.result.latitude, longitude: response.data.result.longitude }, vitaminProviders)
-          console.log(nearestProvider.address);
-
-          notifyClient.sendEmail('a555749d-0f67-4fbd-b787-0bb158eb34bc', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "", 'vitaminAddress': nearestProvider.address }, reference: null })
-          .then(response => { console.log(response); res.redirect('/v14/apply/confirmation-successful'); })
-          .catch(err => console.error(err))
-      })
-      .catch(function (error) {
-          console.log(error); 
-          res.redirect('/v14/apply/confirmation-successful');
-      })
-      .then(function () {
-
-      });
-            
-      */
-
-     notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-     .then(response => { console.log(response); res.redirect('/v14/apply/confirmation-successful'); })
-     .catch(err => { console.error(err); res.redirect('/v14/apply/confirmation-successful'); })
-
-    } else {
-
-      notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-      .then(response => { console.log(response); res.redirect('/v14/apply/confirmation-successful'); })
-      .catch(err => { console.error(err); res.redirect('/v14/apply/confirmation-successful'); })
-  
-    }
-
-  }
-  else if (mobilePhoneNumber) {
-
-    if (pregnant === "yes") {
-
-      // notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', mobilePhoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
-      // .then(response => { console.log(response); res.redirect('/v14/apply/confirmation-successful'); })
-      // .catch(err => console.error(err))
-
-      res.redirect('/v14/apply/confirmation-successful');
-
-    } else {
-
-      // notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', mobilePhoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-      // .then(response => { console.log(response); res.redirect('/v14/apply/confirmation-successful'); })
-      // .catch(err => console.error(err))
-
-      res.redirect('/v14/apply/confirmation-successful');
-  
-    }
-
-  } else if (!emailAddress && !mobilePhoneNumber) {
-    res.redirect('/v14/apply/confirmation-successful');
-
+  if (lastname == 'Green') {
+    res.redirect('/v14/apply/confirmation-pending-evidence')
+  } else if (lastname == 'Blue') {
+    res.redirect('/v14/apply/confirmation-pending-evidence')
   } else {
-    res.redirect('/v14/apply/check-your-answers')
+    res.redirect('/v14/apply/confirmation-successful')
   }
 
 })

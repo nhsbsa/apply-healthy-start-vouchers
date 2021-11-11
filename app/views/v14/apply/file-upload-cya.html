@@ -17,6 +17,34 @@ Evidence uploaded
 
             <h1 class="nhsuk-heading-xl">Evidence uploaded</h1>
 
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                    <h2 class="nhsuk-fieldset__heading nhsuk-u-font-weight-normal">
+                        Provide your NHS Number or National insurance number as evidence (optional)
+                    </h2>
+                </legend>
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="optional-evidence" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="optional-evidence" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
             <h2 class="nhsuk-heading-m">Files added</h2>
 
             <dl class="nhsuk-summary-list">
@@ -41,33 +69,16 @@ Evidence uploaded
 
               </dl>
 
-              <div class="nhsuk-form-group">
-
-                <fieldset class="nhsuk-fieldset">
-
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                    <h2 class="nhsuk-fieldset__heading">
-                        Can you provide your NHS Number or National insurance number as evidence (optional) ?
-                    </h2>
-                </legend>
-
-                    <div class="nhsuk-radios nhsuk-radios--inline">
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="yes" name="optional-evidence" type="radio" value="yes">
-                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="no" name="optional-evidence" type="radio" value="no">
-                            <label class="nhsuk-label nhsuk-radios__label" for="no">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-
-            </div>
+              <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Why do we ask for your NHS number or National insurance number?
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>We use this as additional evidence on your application.</p>
+                </div>
+            </details>
 
             <button class="nhsuk-button" type="submit">
                 Continue
