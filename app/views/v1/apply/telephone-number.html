@@ -27,7 +27,7 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} t
         <p>This must be the same telephone number {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} have registered with the benefits agency (DWP or HMRC).</p>
         {% endif %}
 
-        <form action="/v1/telephone-number" method="post">
+        <form action="v1/telephone-number" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="telephonenumber">

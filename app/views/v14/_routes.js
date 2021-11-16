@@ -609,7 +609,28 @@ router.post('/v14/check-your-answers', function (req, res) {
   } else if (lastname == 'Blue') {
     res.redirect('/v14/apply/confirmation-pending-evidence')
   } else {
-    res.redirect('/v14/apply/confirmation-successful')
+    if (emailAddress) {
+  
+      if (pregnant === "yes") {
+            res.redirect('/v13/apply/confirmation-successful');
+      } else {
+        res.redirect('/v13/apply/confirmation-successful');
+      }
+  
+    }
+    else if (mobilePhoneNumber) {
+  
+      if (pregnant === "yes") {
+        res.redirect('/v13/apply/confirmation-successful');
+      } else {
+        res.redirect('/v13/apply/confirmation-successful');
+      }
+  
+    } else if (!emailAddress && !mobilePhoneNumber) {
+      res.redirect('/v13/apply/confirmation-successful');
+    } else {
+      res.redirect('/v13/apply/check-your-answers')
+    }
   }
 
 })
