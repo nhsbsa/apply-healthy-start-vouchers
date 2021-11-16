@@ -19,7 +19,7 @@ Is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} family
 
         <p>Working Tax Credit run-on is what {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} receive in the 4 weeks immediately after {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} have stopped working for 16 hours or more per week (single adults) or 24 hours per week (couples).</p>
 
-        <form action="/v1/working-tax-credits" method="post">
+        <form action="v1/working-tax-credits" method="post">
 
             <div class="nhsuk-form-group">
 

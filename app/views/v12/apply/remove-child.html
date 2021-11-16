@@ -23,7 +23,7 @@ Do you want to remove this child?
         <p>Born on {% if data['childsdateofbirthday'] and data['childsdateofbirthmonth'] and data['childsdateofbirthyear']  %}{{ data['childsdateofbirthday'] }}/{{ data['childsdateofbirthmonth'] }}/{{ data['childsdateofbirthyear'] }}{% else %}01/04/2019{% endif %}</p>
         </div>
 
-        <form action="/v12/remove-child" method="post">
+        <form action="v12/remove-child" method="post">
 
             <div class="nhsuk-form-group">
 

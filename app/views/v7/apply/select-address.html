@@ -19,7 +19,7 @@ Select {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} ad
 
         <p>{{ items | length }} {% if (items | length > 1)  %}addresses{% else %}address{% endif %} found for {% if data['housenumber']  %}'{{ data['housenumber'] }}' and {% endif %} '{{ data['postcode'] }}'.</p>
 
-        <form action="/v7/select-address" method="get">
+        <form action="v7/select-address" method="get">
 
             <div class="nhsuk-form-group">
                 <div class="nhsuk-radios">
