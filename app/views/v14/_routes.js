@@ -213,6 +213,8 @@ router.post('/v14/national-insurance-number', function (req, res) {
       res.redirect('/v14/apply/are-you-pregnant')
     } else if (lastname == 'BLUE' && nationalinsurancenumber == 'OP977443H' && dateofbirth == '01/01/2004' && postcode == 'NR334GT') {
       res.redirect('/v14/apply/are-you-pregnant')
+    } else if (lastname == 'YELLOW' && nationalinsurancenumber == 'JN333546K' && dateofbirth == '01/01/2004' && postcode == 'NR334GT') {
+      res.redirect('/v14/apply/are-you-pregnant')
     } else if (lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS') {
       res.redirect('/v14/apply/kickouts/confirmation-no-match')
     } else if (lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ') {
@@ -259,6 +261,8 @@ router.post('/v14/are-you-pregnant', function (req, res) {
     } else if (lastname == 'BROWN') {
       res.redirect('/v14/apply/children-under-four')
     } else if (lastname == 'GREEN') {
+      res.redirect('/v14/apply/children-under-four')
+    } else if (lastname == 'YELLOW') {
       res.redirect('/v14/apply/kickouts/not-eligible-less-ten-weeks')
     } else if (lastname == 'BLUE') {
       res.redirect('/v14/apply/children-under-four')
@@ -323,6 +327,9 @@ router.post('/v14/due-date', function (req, res) {
           res.redirect('/v14/apply/evidence-type')
         }
       } else if (lastname == 'BLUE') {
+        
+        res.redirect('/v14/apply/under-ten-weeks-uc')
+      } else if (lastname == 'YELLOW') {
         if (duedate > tenweekspregnant) {
           res.redirect('/v14/apply/under-ten-weeks-uc')
         } else {
