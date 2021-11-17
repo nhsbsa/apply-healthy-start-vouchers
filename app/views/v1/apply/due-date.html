@@ -19,7 +19,7 @@ What is {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} d
 
         <p>If {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} are unsure, or still awaiting a <a href="https://www.nhs.uk/conditions/pregnancy-and-baby/dating-scan-ultrasound-10-11-12-13-weeks-pregnant/" target="_blank">dating scan</a>, {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} can work out when {% if data['applyingfor'] == "myself" %}you{% else %}they{% endif %} might expect {% if data['applyingfor'] == "myself" %}your{% else %}their{% endif %} baby to arrive using the <a href="https://www.nhs.uk/conditions/pregnancy-and-baby/due-date-calculator/" target="_blank">NHS pregnancy and due date calculator</a>.</p>
 
-        <form action="/v1/due-date" method="post">
+        <form action="v1/due-date" method="post">
 
             <div class="nhsuk-form-group">
                     <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">

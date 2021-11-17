@@ -21,7 +21,7 @@ Find {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %}
         <p>This must be the same address {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} have registered with the benefits agency (DWP or HMRC).</p>
         {% endif %}
 
-        <form action="/v10/find-address" method="get">
+        <form action="v10/find-address" method="get">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="housenumber">
