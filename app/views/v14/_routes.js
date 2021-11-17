@@ -263,7 +263,11 @@ router.post('/v14/are-you-pregnant', function (req, res) {
     } else if (lastname == 'GREEN') {
       res.redirect('/v14/apply/children-under-four')
     } else if (lastname == 'YELLOW') {
-      res.redirect('/v14/apply/kickouts/not-eligible-less-ten-weeks')
+      if (pregnant == 'yes') {
+        res.redirect('/v14/apply/due-date')
+      } else {
+        res.redirect('/v14/apply/children-under-four')
+      }
     } else if (lastname == 'BLUE') {
       res.redirect('/v14/apply/children-under-four')
     } else {
@@ -493,6 +497,9 @@ router.post('/v14/children-under-four-answers', function (req, res) {
   else if (childrenunderfouranswers === "no" && lastname == 'BROWN') {
     res.redirect('/v14/apply/kickouts/no-eligible-children')
   }
+  else if (childrenunderfouranswers === "no" && lastname == 'YELLOW') {
+    res.redirect('/v14/apply/email-address')
+  }
   else {
     res.redirect('/v14/apply/children-under-four-answers')
   }
@@ -615,28 +622,30 @@ router.post('/v14/check-your-answers', function (req, res) {
     res.redirect('/v14/apply/confirmation-pending-evidence')
   } else if (lastname == 'Blue') {
     res.redirect('/v14/apply/confirmation-pending-evidence')
+  } else if (lastname == 'Yellow') {
+    res.redirect('/v14/apply/confirmation-pending-evidence')
   } else {
     if (emailAddress) {
   
       if (pregnant === "yes") {
-            res.redirect('/v13/apply/confirmation-successful');
+            res.redirect('/v14/apply/confirmation-successful');
       } else {
-        res.redirect('/v13/apply/confirmation-successful');
+        res.redirect('/v14/apply/confirmation-successful');
       }
   
     }
     else if (mobilePhoneNumber) {
   
       if (pregnant === "yes") {
-        res.redirect('/v13/apply/confirmation-successful');
+        res.redirect('/v14/apply/confirmation-successful');
       } else {
-        res.redirect('/v13/apply/confirmation-successful');
+        res.redirect('/v14/apply/confirmation-successful');
       }
   
     } else if (!emailAddress && !mobilePhoneNumber) {
-      res.redirect('/v13/apply/confirmation-successful');
+      res.redirect('/v14/apply/confirmation-successful');
     } else {
-      res.redirect('/v13/apply/check-your-answers')
+      res.redirect('/v14/apply/check-your-answers')
     }
   }
 

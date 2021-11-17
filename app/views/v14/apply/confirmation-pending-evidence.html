@@ -17,10 +17,28 @@ We’re considering your application
         </div>
       </div>
 
-      <p>You can still us your Heatlhy Start vouchers until their expiry date. You can find the expiry date printed on your vouchers.</p>
-      <p>After ((dynamic date)) you will no longer receive vouchers and instead be sent a Healthy Start card.</p>
+      {% if (data['lastname'] == "Green") %}
+        <p>We have received your application along with your evidence</p>
+      {% elseif (data['lastname'] == "Blue") %}
+        <p>We have received your application along with your evidence</p>
+      {% else %}
+        <p>We have received your application</p>
+      {% endif %}
+       <p>You can still us your Heatlhy Start vouchers until their expiry date. You can find the expiry date printed on your vouchers.</p>
+
       <h2 class="nhsuk-heading-m">What happens next?</h2>
-      <p>Your Healthy Start card will be sent to you within 5 working days of ((dynamic date)). It will have your next payment on it. Money will then be added to your card every 4 weeks.</p>
+      {% if (data['lastname'] == "Green") %}
+        <p>The evidence you have provided will be checked and your will be notified via ((email/text)) of any updates to your application.</p>
+        <p>You should receive notifications within the next 5 days.</p>
+      {% elseif (data['lastname'] == "Blue") %}
+        <p>The evidence you have provided will be checked and your will be notified via ((email/text)) of any updates to your application.</p>
+        <p>You should receive notifications within the next 5 days.</p>
+      {% else %}
+        <p>You must now send us your evidence. This can be sent to us via post or email</p>
+        <p>Post content</p>
+        <p>Email content</p>
+      {% endif %}
+
       <h2 class="nhsuk-heading-m">Give feedback</h2>
         <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
     </div>
