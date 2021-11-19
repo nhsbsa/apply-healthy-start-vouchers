@@ -261,7 +261,7 @@ router.post('/v14/are-you-pregnant', function (req, res) {
     } else if (lastname == 'BROWN') {
       res.redirect('/v14/apply/children-under-four')
     } else if (lastname == 'GREEN') {
-      res.redirect('/v14/apply/children-under-four')
+      res.redirect('/v14/apply/kickouts/not-eligible-less-ten-weeks')
     } else if (lastname == 'YELLOW') {
       if (pregnant == 'yes') {
         res.redirect('/v14/apply/due-date')
