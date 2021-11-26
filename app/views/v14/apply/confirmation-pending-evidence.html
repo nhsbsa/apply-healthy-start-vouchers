@@ -12,7 +12,7 @@ We’re considering your application
       <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
         <div class="nhsuk-card__content">
           <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
-            We've received your application
+            We have received your application
           </h1>
           <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
             Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2-123F</span>
@@ -25,9 +25,9 @@ We’re considering your application
       {% elseif (data['lastname'] == "Blue") %}
         <p>We have received your application along with your evidence</p>
       {% else %}
-        <p>We have received your application</p>
+      
       {% endif %}
-       <p>If you’re currently receiving paper vouchers for Healthy Start, these will now stop. You can still use your Healthy Start vouchers until their expiry date. You can find the expiry date printed on your vouchers.</p>
+       <p>If you currently receive paper vouchers for Healthy Start, these will now stop. However, you can use any vouchers you still have until their expiry date. You can find this printed on the voucher.</p>
 
       <h2 class="nhsuk-heading-m">What happens next?</h2>
       {% if (data['lastname'] == "Green") %}
@@ -37,7 +37,31 @@ We’re considering your application
         <p>The evidence you have provided will be checked and your will be notified via ((email/text)) of any updates to your application.</p>
         <p>You should receive notifications within the next 5 days.</p>
       {% else %}
-        <p>You must now send us evidence. You can send this by post or email.</p>
+        
+      <p>You must now post your evidence to us. Send us a clear photocopy of one of the following:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>Your passport</li>
+        <li>Your birth certificate (full or short version)</li>
+        <li>Your driving license (full or provisional)</li>
+      </ul>
+      <p>Post this photocopy to:</p>
+      <ul class="nhsuk-list">
+        <li>Bridge House</li>
+        <li>152 Pilgrim Street</li>
+        <li>Newcastle upon Tyne</li>
+        <li>NE1 6SN</li>
+      </ul>
+      <p>We cannot progress your application until you send us your evidence.</p>
+      <p>We aim to contact you with an update on your application in 5 to 10 working days.</p>
+
+      <h3>If you cannot post evidence to us</h3>
+      <p>You can contact us for help by:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>Email: <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+        <li>Telephone: 0300 330 7010</li>
+      </ul>
+      <p>Monday to Friday, 8am to 6pm (except public holidays). This call will be charged at the local rate.</p>
+
       {% endif %}
 
       <h2 class="nhsuk-heading-m">Give feedback</h2>
