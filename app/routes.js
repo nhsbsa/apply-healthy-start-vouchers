@@ -114,17 +114,17 @@ router.use('/current/apply', require('./views/current/_routes'));
 // Under 18 Persona
 // ****************************************
 
-// Sarah Green (not on universal credit)
+// Sarah Green (not on universal credit - follows file upload journey)
 
 // National Insurance number = MN 98 75 44 G
 // Date of birth = 01 / 01 / 2004
 // 1st Line of Address = 13 Palm Road
 // Postcode = NR33 4GT
-// Pregnant? = YES or NO
+// Pregnant? = YES or NO (No to get kickout screen)
 // Children Under 1? = NO
 // Children Between 1 & 4? = NO
 
-// Sarah Blue (on universal credit)
+// Sarah Blue (on universal credit - follows file upload journey)
 
 // National Insurance number = OP 97 74 43 H
 // Date of birth = 01 / 01 / 2004
@@ -134,7 +134,7 @@ router.use('/current/apply', require('./views/current/_routes'));
 // Children Under 1? = YES
 // Children Between 1 & 4? = NO
 
-// Sarah Yellow (on universal credit)
+// Jane Yellow (on universal credit - post evidence journey)
 
 // National Insurance number = JN 33 35 46 K
 // Date of birth = 01 / 01 / 2004
