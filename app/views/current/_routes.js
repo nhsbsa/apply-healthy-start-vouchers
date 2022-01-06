@@ -19,6 +19,21 @@ const { listenerCount } = require('gulp');
 
 // ********************************
 
+// Do you live in England, Wales or Northern Ireland?
+
+
+router.post('/current/where-do-you-live', function (req, res) {
+
+  const whereDoYouLive = req.session.data['where-do-you-live']
+
+  if (whereDoYouLive == 'yes') {
+    res.redirect('/current/apply/name');
+  } else {
+    res.redirect('/current/apply/kickouts/not-eligible-country');
+  }
+
+})
+
 // What is your name?
 
 router.post('/current/name', function (req, res) {
