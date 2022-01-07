@@ -292,7 +292,7 @@ router.post('/current/name', function (req, res) {
     }
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
-      res.redirect('/current/apply/email-address')
+      res.redirect('/current/apply/children-under-four')
     }
     else {
       res.redirect('/current/apply/are-you-pregnant')
@@ -339,6 +339,145 @@ router.post('/current/name', function (req, res) {
     }
   
   })
+  // Do you have any children under the age of 4?
+  
+  router.post('/current/children-under-four', function (req, res) {
+  
+    var childrenunderfour = req.session.data['childrenunderfour']
+    var pregnant = req.session.data['pregnant']
+  
+    if (pregnant === "yes" && childrenunderfour === "no") {
+      res.redirect('/current/apply/email-address')
+    } else if (pregnant === "no" && childrenunderfour === "yes") {
+      res.redirect('/current/apply/childs-first-name')
+    } else if (pregnant === "yes" && childrenunderfour === "yes") {
+      res.redirect('/current/apply/childs-first-name')
+    } else if (childrenunderfour === "no" && pregnant ==="no") {
+      res.redirect('/current/apply/kickouts/not-eligible')
+    } else {
+      res.redirect('/current/apply/children-under-four')
+    }
+  
+  })
+  // Do you have any children under the age of 4? > Childs first name
+  
+  router.post('/current/childs-first-name', function (req, res) {
+  
+    var childsfirstname = req.session.data['childsfirstname']
+    var childslastname = req.session.data['childslastname']
+
+    if (childsfirstname && childslastname) {
+      res.redirect('/current/apply/childs-date-of-birth')
+    }
+    else {
+      res.redirect('/current/apply/childs-first-name')
+    }
+
+  })
+     
+
+    // Do you have any children under the age of 4? > Childs date of birth
+
+    router.post('/current/childs-date-of-birth', function (req, res) {
+
+      var childsdateofbirthday = req.session.data['childsdateofbirthday']
+      var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
+      var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
+
+      var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
+      var childsdateofbirthDisplay = childsdateofbirthday + ' / ' + childsdateofbirthmonth + ' / ' + childsdateofbirthyear;
+
+      var today = moment().format('YYYY-MM-DD');
+      var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
+
+      console.log('Childs DOB: '+ childsdateofbirth);
+      console.log('Today: '+ today);
+      console.log('Four years from today: '+ fouryearsfromtoday);
+
+      if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
+
+        if (moment(childsdateofbirth).isBefore(today)) {
+
+            if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
+
+              var childList = req.session.data.childList
+              
+              // If no array exists, create one called 'childList'. If one already exists, do nothing.
+              
+              childList = ( typeof childList != 'undefined' && childList instanceof Array ) ? childList : []
+              
+              // Create a variable of the posted information
+              
+              var childsfirstname = req.session.data['childsfirstname']
+              var childslastname = req.session.data['childslastname']
+              
+              // Add the posted information into the 'childList' array
+              
+              childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
+              
+              req.session.data.childList = childList;
+              
+              console.log(childList)
+              
+              console.log('Number of children:', childList.length)
+              
+              // Redirect to the 'Do you get another?' page
+              
+              res.redirect('/current/apply/children-under-four-answers');          
+
+
+
+            } else {
+              res.redirect('/current/apply/childs-date-of-birth')
+            }
+
+        } else {
+          res.redirect('/current/apply/childs-date-of-birth')
+        }
+        
+      }
+      else {
+        res.redirect('/current/apply/childs-date-of-birth')
+      }
+
+
+    })
+    // Do you have any children under the age of 4? > Do you have another child under four?
+  
+    router.post('/current/children-under-four-answers', function (req, res) {
+  
+      var childrenunderfouranswers = req.session.data['childrenunderfouranswers']
+
+      var dateofbirthday = req.session.data['dateofbirthday']
+      var dateofbirthmonth = req.session.data['dateofbirthmonth']
+      var dateofbirthyear = req.session.data['dateofbirthyear']
+      var pregnant = req.session.data['pregnant']
+      var childrenunderfour = req.session.data['childrenunderfour']
+      var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+      var ageDate =  new Date(today - dob.getTime())
+      var temp = ageDate.getFullYear();
+      var yrs = Math.abs(temp - 1970);
+
+      var lastname = req.session.data['lastname'].trim().toUpperCase()
+
+      if (childrenunderfouranswers === "yes") {
+        res.redirect('/current/apply/childs-first-name')
+      }
+      else if (childrenunderfouranswers === "no" && lastname == 'JONES') {
+        res.redirect('/current/apply/email-address')
+      }
+      else if (childrenunderfouranswers === "no" && lastname == 'JOHNSON') {
+        res.redirect('/current/apply/kickouts/no-eligible-children')
+      }
+      else if (childrenunderfouranswers === "no" && lastname == 'BROWN') {
+        res.redirect('/current/apply/kickouts/no-eligible-children')
+      }
+      else {
+        res.redirect('/current/apply/children-under-four-answers')
+      }
+
+    })
+
   
   
   // What is your email address?
@@ -415,100 +554,65 @@ router.post('/current/name', function (req, res) {
 
 router.post('/current/check-your-answers', function (req, res) {
 
-    var contact = req.session.data['contact'];
-    var emailAddress = req.session.data['emailaddress'];
-    var mobilePhoneNumber = req.session.data['mobilephonenumber'];
-    var pregnant = req.session.data['pregnant']
-    var firstName = req.session.data['firstname'];
-    var postcode = req.session.data['postcode'];
-    
-    if (pregnant === "yes") {
-  
+  var contact = req.session.data['contact'];
+  var emailAddress = req.session.data['emailaddress'];
+  var mobilePhoneNumber = req.session.data['mobilephonenumber'];
+  var pregnant = req.session.data['pregnant']
+  var firstName = req.session.data['firstname'];
+  var lastname = req.session.data['lastname']
+  var postcode = req.session.data['postcode'];
+
+  if (pregnant === "yes") {
+
     var refNo = 'HDJ2123F';
     var paymentAmount = '£24.80';
     var pregnancyPayment = '\n* £12.40 for a pregnancy';
     var childrenUnder4Payment = '\n* £12.40 for children between 1 and 4';
-  
+
     var vitStart = moment().format('D MMMM YYYY');
     var vitEnd = moment().add(8, 'weeks').format("D MMMM YYYY");
     var vitTypeWomen = '\n* 1 pack(s) of vitamins for women';
-  
-    } else {
-  
+
+  } else {
+
     var refNo = 'HDJ2123F';
     var paymentAmount = '£12.40';
     var childrenUnder4Payment = '\n* £12.40 for children between 1 and 4';
-    
-    }
-  
+
+  }
+
+  if (lastname == 'Green') {
+    res.redirect('/current/apply/confirmation-pending-evidence')
+  } else if (lastname == 'Blue') {
+    res.redirect('/current/apply/confirmation-pending-evidence')
+  } else if (lastname == 'Yellow') {
+    res.redirect('/current/apply/confirmation-pending-evidence')
+  } else {
     if (emailAddress) {
   
       if (pregnant === "yes") {
-  
-        /*    
-  
-        // Map postcode to Lat & Long, then find their nearest vitamin provider N.B. Uncomment out when we do vitamins!
-  
-        axios.get('https://api.postcodes.io/postcodes/' + postcode)
-        .then(function (response) {
-            var nearestProvider = geolib.findNearest({ latitude: response.data.result.latitude, longitude: response.data.result.longitude }, vitaminProviders)
-            console.log(nearestProvider.address);
-  
-            notifyClient.sendEmail('a555749d-0f67-4fbd-b787-0bb158eb34bc', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "", 'vitaminAddress': nearestProvider.address }, reference: null })
-            .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-            .catch(err => console.error(err))
-        })
-        .catch(function (error) {
-            console.log(error); 
             res.redirect('/current/apply/confirmation-successful');
-        })
-        .then(function () {
-  
-        });
-              
-        */
-  
-       notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-       .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-       .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
-  
       } else {
-  
-        notifyClient.sendEmail('152bd9a2-a79f-4e4f-8bfe-84654ffed6fb', emailAddress, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-        .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-        .catch(err => { console.error(err); res.redirect('/current/apply/confirmation-successful'); })
-    
+        res.redirect('/current/apply/confirmation-successful');
       }
   
     }
     else if (mobilePhoneNumber) {
   
       if (pregnant === "yes") {
-  
-        // notifyClient.sendSms('fa19ba1e-138c-456c-9c11-791f772a4975', mobilePhoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': pregnancyPayment, 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment, 'vitamin_start_date': vitStart, 'vitamin_end_date': vitEnd, 'vitaminTypeWomen': vitTypeWomen, 'vitaminTypeChildren': "" }, reference: null })
-        // .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-        // .catch(err => console.error(err))
-  
         res.redirect('/current/apply/confirmation-successful');
-  
       } else {
-  
-        // notifyClient.sendSms('e9299ebf-725c-4d8a-86c6-b28c0ef0028a', mobilePhoneNumber, { personalisation: { 'reference_number': refNo, 'first_name': firstName, 'payment_amount': paymentAmount, 'pregnancy_payment': "", 'children_under_1_payment': "", 'children_under_4_payment': childrenUnder4Payment }, reference: null })
-        // .then(response => { console.log(response); res.redirect('/current/apply/confirmation-successful'); })
-        // .catch(err => console.error(err))
-  
         res.redirect('/current/apply/confirmation-successful');
-    
       }
   
     } else if (!emailAddress && !mobilePhoneNumber) {
       res.redirect('/current/apply/confirmation-successful');
-  
     } else {
       res.redirect('/current/apply/check-your-answers')
     }
-  
-  })
+  }
+
+})
   
 
 module.exports = router;
