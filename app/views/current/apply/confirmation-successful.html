@@ -9,20 +9,23 @@ Application successful
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-          <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
-            <div class="nhsuk-card__content">
-              <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
-                Application successful
-              </h1>
-              <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
-                You’re entitled to <strong>{% if data['lessThanTenWeeksPregnant'] == true %}£4.25{% else %}£8.50{% endif %}</strong> a week.<br>
-                Your first payment will be <strong>{% if data['lessThanTenWeeksPregnant'] == true %}£17.00{% else %}£34.00{% endif %}</strong>.
-              </h2>
-              <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
-                Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
-              </h3>
-            </div>
-          </div>
+      <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            Application successful
+          </h1>
+          
+          {# else #}
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            You’re entitled to <strong>£8.50</strong> a week.<br>
+            Your first payment will be <strong>£34.00</strong>.
+          </h2>
+          {# endif #}
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
+          </h3>
+        </div>
+      </div>
 
           <h2 class="nhsuk-heading-m">What happens next</h2>
 
