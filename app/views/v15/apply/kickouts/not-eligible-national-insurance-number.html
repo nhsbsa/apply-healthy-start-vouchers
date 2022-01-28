@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot apply online yet
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            You cannot apply online yet
+        </h1>
+
+        
+        <p>
+            You can only apply online if you’ve received a letter from the NHS.
+        </p>
+        
+        <p>
+            If you’ve not received a letter from the NHS, you can apply for <a target="_blank" href="https://www.gov.uk/healthy-start">Healthy Start vouchers<span class="nhsuk-u-visually-hidden"> (opens in a new tab)</span></a> instead.
+        </p>
+
+        <p>
+            If you think there is a mistake, you can contact us by:
+        </p>
+
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+
+            <ul class="nhsuk-list">
+              <li>Telephone: 0300 330 7010</li>
+              <li>This phoneline is available Monday to Friday, 8am to 6pm (except public holidays).</li>
+            </ul>
+            
+            <p>
+              <a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out about call charges</a>
+            </p>
+
+            <ul class="nhsuk-list">
+              <li>Email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+              <li>We aim to respond to your email within 2 working days.</li>
+            </ul>
+
+        </div>
+
+        
+        <!--
+
+        <p>Alternatively, if you are pregnant or have children under 4 and:</p>
+
+        <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>are on benefits, or</li>
+            <li>are under 18</li>
+        </ul>
+
+        <p>
+            Then you could still qualify <a target="_blank" href="https://www.healthystart.nhs.uk/">for Healthy Start vouchers</a>.
+        </p>
+
+        -->
+
+        
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

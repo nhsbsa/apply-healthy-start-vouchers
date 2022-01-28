@@ -1,0 +1,299 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %} Get help to buy food and milk {% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+
+   {% block pageScripts %}
+   <script src="/js/step-by-step-nav.js"></script>
+   <script type="text/javascript">
+     var $element = $('#step-by-step-navigation')
+     var stepByStepNavigation = new NHSUK.Modules.AppStepNav()
+     stepByStepNavigation.start($element)
+   </script>
+   {% endblock %}
+
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-card nhsuk-card--clickable">
+        <div class="nhsuk-card__content">
+          <h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span>
+            <a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1><span role="text">Get help to buy food and milk <span class="nhsuk-caption-xl nhsuk-caption--bottom"><span
+              class="nhsuk-u-visually-hidden">-</span> (Healthy Start)</span></span></h1>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+      <h2 id="content">Apply to get help to buy food and milk (Healthy Start)</h2>
+
+      <h3 class="nhsuk-heading-s">If you’ve received a letter from the NHS and get Child Tax Credit with a household income of £16,190 or less</h3>
+
+      <p>You can apply online. To apply, you will need your:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>name</li>
+        <li>address</li>
+        <li>date of birth</li>
+        <li>National Insurance number</li>
+        <li>baby’s due date (if you’re pregnant)</li>
+      </ul>
+
+      <p><a href="/current/start"><button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">Apply now</button></a></p>
+
+      <!-- <p><a href="https://services.nhsbsa.nhs.uk/apply-for-healthy-start/"><button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">Apply now</button></a></p> -->
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <h3>If you’ve not received a letter from the NHS </h3>
+        <p>You cannot apply online yet, but you may still qualify for <a target="_blank" href="https://www.gov.uk/healthy-start">Healthy Start vouchers<span class="nhsuk-u-visually-hidden">
+          (opens in a new tab)</span></a> instead.</p>
+      </div>
+
+    </div>
+
+    <div class="nhsuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Part of</span>
+          <a href="step-by-step-index">
+            Get help to buy food and milk: step by step
+          </a>
+        </h2>
+      </div>
+  
+      <div id="step-by-step-navigation" data-module="gemstepnav" class="app-step-nav js-hidden " data-id="e01e924b-9c7c-4c71-8241-66a575c2f61f" data-show-text="show" data-hide-text="hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
+        <ol class="app-step-nav__steps">
+          <li class="app-step-nav__step js-step" id="find-out-if-you-can-get-help-to-buy-food-and-milk" >
+            <div class="app-step-nav__header js-toggle-panel" data-position="1">
+              <h3 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 1
+                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+  
+                <span class="js-step-title">
+                  Find out if you can get help to buy food and milk
+                </span>
+              </h3>
+            </div>
+  
+            <div class="app-step-nav__panel js-panel" id="step-panel-find-out-if-you-can-get-help-to-buy-food-and-milk-1">
+              <p class="app-step-nav__paragraph">If you’re pregnant or have a child under 4, you could get help to buy healthy food and milk.</p>
+  
+              <ol class="app-step-nav__list " data-length="2">
+                <li class="app-step-nav__list-item--small js-list-item">
+                  <a data-position="1.1" class="app-step-nav__link js-link" href="step-by-step-overview">What is the Healthy Start scheme?</a>
+                </li>
+                <li class="app-step-nav__list-item--small js-list-item">
+                  <a data-position="1.2" class="app-step-nav__link js-link" href="step-by-step-eligibility">
+                    <span class="app-step-nav__link-active-context nhsuk-u-visually-hidden">You are currently viewing: </span>Check if you qualify for the Healthy Start scheme </a>
+                </li>
+              </ol>
+  
+            </div>
+  
+          </li>
+          <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show id="apply-to-get-help-to-buy-food-and-milk" >
+            <div class="app-step-nav__header js-toggle-panel" data-position="2">
+              <h3 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 2
+                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+  
+                <span class="js-step-title">
+                  Apply to get help to buy food and milk
+                </span>
+              </h3>
+            </div>
+  
+            <div class="app-step-nav__panel js-panel" id="step-panel-apply-to-get-help-to-buy-food-and-milk-2">
+              <p class="app-step-nav__paragraph">You can apply if you’ve received a letter from the NHS and get Child Tax Credit with a household income of £16,190 or less.</p>
+              <ol class="app-step-nav__list " data-length="1">
+                <li class="app-step-nav__list-item--small js-list-item app-step-nav__list-item--active">
+                  <a data-position="2.1" class="app-step-nav__link js-link" href="#content">Apply to get help to buy food and milk (Healthy Start)</a>
+                </li>
+              </ol>
+  
+            </div>
+  
+          </li>
+          <li class="app-step-nav__step js-step" id="check-what-food-and-milk-you-can-buy" >
+            <div class="app-step-nav__header js-toggle-panel" data-position="3">
+              <h3 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 3
+                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+  
+                <span class="js-step-title">
+                  How to activate your card
+                </span>
+              </h3>
+            </div>
+  
+            <div class="app-step-nav__panel js-panel" id="step-panel-check-what-food-and-milk-you-can-buy-3">
+              <p class="app-step-nav__paragraph">You’ll receive your card by post. It’ll come with your first payment on it and instructions on how to activate and use it.</p>
+  
+              <ol class="app-step-nav__list " data-length="1">
+                <li class="app-step-nav__list-item--small js-list-item ">
+                  <a data-position="3.1" class="app-step-nav__link js-link" href="step-by-step-activate-your-card">How to activate your card</a>
+                </li>
+              </ol>
+  
+            </div>
+  
+          </li>
+          <li class="app-step-nav__step js-step" id="activating-and-using-your-card" >
+            <div class="app-step-nav__header js-toggle-panel" data-position="4">
+              <h3 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 4
+                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+  
+                <span class="js-step-title">
+                  How to use your card
+                </span>
+              </h3>
+            </div>
+  
+            <div class="app-step-nav__panel js-panel" id="step-panel-activating-and-using-your-card-4">
+              <p class="app-step-nav__paragraph">You’re only allowed to buy certain types of milk, infant formula, fruit, vegetables and pulses.</p>
+              <ol class="app-step-nav__list " data-length="4">
+                <li class="app-step-nav__list-item--small js-list-item">
+                  <a data-position="4.1" class="app-step-nav__link js-link" href="step-by-step-check-your-balance">How to check your balance</a>
+                </li>
+                <li class="app-step-nav__list-item--small js-list-item">
+                  <a data-position="4.2" class="app-step-nav__link js-link" href="step-by-step-what-you-can-buy">Check what healthy food and milk you can buy</a>
+                </li>
+                <li class="app-step-nav__list-item--small js-list-item">
+                  <a data-position="4.3" class="app-step-nav__link js-link" href="step-by-step-shopping-with-your-card">Shopping with your card</a>
+                </li>
+                <li class="app-step-nav__list-item--small js-list-item ">
+                  <a data-position="4.4" class="app-step-nav__link js-link" href="step-by-step-card-problems">How to report a card lost, damaged or stolen</a>
+                </li>
+              </ol>
+  
+            </div>
+  
+          </li>
+          <li class="app-step-nav__step js-step" id="how-to-eat-healthily" >
+            <div class="app-step-nav__header js-toggle-panel" data-position="5">
+              <h3 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 5
+                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+  
+                <span class="js-step-title">
+                  How to eat healthily
+                </span>
+              </h3>
+            </div>
+  
+            <div class="app-step-nav__panel js-panel" id="step-panel-how-to-eat-healthily-5">
+              <p class="app-step-nav__paragraph">Eating a healthy, balanced diet is an important part of maintaining good health, and can help you and your family feel your best.</p>
+  
+              <ol class="app-step-nav__list " data-length="3">
+                <li class="app-step-nav__list-item--small js-list-item ">
+                  <a rel="external" data-position="5.1" class="app-step-nav__link js-link" href="https://www.nhs.uk/live-well/eat-well/why-5-a-day">Check if you are getting 5 portions of fruit and vegetables every day</a>
+                </li>
+                <li class="app-step-nav__list-item--small js-list-item ">
+                  <a rel="external" data-position="5.2" class="app-step-nav__link js-link" href="https://www.nhs.uk/change4life/recipes">Find recipe ideas to help you and your family stay healthy</a>
+                </li>
+                <li class="app-step-nav__list-item--small js-list-item ">
+                  <a rel="external" data-position="5.3" class="app-step-nav__link js-link" href="https://www.nhs.uk/live-well/eat-well/20-tips-to-eat-well-for-less">Tips to eat well for less</a>
+                </li>
+              </ol>
+  
+            </div>
+  
+          </li>
+          <li class="app-step-nav__step js-step" id="tell-us-that-your-circumstances-have-changed" >
+            <div class="app-step-nav__header js-toggle-panel" data-position="6">
+              <h3 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label nhsuk-u-visually-hidden">Step</span> 6
+                      <span class="app-step-nav__circle-step-colon nhsuk-u-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+  
+                <span class="js-step-title">
+                  Report any change of circumstances
+                </span>
+              </h3>
+            </div>
+  
+            <div class="app-step-nav__panel js-panel" id="step-panel-tell-us-that-your-circumstances-have-changed-6">
+              <p class="app-step-nav__paragraph">To make sure you can still get the help you’re entitled to you must tell us about a change in your circumstances.</p>
+  
+              <ol class="app-step-nav__list " data-length="1">
+                <li class="app-step-nav__list-item--small js-list-item ">
+                  <a data-position="6.1" class="app-step-nav__link js-link" href="step-by-step-contact-us">Check what changes you need to report</a>
+                </li>
+              </ol>
+  
+            </div>
+  
+          </li>
+        </ol>
+      </div>
+  
+  
+    </div>
+  </div>{% endblock %}
+</body>
+</html>
