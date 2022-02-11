@@ -148,7 +148,7 @@ router.post('/v15/name', function (req, res) {
   // Date of birth
   
   router.post('/v15/date-of-birth', function (req, res) {
-  
+
     var dateofbirthday = req.session.data['dateofbirthday']
     var dateofbirthmonth = req.session.data['dateofbirthmonth']
     var dateofbirthyear = req.session.data['dateofbirthyear']
@@ -157,7 +157,7 @@ router.post('/v15/name', function (req, res) {
     var dateofbirth = moment(dob).format('MM/DD/YYYY');
   
     var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-    var ageDate =  new Date(today - dobYrs.getTime())
+    var ageDate = new Date(today - dobYrs.getTime())
     var temp = ageDate.getFullYear();
     var yrs = Math.abs(temp - 1970);
   
@@ -167,49 +167,18 @@ router.post('/v15/name', function (req, res) {
     var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
     var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
   
-    const addressRegex = RegExp('^[0-9]+$'); 
+    // Checking the actual age of the beneficiary 
+    var ageInMilliseconds = new Date() - new Date(dateofbirth);
+    var actualAge = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
   
-    if (addressRegex.test(addressline1) === true) {
-  
-      var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
-  
-    }
-  
-    if (yrs < 16) {
-  
-      if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-  
-        if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
-          res.redirect('/v15/apply/are-you-pregnant')
-        } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
-          res.redirect('/v15/apply/are-you-pregnant')
-        } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == 'CEDAR HOUSE') {
-          res.redirect('/v15/apply/are-you-pregnant')
-        } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
-          res.redirect('/v15/apply/are-you-pregnant')
-        } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
-          res.redirect('/v15/apply/kickouts/confirmation-no-match')
-        } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
-          res.redirect('/v15/apply/kickouts/confirmation-no-match')
-        } else {
-          res.redirect('/v15/apply/kickouts/confirmation-no-match')
-        }  
-  
-      }
-      else {
-        res.redirect('/v15/apply/date-of-birth')
-      }    
-  
-    }
-    else {
-  
-      if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+    if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+      if (yrs < 16) {
+        res.redirect('/v15/apply/kickouts/under-sixteen-signpost')
+      } else {
         res.redirect('/v15/apply/national-insurance-number')
       }
-      else {
-        res.redirect('/v15/apply/date-of-birth')
-      }    
-  
+    } else {
+      res.redirect('/v15/apply/date-of-birth')
     }
   
   
@@ -225,6 +194,11 @@ router.post('/v15/name', function (req, res) {
   
     var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
     var dateofbirth = moment(dob).format('MM/DD/YYYY');
+
+    var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+    var ageDate = new Date(today - dobYrs.getTime())
+    var temp = ageDate.getFullYear();
+    var yrs = Math.abs(temp - 1970);
   
     var firstname = req.session.data['firstname'].trim().toUpperCase()
     var lastname = req.session.data['lastname'].trim().toUpperCase()
@@ -255,6 +229,12 @@ router.post('/v15/name', function (req, res) {
         res.redirect('/v15/apply/kickouts/confirmation-no-match')
       } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
         res.redirect('/v15/apply/kickouts/confirmation-no-match')
+      } else if (firstname == 'SARAH' && lastname == 'GREEN' && nationalinsurancenumber == 'MN987544G' && postcode == 'NR334GP' && addressline1 == '13 PALM ROAD') {
+        if (yrs < 18) {
+          res.redirect('/v15/apply/kickouts/under-eighteen-signpost')
+        } else {
+          res.redirect('/v15/apply/kickouts/confirmation-no-match')
+        }
       } else {
         res.redirect('/v15/apply/kickouts/confirmation-no-match')
       }  
@@ -410,10 +390,11 @@ router.post('/v15/name', function (req, res) {
               
               var childsfirstname = req.session.data['childsfirstname']
               var childslastname = req.session.data['childslastname']
+              var childsmiddlename = req.session.data['childsmiddlename']
               
               // Add the posted information into the 'childList' array
               
-              childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
+              childList.push({"ChildsFirstName": childsfirstname, "ChildsMiddleName": childsmiddlename, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
               
               req.session.data.childList = childList;
               

@@ -28,7 +28,7 @@ Check your answers
                         Name
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                        {{ data['firstname'] }} {{ data['lastname'] }}
+                        {{ data['firstname'] }} {% if (data['middlename']) %} {{ data['middlename'] }} {% endif %} {{ data['lastname'] }}
                     </dd>
 
                     <dd class="nhsuk-summary-list__actions">
@@ -328,11 +328,10 @@ Check your answers
         {% if (data['childrenunderfour'] == "yes") %}
 
             <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children under 4 years old</h2>
+            <p>These destails must match the information DWP has for us to be able to pay you correctly</p>
+            
             <dl class="nhsuk-summary-list">
-                <p>These destails must match the information DWP has for us to be able to pay you correctly</p>
-
-
-
+                
                     {% for item in data['childList'] %}
                         <div class="nhsuk-summary-list__row no-bottom-border child-header">
                             <dt class="nhsuk-summary-list__key">
