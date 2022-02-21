@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-We’re considering your application
+Application could not be completed
 {% endblock %}
 
 {% block content %}
@@ -12,26 +12,33 @@ We’re considering your application
       <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
         <div class="nhsuk-card__content">
           <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
-            Application could not be completed
+            We cannot continue with your application
           </h1>
         </div>
       </div>
 
-      <p>Your application may have been unsuccessful because you:</p>
+      <!-- <p>We cannot currently confirm if you are eligible to get help to buy food and milk.</p> -->
+
+      <p>This may be because you:</p>
       <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>don’t qualify based on the benefits you get and your family income</li>
-        <li>entered something incorrectly</li>
+        <li>entered details that don't match the ones you use for any benefits you get</li>
+        <li>are not eligible based on the benefits you get and your family income</li>
+        <!-- UC review bullet   --><!-- <li>get Universal Credit but the Department for Work and Pensions (DWP) may be reviewing your claim -->
       </ul>
 
-      <p>If you think you should qualify, make sure you enter the same details you used when you applied for any benefits.</p>
-
-      <h2 class="nhsuk-heading-l">Check your details</h2>
-      <p>If you think a mistake has been made, you should check the details you have registered with either:</p>
+      <h2 class="nhsuk-heading-m">Check your details</h2>
+      <!-- UC review content  -->
+      <!-- <h2 class="nhsuk-heading-m">Check your details and benefit claims</h2> -->
+      <!-- <p>If you think there has been a mistake or want to check whether your claim is being reviewed, you should sign into:</p> -->
+      <p>You can check your details by either:</p>
       <ul>
-        <li><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/tax-credits-enquiries" target="_blank">HMRC for tax credits <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span></li>
-          <li><a href="https://www.gov.uk/universal-credit/contact-universal-credit" target="_blank">DWP for Universal Credit <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span></a></li>
-      </ul>      
-      
+        <li><a href="https://www.gov.uk/sign-in-universal-credit" target="_blank">signing into your Universal Credit account <span class="nhsuk-u-visually-hidden">(opens in a new tab)</span></a></li>
+        <li><a href="https://www.gov.uk/manage-your-tax-credits" target="_blank">managing your tax credits<span class="nhsuk-u-visually-hidden">(opens in a new tab)</span></a></li>
+      </ul>
+
+      <!-- UC review content  -->
+      <!-- <p>If you continue to get your benefit after a review, you can reapply to Healthy Start using this service. -->
+
       <h2 class="nhsuk-heading-m">Give feedback</h2>
         <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
     </div>
