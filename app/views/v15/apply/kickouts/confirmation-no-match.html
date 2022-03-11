@@ -9,6 +9,11 @@ Application could not be completed
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Go back"
+    }) }}
+
       <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
         <div class="nhsuk-card__content">
           <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
@@ -26,7 +31,56 @@ Application could not be completed
         <!-- UC review bullet   --><!-- <li>get Universal Credit but the Department for Work and Pensions (DWP) may be reviewing your claim -->
       </ul>
 
-      <h2 class="nhsuk-heading-m">Check your details</h2>
+     
+      <h2 class="nhsuk-heading-m">Your details</h2>
+
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['firstname'] }} {{ data['lastname'] }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['addressline1'] }},<br>
+            {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
+            {{ data['towncity'] }},<br>
+            {{ data['postcode'] }}
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            National insurance number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['nationalinsurancenumber'] }}
+          </dd>
+        </div>
+                  
+      </dl>
+    
+      <p>If your details are incorrect, <a href="#">go back and change them</a></p>
+      
+
+      <h2 class="nhsuk-heading-m">Check the details you use for any benefits you get</h2>
       <!-- UC review content  -->
       <!-- <h2 class="nhsuk-heading-m">Check your details and benefit claims</h2> -->
       <!-- <p>If you think there has been a mistake or want to check whether your claim is being reviewed, you should sign into:</p> -->
