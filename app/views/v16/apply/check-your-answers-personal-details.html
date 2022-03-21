@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">Your details</h2>
+
+        <form action="v16/cya-personal-details" method="POST">
+            <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['firstname'] }} {{ data['lastname'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="name#firstname">
+                    Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['addressline1'] }},<br>
+                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
+                    {{ data['towncity'] }},<br>
+                    {{ data['postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="address#addressline1">
+                    Change<span class="nhsuk-u-visually-hidden"> address</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['dateofbirthday'] }} / {{ data['dateofbirthmonth'] }} / {{ data['dateofbirthyear'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="date-of-birth#dateofbirthday">
+                    Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['nationalinsurancenumber'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="national-insurance-number#nationalinsurancenumber">
+                    Change<span class="nhsuk-u-visually-hidden"> national insurance number</span>
+                    </a>
+                </dd>
+                </div>
+                        
+            </dl>
+            <input class="nhsuk-button" type="submit" value="Continue">
+        </form>
+        
+    </div>
+</div>
+
+{% endblock %}
