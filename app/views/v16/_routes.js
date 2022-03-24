@@ -224,30 +224,27 @@ router.post('/v16/name', function (req, res) {
     if (nationalinsurancenumber) {
   
       if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
-        res.redirect('/v15/apply/are-you-pregnant')
+        res.redirect('/v16/apply/are-you-pregnant')
       } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
-        res.redirect('/v15/apply/are-you-pregnant')
+        res.redirect('/v16/apply/are-you-pregnant')
       } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == 'CEDAR HOUSE') {
-        res.redirect('/v15/apply/are-you-pregnant')
+        res.redirect('/v16/apply/are-you-pregnant')
       } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
-        res.redirect('/v15/apply/are-you-pregnant')
+        res.redirect('/v16/apply/are-you-pregnant')
       } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
-        res.redirect('/v15/apply/kickouts/confirmation-no-match')
+        res.redirect('/v16/apply/kickouts/confirmation-no-match')
       } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
-        res.redirect('/v15/apply/kickouts/confirmation-no-match')
+        res.redirect('/v16/apply/kickouts/confirmation-no-match')
       } else if (firstname == 'SARAH' && lastname == 'GREEN' && nationalinsurancenumber == 'MN987544G' && postcode == 'NR334GP' && addressline1 == '13 PALM ROAD') {
-        if (yrs < 18) {
-          res.redirect('/v15/apply/kickouts/under-eighteen-signpost')
-        } else {
-          res.redirect('/v15/apply/kickouts/confirmation-no-match')
+        if (yrs >= 16) {
+          res.redirect('/v16/apply/kickouts/confirmation-no-match')
         }
       } else {
-        res.redirect('/v15/apply/kickouts/confirmation-no-match')
+        res.redirect('/v16/apply/kickouts/confirmation-no-match')
       }  
-  
     }
     else {
-      res.redirect('/v15/apply/national-insurance-number')
+      res.redirect('/v16/apply/national-insurance-number')
     }
     
   })
