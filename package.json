@@ -38,7 +38,7 @@
     "keypather": "^3.0.0",
     "moment": "^2.29.1",
     "nhsuk-frontend": "^4.1.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "notifications-node-client": "^5.1.0",
     "nunjucks": "^3.2.2",
     "path": "^0.12.7",
