@@ -23,14 +23,11 @@ Application could not be completed
 
       <!-- 
         Signposting for: 
-        - Jobseeker's allowance (income-based)
-        - Income support
-        - Pension credit
-        - Working tax credit
+        - Employement and support allowance (income-related)
       -->
 
       <h2 class="nhsuk-heading-m">Applying by email or phone</h2>
-      <p>You can apply by email or phone if you’re at least 10 weeks pregnant, or have at least one child under 4 years old, and get {% if data['benefits'] == "JSA" %}Income-based Jobseeker's Allowance{% elseif data['benefits'] == "IS" %}Income support{% elseif data['benefits'] == "PC" %}Pension credit (which includes the child addition){% elseif data['benefits'] == "WTC" %}Working Tax Credit run-on (paid for 4 weeks if your working hours, or your partner or carer’s, go to less than 16 hours per week){% else %}{% endif %}</p>
+      <p>You can apply by email or phone if you’re at least 10 weeks pregnant and receive {% if data['benefits'] == "ESA" %}income-related Employment and Support Allowance (ESA){% else %}{% endif %}.</p>
 
       <p>You can apply by either:</p>
       <ul>

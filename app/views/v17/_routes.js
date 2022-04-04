@@ -123,7 +123,7 @@ router.get('/v17/employment-support-allowance', (req, res) => {
   const typeOfESA = req.session.data['ESA']
 
   if (typeOfESA == 'income') {
-    res.redirect('/v17/apply/kickouts/employment-support-allowance-signposting')
+    res.redirect('/v17/apply/kickouts/signposting-2')
   } else {
     res.redirect('/v17/apply/kickouts/not-eligible')
   }
