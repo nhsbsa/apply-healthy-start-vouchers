@@ -72,37 +72,52 @@ router.post('/v17/date-of-birth', function (req, res) {
 
 router.post('/v17/benefits', function (req, res) {
 
-  var benefits = req.session.data['benefits']
+  let benefits = req.session.data['benefits']
+  req.session.benefitsList = benefits
 
-  if (benefits) {
+  if (Array.isArray(benefits)) {
 
-    const applicantsAge = req.session.applicantAge
-    
     if (benefits.includes('UC')) {
       res.redirect('/v17/apply/name')
     } else if (benefits.includes('CTC')) {
       res.redirect('/v17/apply/name')
-    } else if (benefits.includes('JSA')) {
+    } else if (benefits.includes('JSA' && 'WTC') && !benefits.includes('ESA')) {
       res.redirect('/v17/apply/jobseekers-allowance')
-    } else if (benefits.includes('ESA')) {  
-      res.redirect('/v17/apply/employment-support-allowance')
-    } else if (benefits.includes('IS')) {
-      res.redirect('/v17/apply/kickouts/signposting')
-    } else if (benefits.includes('PC')) {
-      res.redirect('/v17/apply/kickouts/signposting')
-    } else if (benefits.includes('WTC')) {
+    } else if (benefits.includes('ESA' && 'WTC') && !benefits.includes('JSA')) {
       res.redirect('/v17/apply/working-tax-credits')
-    } else if (benefits.includes('NONE')) {
-      if (applicantsAge >= 16 && applicantsAge <= 18) {
-        res.redirect('/v17/apply/kickouts/under-eighteen-signpost')
-      } else {
-        res.redirect('/v17/apply/kickouts/confirmation-no-match')
-      }
+    } else if (benefits.includes('JSA' && 'ESA' && 'WTC')) {
+      res.redirect('/v17/apply/jobseekers-allowance')
+    } else {
+      res.redirect('/v17/apply/benefits')
     }
 
-  }
-  else if (!benefits) {
-    res.redirect('/v17/apply/benefits')
+  } else {
+
+      const applicantsAge = req.session.applicantAge
+
+      if (benefits.includes('UC')) {
+        res.redirect('/v17/apply/name')
+      } else if (benefits.includes('CTC')) {
+        res.redirect('/v17/apply/name')
+      } else if (benefits.includes('JSA')) {
+        res.redirect('/v17/apply/jobseekers-allowance')
+      } else if (benefits.includes('ESA')) {  
+        res.redirect('/v17/apply/employment-support-allowance')
+      } else if (benefits.includes('IS')) {
+        res.redirect('/v17/apply/kickouts/signposting')
+      } else if (benefits.includes('PC')) {
+        res.redirect('/v17/apply/kickouts/signposting')
+      } else if (benefits.includes('WTC')) {
+        res.redirect('/v17/apply/working-tax-credits')
+      } else if (benefits.includes('NONE')) {
+        if (applicantsAge >= 16 && applicantsAge <= 18) {
+          res.redirect('/v17/apply/kickouts/under-eighteen-signpost')
+        } else {
+          res.redirect('/v17/apply/kickouts/not-eligible')
+        }
+      } else {
+        res.redirect('/v17/apply/benefits')
+      }
   }
 
 })
@@ -111,19 +126,37 @@ router.post('/v17/benefits', function (req, res) {
 
 router.get('/v17/jobseekers-allowance', (req, res) => {
   const typeOfJSA = req.session.data['JSA']
+  let benefitsList = req.session.benefitsList
 
   if (typeOfJSA == 'income') {
     res.redirect('/v17/apply/kickouts/signposting')
+  } else if (typeOfJSA == 'contribution') {
+    if (benefitsList.includes('JSA' && 'WTC') && !benefitsList.includes('ESA')) {
+      res.redirect('/v17/apply/working-tax-credits')
+    } if (benefitsList.includes('JSA' && 'ESA' && 'WTC')) {
+      res.redirect('/v17/apply/working-tax-credits')
+    } else {
+      res.redirect('/v17/apply/kickouts/not-eligible')
+    }
   } else {
-    res.redirect('/v17/apply/kickouts/not-eligible')
+    res.redirect('/v17/apply/jobseekers-allowance')
   }
 })
 
 router.get('/v17/employment-support-allowance', (req, res) => {
   const typeOfESA = req.session.data['ESA']
+  let benefitsList = req.session.benefitsList
 
   if (typeOfESA == 'income') {
     res.redirect('/v17/apply/kickouts/signposting-2')
+  } else if (typeOfESA == 'contribution') {
+    if (benefitsList.includes('ESA' && 'WTC') && !benefitsList.includes('JSA')) {
+      res.redirect('/v17/apply/kickouts/not-eligible')
+    } else if (benefitsList.includes('JSA' && 'ESA' && 'WTC')) {
+      res.redirect('/v17/apply/kickouts/not-eligible')
+    } else {
+      res.redirect('/v17/apply/kickouts/not-eligible')
+    }
   } else {
     res.redirect('/v17/apply/kickouts/not-eligible')
   }
@@ -131,9 +164,20 @@ router.get('/v17/employment-support-allowance', (req, res) => {
 
 router.get('/v17/working-tax-credits', (req, res) => {
   const wtcRunOnPayment = req.session.data['workingtaxcredits']
+  let benefitsList = req.session.benefitsList
 
   if (wtcRunOnPayment == 'yes') {
     res.redirect('/v17/apply/kickouts/signposting')
+  } else if (wtcRunOnPayment == 'no') {
+    if (benefitsList.includes('JSA' && 'WTC') && !benefitsList.includes('ESA')) {
+      res.redirect('/v17/apply/kickouts/not-eligible')
+    } else if (benefitsList.includes('ESA' && 'WTC') && !benefitsList.includes('JSA')) {
+      res.redirect('/v17/apply/employment-support-allowance')
+    } else if (benefitsList.includes('JSA' && 'ESA' && 'WTC')) {
+      res.redirect('/v17/apply/employment-support-allowance')
+    } else {
+      res.redirect('/v17/apply/kickouts/not-eligible')
+    }
   } else {
     res.redirect('/v17/apply/kickouts/not-eligible')
   }
