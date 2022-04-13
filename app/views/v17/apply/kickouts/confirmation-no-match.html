@@ -21,18 +21,12 @@ Application could not be completed
         </div>
       </div>
 
-      <!-- <p>We cannot currently confirm if you are eligible to get help to buy food and milk.</p> -->
-
       <p>This may be because you:</p>
       <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>entered details that do not match the ones you use for any benefits you get</li>
+        <li>entered details that do not match your {% if 'UC' in data['benefits'] %}Universal Credit{% elseif 'CTC' in data['benefits'] %}Child Tax Credit{% else %}{% endif %}</li>
         <li>are not eligible based on the benefits you get and your family income</li>
-        <!-- <li>are under 18 years old and do not get any benefits</li> -->
-        <!-- UC review bullet   --><!-- <li>get Universal Credit but the Department for Work and Pensions (DWP) may be reviewing your claim -->
       </ul>
-      <!-- UC review content  -->
-      <!-- <h2 class="nhsuk-heading-m">Check your details and benefit claims</h2> -->
-      <!-- <p>If you think there has been a mistake or want to check whether your claim is being reviewed, you should sign into:</p> -->
+
       <h2 class="nhsuk-heading-m">Check your benefits details</h2>
       <p>You can check your benefit details by either:</p>
       <ul>
