@@ -183,10 +183,8 @@ router.post('/v17/benefits', function (req, res) {
 
       if (benefits.includes('UC')) {
         if (fullName == "SARAH GREEN") {
-          console.log(fullName)
           res.redirect('/v17/apply/kickouts/confirmation-no-match')
         } else {
-          console.log(fullName)
           res.redirect('/v17/apply/are-you-pregnant')
         }
       } else if (benefits.includes('CTC')) {
@@ -195,12 +193,16 @@ router.post('/v17/benefits', function (req, res) {
         } else {
           res.redirect('/v17/apply/are-you-pregnant')
         }
-      } else if (benefits.includes('JSA' && 'WTC') && !benefits.includes('ESA')) {
+
+
+      } else if (benefits.includes('JSA') && benefits.includes('WTC') && benefits.includes('ESA') && benefits.includes('IS')) {
+        res.redirect('/v17/apply/benefits')
+      } else if (benefits.includes('JSA' && 'WTC') && !benefits.includes('ESA') && !benefits.includes('IS')) {
         res.redirect('/v17/apply/jobseekers-allowance')
-      } else if (benefits.includes('ESA' && 'WTC') && !benefits.includes('JSA')) {
+      } else if (benefits.includes('ESA' && 'WTC') && !benefits.includes('JSA') && !benefits.includes('IS')) {
         res.redirect('/v17/apply/working-tax-credits')
-      } else if (benefits.includes('JSA' && 'ESA' && 'WTC')) {
-        res.redirect('/v17/apply/jobseekers-allowance')
+      } else if (benefits.includes('IS' && 'WTC')) {
+        res.redirect('/v17/apply/kickouts/signposting/is-signposting')
       } else {
         res.redirect('/v17/apply/benefits')
       }
@@ -211,10 +213,8 @@ router.post('/v17/benefits', function (req, res) {
 
         if (benefits.includes('UC')) {
           if (fullName == "SARAH GREEN") {
-            console.log(fullName)
             res.redirect('/v17/apply/kickouts/confirmation-no-match')
           } else {
-            console.log(fullName)
             res.redirect('/v17/apply/are-you-pregnant')
           }
         } else if (benefits.includes('CTC')) {
