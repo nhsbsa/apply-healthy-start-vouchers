@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1>Evidence uploaded</h1>
+
+
+        <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Benefits award notice
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                universal-credit-award.jpg
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                <a href="return-applicant-eligibility">
+                  Change<span class="nhsuk-u-visually-hidden"> eligibility evidence</span>
+                </a>
+          
+              </dd>
+          
+            </div>        
+          
+          </dl>
+
+        <form action="v18/return-applicant-eligibility-upload" method="post">
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

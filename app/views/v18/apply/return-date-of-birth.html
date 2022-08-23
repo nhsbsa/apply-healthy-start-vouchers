@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your due date?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="v18/return-date-of-birth" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              What is your date of birth?
+            </h1>
+          </legend>
+
+          <span class="nhsuk-hint" id="hint">
+            For example, 21 8 2020
+          </span>
+
+          <div class="nhsuk-date-input">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="returnday">
+                  Day
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="returnday"
+                  name="returnday" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="returnmonth">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="returnmonth"
+                  name="returnmonth" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="returnyear">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="returnyear"
+                  name="returnyear" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+      </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+            Why we ask for your date of birth
+            </span>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p>We use your date of birth to find your application.</p>                      
+        </div>
+    </details>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

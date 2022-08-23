@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which type of Jobseeker's Allowance (JSA) do you get?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Which type of Jobseeker's Allowance (JSA) do you get?
+        </h1>
+
+        <p>There are 2 types of JSA, income-based and contribution-based.</p>
+
+        <form action="v18/jobseekers-allowance" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="income" name="JSA" type="radio" value="income">
+                            <label class="nhsuk-label nhsuk-radios__label" for="income">
+                                Income-based JSA
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="contribution" name="JSA" type="radio" value="contribution">
+                            <label class="nhsuk-label nhsuk-radios__label" for="contribution">
+                                Contribution-based JSA
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <details class="nhsuk-details">
+                    <summary class="nhsuk-details__summary">
+                        <span class="nhsuk-details__summary-text">
+                            I'm not sure which type I get
+                        </span>
+                    </summary>
+                    <div class="nhsuk-details__text">
+                        <h2 class="nhsuk-heading-s">Check your benefit payment letter</h2>
+        
+                        <p>The type of JSA you get is shown on the last page, under the heading <strong>‘How your Jobseeker's Allowance was worked out'</strong>. </p>
+                        
+                        <p>It will say either:</p>
+                
+                        <ul>
+                            <li>We call this <strong>income-based</strong> Jobseeker's Allowance.</li>
+                            <li>We call this <strong>contribution-based</strong> Jobseeker's Allowance.</li>
+                        </ul>
+                    
+                        <p>Find out more <a href="https://www.gov.uk/jobseekers-allowance/what-type-you-get">about the different types of JSA</a>.</p>
+                        
+                        <p>If {% if data['applyingfor'] == "myself" %}you're{% else %}they're{% endif %} still unsure, contact the <a href="https://www.gov.uk/contact-jobcentre-plus/existing-benefit-claims">Jobcentre Plus Helpline</a>.</p>
+                    </div>
+                </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
