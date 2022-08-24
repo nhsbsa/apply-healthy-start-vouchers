@@ -22,7 +22,7 @@ Get help to buy food and milk (Healthy Start)
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="return-applicant-identity">
+                <a href="return-applicant-identity-select">
                   Identity details
                 </a>
               </span>
@@ -80,9 +80,9 @@ Get help to buy food and milk (Healthy Start)
 
     <div class="app-task-list__items">
         {% if (data['applicant-identity']) and (data['applicant-eligibility']) and (data['child-eligibility'])  %}
-        <p><a href="confirmation-pending" class="nhsuk-button">Continue</a></p>
+        <p><a href="confirmation-pending" class="nhsuk-button">Confirm and send</a></p>
         {% else %}
-        <p><a class="nhsuk-button" disabled>Continue</a></p>
+        <p><a class="nhsuk-button" disabled>Confirm and send</a></p>
         {% endif %}
     </div>
 

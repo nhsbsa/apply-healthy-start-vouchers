@@ -23,12 +23,12 @@ Upload evidence
                 Applicant identity
               </dt>
               <dd class="nhsuk-summary-list__value">
-                passport.jpg
+                {% if data['applicantidentity'] == "BC" %}birth-certificate{% elseif data['applicantidentity'] == "P" %}passport{% elseif data['applicantidentity'] == "DL" %}drivers-licence{% elseif data['applicantidentity'] == "IV" %}immigration-visa{% else %}document{% endif %}.jpg
               </dd>
           
               <dd class="nhsuk-summary-list__actions">
           
-                <a href="return-applicant-eligibility">
+                <a href="return-applicant-identity">
                   Change<span class="nhsuk-u-visually-hidden"> identity evidence</span>
                 </a>
           

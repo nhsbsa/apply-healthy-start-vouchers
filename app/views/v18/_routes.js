@@ -728,12 +728,12 @@ router.post('/v18/return-date-of-birth', function (req, res) {
 
 // Applicant Identity Type
 
-router.post('/v18/return-applicant-identity', function (req, res) {
+router.post('/v18/return-applicant-identity-select', function (req, res) {
 
   var applicantidentity = req.session.data['applicantidentity']
 
   if (applicantidentity) {
-    res.redirect('/v18/apply/return-applicant-identity-upload')
+    res.redirect('/v18/apply/return-applicant-identity')
   }
   else {
     res.redirect('/v18/apply/return-applicant-identity')
