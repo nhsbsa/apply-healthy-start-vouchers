@@ -376,9 +376,14 @@ router.post('/v18/pension-credit', function (req, res) {
   router.post('/v18/are-you-pregnant', function (req, res) {
   
     var pregnant = req.session.data['pregnant']
+    var benefits = req.session.data['benefits']
   
     if (pregnant === "yes") {
       res.redirect('/v18/apply/due-date')
+    }
+    else if (pregnant === "no" && benefits.includes('ESA')) {
+      req.session.data.lessThanTenWeeksPregnant = true;
+      res.redirect('/v18/apply/kickouts/not-eligible')
     }
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
