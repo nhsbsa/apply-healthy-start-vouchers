@@ -202,7 +202,7 @@ router.post('/v18/benefits', function (req, res) {
       } else if (benefits.includes('ESA' && 'WTC') && !benefits.includes('JSA') && !benefits.includes('IS')) {
         res.redirect('/v18/apply/working-tax-credits')
       } else if (benefits.includes('IS' && 'WTC')) {
-        res.redirect('/v18/apply/kickouts/signposting/is-signposting')
+        res.redirect('/v18/apply/are-you-pregnant')
       } else {
         res.redirect('/v18/apply/benefits')
       }
@@ -228,9 +228,9 @@ router.post('/v18/benefits', function (req, res) {
         } else if (benefits.includes('ESA')) {  
           res.redirect('/v18/apply/employment-support-allowance')
         } else if (benefits.includes('IS')) {
-          res.redirect('/v18/apply/kickouts/signposting/is-signposting')
+          res.redirect('/v18/apply/are-you-pregnant')
         } else if (benefits.includes('PC')) {
-          res.redirect('/v18/apply/kickouts/signposting/pc-signposting')
+          res.redirect('/v18/apply/pension-credit')
         } else if (benefits.includes('WTC')) {
           res.redirect('/v18/apply/working-tax-credits')
         } else if (benefits.includes('NONE')) {
@@ -337,6 +337,23 @@ router.get('/v18/working-tax-credits', (req, res) => {
   } else {
     res.redirect('/v18/apply/kickouts/not-eligible')
   }
+})
+
+
+router.post('/v18/pension-credit', function (req, res) {
+
+  var pensioncredit = req.session.data['pensioncredit']
+
+  if (pensioncredit === "yes") {
+    res.redirect('/v18/apply/are-you-pregnant')
+  }
+  else if (pensioncredit === "no") {
+    res.redirect('/v18/apply/kickouts/not-eligible')
+  }
+  else {
+    res.redirect('/v18/apply/pension-credit')
+  }
+
 })
   
   // What is your nationality?
