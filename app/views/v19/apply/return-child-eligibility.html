@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="file-upload">
+              <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Prove Michael’s eligibility</h1>
+          </label>
+          <p>You need to upload a copy of Michael’s birth certificate to prove their eligibility.</p>
+          <input class="nhsuk-file-upload" id="file-upload" name="file-upload" type="file">
+      </div>
+
+      <a href="return-child-eligibility-upload" class="nhsuk-button">
+          Continue
+      </a>
+
+    </div>
+</div>
+
+{% endblock %}

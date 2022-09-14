@@ -183,7 +183,7 @@ router.post('/v19/benefits', function (req, res) {
 
       if (benefits.includes('UC')) {
         if (fullName == "SARAH GREEN") {
-          res.redirect('/v19/apply/kickouts/confirmation-no-match')
+          res.redirect('/v19/apply/universal-credit')
         } else {
           res.redirect('/v19/apply/are-you-pregnant')
         }
@@ -202,7 +202,7 @@ router.post('/v19/benefits', function (req, res) {
       } else if (benefits.includes('ESA' && 'WTC') && !benefits.includes('JSA') && !benefits.includes('IS')) {
         res.redirect('/v19/apply/working-tax-credits')
       } else if (benefits.includes('IS' && 'WTC')) {
-        res.redirect('/v19/apply/kickouts/signposting/is-signposting')
+        res.redirect('/v19/apply/are-you-pregnant')
       } else {
         res.redirect('/v19/apply/benefits')
       }
@@ -213,13 +213,13 @@ router.post('/v19/benefits', function (req, res) {
 
         if (benefits.includes('UC')) {
           if (fullName == "SARAH GREEN") {
-            res.redirect('/v19/apply/kickouts/confirmation-no-match')
+            res.redirect('/v19/apply/universal-credit')
           } else {
             res.redirect('/v19/apply/are-you-pregnant')
           }
         } else if (benefits.includes('CTC')) {
           if (fullName == "SARAH GREEN") {
-            res.redirect('/v19/apply/kickouts/confirmation-no-match')
+            res.redirect('/v19/apply/child-tax-credits')
           } else {
             res.redirect('/v19/apply/are-you-pregnant')
           }
@@ -228,9 +228,9 @@ router.post('/v19/benefits', function (req, res) {
         } else if (benefits.includes('ESA')) {  
           res.redirect('/v19/apply/employment-support-allowance')
         } else if (benefits.includes('IS')) {
-          res.redirect('/v19/apply/kickouts/signposting/is-signposting')
+          res.redirect('/v19/apply/are-you-pregnant')
         } else if (benefits.includes('PC')) {
-          res.redirect('/v19/apply/kickouts/signposting/pc-signposting')
+          res.redirect('/v19/apply/pension-credit')
         } else if (benefits.includes('WTC')) {
           res.redirect('/v19/apply/working-tax-credits')
         } else if (benefits.includes('NONE')) {
@@ -248,12 +248,44 @@ router.post('/v19/benefits', function (req, res) {
 
 // Benefit type routing
 
+router.post('/v19/universal-credit', function (req, res) {
+
+  var universalcredit = req.session.data['universalcredit']
+
+  if (universalcredit === "yes") {
+    res.redirect('/v19/apply/are-you-pregnant')
+  }
+  else if (universalcredit === "no") {
+    res.redirect('/v19/apply/kickouts/not-eligible')
+  }
+  else {
+    res.redirect('/v19/apply/universal-credit')
+  }
+
+})
+
+router.post('/v19/child-tax-credits', function (req, res) {
+
+  var childtaxcredits = req.session.data['childtaxcredits']
+
+  if (childtaxcredits === "yes") {
+    res.redirect('/v19/apply/are-you-pregnant')
+  }
+  else if (childtaxcredits === "no") {
+    res.redirect('/v19/apply/kickouts/not-eligible')
+  }
+  else {
+    res.redirect('/v19/apply/child-tax-credits')
+  }
+
+})
+
 router.get('/v19/jobseekers-allowance', (req, res) => {
   const typeOfJSA = req.session.data['JSA']
   let benefitsList = req.session.benefitsList
 
   if (typeOfJSA == 'income') {
-    res.redirect('/v19/apply/kickouts/signposting/jsa-signposting')
+    res.redirect('/v19/apply/are-you-pregnant')
   } else if (typeOfJSA == 'contribution') {
     if (benefitsList.includes('JSA' && 'WTC') && !benefitsList.includes('ESA')) {
       res.redirect('/v19/apply/working-tax-credits')
@@ -272,7 +304,7 @@ router.get('/v19/employment-support-allowance', (req, res) => {
   let benefitsList = req.session.benefitsList
 
   if (typeOfESA == 'income') {
-    res.redirect('/v19/apply/kickouts/signposting/esa-signposting')
+    res.redirect('/v19/apply/are-you-pregnant')
   } else if (typeOfESA == 'contribution') {
     if (benefitsList.includes('ESA' && 'WTC') && !benefitsList.includes('JSA')) {
       res.redirect('/v19/apply/kickouts/not-eligible')
@@ -291,7 +323,7 @@ router.get('/v19/working-tax-credits', (req, res) => {
   let benefitsList = req.session.benefitsList
 
   if (wtcRunOnPayment == 'yes') {
-    res.redirect('/v19/apply/kickouts/signposting/wtc-signposting')
+    res.redirect('/v19/apply/are-you-pregnant')
   } else if (wtcRunOnPayment == 'no') {
     if (benefitsList.includes('JSA' && 'WTC') && !benefitsList.includes('ESA')) {
       res.redirect('/v19/apply/kickouts/not-eligible')
@@ -305,6 +337,23 @@ router.get('/v19/working-tax-credits', (req, res) => {
   } else {
     res.redirect('/v19/apply/kickouts/not-eligible')
   }
+})
+
+
+router.post('/v19/pension-credit', function (req, res) {
+
+  var pensioncredit = req.session.data['pensioncredit']
+
+  if (pensioncredit === "yes") {
+    res.redirect('/v19/apply/are-you-pregnant')
+  }
+  else if (pensioncredit === "no") {
+    res.redirect('/v19/apply/kickouts/not-eligible')
+  }
+  else {
+    res.redirect('/v19/apply/pension-credit')
+  }
+
 })
   
   // What is your nationality?
@@ -327,9 +376,14 @@ router.get('/v19/working-tax-credits', (req, res) => {
   router.post('/v19/are-you-pregnant', function (req, res) {
   
     var pregnant = req.session.data['pregnant']
+    var benefits = req.session.data['benefits']
   
     if (pregnant === "yes") {
       res.redirect('/v19/apply/due-date')
+    }
+    else if (pregnant === "no" && benefits.includes('ESA')) {
+      req.session.data.lessThanTenWeeksPregnant = true;
+      res.redirect('/v19/apply/kickouts/not-eligible')
     }
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
@@ -507,6 +561,9 @@ router.get('/v19/working-tax-credits', (req, res) => {
       else if (childrenunderfouranswers === "no" && lastname == 'JONES') {
         res.redirect('/v19/apply/email-address')
       }
+      else if (childrenunderfouranswers === "no" && lastname == 'GREEN') {
+        res.redirect('/v19/apply/email-address')
+      }
       else if (childrenunderfouranswers === "no" && lastname == 'JOHNSON') {
         res.redirect('/v19/apply/kickouts/no-eligible-children')
       }
@@ -654,6 +711,86 @@ router.post('/v19/check-your-answers', function (req, res) {
   }
 
 })
+
+// **************
+// SAVE & RETURN
+// **************
+
+// What is your reference number?
+
+router.post('/v19/return-reference-number', function (req, res) {
+
+  var referencenumber = req.session.data['referencenumber']
+
+  if (referencenumber) {
+    res.redirect('/v19/apply/return-date-of-birth')
+  }
+  else {
+    res.redirect('/v19/apply/return-reference-number')
+  }
+
+})
+
+// What is your date of birth?
+
+router.post('/v19/return-date-of-birth', function (req, res) {
+
+  var returnday = req.session.data['returnday']
+  var returnmonth = req.session.data['returnmonth']
+  var returnyear = req.session.data['returnyear']
+
+  if (returnday && returnmonth && returnyear) {
+    res.redirect('/v19/apply/return-task-list')
+  }
+  else {
+    res.redirect('/v19/apply/return-date-of-birth')
+  }
+
+})
+
+// Applicant Identity Type
+
+router.post('/v19/return-applicant-identity-select', function (req, res) {
+
+  var applicantidentity = req.session.data['applicantidentity']
+
+  if (applicantidentity) {
+    res.redirect('/v19/apply/return-applicant-identity')
+  }
+  else {
+    res.redirect('/v19/apply/return-applicant-identity')
+  }
+
+})
+
+// Applicant Identity
+
+router.post('/v19/return-applicant-identity-upload', function (req, res) {
+
+  req.session.data["applicant-identity"] = "Complete";
   
+  res.redirect('/v19/apply/return-task-list')
+
+})
+
+// Applicant Eligibility
+
+router.post('/v19/return-applicant-eligibility-upload', function (req, res) {
+
+  req.session.data["applicant-eligibility"] = "Complete";
+  
+  res.redirect('/v19/apply/return-task-list')
+
+})
+
+// Child Eligibility
+
+router.post('/v19/return-child-eligibility-upload', function (req, res) {
+
+  req.session.data["child-eligibility"] = "Complete";
+  
+  res.redirect('/v19/apply/return-task-list')
+
+})
 
 module.exports = router;

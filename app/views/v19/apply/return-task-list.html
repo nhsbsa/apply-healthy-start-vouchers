@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Get help to buy food and milk (Healthy Start) 
+{% endblock %}
+
+{% block content %}    
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1><span role="text"><span class="nhsuk-caption-xl nhsuk-caption--top">Welcome back <span
+              class="nhsuk-u-visually-hidden">-</span></span></span> Sarah Green</h1>
+
+      <p class="nhsuk-body nhsuk-u-margin-bottom-7">To complete your application you need to:</p>
+
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Prove your identity
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="return-applicant-identity-select">
+                  Identity details
+                </a>
+              </span>
+              {% if data['applicant-identity'] == 'Complete' %}
+              <strong class="nhsuk-tag app-task-list__tag">Complete</strong>
+              {% else %}
+              <strong class="nhsuk-tag nhsuk-tag--grey app-task-list__tag">Not started</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Prove your eligibility
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="return-applicant-eligibility">
+                  Benefit details
+                </a>
+              </span>
+              {% if data['applicant-eligibility'] == 'Complete' %}
+              <strong class="nhsuk-tag app-task-list__tag">Complete</strong>
+              {% else %}
+              <strong class="nhsuk-tag nhsuk-tag--grey app-task-list__tag">Not started</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Prove your children’s eligibility
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="return-child-eligibility">
+                  Michael Green
+                </a>
+              </span>
+              {% if data['child-eligibility'] == 'Complete' %}
+              <strong class="nhsuk-tag app-task-list__tag">Complete</strong>
+              {% else %}
+              <strong class="nhsuk-tag nhsuk-tag--grey app-task-list__tag">Not started</strong>
+              {% endif %}
+            </li>
+          </ul>
+
+
+        </li>
+      </ol>
+
+    <div class="app-task-list__items">
+        {% if (data['applicant-identity']) and (data['applicant-eligibility']) and (data['child-eligibility'])  %}
+        <p><a href="confirmation-pending" class="nhsuk-button">Confirm and send</a></p>
+        {% else %}
+        <p><a class="nhsuk-button" disabled>Confirm and send</a></p>
+        {% endif %}
+    </div>
+
+    </div>
+
+  </div>
+{% endblock %}

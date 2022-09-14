@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="file-upload">
+                    <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Prove your identity</h1>
+                </label>
+                <p>You need to upload a copy of your {% if data['applicantidentity'] == "BC" %}birth certificate{% elseif data['applicantidentity'] == "P" %}passport{% elseif data['applicantidentity'] == "DL" %}drivers licence{% elseif data['applicantidentity'] == "IV" %}immigration visa{% else %}documents{% endif %} to prove your identity.</p>
+                <input class="nhsuk-file-upload" id="file-upload" name="file-upload" type="file">
+            </div>
+
+            <a href="return-applicant-identity-upload" class="nhsuk-button">
+                Continue
+            </a>
+
+    </div>
+</div>
+
+{% endblock %}
