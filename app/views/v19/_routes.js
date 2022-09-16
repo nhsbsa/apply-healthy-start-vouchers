@@ -153,13 +153,17 @@ router.post('/v19/name', function (req, res) {
         res.redirect('/v19/apply/are-you-pregnant')
       } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
         res.redirect('/v19/apply/are-you-pregnant')
+      } else if (firstname == 'ANITA' && lastname == 'BILAL' && nationalinsurancenumber == 'QR123456I' && dateofbirth == '01/01/1999' && postcode == 'NE333PT' && addressline1 == '10 BROADWAY') {
+        res.redirect('/v19/apply/are-you-pregnant') 
+      } else if (firstname == 'MALIA' && lastname == 'ELBA' && nationalinsurancenumber == 'ST123456L' && dateofbirth == '01/01/1999' && postcode == 'NE333ST' && addressline1 == '15 MELBOURNE') {
+        res.redirect('/v19/apply/are-you-pregnant')
       } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
         res.redirect('/v19/apply/kickouts/confirmation-no-match')
       } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
         res.redirect('/v19/apply/kickouts/confirmation-no-match')
       } else if (firstname == 'SARAH' && lastname == 'GREEN' && nationalinsurancenumber == 'MN987544G' && postcode == 'NR334GP' && addressline1 == '13 PALM ROAD') {
         if (yrs >= 16) {
-          res.redirect('/v19/apply/are-you-pregnant')
+          res.redirect('/v19/apply/benefits')
         }
       } else {
         res.redirect('/v19/apply/kickouts/confirmation-no-match')
@@ -560,6 +564,12 @@ router.post('/v19/pension-credit', function (req, res) {
       else if (childrenunderfouranswers === "no" && lastname == 'GREEN') {
         res.redirect('/v19/apply/email-address')
       }
+      else if (childrenunderfouranswers === "no" && lastname == 'BILAL') {
+        res.redirect('/v19/apply/email-address')
+      }
+      else if (childrenunderfouranswers === "no" && lastname == 'ELBA') {
+        res.redirect('/v19/apply/email-address')
+      }
       else if (childrenunderfouranswers === "no" && lastname == 'JOHNSON') {
         res.redirect('/v19/apply/kickouts/no-eligible-children')
       }
@@ -675,7 +685,7 @@ router.post('/v19/check-your-answers', function (req, res) {
 
   }
 
-  if (lastname == 'Green') {
+  if (lastname == 'Green' || lastname == 'Elba') {
     res.redirect('/v19/apply/confirmation-pending-evidence')
   } else if (lastname == 'Blue') {
     res.redirect('/v19/apply/confirmation-pending-evidence')
