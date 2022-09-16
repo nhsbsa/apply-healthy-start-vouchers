@@ -159,7 +159,7 @@ router.post('/v19/name', function (req, res) {
         res.redirect('/v19/apply/kickouts/confirmation-no-match')
       } else if (firstname == 'SARAH' && lastname == 'GREEN' && nationalinsurancenumber == 'MN987544G' && postcode == 'NR334GP' && addressline1 == '13 PALM ROAD') {
         if (yrs >= 16) {
-          res.redirect('/v19/apply/benefits')
+          res.redirect('/v19/apply/are-you-pregnant')
         }
       } else {
         res.redirect('/v19/apply/kickouts/confirmation-no-match')
@@ -380,10 +380,6 @@ router.post('/v19/pension-credit', function (req, res) {
   
     if (pregnant === "yes") {
       res.redirect('/v19/apply/due-date')
-    }
-    else if (pregnant === "no" && benefits.includes('ESA')) {
-      req.session.data.lessThanTenWeeksPregnant = true;
-      res.redirect('/v19/apply/kickouts/not-eligible')
     }
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
