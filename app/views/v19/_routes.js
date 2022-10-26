@@ -775,8 +775,16 @@ router.post('/v19/return-applicant-identity-select', function (req, res) {
 router.post('/v19/return-applicant-identity-upload', function (req, res) {
 
   req.session.data["applicant-identity"] = "Complete";
+  const anotherFile = req.session.data['add-file']
+
+  if (anotherFile === 'yes') {
+    res.redirect('/v19/apply/return-applicant-identity')
+  } else if (anotherFile === 'no') {
+    res.redirect('/v19/apply/return-task-list')
+  } else {
+    res.redirect('/v19/apply/return-applicant-identity-upload')
+  }
   
-  res.redirect('/v19/apply/return-task-list')
 
 })
 
