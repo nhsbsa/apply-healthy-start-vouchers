@@ -425,7 +425,7 @@ router.post('/v19/pension-credit', function (req, res) {
           req.session.data.lessThanTenWeeksPregnant = false;
         }
   
-        res.redirect('/v19/apply/email-address')
+        res.redirect('/v19/apply/children-under-four')
       }
   
     }
@@ -800,4 +800,41 @@ router.post('/v19/return-child-eligibility-upload', function (req, res) {
 
 })
 
-module.exports = router;
+
+
+
+// Online Account
+
+
+
+router.post('/v19/online-account', function (req, res) {
+  
+  var onlineAccount = req.session.data['onlineaccount']
+
+  if (onlineAccount) {
+    res.redirect('/v19/apply/email-address')
+  } else {
+    res.redirect('/v19/apply/online-account')
+  }
+
+})
+
+
+// What is your email address 2?
+
+router.post('/v19/email-address-2', function (req, res) {
+
+  var emailaddress = req.session.data['emailaddress']
+
+  res.redirect('/v19/apply/mobile-phone-number')
+
+})
+
+
+// Email text box
+
+
+
+
+// Keep at the bottom of the file
+  module.exports = router;
