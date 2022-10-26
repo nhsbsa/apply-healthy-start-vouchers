@@ -28,15 +28,61 @@ Upload evidence
           
               <dd class="nhsuk-summary-list__actions">
           
-                <a href="return-applicant-identity">
-                  Change<span class="nhsuk-u-visually-hidden"> identity evidence</span>
+                <a href="return-applicant-identity-upload-copy">
+                  Delete<span class="nhsuk-u-visually-hidden"> identity evidence</span>
                 </a>
+                
           
               </dd>
           
-            </div>        
+            </div> 
+            
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Applicant identity
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {% if data['applicantidentity'] == "BC" %}birth-certificate{% elseif data['applicantidentity'] == "P" %}passport{% elseif data['applicantidentity'] == "DL" %}drivers-licence{% elseif data['applicantidentity'] == "IV" %}immigration-visa{% else %}document{% endif %}.jpg
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                <a href="return-applicant-identity-upload-copy">
+                  Delete<span class="nhsuk-u-visually-hidden"> identity evidence</span>
+                </a>
+                
+          
+              </dd>
+          
+            </div> 
           
           </dl>
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Do you want to upload more evidence?
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios nhsuk-radios--inline">
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-inline-1" name="example-inline" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+                  Yes
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+                  No
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
 
         <form action="v19/return-applicant-identity-upload" method="post">
 
