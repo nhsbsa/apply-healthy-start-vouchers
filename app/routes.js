@@ -28,6 +28,7 @@ const { listenerCount } = require('gulp');
 // Route File Versions
 // ****************************************
 
+router.use('/v20/apply', require('./views/v20/_routes'));
 router.use('/v19/apply', require('./views/v19/_routes'));
 router.use('/v18/apply', require('./views/v18/_routes'));
 router.use('/v17/apply', require('./views/v17/_routes'));
