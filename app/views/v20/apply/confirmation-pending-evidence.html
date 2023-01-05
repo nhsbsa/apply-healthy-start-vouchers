@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+More information needed
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            More information needed
+          </h1>
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">{% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba')  %}REF1234A{% else %}ABC1234D{% endif %}</span>
+          </h3>
+        </div>
+      </div>
+
+      {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba')  %}
+        <p>We have been unable to confirm your children's eligibility on your Universal Credit claim.</p>
+      {% else %}
+        <p>We have been unable to confirm your eligibility.</p>
+      {% endif %}
+
+      <h2 class="nhsuk-heading-m">What happens next?</h2>
+      <p>To complete your application, you must provide us with:</p>
+
+      
+
+      {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>proof of your children's eligibility (birth certificate)</li>
+        </ul>
+      {% else %}
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>proof of your identity (birth / marriage certificate, passport, driving licence or immigration visa)</li>
+          <li>proof of your eligibility (benefit awards notice)</li>
+          <li>proof of your children's eligibility (birth certificate)</li>
+        </ul>
+      {% endif %}
+
+      <h2 class="nhsuk-heading-m">How do I provide these?</h2>
+
+      <p>We have sent you a notification on how to provide these.</p>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Need help providing these documents?
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>You can upload a photo or scan of your documents using the link we send.</p>
+          <p>You can also post copies of your documents to:</p>
+          <p>NHS Healthy Start Scheme (HDJ2123F),<br>NHSBSA,<br>Bridge House,<br>152 Pilgrim Street,<br>Newcastle upon
+            Tyne,<br>NE1 6SN</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+{% endblock %}
