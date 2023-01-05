@@ -390,7 +390,7 @@ router.post('/v20/pension-credit', function (req, res) {
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
 
-      if (benefits === 'ESA' && typeOfESA === 'contribution') {
+      if (benefits === 'ESA' && typeOfESA === 'income') {
         res.redirect('/v20/apply/kickouts/not-eligible')
       } else if (benefits === 'NONE' && applicantsAge <= 18) {
         res.redirect('/v20/apply/kickouts/not-eligible')
