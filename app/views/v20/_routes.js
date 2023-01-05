@@ -241,7 +241,7 @@ router.post('/v20/benefits', function (req, res) {
           if (applicantsAge >= 16 && applicantsAge <= 18) {
             res.redirect('/v20/apply/kickouts/under-eighteen-signpost')
           } else {
-            res.redirect('/v20/apply/kickouts/not-eligible')
+            res.redirect('/v20/apply/are-you-pregnant')
           }
         } else {
           res.redirect('/v20/apply/benefits')
