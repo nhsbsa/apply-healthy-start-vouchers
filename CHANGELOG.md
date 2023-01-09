@@ -1,5 +1,163 @@
 # NHS.UK prototype kit Changelog
 
+## 4.8.5 - 12 December 2022
+
+:wrench: Fixes
+
+- Update package dependencies `decode-uri-component`and `engine.io`.
+
+:pencil2: **Content**
+
+- Added deployment instructions and test note to readme.
+
+## 4.8.4 - 12 October 2022
+
+:pencil2: **Content**
+
+- Fixed typo in readme
+
+## 4.8.3 - 5 September 2022
+
+:arrow_up: **Version bump**
+
+- Release issues
+
+## 4.8.2 - 5 September 2022
+
+:arrow_up: **Version bump**
+
+## 4.8.1 - 31 August 2022
+
+:pencil2: **Content**
+
+- Removed the 'deploy to Heroku' guidance page in response to [Heroku's upcoming removal of its free tier](https://blog.heroku.com/next-chapter#focus-on-mission-critical)
+
+## 4.8.0 - 2 February 2022
+
+:new: **New features**
+
+- Install NHS.UK frontend v6.1.0 which includes text align utility class
+
+## 4.7.3 - 8 December 2021
+
+:wrench: **Fixes**
+
+- Install NHS.UK frontend v6.0.1
+- Update Health A-Z with new Nav A-Z
+- Add list-border css to `_list-border.scss`
+- Add support for Node 16.x
+
+Node 16.x recently became the long term supported version of Nodejs. The `gulp-sass` dependency had a peer dependency pinned to specific version `node-sass` that doesn't work on Node 16.x. Node 16.x support got added to `node-sass` in `6.0.0` and above
+
+## 4.7.2 - 28 October 2021
+
+:wrench: **Fixes**
+
+- Install NHS.UK frontend v5.2.1
+- Update package dependencies to latest versions
+
+## 4.7.1 - 12 October 2021
+
+:wrench: **Fixes**
+
+- Update download link for the prototype-kit to use the latest release instead of the master branch
+
+## 4.7.0 - 22 September 2021
+
+:new: **New features**
+
+- Install latest version of NHS.UK frontend (5.2.0) which includes "None of these" Checkboxes JavaScript behaviour
+
+## 4.6.4 - 25 August 2021
+
+:wrench: **Fixes**
+
+- Add script to fix bug with unchecked checkboxes and separate bug when only one checkbox is selected.
+- Update package dependencies to latest versions
+
+## 4.6.3 - 24 August 2021
+
+:wrench: **Fixes**
+
+- Use the correct name for the NHS digital service manual Slack instance
+- Fix GitHub actions/Azure DevOps release pipelines [Issue 180](https://github.com/nhsuk/nhsuk-prototype-kit/issues/180)
+
+## 4.6.2 - 24 August 2021
+
+:wrench: **Fixes**
+
+- Correct slack channel links on the `About` page.
+
+## 4.6.1 - 18 August 2021
+
+:wrench: **Fixes**
+
+- Swap outdated `panel` for `card` on `clear-data.html` page.
+
+## 4.6.0 - 16 August 2021
+
+:new: **New features**
+
+- Allow adding of custom styles on a per template basis with `customStyles` template block.
+
+## 4.5.1 - 29 July 2021
+
+:new: **New features**
+
+- Add missing coronavirus hub page example from the NHS website which should have been in the previous release
+
+:wrench: **Fixes**
+
+- Update CSS link colours for the NHS website page examples
+
+## 4.5.0 - 26 July 2021
+
+:new: **New features**
+
+- Add NHS website (www.nhs.uk) page examples (homepage, health a-z, live well, mental health, care and support, pregnancy, NHS services, coronavirus hub) and Google homepage template ([Issue #183](https://github.com/nhsuk/nhsuk-prototype-kit/issues/183))
+
+## 4.4.1 - 26 May 2021
+
+:wrench: **Fixes**
+
+- Add missing steps to 'Updating the kit' how to guide
+- Update package dependencies to latest versions
+
+## 4.4.0 - 17 May 2021
+
+:new: **New features**
+
+- Install NHS.UK frontend v5.1.0 which includes JavaScript for the Error summary component
+
+:wrench: **Fixes**
+
+- Update package dependencies to latest versions
+- Use `dart-sass` instead of `node-sass` as this module is now deprecated ([NHS.UK frontend issue #731](https://github.com/nhsuk/nhsuk-frontend/pull/731))
+
+## 4.3.0 - 16th March 2021
+
+:new: **New features**
+
+- Install NHS.UK frontend v5.0.0
+- Update package dependencies to latest versions
+
+## 4.2.0 - 25 February 2021
+
+:new: **New features**
+
+- Add `outerContent` block to page template.
+
+  Add content that needs to appear outside `<main>` element but inside the `<nhsuk-width-container>`.
+
+  For example: The back link component.
+
+- Update page template examples
+
+:wrench: **Fixes**
+
+- Update package dependencies to latest versions
+- Use the latest version of jQuery (3.5.1)
+
 ## 4.1.0 - 21 January 2021
 
 :new: **New features**
@@ -9,6 +167,7 @@
 :wrench: **Fixes**
 
 - Update package dependencies to latest versions
+
 ## 4.0.0 - 27th October 2020
 
 :boom: **Breaking changes**
@@ -154,13 +313,13 @@
 
 :new: **New features**
 
--  [Installation guides update for Windows and Mac following testing with users](https://github.com/nhsuk/nhsuk-prototype-kit/pull/68)
+- [Installation guides update for Windows and Mac following testing with users](https://github.com/nhsuk/nhsuk-prototype-kit/pull/68)
 - The prototype kit now is properly versioned and is the version is indicated in `package.json` `version` field and also on the index page of the docs.
 
 :wrench: **Fixes**
 
--  [Header and footer inconsistency on the branching examples](https://github.com/nhsuk/nhsuk-prototype-kit/issues/71)
--  Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit`
+- [Header and footer inconsistency on the branching examples](https://github.com/nhsuk/nhsuk-prototype-kit/issues/71)
+- Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit`
 
 ## 1.0.0 - Feb 5, 2019
 
