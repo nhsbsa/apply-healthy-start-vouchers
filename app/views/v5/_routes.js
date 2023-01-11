@@ -109,6 +109,7 @@ router.post('/v5/national-insurance-number', function (req, res) {
     var duedateyear = req.session.data['duedateyear']
   
     var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+    req.session.data['duedate'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(duedate))
   
     var today = moment();
   

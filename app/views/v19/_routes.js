@@ -44,6 +44,7 @@ router.post('/v19/date-of-birth', function (req, res) {
 
   var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
   var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
 
   var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
   var ageDate = new Date(today - dobYrs.getTime())
@@ -129,6 +130,7 @@ router.post('/v19/name', function (req, res) {
   
     var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
     var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
 
     var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
     var ageDate = new Date(today - dobYrs.getTime())
@@ -404,6 +406,7 @@ router.post('/v19/pension-credit', function (req, res) {
     var duedateyear = req.session.data['duedateyear']
   
     var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+    req.session.data['duedate'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(duedate))
   
     var today = moment();
   
@@ -480,7 +483,7 @@ router.post('/v19/pension-credit', function (req, res) {
       var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
 
       var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
-      var childsdateofbirthDisplay = childsdateofbirthday + ' / ' + childsdateofbirthmonth + ' / ' + childsdateofbirthyear;
+      var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
 
       var today = moment().format('YYYY-MM-DD');
       var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
