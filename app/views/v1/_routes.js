@@ -124,6 +124,7 @@ router.post('/v1/are-you-pregnant', function (req, res) {
             var duedateyear = req.session.data['duedateyear']
   
             var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+    req.session.data['duedate'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(duedate))
             var fulltermpregnancy = moment().add(30, 'weeks'); // 40 weeks from today is a full term pregnancy - 10 weeks
 
             var fourtytwoweeksfromtoday = moment().add(42, 'weeks');
@@ -210,7 +211,7 @@ router.post('/v1/children-under-four', function (req, res) {
       var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
 
       var childsdateofbirth = moment(childsdateofbirthyear + '-' + childsdateofbirthmonth + '-' + childsdateofbirthday);
-      var childsdateofbirthDisplay = childsdateofbirthday + ' / ' + childsdateofbirthmonth + ' / ' + childsdateofbirthyear;
+      var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
 
       var fouryearsfromtoday = moment().subtract(4, 'years');
 

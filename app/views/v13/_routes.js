@@ -140,6 +140,7 @@ router.post('/v13/name', function (req, res) {
   
     var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
     var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
   
     var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
     var ageDate =  new Date(today - dobYrs.getTime())
@@ -172,6 +173,7 @@ router.post('/v13/name', function (req, res) {
   
     var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
     var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
   
     var firstname = req.session.data['firstname'].trim().toUpperCase()
     var lastname = req.session.data['lastname'].trim().toUpperCase()
@@ -265,6 +267,7 @@ router.post('/v13/name', function (req, res) {
     var duedateyear = req.session.data['duedateyear']
   
     var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+    req.session.data['duedate'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(duedate))
   
     var today = moment();
   
@@ -356,7 +359,7 @@ router.post('/v13/name', function (req, res) {
         var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
   
         var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
-        var childsdateofbirthDisplay = childsdateofbirthday + ' / ' + childsdateofbirthmonth + ' / ' + childsdateofbirthyear;
+        var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
   
         var today = moment().format('YYYY-MM-DD');
         var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
@@ -371,32 +374,32 @@ router.post('/v13/name', function (req, res) {
   
               if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
   
-                var childList = req.session.data.childList
-                
-                // If no array exists, create one called 'childList'. If one already exists, do nothing.
-                
-                childList = ( typeof childList != 'undefined' && childList instanceof Array ) ? childList : []
+                let childList = req.session.data.childList;
+                if (!Array.isArray(childList)) {
+                    childList = [];
+                }
                 
                 // Create a variable of the posted information
                 
-                var childsfirstname = req.session.data['childsfirstname']
-                var childslastname = req.session.data['childslastname']
+                const childsfirstname = req.session.data['childsfirstname'];
+                const childslastname = req.session.data['childslastname'];
                 
                 // Add the posted information into the 'childList' array
                 
-                childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
+                childList.push({
+                    "ChildsFirstName": childsfirstname,
+                    "ChildsLastName": childslastname,
+                    "ChildsDOB": childsdateofbirthDisplay
+                });
                 
                 req.session.data.childList = childList;
                 
-                console.log(childList)
-                
-                console.log('Number of children:', childList.length)
+                console.log(childList);
+                console.log('Number of children:', childList.length);
                 
                 // Redirect to the 'Do you get another?' page
                 
-                res.redirect('/v13/apply/children-under-four-answers');          
-  
-  
+                res.redirect('/v13/apply/children-under-four-answers'); 
   
               } else {
                 res.redirect('/v13/apply/childs-date-of-birth')
