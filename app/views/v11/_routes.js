@@ -374,32 +374,33 @@ router.post('/v11/name', function (req, res) {
   
               if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
   
-                var childList = req.session.data.childList
-                
-                // If no array exists, create one called 'childList'. If one already exists, do nothing.
-                
-                childList = ( typeof childList != 'undefined' && childList instanceof Array ) ? childList : []
+                let childList = req.session.data.childList;
+                if (!Array.isArray(childList)) {
+                    childList = [];
+                }
                 
                 // Create a variable of the posted information
                 
-                var childsfirstname = req.session.data['childsfirstname']
-                var childslastname = req.session.data['childslastname']
+                const childsfirstname = req.session.data['childsfirstname'];
+                const childslastname = req.session.data['childslastname'];
                 
                 // Add the posted information into the 'childList' array
                 
-                childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
+                childList.push({
+                    "ChildsFirstName": childsfirstname,
+                    "ChildsLastName": childslastname,
+                    "ChildsDOB": childsdateofbirthDisplay
+                });
                 
                 req.session.data.childList = childList;
                 
-                console.log(childList)
-                
-                console.log('Number of children:', childList.length)
+                console.log(childList);
+                console.log('Number of children:', childList.length);
                 
                 // Redirect to the 'Do you get another?' page
                 
-                res.redirect('/v11/apply/children-under-four-answers');          
-  
-  
+                res.redirect('/v11/apply/children-under-four-answers'); 
+    
   
               } else {
                 res.redirect('/v11/apply/childs-date-of-birth')
