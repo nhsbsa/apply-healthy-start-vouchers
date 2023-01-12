@@ -11,11 +11,17 @@ More information needed
 
       <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
         <div class="nhsuk-card__content">
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Application in Progress 
+          </h3>
           <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
-            More information needed
+            We need more information from you
           </h1>
           <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
             Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">{% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba')  %}REF1234A{% else %}ABC1234D{% endif %}</span>
+          </h3>
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Make a note of your reference number in case you need to contact us
           </h3>
         </div>
       </div>
@@ -23,11 +29,11 @@ More information needed
       {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba')  %}
         <p>We have been unable to confirm your children's eligibility on your Universal Credit claim.</p>
       {% else %}
-        <p>We have been unable to confirm your eligibility.</p>
+        <p></p>
       {% endif %}
 
-      <h2 class="nhsuk-heading-m">What happens next?</h2>
-      <p>To complete your application, you must provide us with:</p>
+      <h2 class="nhsuk-heading-m">What you need to do next?</h2>
+      <p>To continue with your application, send us:</p>
 
       
 
@@ -37,7 +43,7 @@ More information needed
         </ul>
       {% else %}
         <ul class="nhsuk-list nhsuk-list--bullet">
-          <li>proof of your identity (birth / marriage certificate, passport, driving licence or immigration visa)</li>
+          <li>proof of your identity (birth / marriage certificate, valid passport, valid driving licence or immigration visa)</li>
           <li>proof of your eligibility (benefit awards notice)</li>
           <li>proof of your children's eligibility (birth certificate)</li>
         </ul>
@@ -45,21 +51,16 @@ More information needed
 
       <h2 class="nhsuk-heading-m">How do I provide these?</h2>
 
-      <p>We have sent you a notification on how to provide these.</p>
+      <p>We have sent you a notification which tells you your reference number and how to providfe copies of your documents.</p>
 
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Need help providing these documents?
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>You can upload a photo or scan of your documents using the link we send.</p>
-          <p>You can also post copies of your documents to:</p>
-          <p>NHS Healthy Start Scheme (HDJ2123F),<br>NHSBSA,<br>Bridge House,<br>152 Pilgrim Street,<br>Newcastle upon
-            Tyne,<br>NE1 6SN</p>
-        </div>
-      </details>
+      <p>You can email copies of your documents to healthy.start@nhsbsa.nhs.uk - make sure to include your reference number in your email.</p>
+      <p>You can post copies of your documents to:</p>
+      <p>NHS Healthy Start Scheme (HDJ2123F),<br>NHSBSA,<br>Bridge House,<br>152 Pilgrim Street,<br>Newcastle upon Tyne,<br>NE1 6SN</p>
+      <p>Once we have recieved your evidence, we'll send you a notification with our decision within X working days.</p>
+
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+
+      <p>What did you think of this service? (takes 30 seconds)</p>
     </div>
   </div>
 
