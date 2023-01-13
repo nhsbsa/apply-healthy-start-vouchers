@@ -24,6 +24,12 @@ const today = new Date(Date.now());
 let vitaminProviders = require('./data/vitamin-locations');
 const { listenerCount } = require('gulp');
 
+// CLEAR DATA
+router.post('/clear-data', function (req, res) {
+  req.session.destroy()
+  res.redirect('/')
+})
+
 // ****************************************
 // Route File Versions
 // ****************************************
