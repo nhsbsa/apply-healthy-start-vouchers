@@ -21,6 +21,50 @@ You are not eligible for help to get money off milk, food and vitamins
             Based on your answers, you are not eligible to get help. 
         </p>
 
+        {% if (data['universalcredit'] == "no") or (data['childtaxcredits'] == "no") or (data['JSA'] == "contribution") or (data['ESA'] == "contribution") or (data['pensioncredit'] == "no") or (data['workingtaxcredits'] == "no") %}
+        <p>
+            You’re not eligible to get help to buy food and milk if:
+        </p>
+        {% endif %}
+
+        <ul>
+            {% if (data['universalcredit'] == "no") %}
+            <li>your take-home pay for your last Universal Credit period was more than £408</li>
+            {% endif %}
+            {% if (data['childtaxcredits'] == "no") %}
+            <li>your household income is more than £16 190 per year</li>
+            {% endif %}
+            {% if (data['JSA'] == "contribution") %}
+            <li>you get Contribution-based Jobseeker’s Allowance</li>
+            {% endif %}
+            {% if (data['ESA'] == "contribution") %}
+            <li>you get Contribution-based Employment and Support Allowance</li>
+            {% endif %}
+            {% if (data['pensioncredit'] == "no") %}
+            <li>you do not get a 'child addition' payment with your Pension Credit award</li>
+            {% endif %}
+            {% if (data['workingtaxcredits'] == "no") %}
+            <li>you do not get the 4 week Working Tax Credit ‘run on’ payment</li>
+            {% endif %}
+        </ul>
+
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                If you’re not a British citizen but your child is
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>You might be eligible the get help to buy food and milk if:</p>
+              <ul>
+                <li>you have at least one British child under 4 years old – check if your child is a British citizen if you are not sure</li>
+                <li>your family earns £408 or less per month after tax</li>
+                <li>you cannot claim ‘public funds’ (for example, benefits) – either because of your immigration status or because you do not have an immigration status</li>
+              </ul>
+              <p>Your biometric residence permit (BRP) or your online immigration status will say if you cannot claim public funds. You might also have a letter from the Home Office about it.</p>
+              <p>If you think you cannot claim public funds because of your immigration status, ask for an application form by emailing <a href="mailto:healthystartclaim@dhsc.gov.uk">healthystartclaim@dhsc.gov.uk</a></p>
+            </div>
+          </details>
 
     </div>
 </div>
