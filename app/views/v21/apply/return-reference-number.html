@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your name?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--l">
+            What is your reference number?
+        </h1>
+
+        <form action="v20/return-reference-number" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="referencenumber">
+                  Reference number
+                </label>
+                <div class="nhsuk-hint" id="referencenumber-hint">
+                  For example, ABC1234D
+                </div>
+                <input class="nhsuk-input nhsuk-input--width-10" id="referencenumber" name="referencenumber" type="text" aria-describedby="referencenumber-hint">
+              </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Why we ask for your reference number
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>We use your reference number to find your application.</p>                      
+                </div>
+            </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

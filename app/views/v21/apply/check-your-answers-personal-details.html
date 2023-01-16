@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">Your details</h2>
+
+        <form action="v20/cya-personal-details" method="POST">
+            <dl class="nhsuk-summary-list">
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['firstname'] }} {{ data['lastname'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="name#firstname">
+                    Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['addressline1'] }},<br>
+                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
+                    {{ data['towncity'] }},<br>
+                    {{ data['postcode'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="address#addressline1">
+                    Change<span class="nhsuk-u-visually-hidden"> address</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['dateofbirth'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="date-of-birth#dateofbirthday">
+                    Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['nationalinsurancenumber'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="national-insurance-number#nationalinsurancenumber">
+                    Change<span class="nhsuk-u-visually-hidden"> national insurance number</span>
+                    </a>
+                </dd>
+                </div>
+
+                <!-- {% if data['benefits'] %}
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Benefits
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+
+                            {% if data['benefits'] == "UC" %}
+                            Universal Credit<br>
+                            {% elseif data['benefits'] == "CTC" %}
+                            Child Tax Credit<br>
+                            {% elseif data['benefits'] == "JSA" %}
+                            Jobseeker's Allowance (JSA)<br>
+                            {% elseif data['benefits'] == "ESA" %}
+                            Employment and Support Allowance (ESA)<br>
+                            {% elseif data['benefits'] == "IS" %}
+                            Income Support<br>
+                            {% elseif data['benefits'] == "PC" %}
+                            Pension Credit<br>
+                            {% elseif data['benefits'] == "WTC" %}
+                            Working Tax Credit<br>
+                            {% else %}
+                            
+                            {% endif %}
+                        </dd>
+
+                        <dd class="nhsuk-summary-list__actions">
+
+                            <a href="benefits">
+                                Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
+                            </a>
+
+                        </dd>
+
+                    </div>
+                {% endif %} -->
+                        
+            </dl>
+            <input class="nhsuk-button" type="submit" value="Continue">
+        </form>
+        
+    </div>
+</div>
+
+{% endblock %}

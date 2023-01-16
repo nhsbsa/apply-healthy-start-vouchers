@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+More information needed
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Application in Progress 
+          </h3>
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            We need more information from you
+          </h1>
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">{% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba')  %}REF1234A{% else %}ABC1234D{% endif %}</span>
+          </h3>
+          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Make a note of your reference number in case you need to contact us
+          </h3>
+        </div>
+      </div>
+
+      {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba')  %}
+        <p>We have been unable to confirm your children's eligibility on your Universal Credit claim.</p>
+      {% else %}
+        <p></p>
+      {% endif %}
+
+      <h2 class="nhsuk-heading-m">What you need to do next?</h2>
+      <p>To continue with your application, send us:</p>
+
+      
+
+      {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>proof of your children's eligibility (birth certificate)</li>
+        </ul>
+      {% else %}
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>proof of your identity (birth / marriage certificate, valid passport, valid driving licence or immigration visa)</li>
+          <li>proof of your eligibility (benefit awards notice)</li>
+          <li>proof of your children's eligibility (birth certificate)</li>
+        </ul>
+      {% endif %}
+
+      <h2 class="nhsuk-heading-m">How do I provide these?</h2>
+
+      <p>We have sent you a notification which tells you your reference number and how to providfe copies of your documents.</p>
+
+      <p>You can email copies of your documents to healthy.start@nhsbsa.nhs.uk - make sure to include your reference number in your email.</p>
+      <p>You can post copies of your documents to:</p>
+      <p>NHS Healthy Start Scheme (HDJ2123F),<br>NHSBSA,<br>Bridge House,<br>152 Pilgrim Street,<br>Newcastle upon Tyne,<br>NE1 6SN</p>
+      <p>Once we have recieved your evidence, we'll send you a notification with our decision within X working days.</p>
+
+     <h2 class="nhsuk-heading-m">Give feedback</h2>
+      <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+    </div>
+  </div>
+
+{% endblock %}
