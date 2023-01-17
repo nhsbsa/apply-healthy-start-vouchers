@@ -219,54 +219,74 @@ router.post('/current/name', function (req, res) {
   // What is your national insurance number?
   
   router.post('/current/national-insurance-number', function (req, res) {
-  
-    var dateofbirthday = req.session.data['dateofbirthday']
-    var dateofbirthmonth = req.session.data['dateofbirthmonth']
-    var dateofbirthyear = req.session.data['dateofbirthyear']
-  
-    var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
-    var dateofbirth = moment(dob).format('MM/DD/YYYY');
-  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
-  
-    var firstname = req.session.data['firstname'].trim().toUpperCase()
-    var lastname = req.session.data['lastname'].trim().toUpperCase()
-    var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
-    var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
-    var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
+
     var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
   
-    const addressRegex = RegExp('^[0-9]+$'); 
-  
-    if (addressRegex.test(addressline1) === true) {
-  
-      var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
-  
-    }
-  
     if (nationalinsurancenumber) {
-  
-      if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
-        res.redirect('/current/apply/are-you-pregnant')
-      } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
-        res.redirect('/current/apply/are-you-pregnant')
-      } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == 'CEDAR HOUSE') {
-        res.redirect('/current/apply/are-you-pregnant')
-      } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
-        res.redirect('/current/apply/are-you-pregnant')
-      } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
-        res.redirect('/current/apply/kickouts/confirmation-no-match')
-      } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
-        res.redirect('/current/apply/kickouts/confirmation-no-match')
-      } else {
-        res.redirect('/current/apply/kickouts/confirmation-no-match')
-      }  
-  
-    }
-    else {
+      res.redirect('/current/apply/check-your-answers-personal-details')
+    } else {
       res.redirect('/current/apply/national-insurance-number')
     }
-  
+
   })
+
+    // Check your answers - personal details
+
+    router.post('/current/cya-personal-details', (req, res) => {
+
+      var dateofbirthday = req.session.data['dateofbirthday']
+      var dateofbirthmonth = req.session.data['dateofbirthmonth']
+      var dateofbirthyear = req.session.data['dateofbirthyear']
+    
+      var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+      var dateofbirth = moment(dob).format('MM/DD/YYYY');
+    req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
+  
+      var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+      var ageDate = new Date(today - dobYrs.getTime())
+      var temp = ageDate.getFullYear();
+      var yrs = Math.abs(temp - 1970);
+  
+      var firstname = req.session.data['firstname'].trim().toUpperCase()
+      var lastname = req.session.data['lastname'].trim().toUpperCase()
+      req.session.fullName = firstname + ' ' + lastname
+      var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
+      var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
+      var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
+      var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
+  
+      if (nationalinsurancenumber) {
+    
+        if (firstname == 'CHARLIE' && lastname == 'SMITH' && nationalinsurancenumber == 'AB123456A' && dateofbirth == '01/01/2000' && postcode == 'LL673SN' && addressline1 == '55 PEACHFIELD ROAD') {
+          res.redirect('/current/apply/are-you-pregnant')
+        } else if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
+          res.redirect('/current/apply/are-you-pregnant')
+        } else if (firstname == 'ALEX' && lastname == 'JOHNSON' && nationalinsurancenumber == 'EF214365C' && dateofbirth == '03/03/1998' && postcode == 'AB558NL' && addressline1 == 'CEDAR HOUSE') {
+          res.redirect('/current/apply/are-you-pregnant')
+        } else if (firstname == 'TONY' && lastname == 'BROWN' && nationalinsurancenumber == 'GH563412D' && dateofbirth == '04/04/1997' && postcode == 'KA248PE' && addressline1 == 'FLAT 4') {
+          res.redirect('/current/apply/are-you-pregnant')
+        } else if (firstname == 'ANITA' && lastname == 'BILAL' && nationalinsurancenumber == 'QR123456I' && dateofbirth == '01/01/1999' && postcode == 'NE333PT' && addressline1 == '10 BROADWAY') {
+          res.redirect('/current/apply/are-you-pregnant') 
+        } else if (firstname == 'MALIA' && lastname == 'ELBA' && nationalinsurancenumber == 'ST123456L' && dateofbirth == '01/01/1999' && postcode == 'NE333ST' && addressline1 == '15 MELBOURNE') {
+          res.redirect('/current/apply/are-you-pregnant')
+        } else if (firstname == 'SAMANTHA' && lastname == 'MILLER' && nationalinsurancenumber == 'IJ876543E' && dateofbirth == '05/05/1996' && postcode == 'WA43AS' && addressline1 == '85 BROAD STREET') {
+          res.redirect('/current/apply/kickouts/confirmation-no-match')
+        } else if (firstname == 'DENNIS' && lastname == 'MITCHELL' && nationalinsurancenumber == 'KL987654F' && dateofbirth == '06/06/1995' && postcode == 'CR86GJ' && addressline1 == '107 STATION ROAD') {
+          res.redirect('/current/apply/kickouts/confirmation-no-match')
+        } else if (firstname == 'SARAH' && lastname == 'GREEN' && nationalinsurancenumber == 'MN987544G' && postcode == 'NR334GP' && addressline1 == '13 PALM ROAD') {
+          if (yrs >= 16) {
+            res.redirect('/current/apply/benefits')
+          }
+        } else {
+          res.redirect('/current/apply/kickouts/confirmation-no-match')
+        }  
+      }
+      else {
+        res.redirect('/current/apply/national-insurance-number')
+      }
+      
+    })
+  
   
   // What is your nationality?
   
