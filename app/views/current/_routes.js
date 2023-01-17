@@ -222,7 +222,7 @@ router.post('/current/name', function (req, res) {
           req.session.data.lessThanTenWeeksPregnant = false;
         }
   
-        res.redirect('/current/apply/email-address')
+        res.redirect('/current/apply/children-under-four')
       }
   
     }
