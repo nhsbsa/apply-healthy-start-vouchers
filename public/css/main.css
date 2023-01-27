@@ -8765,3 +8765,7 @@ ul.list-menu {
   outline: 3px solid #ffdd00;
   box-shadow: inset 0 0 0 4px #0b0c0c;
 }
+
+.nhsbsa-float-right {
+  float: right;
+}

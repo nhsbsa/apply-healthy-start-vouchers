@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+"href": "javascript:history.go(-1)",
+"text": "Go back"
+}) }}
+
+
+<main class="nhsuk-main-wrapper" id="maincontent" role="main">
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+            <h2>Check the photo</h2>
+            <p>• Can you see the whole page?</p>
+            <p>• Is everything in focus?</p>
+            <p>• Can you read everything on the page?</p>
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+            <h5 class="nhsuk-u-margin-bottom-0 nhsbsa-float-right">How to upload your document</h5>
+            <p class="nhsbsa-float-right">Step 4 of 5</p>
+
+            <img class="nhsuk-image__img" src="/images/how-to-upload-document-step-4.jpg"
+                alt="Example of upload document">
+
+        </div>
+    </div>
+</main>
+
+
+
+
+<a href="step-by-step-guide-step-5" class="nhsuk-button">
+    Continue
+</a>
+
+
+
+{% endblock %}
