@@ -23,6 +23,12 @@ You are not eligible for help to get money off milk, food and vitamins
         </p>
         {% endif %}
 
+        {% if (data['ESA'] == "income") and (data['pregnant'] == "no") %}
+        <p>
+            You’re not eligible to get help to buy food and milk if:
+        </p>
+        {% endif %}        
+
         <ul>
             {% if (data['universalcredit'] == "no") %}
             <li>your take-home pay for your last Universal Credit period was more than £408</li>
@@ -35,6 +41,9 @@ You are not eligible for help to get money off milk, food and vitamins
             {% endif %}
             {% if (data['ESA'] == "contribution") %}
             <li>you get Contribution-based Employment and Support Allowance</li>
+            {% endif %}
+            {% if (data['ESA'] == "income") and (data['pregnant'] == "no") %}
+            <li>you get Income-related Employment and Support Allowance and are not pregnant</li>
             {% endif %}
             {% if (data['pensioncredit'] == "no") %}
             <li>you do not get a 'child addition' payment with your Pension Credit award</li>
