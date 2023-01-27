@@ -119,6 +119,42 @@ Check your answers
 
                 </div>
             {% endif %}
+            {% if data['benefits'] %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Benefits
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {% if data['benefits'] == "UC" %}
+                        Universal Credit<br>
+                        {% elseif data['benefits'] == "CTC" %}
+                        Child Tax Credit<br>
+                        {% elseif data['benefits'] == "JSA" %}
+                        Jobseeker's Allowance (JSA)<br>
+                        {% elseif data['benefits'] == "ESA" %}
+                        Employment and Support Allowance (ESA)<br>
+                        {% elseif data['benefits'] == "IS" %}
+                        Income Support<br>
+                        {% elseif data['benefits'] == "PC" %}
+                        Pension Credit<br>
+                        {% elseif data['benefits'] == "WTC" %}
+                        Working Tax Credit<br>
+                        {% else %}
+                        No, {% if data['applyingfor'] == "myself" %}I{% else %}they{% endif %} do not get any of these<br>
+                        {% endif %}
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+
+                        <a href="benefits">
+                            Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
+                        </a>
+
+                    </dd>
+
+                </div>
+            {% endif %}
+
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Currently pregnant
@@ -220,44 +256,7 @@ Check your answers
                     </div>
             {% endif %}
 
-            
-
-            {% if data['benefits'] %}
-                <div class="nhsuk-summary-list__row">
-                    <dt class="nhsuk-summary-list__key">
-                        Benefits
-                    </dt>
-                    <dd class="nhsuk-summary-list__value">
-                        {% if data['benefits'] == "UC" %}
-                        Universal Credit<br>
-                        {% elseif data['benefits'] == "CTC" %}
-                        Child Tax Credit<br>
-                        {% elseif data['benefits'] == "JSA" %}
-                        Jobseeker's Allowance (JSA)<br>
-                        {% elseif data['benefits'] == "ESA" %}
-                        Employment and Support Allowance (ESA)<br>
-                        {% elseif data['benefits'] == "IS" %}
-                        Income Support<br>
-                        {% elseif data['benefits'] == "PC" %}
-                        Pension Credit<br>
-                        {% elseif data['benefits'] == "WTC" %}
-                        Working Tax Credit<br>
-                        {% else %}
-                        No, {% if data['applyingfor'] == "myself" %}I{% else %}they{% endif %} do not get any of these<br>
-                        {% endif %}
-                    </dd>
-
-                    <dd class="nhsuk-summary-list__actions">
-
-                        <a href="benefits">
-                            Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
-                        </a>
-
-                    </dd>
-
-                </div>
-            {% endif %}
-
+    
         </dl>
 
         {% if data['pregnant'] == "yes" %}
