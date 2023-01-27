@@ -155,13 +155,16 @@ Check your answers
 
                 </div>
             {% endif %}
-            {% if (data['emailaddress']) %}
                     <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
                             Email address
                         </dt>
                         <dd class="nhsuk-summary-list__value">
+                            {% if (data['emailaddress']) %}
                             {{ data['emailaddress'] | safe }}
+                            {% else %}
+                            Not provided
+                            {% endif %}
                         </dd>
 
                         <dd class="nhsuk-summary-list__actions">
@@ -173,14 +176,17 @@ Check your answers
                         </dd>
 
                     </div>
-            {% endif %}
-            {% if (data['mobilephonenumber']) %}
+            
                     <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key">
                             Mobile phone number
                         </dt>
                         <dd class="nhsuk-summary-list__value">
+                            {% if (data['mobilephonenumber']) %}
                             {{ data['mobilephonenumber'] | safe }}
+                            {% else %}
+                            Not provided
+                            {% endif %}
                         </dd>
 
                         <dd class="nhsuk-summary-list__actions">
@@ -192,7 +198,6 @@ Check your answers
                         </dd>
 
                     </div>
-            {% endif %}
 
             
 
