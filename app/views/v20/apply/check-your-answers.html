@@ -119,104 +119,6 @@ Check your answers
 
                 </div>
             {% endif %}
-            <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Currently pregnant
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
-                </dd>
-
-                <dd class="nhsuk-summary-list__actions">
-
-                    <a href="are-you-pregnant">
-                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
-                    </a>
-
-                </dd>   
-            </div>
-
-            {% if data['childrenunderfour'] == "yes" %}
-                <div class="nhsuk-summary-list__row">
-                    <dt class="nhsuk-summary-list__key">
-                        Have children under 4
-                    </dt>
-                    <dd class="nhsuk-summary-list__value">
-                        {% if data['childrenunderfour'] == "yes" %}Yes{% else %}No{% endif %}
-                    </dd>
-
-                    <dd class="nhsuk-summary-list__actions">
-
-                        <a href="children-under-four">
-                            Change<span class="nhsuk-u-visually-hidden"> if you have any children under 4 years old</span>
-                        </a>
-
-                    </dd>
-
-                </div>
-            {% endif %}
-            {% if (data['emailaddress']) %}
-                    <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Email address
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['emailaddress'] | safe }}
-                        </dd>
-
-                        <dd class="nhsuk-summary-list__actions">
-
-                            <a href="email-address">
-                                Change<span class="nhsuk-u-visually-hidden"> your email address</span>
-                            </a>
-
-                        </dd>
-
-                    </div>
-            {% endif %}
-            {% if (data['mobilephonenumber']) %}
-                    <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Mobile phone number
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['mobilephonenumber'] | safe }}
-                        </dd>
-
-                        <dd class="nhsuk-summary-list__actions">
-
-                            <a href="mobile-phone-number">
-                                Change<span class="nhsuk-u-visually-hidden"> your telephone number</span>
-                            </a>
-
-                        </dd>
-
-                    </div>
-            {% endif %}
-
-            
-
-            {% if (data['input-autocomplete']) %}
-                    <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Country of nationality
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['input-autocomplete'] }}
-                        </dd>
-
-                        <dd class="nhsuk-summary-list__actions">
-
-                            <a href="nationality">
-                                Change<span class="nhsuk-u-visually-hidden"> your nationality</span>
-                            </a>
-
-                        </dd>
-                    </div>
-            {% endif %}
-
-            
-
             {% if data['benefits'] %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
@@ -253,6 +155,108 @@ Check your answers
                 </div>
             {% endif %}
 
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Currently pregnant
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['pregnant'] == "yes" %}Yes{% else %}No{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="are-you-pregnant">
+                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
+                    </a>
+
+                </dd>   
+            </div>
+
+            {% if data['childrenunderfour'] == "yes" %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Have children under 4
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {% if data['childrenunderfour'] == "yes" %}Yes{% else %}No{% endif %}
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+
+                        <a href="children-under-four">
+                            Change<span class="nhsuk-u-visually-hidden"> if you have any children under 4 years old</span>
+                        </a>
+
+                    </dd>
+
+                </div>
+            {% endif %}
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {% if (data['emailaddress']) %}
+                            {{ data['emailaddress'] | safe }}
+                            {% else %}
+                            Not provided
+                            {% endif %}
+                        </dd>
+
+                        <dd class="nhsuk-summary-list__actions">
+
+                            <a href="email-address">
+                                Change<span class="nhsuk-u-visually-hidden"> your email address</span>
+                            </a>
+
+                        </dd>
+
+                    </div>
+            
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Mobile phone number
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {% if (data['mobilephonenumber']) %}
+                            {{ data['mobilephonenumber'] | safe }}
+                            {% else %}
+                            Not provided
+                            {% endif %}
+                        </dd>
+
+                        <dd class="nhsuk-summary-list__actions">
+
+                            <a href="mobile-phone-number">
+                                Change<span class="nhsuk-u-visually-hidden"> your telephone number</span>
+                            </a>
+
+                        </dd>
+
+                    </div>
+
+            
+
+            {% if (data['input-autocomplete']) %}
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            Country of nationality
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['input-autocomplete'] }}
+                        </dd>
+
+                        <dd class="nhsuk-summary-list__actions">
+
+                            <a href="nationality">
+                                Change<span class="nhsuk-u-visually-hidden"> your nationality</span>
+                            </a>
+
+                        </dd>
+                    </div>
+            {% endif %}
+
+    
         </dl>
 
         {% if data['pregnant'] == "yes" %}
