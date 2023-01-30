@@ -7519,6 +7519,52 @@ b {
   margin-top: 0 !important;
 }
 
+.govuk-panel--informational {
+  background-color: #005eb8;
+  color: white;
+  margin-bottom: 48px;
+}
+
+.govuk-panel--small {
+  text-align: left;
+  padding: nhs-spacing(3);
+  margin-bottom: nhs-spacing(5);
+}
+.govuk-panel--small .govuk-panel__title {
+  font-size: 19px;
+  margin-bottom: 0;
+}
+.govuk-panel--small .govuk-panel__body {
+  font-size: 19px;
+  margin: 0;
+}
+
+.govuk-panel--interruption {
+  background-color: #005eb8;
+  text-align: left;
+}
+.govuk-panel--interruption * {
+  color: white;
+}
+.govuk-panel--interruption .govuk-radios__label::before, .govuk-panel--interruption ::after {
+  color: black;
+  border-color: black;
+  background-color: white;
+}
+.govuk-panel--interruption .govuk-list--definition dt,
+.govuk-panel--interruption .govuk-list--definition dd {
+  color: #005eb8;
+}
+.govuk-panel--interruption .govuk-button,
+.govuk-panel--interruption .govuk-button:disabled:hover {
+  color: black;
+  background-color: white;
+  box-shadow: 0 2px 0 #005eb8;
+}
+.govuk-panel--interruption .govuk-button:hover {
+  background-color: grey;
+}
+
 .app-task-list {
   list-style-type: none;
   padding-left: 0;
@@ -8768,4 +8814,9 @@ ul.list-menu {
 
 .nhsbsa-float-right {
   float: right;
+}
+
+.big-blue-box {
+  background: #005eb8;
+  color: #ffffff;
 }

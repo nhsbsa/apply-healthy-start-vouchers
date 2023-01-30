@@ -5,6 +5,7 @@
 @import 'components/panel-confirmation';
 @import 'components/related-nav';
 @import 'components/spinner';
+@import "components/interruption-card";
 
 // Patterns that are not in the NHS.UK frontend library
 @import "patterns/task-list";
@@ -12,6 +13,7 @@
 @import "patterns/step-by-step-nav";
 @import "patterns/step-by-step-related";
 @import "patterns/related-items";
+
 
 
 ///////////////////////////////////////////
@@ -429,3 +431,12 @@
 .nhsbsa-float-right {
   float: right;
 }
+
+// ************************************
+// big blue box
+// ************************************
+
+.big-blue-box {
+  background: $color_nhsuk-blue;
+  color: $color_nhsuk-white;
+  }

@@ -1,0 +1,55 @@
+.govuk-panel--informational {
+    background-color: #005eb8;
+    color: white;
+    margin-bottom: nhsuk-spacing(7);
+  }
+  
+  .govuk-panel--small {
+    text-align: left;
+    padding: nhs-spacing(3) ;
+    margin-bottom: nhs-spacing(5);
+  
+    .govuk-panel__title {
+      font-size: 19px;
+      margin-bottom: 0;
+    }
+  
+    .govuk-panel__body {
+      font-size: 19px;
+      margin: 0;
+    }
+  }
+  
+  .govuk-panel--interruption {
+    background-color: #005eb8;
+    text-align: left;
+  
+    * {
+      color: white;
+    }
+  
+    .govuk-radios__label::before,
+    & ::after {
+      color: black;
+      border-color: black;
+      background-color: white;
+    }
+  
+    .govuk-list--definition {
+      dt,
+      dd {
+        color: #005eb8;
+      }
+    }
+  
+    .govuk-button,
+    .govuk-button:disabled:hover {
+      color: black;
+      background-color: white;
+      box-shadow: 0 2px 0 #005eb8;
+    }
+  
+    .govuk-button:hover {
+      background-color: grey;
+    }
+  }
