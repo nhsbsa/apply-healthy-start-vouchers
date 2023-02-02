@@ -787,12 +787,12 @@ router.post('/v21/return-applicant-identity-select', function (req, res) {
 
 router.post('/v21/return-applicant-identity-upload', function (req, res) {
 
-  req.session.data["applicant-identity"] = "Complete";
   const anotherFile = req.session.data['add-file']
 
   if (anotherFile === 'yes') {
     res.redirect('/v21/apply/return-applicant-identity')
   } else if (anotherFile === 'no') {
+    req.session.data["applicant-identity"] = "Complete";
     res.redirect('/v21/apply/return-task-list')
   } else {
     res.redirect('/v21/apply/return-applicant-identity-upload')
@@ -805,9 +805,17 @@ router.post('/v21/return-applicant-identity-upload', function (req, res) {
 
 router.post('/v21/return-applicant-eligibility-upload', function (req, res) {
 
-  req.session.data["applicant-eligibility"] = "Complete";
+  const anotherFile = req.session.data['add-file']
+
+  if (anotherFile === 'yes') {
+    res.redirect('/v21/apply/return-applicant-eligibility')
+  } else if (anotherFile === 'no') {
+    req.session.data["applicant-eligibility"] = "Complete";
+    res.redirect('/v21/apply/return-task-list')
+  } else {
+    res.redirect('/v21/apply/return-applicant-eligibility-upload')
+  }
   
-  res.redirect('/v21/apply/return-task-list')
 
 })
 
@@ -815,7 +823,16 @@ router.post('/v21/return-applicant-eligibility-upload', function (req, res) {
 
 router.post('/v21/return-child-eligibility-upload', function (req, res) {
 
-  req.session.data["child-eligibility"] = "Complete";
+  const anotherFile = req.session.data['add-file']
+
+  if (anotherFile === 'yes') {
+    res.redirect('/v21/apply/return-child-eligibility')
+  } else if (anotherFile === 'no') {
+    req.session.data["child-eligibility"] = "Complete";
+    res.redirect('/v21/apply/return-task-list')
+  } else {
+    res.redirect('/v21/apply/return-child-eligibility-upload')
+  }
   
   res.redirect('/v21/apply/return-task-list')
 
