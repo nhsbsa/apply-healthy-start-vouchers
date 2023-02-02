@@ -20,6 +20,16 @@ Application saved
         </div>
       </div>
 
+      {% if data['savedUntil']%}
+      <p>Your application will be saved until {{ data['savedUntil'] }}.</p>
+      {% else %}
+      <p>Your application will be saved until 18 May 2023.</p>
+      {% endif %}
+
+      <p>You must send us the evidence we need before this date or your application will expire.</p>
+
+      <h2 class="nhsuk-heading-m">What happens next?</h2>
+
       <p>You can now safely close this window and return later.</p>
 
       <p>However, if you would like to continue uploading your evidence, click 'Continue your application'.</p>

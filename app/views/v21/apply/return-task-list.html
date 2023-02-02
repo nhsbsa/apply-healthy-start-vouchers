@@ -85,7 +85,7 @@ Get help to buy food and milk (Healthy Start)
       {% if (data['applicant-identity']) and (data['applicant-eligibility']) and (data['child-eligibility'])  %}
       <p><a href="confirmation-pending" class="nhsuk-button">Confirm and send</a></p>
       {% elseif (data['applicant-identity']) or (data['applicant-eligibility']) or (data['child-eligibility'])  %}
-      <p><a href="confirmation-saved" class="nhsuk-button nhsuk-button--secondary" type="submit">Save and continue later</a></p>
+      <p><a href="confirmation-saved" class="nhsuk-button nhsuk-button--secondary" type="submit">Save and return later</a></p>
       {% endif %}
 
     </div>

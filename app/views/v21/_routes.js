@@ -740,6 +740,7 @@ router.post('/v21/check-your-answers', function (req, res) {
 router.post('/v21/return-reference-number', function (req, res) {
 
   var referencenumber = req.session.data['referencenumber']
+  req.session.data['savedUntil'] = moment().add(3, 'months').format("D MMMM YYYY")
 
   if (referencenumber) {
     res.redirect('/v21/apply/return-date-of-birth')
@@ -758,7 +759,6 @@ router.post('/v21/return-date-of-birth', function (req, res) {
   var returnmonth = req.session.data['returnmonth']
   var returnyear = req.session.data['returnyear']
   
-
   if (returnday && returnmonth && returnyear) {
     res.redirect('/v21/apply/return-task-list')
   }

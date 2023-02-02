@@ -428,8 +428,23 @@
 // re-usable style for floating text to right
 // ***********************************
 
-.nhsbsa-float-right {
-  float: right;
+.nhsbsa-guidance-steps {
+  width: 100%;
+  text-align: left;
+  
+  @include mq ($from: desktop) {
+    width: 40%;
+    float: right;
+    text-align: right;
+  }
+}
+.nhsbsa-guidance-title {
+  width: 100%;
+  
+  @include mq ($from: desktop) {
+    width: 60%;
+    float: left;
+  }
 }
 
 // ************************************
