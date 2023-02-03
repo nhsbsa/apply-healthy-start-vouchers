@@ -48,7 +48,7 @@ More information needed
     {% endif %}
 
     <h2 class="nhsuk-heading-m">How do I provide these?</h2>
-    <p>You can go back to your application to upload a photo or scan of your documents.</p>
+    <p>We’ve sent you more information about how you can go back to your application to upload a photo or scan of your documents.</p>
 
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
@@ -75,7 +75,12 @@ More information needed
     <h2 class="nhsuk-heading-m">What happens next?</h2>
     <p>Once we get your evidence, we’ll let you know the outcome of your application within 10 working days.</p>
     <p>If your application is successful, we will backdate your payment to the date you applied.</p>
-    <p>If we do not get your documents within 28 days, we will close your application and you’ll need to reapply.</p>
+    {% if data['savedUntil']%}
+    <p>If we do not get your documents by {{ data['savedUntil'] }}, we will close your application and you’ll need to reapply.</p>
+    {% else %}
+    <p>If we do not get your documents by 18 May 2023, we will close your application and you’ll need to reapply.</p>
+    {% endif %}
+    
 
     <h2 class="nhsuk-heading-m">Give feedback</h2>
     <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this

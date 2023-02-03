@@ -612,6 +612,7 @@ router.post('/v21/pension-credit', function (req, res) {
   router.post('/v21/mobile-phone-number', function (req, res) {
   
     var mobilePhoneNumber = req.session.data['mobilephonenumber']
+    req.session.data['savedUntil'] = moment().add(3, 'months').format("D MMMM YYYY")
   
     res.redirect('/v21/apply/check-your-answers')
   
