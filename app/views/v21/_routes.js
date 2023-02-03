@@ -787,7 +787,7 @@ router.post('/v21/return-applicant-identity-select', function (req, res) {
 
 router.post('/v21/return-applicant-identity-upload', function (req, res) {
 
-  const anotherFile = req.session.data['add-file']
+  const anotherFile = req.session.data['add-file1']
 
   if (anotherFile === 'yes') {
     res.redirect('/v21/apply/return-applicant-identity')
@@ -805,7 +805,7 @@ router.post('/v21/return-applicant-identity-upload', function (req, res) {
 
 router.post('/v21/return-applicant-eligibility-upload', function (req, res) {
 
-  const anotherFile = req.session.data['add-file']
+  const anotherFile = req.session.data['add-file2']
 
   if (anotherFile === 'yes') {
     res.redirect('/v21/apply/return-applicant-eligibility')
@@ -823,7 +823,7 @@ router.post('/v21/return-applicant-eligibility-upload', function (req, res) {
 
 router.post('/v21/return-child-eligibility-upload', function (req, res) {
 
-  const anotherFile = req.session.data['add-file']
+  const anotherFile = req.session.data['add-file3']
 
   if (anotherFile === 'yes') {
     res.redirect('/v21/apply/return-child-eligibility')
