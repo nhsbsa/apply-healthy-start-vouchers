@@ -461,7 +461,7 @@ router.post('/v20/pension-credit', function (req, res) {
     } else if (pregnant === "yes" && childrenunderfour === "yes") {
       res.redirect('/v20/apply/childs-first-name')
     } else if (childrenunderfour === "no" && pregnant ==="no") {
-      res.redirect('/v20/apply/kickouts/not-eligible')
+      res.redirect('/v20/apply/kickouts/confirmation-no-pregnancy-no-children')
     } else {
       res.redirect('/v20/apply/children-under-four')
     }
