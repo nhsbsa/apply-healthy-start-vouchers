@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "return-applicant-eligibility",
+            "text": "Go back"
+        }) }}
+
+        <h1>Evidence uploaded</h1>
+
+
+        <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Benefits award notice
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                benefits-award-notice.jpg
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                <a href="return-applicant-eligibility-upload-copy">
+                  Delete<span class="nhsuk-u-visually-hidden"> eligibility evidence</span>
+                </a>
+          
+              </dd>
+          
+            </div>
+          
+          </dl>
+
+          <form action="v22/return-applicant-eligibility-upload" method="post">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                <h1 class="nhsuk-fieldset__heading">
+                  Do you want to upload more evidence?
+                </h1>
+              </legend>
+      
+              <div class="nhsuk-radios nhsuk-radios--inline">
+      
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-1" name="add-file2" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+                    Yes
+                  </label>
+                </div>
+      
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-2" name="add-file2" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+                    No
+                  </label>
+                </div>
+      
+              </div>
+            </fieldset>
+
+            <button class="nhsuk-button nhsuk-u-margin-top-3" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
