@@ -65,7 +65,7 @@ Get help to buy food and milk (Healthy Start)
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="return-child-eligibility">
+                <a href="return-child-eligibility-2">
                   Tom Green
                 </a>
               </span>
@@ -100,7 +100,7 @@ Get help to buy food and milk (Healthy Start)
       {% if (data['applicant-identity']) and (data['applicant-eligibility']) and (data['child-eligibility'])  %}
       <p><a href="confirmation-pending" class="nhsuk-button">Confirm and send</a></p>
       {% elseif (data['applicant-identity']) or (data['applicant-eligibility']) or (data['child-eligibility'])  %}
-      <p><a href="confirmation-saved" class="nhsuk-button nhsuk-button--secondary" type="submit">Save and return later</a></p>
+      <p><a href="confirmation-saved" class="nhsuk-button">Confirm and send</a></p>
       {% endif %}
 
     </div>
