@@ -6,38 +6,47 @@ Application saved
 
 {% block content %}
 
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 
-      <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
-        <div class="nhsuk-card__content">
-          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
-            Application saved
-          </h1>
-          <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
-            Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">{% if (data['referencenumber'] == 'REF1234A') %}REF1234A{% else %}ABC1234D{% endif %}</span>
-          </h3>
-        </div>
+    <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+      <div class="nhsuk-card__content">
+        <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+          Application saved
+        </h1>
+        <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+          We've saved your application until <span
+            class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">21 May
+            2023</span>
+        </h3>
+        <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+          Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold"
+            style="color: white;">{% if (data['referencenumber'] == 'REF1234A') %}REF1234A{% else %}ABC1234D{% endif
+            %}</span>
+        </h3>
       </div>
-
-      {% if data['savedUntil']%}
-      <p>Your application will be saved until {{ data['savedUntil'] }}.</p>
-      {% else %}
-      <p>Your application will be saved until 18 May 2023.</p>
-      {% endif %}
-
-      <p>You must send us any remaining evidence we need before this date or your application will expire.</p>
-
-      <h2 class="nhsuk-heading-m">What happens next?</h2>
-
-      <p>You can now safely close this window and return later.</p>
-
-      <p>If you would like to continue uploading your evidence, click 'Continue your application'.</p>
-
-      <p><a href="javascript:history.go(-1)" class="nhsuk-button">Continue your application</a></p>
-
-
     </div>
+
+    <p>We've saved your application as we cannot confirm the identity of all your children.</p>
+    <p>We can start your payments of:</p>
+    <ul>
+      <li>£XX.XX for your pregnancy</li>
+      <li>£XX.XX for Tom</li>
+    </ul>
+    <p>To confirm your payments for Michael, you need to upload a copy of their birth certificate by 21 May 2023.</p>
+    <p>If you do not send this by this date, Michael's application will expire. This will not affect your other
+      payments.</p>
+
+    <h2 class="nhsuk-heading-m">What you need to do now</h2>
+
+    <p>Your application has been saved. You can safely close this window and return to upload your evidence until 21 May 2023.</p>
+
+    <p>If you would like to continue uploading your evidence, click 'Continue your application'.</p>
+
+    <p><a href="javascript:history.go(-1)" class="nhsuk-button">Continue your application</a></p>
+
+
   </div>
+</div>
 
 {% endblock %}
