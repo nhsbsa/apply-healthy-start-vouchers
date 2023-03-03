@@ -8,7 +8,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
-      <h1 class="nhsuk-fieldset__legend--xl">Children under 4 years old you have told us about</h1>
+      <h1 class="nhsuk-fieldset__legend--xl">Children under 4 years old</h1>
       {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
         <p>To ensure you are paid correctly for all your children, make sure each child is named on your Universal Credit claim.</p>
       {% endif %}
@@ -23,9 +23,9 @@
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions">
                         {% if data['childList'] | length  == 0 %}
-                        <a href="#">Edit<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        <a href="#">Change<span class="nhsuk-u-visually-hidden"> child</span></a>
                         {% else %}
-                        <a href="#">Edit<span class="nhsuk-u-visually-hidden"> child</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        <a href="#">Change<span class="nhsuk-u-visually-hidden"> child</span></a> or <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
                         {% endif %}
                       </dd>
         </div>
