@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+More information needed
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+      <div class="nhsuk-card__content">
+        <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+          Application in progress
+        </h1>
+        <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+          We need more information from you
+        </h2>
+        <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+          Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold"
+            style="color: white;">{% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}REF1234A{%
+            else %}ABC1234D{% endif %}</span>
+        </h3>
+      </div>
+    </div>
+
+    {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+    <p>We have been unable to confirm your children's eligibility on your Universal Credit claim.</p>
+    {% else %}
+    <p></p>
+    {% endif %}
+
+    <h2 class="nhsuk-heading-m">What you need to do next</h2>
+    <p>To continue with your application, send us:</p>
+
+    {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>proof of your children's eligibility (birth certificate)</li>
+    </ul>
+    {% else %}
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>proof of your identity (birth or marriage certificate, valid passport, valid driving licence or immigration
+        visa)</li>
+      <li>proof of your eligibility (benefit awards notice)</li>
+      <li>proof of your children's eligibility (birth certificate)</li>
+    </ul>
+    {% endif %}
+
+    <h2 class="nhsuk-heading-m">How do I provide these?</h2>
+    <p>We’ve sent you more information about how you can go back to your application to upload a photo or scan of your documents.</p>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Need help uploading your document?
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>You can use a digital camera, smartphone or tablet, or use a scanner. If you already have digital versions of
+          your documents, they will need to be PNG, GIF, JPG or PDF files, and no larger than 20MB each.</p>
+        <p>We've created a <a href="step-by-step-guide-step-1">step-by-step guide</a> on how to upload a document. We'll
+          bring you back to this page after you've read the guide.</p>
+      </div>
+    </details>
+
+    <h2 class="nhsuk-heading-m">If you cannot upload your documents</h2>
+    <p>If you cannot send us a photo or scan or your documents, you can post copies to:</p>
+
+    <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+      <span class="nhsuk-u-visually-hidden">Information:</span>
+      <p>NHS Healthy Start Scheme (ABC1234D),<br>NHS Business Service Authority,<br>Bridge House,<br>152 Pilgrim
+        Street,<br>Newcastle upon Tyne,<br>NE1 6SN</p>
+    </div>
+    <h2 class="nhsuk-heading-m">What happens next?</h2>
+    <p>Once we get your evidence, we’ll let you know the outcome of your application within 10 working days.</p>
+    <p>If your application is successful, we will backdate your payment to the date you applied.</p>
+    {% if data['savedUntil']%}
+    <p>If we do not get your documents by {{ data['savedUntil'] }}, we will close your application and you’ll need to reapply.</p>
+    {% else %}
+    <p>If we do not get your documents by 18 May 2023, we will close your application and you’ll need to reapply.</p>
+    {% endif %}
+    
+
+    <h2 class="nhsuk-heading-m">Give feedback</h2>
+    <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this
+        service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+  </div>
+</div>
+
+{% endblock %}
