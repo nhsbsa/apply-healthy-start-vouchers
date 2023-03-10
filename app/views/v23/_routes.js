@@ -177,6 +177,59 @@ router.post('/v23/name', function (req, res) {
     
   })
 
+  // Pre benefits check
+
+router.post('/v23/pre-benefits', function (req, res) {
+
+  let benefits = req.session.data['benefits']
+  req.session.benefitsList = benefits
+  let fullName = req.session.fullName
+  
+  if (Array.isArray(benefits)) {
+
+    if (benefits.includes('UC')) {
+      if (fullName == "SARAH GREEN") {
+        res.redirect('/v23/apply/universal-credit')
+      } else {
+        res.redirect('/v23/apply/are-you-pregnant')
+      }
+    } else if (benefits.includes('CTC')) {
+      if (fullName == "SARAH GREEN") {
+        res.redirect('/v23/apply/kickouts/confirmation-no-match')
+      } else {
+        res.redirect('/v23/apply/are-you-pregnant')
+      }
+    }
+
+  } else {
+
+      const applicantsAge = req.session.applicantAge
+
+      if (benefits.includes('UC')) {
+        if (fullName == "SARAH GREEN") {
+          res.redirect('/v23/apply/universal-credit')
+        } else {
+          res.redirect('/v23/apply/are-you-pregnant')
+        }
+      } else if (benefits.includes('CTC')) {
+        if (fullName == "SARAH GREEN") {
+          res.redirect('/v23/apply/child-tax-credits')
+        } else {
+          res.redirect('/v23/apply/are-you-pregnant')
+        }
+      } else if (benefits.includes('NONE')) {
+        if (applicantsAge >= 16 && applicantsAge <= 18) {
+          res.redirect('/v23/apply/benefits')
+        } else {
+          res.redirect('/v23/apply/benefits')
+        }
+      } else {
+        res.redirect('/v23/apply/pre-benefits')
+      }
+  }
+
+})
+
   // Do you get any of these benefits?
 
 router.post('/v23/benefits', function (req, res) {
@@ -187,21 +240,7 @@ router.post('/v23/benefits', function (req, res) {
 
     if (Array.isArray(benefits)) {
 
-      if (benefits.includes('UC')) {
-        if (fullName == "SARAH GREEN") {
-          res.redirect('/v23/apply/universal-credit')
-        } else {
-          res.redirect('/v23/apply/are-you-pregnant')
-        }
-      } else if (benefits.includes('CTC')) {
-        if (fullName == "SARAH GREEN") {
-          res.redirect('/v23/apply/kickouts/confirmation-no-match')
-        } else {
-          res.redirect('/v23/apply/are-you-pregnant')
-        }
-
-
-      } else if (benefits.includes('JSA') && benefits.includes('WTC') && benefits.includes('ESA') && benefits.includes('IS')) {
+      if (benefits.includes('JSA') && benefits.includes('WTC') && benefits.includes('ESA') && benefits.includes('IS')) {
         res.redirect('/v23/apply/benefits')
       } else if (benefits.includes('JSA' && 'WTC') && !benefits.includes('ESA') && !benefits.includes('IS')) {
         res.redirect('/v23/apply/jobseekers-allowance')

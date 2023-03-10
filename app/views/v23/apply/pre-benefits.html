@@ -18,7 +18,7 @@ Do you get any of these benefits?
             Do you get any of these benefits?
         </h1>
 
-        <form action="v23/benefits" method="post">
+        <form action="v23/pre-benefits" method="post">
 
             <div class="nhsuk-form-group">
 
@@ -35,37 +35,25 @@ Do you get any of these benefits?
                       <div class="nhsuk-checkboxes">
                   
                         <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="JSA" name="benefits" type="checkbox" value="JSA">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="JSA">
-                            Jobseeker’s Allowance (JSA)
+                          <input class="nhsuk-checkboxes__input" id="UC" name="benefits" type="checkbox" value="UC">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="UC">
+                            Universal Credit
                           </label>
                         </div>
                   
                         <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="ESA" name="benefits" type="checkbox" value="ESA">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="ESA">
-                            Employment and Support Allowance (ESA)
+                          <input class="nhsuk-checkboxes__input" id="CTC" name="benefits" type="checkbox" value="CTC">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
+                            Child Tax Credit
                           </label>
                         </div>
                   
-                        <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="IS" name="benefits" type="checkbox" value="IS">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="IS">
-                            Income Support
-                          </label>
-                        </div>
+                        <div class="nhsuk-radios__divider">or</div>
                   
                         <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="PC" name="benefits" type="checkbox" value="PC">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="PC">
-                            Pension Credit
-                          </label>
-                        </div>
-                  
-                        <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="WTC" name="benefits" type="checkbox" value="WTC">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                            Working Tax Credit
+                          <input class="nhsuk-checkboxes__input deselect" id="NONE" name="benefits" type="checkbox" value="NONE">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="NONE">
+                            No, I do not get any of these
                           </label>
                         </div>
                   
