@@ -25,10 +25,24 @@ Do you get any of these benefits?
                     <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
                   
                       <span class="nhsuk-hint">
-                        Select all eligible benefits that you currently get.
+                        Select all options that are relevant to you.
                       </span>
                   
                       <div class="nhsuk-checkboxes">
+                  
+                        <div class="nhsuk-checkboxes__item">
+                          <input class="nhsuk-checkboxes__input" id="UC" name="benefits" type="checkbox" value="UC">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="UC">
+                            Universal Credit
+                          </label>
+                        </div>
+                  
+                        <div class="nhsuk-checkboxes__item">
+                          <input class="nhsuk-checkboxes__input" id="CTC" name="benefits" type="checkbox" value="CTC">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="CTC">
+                            Child Tax Credit
+                          </label>
+                        </div>
                   
                         <div class="nhsuk-checkboxes__item">
                           <input class="nhsuk-checkboxes__input" id="JSA" name="benefits" type="checkbox" value="JSA">
@@ -58,10 +72,12 @@ Do you get any of these benefits?
                           </label>
                         </div>
                   
+                        <div class="nhsuk-radios__divider">or</div>
+                  
                         <div class="nhsuk-checkboxes__item">
-                          <input class="nhsuk-checkboxes__input" id="WTC" name="benefits" type="checkbox" value="WTC">
-                          <label class="nhsuk-label nhsuk-checkboxes__label" for="WTC">
-                            Working Tax Credit
+                          <input class="nhsuk-checkboxes__input deselect" id="NONE" name="benefits" type="checkbox" value="NONE">
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="NONE">
+                            No, I do not get any of these
                           </label>
                         </div>
                   
