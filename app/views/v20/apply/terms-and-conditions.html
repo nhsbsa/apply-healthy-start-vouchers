@@ -6,19 +6,19 @@ Are you pregnant?
 
 {% block content %}
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
+    {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+    }) }}
 
-        <h1>Terms and conditions</h1>
+    <h1>Terms and conditions</h1>
 
-        <div class="nhsuk-warning-callout">
-            <h3 class="nhsuk-warning-callout__label">Declaration</h3>
+    <div class="nhsuk-warning-callout">
+      <h3 class="nhsuk-warning-callout__label">Declaration</h3>
 
-  <!-- 
+      <!-- 
 
             <p>You confirm that this information is correct as of
               <script>
@@ -58,24 +58,34 @@ Are you pregnant?
 
 -->
 
-            <p>By submitting this application, I acknowledge that I have read and understood the following terms and conditions:</p>
-            <h2 class="nhsuk-heading-s">About your application</h2>
-            <ul>
-              <li>I declare that my benefit claim is correct, complete and up to date as far as I know and believe.</li>
-              <li>I declare that I’m responsible for any dependants listed on this claim or the person entitled to the qualifying benefits is responsible for the dependants listed on the claim.</li>
-              <li>I understand that I may be prosecuted if I provide details that are neither complete nor correct.</li>
-              <li>I agree to update the NHS Business Services Authority if any of the details given in this application change.</li>
-              <li>I have read and understood the rules of the Healthy Start scheme and will abide by the obligations under the scheme.</li>
-              {% if data['onlineaccount'] === 'yes' %}
-              <li>I have agreed to an online account and have provided a valid email address.</li>
-              {% else %}
-              
-              {% endif %}
-            </ul>
-            <p>The <a href="https://www.nhsbsa.nhs.uk/our-policies/privacy" target="_blank">NHSBSA privacy notice</a> sets out how we process and protect personal data and your rights in respect of your own information. For more information, you can also email <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a>.</p>
-            
-            
-            <!--
+      <p>By submitting this application, I acknowledge that I have read and understood the following terms and
+        conditions:</p>
+      <h2 class="nhsuk-heading-s">About your application</h2>
+      <ul>
+        <li>I declare that my benefit claim is correct, complete and up to date as far as I know and believe.</li>
+        <li>I declare that I’m responsible for any dependants listed on this claim or the person entitled to the
+          qualifying benefits is responsible for the dependants listed on the claim.</li>
+        <li>I understand that I may be prosecuted if I provide details that are neither complete nor correct.</li>
+        <li>I agree to update the NHS Business Services Authority (NHSBSA) if any of the details given in this
+          application change.</li>
+        <li>I have read and understood the <a href="" target="_blank">rules of the Healthy Start scheme</a> and will
+          abide by the obligations under the scheme.</li>
+        {% if data['onlineaccount'] === 'yes' %}
+        <li>I have agreed to an online account and have provided a valid email address.</li>
+        {% else %}
+        <li>I understand that for verification processes, investigation, or measurement exercises, the NHSBSA may share
+          my information with the NHSBSA Loss and Fraud Prevention Team, the Department of Health and Social Care,
+          Allpay, DWP, HMRC and the NHS Counter Fraud Authority.</li>
+
+        {% endif %}
+      </ul>
+      <p>The <a href="https://www.nhsbsa.nhs.uk/our-policies/privacy" target="_blank">NHSBSA privacy notice</a> sets out
+        how we process and protect personal data and your rights in respect of your own information. For more
+        information, you can also email <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a>.
+      </p>
+
+
+      <!--
             <h2 class="nhsuk-heading-s">About your card</h2>
             <ul>
               <li>You’re provided with access to money on the card, but the money remains beneficially owned by the Department of Health and Social Care.</li>
@@ -90,21 +100,21 @@ Are you pregnant?
             <p>Your card will then be immediately blocked, protecting you from unauthorised usage. Transactions made before you report the card as lost or stolen will be charged to your account.</p>
             -->
 
-          </div>
+    </div>
 
-          <!--
+    <!--
           <p class="nhsuk-u-margin-bottom-6">By submitting your application, you’re agreeing to accept the terms and conditions.</p>
           -->
 
-          <form action="v20/check-your-answers" method="post">
+    <form action="v20/check-your-answers" method="post">
 
-            <button class="nhsuk-button" type="submit">
-                Accept and send
-            </button>
+      <button class="nhsuk-button" type="submit">
+        Accept and send
+      </button>
 
-          </form>
+    </form>
 
-    </div>
+  </div>
 </div>
 
 {% endblock %}
