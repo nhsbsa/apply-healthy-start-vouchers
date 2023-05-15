@@ -227,7 +227,7 @@ router.post('/v23/name', function (req, res) {
             if (fullName == "SARAH GREEN") {
               res.redirect('/v23/apply/child-tax-credits')
             } else {
-              res.redirect('/v23/apply/are-you-pregnant')
+              res.redirect('/v23/apply/child-tax-credits')
             }
           } else if (benefits.includes('JSA')) {
             res.redirect('/v23/apply/jobseekers-allowance')
