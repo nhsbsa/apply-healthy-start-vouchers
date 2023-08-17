@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have any children under the age of 4?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Do you have any children under 4 years old?    
+        </h1>
+
+        <p>This means children who live with you all the time, or they normally live with you and you're their main carer.</p>
+
+        <!-- <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                If you are a Universal Credit claimant
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <p>To make sure you are paid correctly for all of your children, make sure each child is named on your Universal Credit claim.</p>
+                <p>Go to your <a href="https://www.gov.uk/sign-in-universal-credit" target="_blank">Universal Credit account</a> to check this.</p>
+            </div>
+          </details> -->
+
+        <form action="v24/children-under-four" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="childrenunderfour" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="childrenunderfour" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+                    <div class="nhsuk-warning-callout">
+                        <h3 class="nhsuk-warning-callout__label">
+                        <span role="text">
+                            <span class="nhsuk-u-visually-hidden">Important: </span>
+                            Universal Credit claimants
+                        </span>
+                        </h3>
+                        <p>To ensure you are paid correctly for all your children, make sure each child is named on your Universal Credit claim.</p>
+                        <p>Go to your <a href="https://www.gov.uk/sign-in-universal-credit" target="_blank">Universal Credit account</a> to check this.</p>
+                    </div>
+                {% else %}
+                    <!-- dont show -->
+                {% endif %}
+
+                <!-- <div class="nhsuk-inset-text">
+                    <span class="nhsuk-u-visually-hidden">Information: </span>
+                    <h2 class="nhsuk-heading-m">Universal Credit claimants</h2>
+                    <p>To make sure you are paid correctly for all of your children, make sure each child is named on your Universal Credit claim.</p>
+                    <p>Go to your <a href="https://www.gov.uk/sign-in-universal-credit" target="_blank">Universal Credit account</a> to check this.</p>
+                </div> -->
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
