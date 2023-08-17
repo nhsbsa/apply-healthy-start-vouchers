@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your address?
+        </h1>
+
+        <p>You should select the address listed on your most recent benefit award notice.</p>
+
+        <p>Postcode</p>
+        <p>NE 1 0LD <a href="">Change</a></p>
+
+        <form action="v24/address-2" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="select-1">
+                  Your address
+                </label>
+                <select class="nhsuk-select" id="select-1" name="select-1">
+                  <option value="1"selected>Select your address</option>
+                  <option value="2">Select your address</option>
+                  <option value="3">Select your address</option>
+                </select>
+              </div>
+
+            <p><a href="postcode">Search by postcode</a></p>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

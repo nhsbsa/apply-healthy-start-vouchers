@@ -103,7 +103,22 @@ router.post('/v24/name', function (req, res) {
     }
   
   })
+
+  // What is your postcode?
   
+  router.post('/v24/postcode', function (req, res) {
+
+    res.redirect('/v24/apply/address-2');
+  
+  })
+
+  // What is your address 2?
+
+  router.post('/v24/apply/address-2', function (req, res) {
+
+    res.redirect('/v24/national-insurance-number');
+  
+  })
 
   
   // What is your national insurance number?
