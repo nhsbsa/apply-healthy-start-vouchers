@@ -77,7 +77,7 @@ router.post('/v24/name', function (req, res) {
   var lastname = req.session.data['lastname']
 
   if (firstname && lastname) {
-    res.redirect('/v24/apply/address')
+    res.redirect('/v24/apply/postcode')
   }
   else {
     res.redirect('/v24/apply/name')
@@ -116,7 +116,7 @@ router.post('/v24/name', function (req, res) {
 
   router.post('/v24/apply/address-2', function (req, res) {
 
-    res.redirect('/v24/national-insurance-number');
+    res.redirect('/v24/apply/national-insurance-number');
   
   })
 
