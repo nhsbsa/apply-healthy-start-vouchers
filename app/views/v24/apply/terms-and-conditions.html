@@ -58,18 +58,17 @@ Are you pregnant?
 
 -->
 
-            <p>By submitting this application, I acknowledge that I have read and understood the following terms and conditions:</p>
-            <h2 class="nhsuk-heading-s">About your application</h2>
+            <p>By submitting this application, I confirm I have read and understood the following terms and conditions.</p>
             <ul>
               <li>I declare that my benefit claim is correct, complete and up to date as far as I know and believe.</li>
-              <li>I declare that I’m responsible for any dependants listed on this claim or the person entitled to the qualifying benefits is responsible for the dependants listed on the claim.</li>
-              <li>I understand that I may be prosecuted if I provide details that are neither complete nor correct.</li>
+              <li>I declare that I’m responsible for any children listed on this claim or the person entitled to the qualifying benefits is responsible for the children listed on the claim.</li>
+              <li>I understand that I may be prosecuted if I provide details that are incomplete or incorrect.</li>
               <li>I agree to update the NHS Business Services Authority (NHSBSA) if any of the details given in this application change.</li>
-              <li>I have read and understood the <a href="" target="_blank">rules of the Healthy Start scheme</a> and will abide by the obligations under the scheme.</li>
+              <li>I have read and understood the <a href="" target="_blank">rules of the NHS Healthy Start scheme</a> and will abide by the obligations under the scheme.</li>
               {% if data['onlineaccount'] === 'yes' %}
               <li>I have agreed to an online account and have provided a valid email address.</li>
               {% else %}
-              <li>I understand that for verification processes, investigation, or measurement exercises, the NHSBSA may share my information with the NHSBSA Loss and Fraud Prevention Team, the Department of Health and Social Care, Allpay, DWP, HMRC and the NHS Counter Fraud Authority.</li>
+              <li>I understand that for verification processes, investigation, or measurement exercises, the NHSBSA may share my information with the NHSBSA Loss and Fraud Prevention team, the Department of Health and Social Care, Allpay, DWP, HMRC and the NHS Counter Fraud Authority.</li>
               
               {% endif %}
             </ul>
@@ -97,10 +96,41 @@ Are you pregnant?
           <p class="nhsuk-u-margin-bottom-6">By submitting your application, you’re agreeing to accept the terms and conditions.</p>
           -->
 
+          <form>
+
+            <div class="nhsuk-form-group">
+          
+              <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    
+                  </h1>
+                </legend>
+          
+                <div class="nhsuk-hint" id="contact-hint">
+                  
+                </div>
+          
+                <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+          
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="contact-1" name="contact" type="checkbox" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-1">
+                      I confrim I have read the terms and conditions
+                    </label>
+                  </div>
+          
+                </div>
+              </fieldset>
+          
+            </div>
+          
+          </form>
+
           <form action="v24/check-your-answers" method="post">
 
             <button class="nhsuk-button" type="submit">
-                Accept and send
+                Submit application
             </button>
 
           </form>
