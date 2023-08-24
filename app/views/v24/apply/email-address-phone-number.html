@@ -19,7 +19,89 @@ What is your email address?
             "text": "Go back"
         }) }}
 
-        <form action="v24/email-address" method="post">
+        <form action="v24/email-address-phone-number" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                      Get updates about your claim by email
+                    </h1>
+                  </legend>
+              
+                  <div class="nhsuk-hint" id="contact-hint">
+                    After your card arrives in the post, the quickets and easiest way to get information about your claim is by email. We can email you:
+                  </div>
+                  <div class="nhsuk-hint" id="contact-hint">• when we've made a payment onto your card</div>
+                  <div class="nhsuk-hint" id="contact-hint">• if your payments are changing</div>
+                  <div class="nhsuk-hint" id="contact-hint">• reminders about keeping your details up to date</div>
+                  <div class="nhsuk-hint" id="contact-hint">If you do not have an email address, we can send you information by text message.</div>
+              
+                  <div class="nhsuk-radios nhsuk-radios--conditional">
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="contact-1" name="contact" type="radio" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                        Send me information by email
+                      </label>
+                    </div>
+              
+                    <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+              
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="email">
+                          Email address
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                      </div>
+              
+                    </div>
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+                        I do not have an email address
+                      </label>
+                    </div>
+              
+                    <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-2">
+              
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="phone">
+                          Mobile phone number
+                        </label>
+                        <input class="nhsuk-input nhsuk-u-width-two-thirds" id="phone" name="phone" type="text">
+                      </div>
+              
+                    </div>
+
+                    <div class="nhsuk-radios__divider">or</div>
+              
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="contact-3" name="contact" type="radio" value="text" aria-controls="conditional-contact-3" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
+                        I do not want to get information by email or text message
+                      </label>
+                    </div>
+              
+                  </div>
+                  <br>
+
+                  <details class="nhsuk-details">
+                    <summary class="nhsuk-details__summary">
+                      <span class="nhsuk-details__summary-text">
+                        If you do not want to recieve information by email or text message
+                      </span>
+                    </summary>
+                    <div class="nhsuk-details__text">
+                      <p>If you do not give us an email address or mobile phone number, we'll send you information about your claim by post. It takes longer to get information by post than by email or text message.</p>
+                  
+                    </div>
+                  </details>
+                </fieldset>
+              
+              </div>
 
         
 

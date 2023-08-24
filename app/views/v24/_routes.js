@@ -618,7 +618,7 @@ router.post('/v24/pension-credit', function (req, res) {
   
     var emailaddress = req.session.data['emailaddress']
   
-    res.redirect('/v24/apply/mobile-phone-number')
+    res.redirect('/v24/apply/check-your-answers')
   
   })
   
