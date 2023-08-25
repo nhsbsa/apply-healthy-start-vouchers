@@ -206,7 +206,7 @@ router.post('/v24/name', function (req, res) {
           if (fullName == "SARAH GREEN") {
             res.redirect('/v24/apply/universal-credit')
           } else {
-            res.redirect('/v24/apply/are-you-pregnant')
+            res.redirect('/v24/apply/universal-credit')
           }
         } else if (benefits.includes('CTC')) {
           if (fullName == "SARAH GREEN") {
@@ -236,7 +236,7 @@ router.post('/v24/name', function (req, res) {
             if (fullName == "SARAH GREEN") {
               res.redirect('/v24/apply/universal-credit')
             } else {
-              res.redirect('/v24/apply/are-you-pregnant')
+              res.redirect('/v24/apply/universal-credit')
             }
           } else if (benefits.includes('CTC')) {
             if (fullName == "SARAH GREEN") {
