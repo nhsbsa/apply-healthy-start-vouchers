@@ -255,7 +255,7 @@ router.post('/v24/name', function (req, res) {
           } else if (benefits.includes('WTC')) {
             res.redirect('/v24/apply/working-tax-credits')
           } else if (benefits.includes('NONE')) {
-            if (applicantsAge >= 16 && applicantsAge <= 18) {
+            if (applicantsAge <= 16 && applicantsAge >= 18) {
               res.redirect('/v24/apply/kickouts/under-eighteen-signpost')
             } else {
               res.redirect('/v24/apply/are-you-pregnant')
@@ -290,13 +290,29 @@ router.post('/v24/child-tax-credits', function (req, res) {
   var childtaxcredits = req.session.data['childtaxcredits']
 
   if (childtaxcredits === "yes") {
-    res.redirect('/v24/apply/are-you-pregnant')
+    res.redirect('/v24/apply/working-tax-credit')
   }
   else if (childtaxcredits === "no") {
     res.redirect('/v24/apply/kickouts/not-eligible')
   }
   else {
     res.redirect('/v24/apply/child-tax-credits')
+  }
+
+})
+
+router.post('/v24/working-tax-credit', function (req, res) {
+
+  var workingtaxcredit = req.session.data['workingtaxcredit']
+
+  if (workingtaxcredit === "yes") {
+    res.redirect('/v24/apply/kickouts/not-eligible')
+  }
+  else if (workingtaxcredit === "no") {
+    res.redirect('/v24/apply/are-you-pregnant')
+  }
+  else {
+    res.redirect('/v24/apply/working-tax-credit')
   }
 
 })
