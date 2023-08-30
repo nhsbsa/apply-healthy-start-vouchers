@@ -255,10 +255,10 @@ router.post('/v24/name', function (req, res) {
           } else if (benefits.includes('WTC')) {
             res.redirect('/v24/apply/working-tax-credits')
           } else if (benefits.includes('NONE')) {
-            if (applicantsAge >= 16 && applicantsAge <= 18) {
+            if (applicantsAge <= 16 && applicantsAge >= 18) {
               res.redirect('/v24/apply/kickouts/under-eighteen-signpost')
             } else {
-              res.redirect('/v24/apply/are-you-pregnant')
+              res.redirect('/v24/apply/kickouts/under-eighteen-signpost')
             }
           } else {
             res.redirect('/v24/apply/benefits')
