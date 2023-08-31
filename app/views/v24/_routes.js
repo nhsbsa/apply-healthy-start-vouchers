@@ -459,14 +459,19 @@ router.post('/v24/pension-credit', function (req, res) {
   
       if (duedate < today) {
         res.redirect('/v24/apply/due-date')
+        console.log('IF IS RUNNING HERE')
       } else if (duedate > fulltermpregnancy) {
-        res.redirect('/v24/apply/due-date')
+        req.session.data.lessThanTenWeeksPregnant = true;
+        res.redirect('/v24/apply/children-under-four')
+        console.log('ELSE IF IS RUNNING HERE')
       } else {
   
         if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
           req.session.data.lessThanTenWeeksPregnant = true;
+          console.log('LESS THAN 10 WEEKS')
         } else {
           req.session.data.lessThanTenWeeksPregnant = false;
+          console.log('MORE THAN 10 WEEKS')
         }
   
         res.redirect('/v24/apply/children-under-four')
@@ -484,8 +489,13 @@ router.post('/v24/pension-credit', function (req, res) {
   
     var childrenunderfour = req.session.data['childrenunderfour']
     var pregnant = req.session.data['pregnant']
-  
-    if (pregnant === "yes" && childrenunderfour === "no") {
+
+    var lessThan10WeeksPregnant = req.session.data.lessThanTenWeeksPregnant
+
+    if (lessThan10WeeksPregnant == true && childrenunderfour == 'no') {
+      res.redirect('/v24/apply/kickouts/confirmation-no-pregnancy-no-children')
+    } else if (pregnant === "yes" && childrenunderfour === "no") {
+      console.log('variable:' + '' + lessThan10WeeksPregnant)
       res.redirect('/v24/apply/email-address')
     } else if (pregnant === "no" && childrenunderfour === "yes") {
       res.redirect('/v24/apply/childs-first-name')
