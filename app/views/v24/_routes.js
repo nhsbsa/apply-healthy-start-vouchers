@@ -256,9 +256,9 @@ router.post('/v24/name', function (req, res) {
             res.redirect('/v24/apply/working-tax-credits')
           } else if (benefits.includes('NONE')) {
             if (applicantsAge <= 16 && applicantsAge >= 18) {
-              res.redirect('/v24/apply/kickouts/under-eighteen-signpost')
+              res.redirect('/v24/apply/kickouts/confirmation-no-pregnancy-no-children')
             } else {
-              res.redirect('/v24/apply/kickouts/under-eighteen-signpost')
+              res.redirect('/v24/apply/kickouts/confirmation-no-pregnancy-no-children')
             }
           } else {
             res.redirect('/v24/apply/benefits')
