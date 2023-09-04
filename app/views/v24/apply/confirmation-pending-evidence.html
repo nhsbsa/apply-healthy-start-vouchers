@@ -32,54 +32,53 @@ More information needed
     {% endif %}
 
     <h2 class="nhsuk-heading-m">What you need to do next</h2>
-    <p>To continue with your application, send us a copy of one document that proves your:</p>
+    <p>To continue with your application, you need to send us more evidence. We need to get this evidence by ((application date + 16 weeks)).</p>
+
+    <h2 class="nhsuk-heading-m">Proof of identity and eligibility</h2>
+    <p>You need to send copies of:</p>
+    <ul>
+      <li>one document that proves your identity - for example, birth or marriage certificate, current passport, current driving licence or immigration visa</li>
+      <li>your current benefit award notice - include copies of every page</li>
+      <li>birth certificates for every child named on your application</li>
+    </ul>
 
     {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
     <ul class="nhsuk-list nhsuk-list--bullet">
       <li>proof of your children's eligibility (birth certificate)</li>
     </ul>
     {% else %}
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>identity (for example, birth certificate, marriage certificate, passport, driving licence or immigration visa)</li>
-      <li>eligibility (benefit awards notice)</li>
-      <li>children's eligibility (birth certificate)</li>
+    <h2 class="nhsuk-heading-m">Proof of address</h2>
+    <p>We also need to see copies of 3 documents that prove your address.</p>
+    <p>You need to send a copy of one document from the list:</p>
+    <ul>
+      <li>current driving licence</li>
+      <li>current benefit award notice</li>
+    </ul>
+    <p>You need to send copies of 2 documents from this list:</p>
+    <ul>
+      <li>one or more utility bills dated within the last 3 months - for example, electricity bill, gas bill, water bill, sewerage bill, home telephone bill or mobile phone bill</li>
+      <li>a council tax bill dated within the last 12 months</li>
     </ul>
 
-    <p>Make sure that you only send us copies of your documents. We cannot return originals.</p>
-    {% endif %}
+    <h2 class="nhsuk-heading-m">How to send your evidence</h2>
+    <p>Email us</p>
+    <p>The quickest and easiest way to send your evidence is by email to healthy.start@nhsbsa.nhs.uk</p>
+    <p>Make sure you include your reference number (ABC1234D).</p>
 
-    <h2 class="nhsuk-heading-m">How do I provide these?</h2>
-    <p>We’ve sent you more information about how you can go back to your application to upload a photo or scan of your documents.</p>
-
-    <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          Need help uploading your document?
-        </span>
-      </summary>
-      <div class="nhsuk-details__text">
-        <p>You can use a digital camera, smartphone or tablet, or use a scanner. If you already have digital versions of
-          your documents, they will need to be PNG, GIF, JPG or PDF files, and no larger than 20MB each.</p>
-        <p>We've created a <a href="step-by-step-guide-step-1">step-by-step guide</a> on how to upload a document. We'll
-          bring you back to this page after you've read the guide.</p>
-      </div>
-    </details>
-
-    <h2 class="nhsuk-heading-m">If you cannot upload your documents</h2>
-    <p>If you cannot send us a photo or scan or your documents, you can post copies to:</p>
-
+    <h2 class="nhsuk-heading-m">Post your evidence</h2>
+    <p>If you are not able to email your evidence, you can post copies of your documents to:</p>
     <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
       <span class="nhsuk-u-visually-hidden">Information:</span>
       <p>NHS Healthy Start Scheme (ABC1234D),<br>NHS Business Service Authority,<br>Bridge House,<br>152 Pilgrim
         Street,<br>Newcastle upon Tyne,<br>NE1 6SN</p>
     </div>
-    <h2 class="nhsuk-heading-m">What happens next?</h2>
-    <p>Once we get your evidence, we’ll let you know the outcome of your application within 10 working days.</p>
-    <p>If your application is successful, we'll backdate your payment to the date you applied.</p>
-    {% if data['savedUntil']%}
-    <p>If we do not get your documents by {{ data['savedUntil'] }}, we will close your application and you’ll need to reapply.</p>
-    {% else %}
-    <p>If we do not get your documents by 18 May 2023, we will close your application and you’ll need to reapply.</p>
+    <p>If you're posting your evidence, make sure you use the correct postage.</p>
+    <p>You should send copies of your evidence. Do not send original documents.</p>
+
+    <h2 class="nhsuk-heading-m">What happens next</h2>
+    <p>It can take up to 5 days for us to process your application. We'll let you know if your application is successful.</p>
+    <p>If your application is successful, we'll backdate your payment to the date you applied and send your NHS Healthy STart card by post. Your card can take 5 to 10 days to arrive.</p>
+    <p>If we do not get your documents by ((application date +16 weeks)), we will close your application and you'll need to reaaply.</p>
     {% endif %}
     
 
