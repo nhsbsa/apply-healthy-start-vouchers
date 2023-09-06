@@ -82,14 +82,11 @@ Get help to buy food and milk (Healthy Start)
       </ol>
 
     
-      {% if (data['referencenumber'] == 'REF1234A') and (data['child-eligibility']) %}
+      {% if (data['applicant-identity']) and (data['applicant-eligibility']) and (data['child-eligibility'])  %}
       <p><a href="confirmation-pending" class="nhsuk-button">Confirm and send</a></p>
-      {% elseif (data['applicant-identity']) and (data['applicant-eligibility']) and (data['child-eligibility'])  %}
-      <p><a href="confirmation-pending" class="nhsuk-button">Confirm and send</a></p>
-      {% else %}
-      <p><a class="nhsuk-button" disabled>Confirm and send</a></p>
+      {% elseif (data['applicant-identity']) or (data['applicant-eligibility']) or (data['child-eligibility'])  %}
+      <p><a href="confirmation-saved" class="nhsuk-button nhsuk-button--secondary" type="submit">Save and return later</a></p>
       {% endif %}
-      <p><a class="nhsuk-button nhsuk-button--reverse" type="submit">Save and continue</a></p>
 
     </div>
 

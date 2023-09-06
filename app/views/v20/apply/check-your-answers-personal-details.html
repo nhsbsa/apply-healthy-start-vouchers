@@ -41,13 +41,10 @@ Check your answers
                     Address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['addressline1'] }},<br>
-                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                    {{ data['towncity'] }},<br>
-                    {{ data['postcode'] }}
+                    {{ data['select-1'] }}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
-                    <a href="address#addressline1">
+                    <a href="postcode">
                     Change<span class="nhsuk-u-visually-hidden"> address</span>
                     </a>
                 </dd>
@@ -69,7 +66,7 @@ Check your answers
             
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    National insurance number
+                    National Insurance number
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                     {{ data['nationalinsurancenumber'] }}
@@ -119,7 +116,9 @@ Check your answers
                 {% endif %} -->
                         
             </dl>
-            <input class="nhsuk-button" type="submit" value="Continue">
+            <p><a href="benefits" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                Continue
+              </a></p>
         </form>
         
     </div>

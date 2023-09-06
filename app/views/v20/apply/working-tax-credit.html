@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you get a 'child addition' payment with your Pension Credit award?
+Do you get Working Tax Credit?
 {% endblock %}
 
 {% block content %}
@@ -14,12 +14,10 @@ Do you get a 'child addition' payment with your Pension Credit award?
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            Do you get the 'child addition' within your Pension Credit award?
+            Do you get Working Tax Credit?
         </h1>
 
-        <p>You'll get an additional payment called the 'child addition' within your Pension Credit award if you're responsible for a child or young person.</p>
-
-        <form action="v20/pension-credit" method="post">
+        <form action="v20/working-tax-credit" method="post">
 
             <div class="nhsuk-form-group">
 
@@ -27,13 +25,13 @@ Do you get a 'child addition' payment with your Pension Credit award?
 
                     <div class="nhsuk-radios nhsuk-radios--inline">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="yes" name="pensioncredit" type="radio" value="yes">
+                            <input class="nhsuk-radios__input" id="yes" name="workingtaxcredit" type="radio" value="yes">
                             <label class="nhsuk-label nhsuk-radios__label" for="yes">
                                 Yes
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="no" name="pensioncredit" type="radio" value="no">
+                            <input class="nhsuk-radios__input" id="no" name="workingtaxcredit" type="radio" value="no">
                             <label class="nhsuk-label nhsuk-radios__label" for="no">
                                 No
                             </label>

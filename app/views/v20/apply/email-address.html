@@ -24,27 +24,78 @@ What is your email address?
         <div class="nhsuk-form-group">
             <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="emailaddress">
-                What is your email address? {% if data['onlineaccount'] === 'yes' %}{% else %}(optional){% endif %}
+                    Get updates about your claim by email {% if data['onlineaccount'] === 'yes' %}{% else %}{% endif %}
                 </label>
             </h1>
 
-            <p class="nhsuk-hint">You should use an email address that only you have access to. If anyone else uses your email address, your personal information may be shared with others.</p>
+            <p class="nhsuk-hint">After your card arrives in the post, the quickest and easiest way to get information about your claim is by email. We can email you:</p>
+            <p class="nhsuk-hint">• when we've made a payment onto your card</p>
+            <p class="nhsuk-hint">• if your payments are changing</p>
+            <p class="nhsuk-hint">• reminders about keeping your details up to date</p>
+            <p class="nhsuk-hint">If you do not have an email address, we can send you information by text message.</p>
 
-            <input class="nhsuk-input nhsuk-input--width-20" id="emailaddress" name="emailaddress" type="text" autocomplete="email">
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact-1" name="contact" type="radio" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                    Send me information by email
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+          
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="email">
+                      Email address
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                  </div>
+          
+                </div>
+
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
+                    <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+                      I do not have an email address
+                    </label>
+                  </div>
+            
+                  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-2">
+            
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label" for="phone">
+                        Mobile phone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="phone" name="phone" type="text">
+                    </div>
+            
+                </div>
+
+                <div class="nhsuk-radios__divider">or</div>
+
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="contact-3" name="contact" type="radio" value="none" aria-controls="conditional-contact-3" aria-expanded="false">
+                    <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
+                      I do not want to get information by email or text message
+                    </label>
+                  </div>
+
+
         </div>
+        <br>
 
             <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
                     <span class="nhsuk-details__summary-text">
-                    Why we ask for your email address
+                        If you do not want to get information by email or text message
                     </span>
                 </summary>
                 <div class="nhsuk-details__text">
                     {% if data['onlineaccount'] === 'yes' %}
                         <p>We use this to create your online account. Without an email address, we can't create an online account. We also use it to send notifications about your application and payments.</p>
                     {% else %}
-                        <p>We'll use your email address to send you notifications about your application, payments and card balance.</p>
-                        <p>This information is optional. The only contact information you must give us is your postal address. If we only have your address, we can only contact you by post so it'll take longer for you to get notifications.</p>
+                        <p>If you do not give us an email address or mobile phone number, we'll contact you by post. It takes longer to get information by post than by email or text message.</p>
                     {% endif %}
                 </div>
             </details>

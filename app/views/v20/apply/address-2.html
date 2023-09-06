@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your address?
+        </h1>
+
+        <p>You should select the address listed on your most recent benefit award notice.</p>
+
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                If you do not have a current benefit award notice
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p><b>If you're under 18 and not claiming any benefits</b></p>
+              <p>You should give us the address you'd like us to send your Healthy Start card to.</p>
+              <p><b>If you do not have a permanent address</b></p>
+              <p>If you're home less and living in a hostel or other temporary accommodation, you should TBC TBC TBC</p>
+            </div>
+          </details>
+
+        <p>Postcode</p>
+        <p>NR33 4GP <a href="">Change</a></p>
+
+        <form action="v20/apply/address-2" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="select-1">
+                  
+                </label>
+                <select class="nhsuk-select" id="select-1" name="select-1">
+                  <option value="" selected>Select your address</option>
+                  <option value="Flat 1A, 12 Palm Road, London, NR33 4GP">Flat 1A, 12 Palm Road, London, NR33 4GP</option>
+                  <option value="Flat 1B, 12 Palm Road, London, NR33 4GP">Flat 1B, 12 Palm Road, London, NR33 4GP</option>
+                  <option value="13 Palm Road, London, NR33 4GP">13 Palm Road, London, NR33 4GP</option>
+                  <option value="14 Palm Road, London, NR33 4GP">14 Palm Road, London, NR33 4GP</option>
+                  <option value="15 Palm Road, London, NR33 4GP">15 Palm Road, London, NR33 4GP</option>
+               </select>
+              </div>
+
+            <p><a href="address">My address is not listed</a></p>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

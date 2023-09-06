@@ -52,7 +52,7 @@ Check your answers
 
                     <dd class="nhsuk-summary-list__actions">
 
-                        <a href="find-address">
+                        <a href="postcode">
                             Change<span class="nhsuk-u-visually-hidden"> your address</span>
                         </a>
 
@@ -65,10 +65,7 @@ Check your answers
                         Address
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                        {{ data['addressline1'] }},<br>
-                        {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                        {{ data['towncity'] }},<br>
-                        {{ data['postcode'] }}
+                        {{ data['select-1'] }}
                     </dd>
 
                     <dd class="nhsuk-summary-list__actions">
@@ -122,7 +119,7 @@ Check your answers
             {% if data['benefits'] %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                        Benefits
+                        Qualifying benefit
                     </dt>
                     <dd class="nhsuk-summary-list__value">
                         {% if data['benefits'] == "UC" %}
@@ -174,7 +171,7 @@ Check your answers
 
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                        Have children under 4
+                        Children under 4
                     </dt>
                     <dd class="nhsuk-summary-list__value">
                         {% if data['childrenunderfour'] == "yes" %}Yes{% else %}No{% endif %}
