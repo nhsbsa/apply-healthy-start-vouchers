@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your address?
+        </h1>
+
+        <p>You should enter the address listed on your most recent benefit award notice.</p>
+
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                If you do not have a current benefit award notice
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <p><b>If you're under 18 and not claiming any benefits</b></p>
+                <p>You should enter the address you'd like us to send your Healthy Start card to.</p>
+                <p><b>If you do not have a permanent address</b></p>
+                <p>Let us know if you do not have a benefit award notice showing your current address. This may be because you're homeless or living in a hostel or other temporary accommodation</p>
+                <p>You can contact us by:</p>
+                <ul>
+                  <li>email: <a href="">healthy.start@nhsbsa.nhs.uk</a></li>
+                  <li>telephone: 0300 330 7010 - this call will be charged at the local rate</li>
+                </ul>
+                <p><a href="">Find out more about call charges (opens in new tab).</a></p>
+            </div>
+          </details>
+
+        <form action="v24/address" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="addressline1">
+                    Address line 1
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="addressline2">
+                    Address line 2 (optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline2" name="addressline2" type="text" autocomplete="address-line2">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="towncity">
+                    Town or city
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level2">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+            </div>
+
+            <p><a href="postcode">Search by postcode</a></p>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

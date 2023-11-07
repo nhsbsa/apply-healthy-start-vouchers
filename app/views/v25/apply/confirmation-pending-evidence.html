@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+More information needed
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+      <div class="nhsuk-card__content">
+        <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+          Application in progress
+        </h1>
+        <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+          We need more information from you
+        </h2>
+        <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+          Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold"
+            style="color: white;">{% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}REF1234A{%
+            else %}ABC1234D{% endif %}</span>
+        </h3>
+      </div>
+    </div>
+
+    {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+    <p>We have been unable to confirm your children's eligibility on your Universal Credit claim.</p>
+    {% else %}
+    <p></p>
+    {% endif %}
+
+    <h2 class="nhsuk-heading-m">What you need to do now</h2>
+    <p>To continue with your application, you need to send us more evidence by ((application date + 16 weeks)).</p>
+
+    <p>Make sure you send us photos, scans or photocopies of the evidence we ask for. Do not send original documents.</p>
+
+    <h2 class="nhsuk-heading-m">Proof of identity and eligibility</h2>
+    <p>You need to ssee photos, scans or phototcopies of:</p>
+    <ul>
+      <li>one document that proves your identity - for example, birth or marriage certificate, current passport or travel document, current full driving licence with photo ID, or immigration visa</li>
+      <li>your current benefit award notice - make sure it shows your current address and all pages are included</li>
+      <li>birth certificates for every child named on your application</li>
+    </ul>
+
+    {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>proof of your children's eligibility (birth certificate)</li>
+    </ul>
+    {% else %}
+    <h2 class="nhsuk-heading-m">Proof of address</h2>
+    <p>We need to see photos, scans or photocopies of 2 documents that prove your address. For example:</p>
+    <ul>
+      <li>one or more utility bills dated within the last 3 months (for example, electricity bill, gas bill, water bill, sewerage bill, home telephone bill - we cannot accept mobile phone bills)</li>
+      <li>a council tax bill dated within the last 12 months</li>
+      <li>a tenancy agreement from your local council or housing association - we cannot accept agreements from private landlords</li>
+    </ul>
+
+    <h2 class="nhsuk-heading-m">Proof of your National Insurance number</h2>
+    <p>We need to see a photo, scan or photocopy of one document that shows your National Insurance number. For example:</p>
+    <ul>
+      <li>your National Insurance letter</li>
+      <li>your National Insurance card</li>
+      <li>a payslip, P45 or P60</li>
+    </ul>
+    <p>Some benefit award notices include your National Insurance number. If the benefit award notice you've sent us as part of your identity and eligibility check shows your National Insurance number, we can use this as proof.</p>
+
+    <h2 class="nhsuk-heading-m">How to send your evidence</h2>
+    <h2 class="nhsuk-heading-m">Email us</h2>
+    <p>The quickest and easiest way to send your evidence is by email to <a href="">healthy.start@nhsbsa.nhs.uk</a></p>
+    <p>Make sure you include your reference number (ABC1234D).</p>
+
+    <h2 class="nhsuk-heading-m">Post your evidence</h2>
+    <p>If you are not able to email your evidence, you can post copies of your documents to:</p>
+    <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+      <span class="nhsuk-u-visually-hidden">Information:</span>
+      <p>NHS Healthy Start Scheme (ABC1234D)<br>NHS Business Services Authority<br>Bridge House<br>152 Pilgrim
+        Street<br>Newcastle upon Tyne<br>NE1 6SN</p>
+    </div>
+    <p>If you're posting your evidence, make sure you use the correct postage.</p>
+    <p>We cannot return original documents.</p>
+
+    <h2 class="nhsuk-heading-m">What happens next</h2>
+    <p>It can take up to 5 days for us to process your application. We'll let you know if your application is successful.</p>
+    <p>If your application is successful, we'll backdate your payment to the date you applied and send your NHS Healthy Start card by post. Your card can take 5 to 10 days to arrive.</p>
+    <p>If we do not get your evidence by ((application date +16 weeks)), we will close your application and you'll need to reapply.</p>
+    {% endif %}
+    
+
+    <h2 class="nhsuk-heading-m">Give feedback</h2>
+    <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this
+        service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+  </div>
+</div>
+
+{% endblock %}
