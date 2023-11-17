@@ -6,94 +6,99 @@ What is your email address?
 
 {% block content %}
 <style>
-.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
-    left: 8px;
-    top: 9px;
-}
+    .nhsuk-checkboxes__input+.nhsuk-checkboxes__label::after {
+        left: 8px;
+        top: 9px;
+    }
 </style>
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
         {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
+        "href": "javascript:history.go(-1)",
+        "text": "Go back"
         }) }}
 
-        <form action="v25/email-address" method="post">
+        <form action="v24/email-address" method="post">
 
-        <div class="nhsuk-form-group">
-            <h1 class="nhsuk-label-wrapper">
-                <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="emailaddress">
-                What is your email address? {% if data['onlineaccount'] === 'yes' %}{% else %}<!--(optional)-->{% endif %}
-                </label>
-            </h1> 
-            <p class="nhsuk-hint">We’ll send you emails to let you know
-                when we make a payment onto your card
-                or if your payments are changing.
-                <!--You should use an email address that only you have access to. If anyone else uses your email address, your personal information may be shared with others. --></p>
             <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="example">
-                Enter your email address 
-                </label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="emailaddress" name="emailaddress" type="text" autocomplete="email">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="emailaddress">
+                        What is your email address? {% if data['onlineaccount'] === 'yes' %}{% else
+                        %}<!--(optional)-->{% endif %}
+                    </label>
+                </h1>
+                <p class="nhsuk-hint">We’ll send you emails to let you know
+                    when we make a payment onto your card
+                    or if your payments are changing.
+                    <!--You should use an email address that only you have access to. If anyone else uses your email address, your personal information may be shared with others. -->
+                </p>
+                <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="example">
+                        Enter your email address
+                    </label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="emailaddress" name="emailaddress" type="text"
+                        autocomplete="email">
+                </div>
             </div>
-        </div>
 
 
-        <br>
-        <form>
+            <br>
+
             <div class="nhsuk-form-group">
-              <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                <!--<div class="nhsuk-hint" id="example-hint">
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                    <!--<div class="nhsuk-hint" id="example-hint">
                   Select if you do not have a mobile phone number
                 </div>
                 -->
-                <div class="nhsuk-checkboxes">
-                  <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
-                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
-                        I do not have an email address
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
+                    <div class="nhsuk-checkboxes">
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="example-1" name="no-email-address" type="checkbox"
+                                value="email">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                                I do not have an email address
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
-          </form> 
+
 
 
 
             <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
                     <span class="nhsuk-details__summary-text">
-                    If you do not have an email address
+                        If you do not have an email address
                     </span>
                 </summary>
                 <div class="nhsuk-details__text">
                     {% if data['onlineaccount'] === 'yes' %}
-                        <p>We use this to create your online account. Without an email address, we can't create an online account. We also use it to send notifications about your application and payments.</p>
+                    <p>We use this to create your online account. Without an email address, we can't create an online
+                        account. We also use it to send notifications about your application and payments.</p>
                     {% else %}
-                        
-                    <p> If you do not have an email address, we'll give you the option to get updates 
+
+                    <p> If you do not have an email address, we'll give you the option to get updates
                         by text message or post.</p>
-                        {% endif %}
+                    {% endif %}
                 </div>
             </details>
 
 
-            
-                <!--<div class="nhsuk-button-group"> -->
+
+            <!--<div class="nhsuk-button-group"> 
                 <p><a href="mobile-phone-number"  
                     class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Continue
-                </a></p>
+                </a></p>  -->
 
-             
 
-            <!-- original one
-            <button class="nhsuk-button" type="submit">  
-                Continue  
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
             </button>
-            -->        
-             
+
+
 
         </form>
 

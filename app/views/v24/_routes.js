@@ -483,7 +483,7 @@ router.post('/v24/pension-credit', function (req, res) {
     }
   
   })
-  // Do you have any children under the age of 4?
+  // Do you have any children under 4 years old?
   
   router.post('/v24/children-under-four', function (req, res) {
   
@@ -505,7 +505,7 @@ router.post('/v24/pension-credit', function (req, res) {
       res.redirect('/v24/apply/kickouts/confirmation-no-pregnancy-no-children')
     } else {
       res.redirect('/v24/apply/children-under-four')
-    }
+    } 
   
   })
   // Do you have any children under the age of 4? > Childs first name
@@ -629,12 +629,33 @@ router.post('/v24/pension-credit', function (req, res) {
       }
       else if (childrenunderfouranswers === "no" && lastname == 'BROWN') {
         res.redirect('/v24/apply/kickouts/no-eligible-children')
-      }
-      else {
-        res.redirect('/v24/apply/children-under-four-answers')
-      }
+      } 
+ 
 
     })
+
+    // Do you want to remove this child? 
+
+    
+    router.post('/v24/remove-child', function (req, res) {
+  
+      var removeChild = req.session.data['removechild'] 
+    
+      // if (removeChild === "yes" && !req.session.data.childList) { 
+      //  res.redirect('/v24/apply/children-under-four');
+      //}
+
+      if (removeChild === "yes" && req.session.data.childList) {
+        res.redirect('/v24/apply/children-under-four-answers-2');
+      } else if (removeChild === "no") {
+        res.redirect('/v24/apply/children-under-four-answers')
+      } else {
+        res.redirect('/v24/apply/children-under-four-answers')
+      }
+    
+    })
+ 
+
 
   
   
@@ -644,7 +665,7 @@ router.post('/v24/pension-credit', function (req, res) {
   
     var emailaddress = req.session.data['emailaddress']
   
-    res.redirect('/v24/apply/check-your-answers')
+    res.redirect('/v24/apply/mobile-phone-number')
   
   })
   
