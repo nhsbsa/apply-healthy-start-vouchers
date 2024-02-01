@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have a current Healthy Start claim?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="v24/security-code-text-message" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Enter your security code
+            </h1>
+          </legend> 
+      
+          
+        <p>We’ve sent your security code by text message to <strong>********338</strong></p>
+        <p>It may take a few minutes to arrive.</p>  
+
+        <div class="nhsuk-form-group">
+          <!--<label class="nhsuk-label" for="security-code">
+            label
+          </label> -->
+          <input class="nhsuk-input nhsuk-input--width-10" id="securitycodetextmessage" name="securitycodetextmessage" type="number">
+        </div>
+
+        </fieldset>
+      </div>
+       
+      
+      <p>Didn’t get your security code? <a href="">Resend code.</a> </p>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

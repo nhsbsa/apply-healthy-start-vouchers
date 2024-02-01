@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Application could not be completed
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            Application unsuccessful
+          </h1>
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            (explain why they are not eligible)
+          </h2>
+        </div>
+      </div>
+
+      <p>Call 0300 330 7010 to update your Healthy Start claim, including if you need to:</p>
+  
+      <ul>
+        <li>update your personal details – for example, your name or address</li>
+        <li>update your children’s detail</li>
+        <li>tell us about any other changes in your circumstances</li> 
+        <li>ask a question about your Healthy Start claim</li>
+      </ul>
+      <p>Phone lines are open Monday to Friday, 8am to 6pm (except public holidays).</p>
+      <p>
+        <a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">
+          Find out more about call charges (opens in new tab).</a>
+      </p>
+  
+      <!--
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If you’re Deaf or have a hearing loss
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Our automated phone line is not accessible 
+            if you’re Deaf or have a hearing loss or tinnitus.</strong></p>
+          <p>
+            You can call us on 0300 330 7010
+          </p>
+          <p>
+            This phone line is open Monday to Friday, 8am to 6pm (excluding public holidays), 
+            and is compatible with assistive listening devices like personal hearing loops.
+          </p>
+        </div>
+        </details>
+      -->
+      </div>
+  </div>
+
+{% endblock %}

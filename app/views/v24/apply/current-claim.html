@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have a current Healthy Start claim?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="v24/current-claim" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Do you have a current Healthy Start claim?
+            </h1>
+          </legend> 
+      
+          <div class="nhsuk-radios">
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="newapplication" name="currentclaim" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="currentclaim">
+                No, I’d like to start a new application
+              </label>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="cardissue" name="currentclaim" type="radio">
+              <label class="nhsuk-label nhsuk-radios__label" for="currentclaim">
+                No, my card has been lost, damaged or stolen
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="updatemydetails" name="currentclaim" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="currentclaim">
+                Yes, I’d like to update my details
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      
+
+      </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If you are not sure
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p> If you do not currently get Healthy Start payments and would like to apply, 
+            select <strong>No, I’d like to make a new application.</strong></p>
+          <p>
+            If you need us to send you a new card, 
+            select <strong>No, my card has been lost damaged or stolen.</strong>
+          </p>  
+          <p>
+            Select <strong>Yes, I’d like to update my details</strong> if you have a Healthy Start card and you:
+            <ul>
+              <li>have changed your name or address</li>
+              <li>are more than 10 weeks pregnant</li>
+              <li>have had a new baby</li>
+              <li>would like to add a new child to your claim</li>
+            </ul>
+          </p>
+
+        </div>
+        </details>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

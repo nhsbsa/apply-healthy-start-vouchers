@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your postcode?
+        </h1>
+
+        <p>You should enter the postcode listed on your most recent benefit award notice.</p>
+
+
+        <form action="v24/postcode-update" method="post">
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+            </div>
+
+            <p><a href="address">Enter address manually</a></p>
+
+
+
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Why we ask for your postcode
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+           
+            <p>We need to match your postcode with our records so we can find your claim.</p>
+             
+            <p>When you applied for Healthy Start, we asked for the postcode on your most recent benefit award notice.</p>
+            
+            <p>If you’ve moved house since then and have not updated your address details with Healthy Start, 
+              you’ll need to enter the postcode you gave us when you applied.</p>
+            
+            <p>If you cannot remember the postcode you gave us when you applied or you need to update your address details, 
+              you’ll need to
+              <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us.</a></p>
+          </div>
+        </details>
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Are you pregnant?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v24/are-you-pregnant-update" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Are you more than 10 weeks pregnant?
+                    </h1>
+                </legend>
+
+                <div class="nhsuk-hint">
+                    You must be more than 10 weeks pregnant to add a new pregnancy to your claim.
+                </div>
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="pregnant" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="pregnant" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+            <!--
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    If you're less than 10 weeks pregnant
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <p><b>If you have children under 4</b></p>
+                  <p>You can still apply for Healthy Start for your children under 4. Once you're more than 10 weeks pregnant, you can add your pregnancy onto your application by:</p>
+                  <ul>
+                    <li>emailing <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+                    <li>calling 0300 330 7010 – this call will be charged at the local rate</li>
+                  </ul>
+                  <p><a href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in a new tab)<span class="nhsuk-u-visually-hidden"> </span></a></p>
+                  <p><b>If you have no children under 4</b></p>
+                  <p>You'll need to apply again when you're more than 10 weeks pregnant.</p>
+                </div>
+              </details>
+            -->
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
