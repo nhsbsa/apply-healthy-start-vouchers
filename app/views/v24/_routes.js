@@ -638,7 +638,7 @@ router.post('/v24/name-update-4', function (req, res) {
 
 router.post('/v24/address-2-update-without-cv', function (req, res) {
 
-  res.redirect('/v24/apply/check-your-answers-no-nino'); 
+  res.redirect('/v24/apply/check-your-answers-no-nino-pregnancy'); 
   // somehow this doesn't work but the link works in html.. so, go and check
 
 })
@@ -663,7 +663,7 @@ router.post('/v24/address-2-update-2', function (req, res) {
 router.post('/v24/address-2-update-without-cv-2', function (req, res) {
 
   res.redirect('/v24/apply/check-your-answers-no-nino-2'); 
-   
+   // somehow this doesn't work but the link works in html.. so, go and check
 
 })
 
@@ -876,11 +876,11 @@ router.post('/v24/security-code-text-message-2', function (req, res) {
       })
 
 
-  // (update) Check your answer (ROUTE: ADD A NEW BABY OR CHILD)
+  // (update) Check your answer (ROUTE: ADD A NEW BABY OR CHILD) 
 
     router.post('/v24/cya-personal-add-baby-child', function (req, res) {
 
-    res.redirect('/v24/apply/kickouts/request-completed');
+    res.redirect('/v24/apply/kickouts/request-completed-child');
 
   })
   
@@ -1014,7 +1014,7 @@ router.post('/v24/security-code-text-message-2', function (req, res) {
   router.post('/v24/due-date-answers-update', function (req, res) {
 
      
-      res.redirect('/v24/apply/kickouts/request-completed');
+      res.redirect('/v24/apply/kickouts/request-completed-pregnancy');
       // somehow this doesn't work but the link works in html.. so, go and check
     
     })
