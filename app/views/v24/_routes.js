@@ -224,7 +224,7 @@ router.post('/v24/name', function (req, res) {
       res.redirect('/v24/apply/national-insurance-number-update-1')
     }
     else if (whatchange === "add-baby-child") {
-      res.redirect('/v24/apply/national-insurance-number-update-2') 
+      res.redirect('/v24/apply/national-insurance-number-update-3') 
     }  
     else if (whatchange === "card-issue") {
       res.redirect('/v24/apply/kickouts/card-issue') 
@@ -238,12 +238,12 @@ router.post('/v24/name', function (req, res) {
 
 
 
-// (update) What is your National Insurance number? (ROUTE: ADD A NEW PREGNANCY)
+// (update) What is your National Insurance number? (ROUTE: ADD A NEW PREGNANCY + YES CONTACTS)
 
 
 router.post('/v24/national-insurance-number-update-1', function (req, res) {
  
-  var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
+var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
   var checkbox = req.session.data['checkbox']
    
 
@@ -252,7 +252,33 @@ router.post('/v24/national-insurance-number-update-1', function (req, res) {
   } 
   
   else if (checkbox.checked = true) { 
-    res.redirect('/v24/apply/kickouts/no-nino')
+    res.redirect('/v24/apply/date-of-birth-update')
+  } 
+ 
+
+ 
+})
+
+
+ 
+
+
+
+// (update) What is your National Insurance number? (ROUTE: ADD A NEW PREGNANCY - NO CONTACTS)
+
+
+router.post('/v24/national-insurance-number-update-2', function (req, res) {
+
+  var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
+  var checkbox = req.session.data['checkbox']
+   
+ 
+  if (nationalinsurancenumberupdate) { 
+    res.redirect('/v24/apply/get-your-security-code') 
+  } 
+  
+  else if (checkbox.checked = true) { 
+    res.redirect('/v24/apply/date-of-birth-update-2')  
   } 
  
 
@@ -262,10 +288,12 @@ router.post('/v24/national-insurance-number-update-1', function (req, res) {
 
 
 
-// (update) What is your National Insurance number? (ROUTE: ADD A NEW BABY OR CHILD)
 
 
-router.post('/v24/national-insurance-number-update-2', function (req, res) {
+// (update) What is your National Insurance number? (ROUTE: ADD A NEW BABY OR CHILD + YES CONTACTS)
+
+
+router.post('/v24/national-insurance-number-update-3', function (req, res) {
 
   var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
   var checkbox = req.session.data['checkbox']
@@ -276,7 +304,32 @@ router.post('/v24/national-insurance-number-update-2', function (req, res) {
   } 
   
   else if (checkbox.checked = true) { 
-    res.redirect('/v24/apply/kickouts/no-nino')  
+    res.redirect('/v24/apply/date-of-birth-update-3')  
+  } 
+ 
+
+ 
+})
+
+
+
+// (update) What is your National Insurance number? (ROUTE: ADD A NEW BABY OR CHILD - NO CONTACTS)
+
+
+
+
+router.post('/v24/national-insurance-number-update-4', function (req, res) {
+
+  var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
+  var checkbox = req.session.data['checkbox']
+   
+ 
+  if (nationalinsurancenumberupdate) { 
+    res.redirect('/v24/apply/get-your-security-code-2') 
+  } 
+  
+  else if (checkbox.checked = true) { 
+    res.redirect('/v24/apply/date-of-birth-update-4')  
   } 
  
 
@@ -287,9 +340,7 @@ router.post('/v24/national-insurance-number-update-2', function (req, res) {
 
 
 
-
-
-// (update) What is your date of birth? (PARKED / NEXT ITERATION)
+// (update) What is your date of birth? (ROUTE: ADD A NEW PREGNANCY -YES CONTACTS)
 
 router.post('/v24/date-of-birth-update', function (req, res) {
 
@@ -325,7 +376,7 @@ router.post('/v24/date-of-birth-update', function (req, res) {
 })
 
 
-// (update) What is your date of birth? (PARKED / NEXT ITERATION)
+// (update) What is your date of birth? (ROUTE: ADD A NEW PREGNANCY - NO CONTACTS)
 
 router.post('/v24/date-of-birth-update-2', function (req, res) {
 
@@ -364,8 +415,85 @@ router.post('/v24/date-of-birth-update-2', function (req, res) {
 
 
 
+// (update) What is your date of birth? (ROUTE: ADD A BABY OR CHILD - YES CONTACTS)
 
-// (update) What is your name? (PARKED / NEXT ITERATION)
+router.post('/v24/date-of-birth-update-3', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
+
+  var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate = new Date(today - dobYrs.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+  req.session.applicantAge = yrs
+
+  // Checking the actual age of the beneficiary 
+  var ageInMilliseconds = new Date() - new Date(dateofbirth);
+  var actualAge = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+
+  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+    if (yrs < 16) {
+      res.redirect('/v24/apply/kickouts/under-sixteen-signpost')
+    } else {
+      res.redirect('/v24/apply/name-update-3');
+    }
+  } else {
+    res.redirect('/v24/apply/date-of-birth-update-3')
+  }
+
+
+})
+
+
+
+
+
+// (update) What is your date of birth? (ROUTE: ADD A BABY OR CHILD - NO CONTACTS)
+
+router.post('/v24/date-of-birth-update-4', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
+
+  var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+  var ageDate = new Date(today - dobYrs.getTime())
+  var temp = ageDate.getFullYear();
+  var yrs = Math.abs(temp - 1970);
+  req.session.applicantAge = yrs
+
+  // Checking the actual age of the beneficiary 
+  var ageInMilliseconds = new Date() - new Date(dateofbirth);
+  var actualAge = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+
+  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
+    if (yrs < 16) {
+      res.redirect('/v24/apply/kickouts/under-sixteen-signpost')
+    } else {
+      res.redirect('/v24/apply/name-update-4');
+    }
+  } else {
+    res.redirect('/v24/apply/date-of-birth-update-4')
+  }
+
+
+})
+
+
+
+
+
+// (update) What is your name? (ROUTE: ADD A NEW PREGNANCY - YES CONTACTS)
 
 router.post('/v24/name-update', function (req, res) {
 
@@ -381,7 +509,7 @@ router.post('/v24/name-update', function (req, res) {
 
 })
 
-// (update) What is your name? (PARKED / NEXT ITERATION)
+// (update) What is your name? (ROUTE: ADD A NEW PREGNANCY - NO CONTACTS)
 
 router.post('/v24/name-update-2', function (req, res) {
 
@@ -401,8 +529,48 @@ router.post('/v24/name-update-2', function (req, res) {
 
 
 
+// (update) What is your name? (ROUTE: ADD A NEW BABY OR CHILD - YES CONTACTS)
 
- // (update) What is your postcode? (PARKED / NEXT ITERATION)
+router.post('/v24/name-update-3', function (req, res) {
+
+  var firstname = req.session.data['firstname']
+  var lastname = req.session.data['lastname']
+
+  if (firstname && lastname) {
+    res.redirect('/v24/apply/postcode-update-3')
+  }
+  else {
+    res.redirect('/v24/apply/name-update-3')
+  }
+
+})
+
+
+
+
+
+
+
+// (update) What is your name? (ROUTE: ADD A NEW BABY OR CHILD - NO CONTACTS)
+
+router.post('/v24/name-update-4', function (req, res) {
+
+  var firstname = req.session.data['firstname']
+  var lastname = req.session.data['lastname']
+
+  if (firstname && lastname) {
+    res.redirect('/v24/apply/postcode-update-4')
+  }
+  else {
+    res.redirect('/v24/apply/name-update-4')
+  }
+
+})
+
+
+
+
+ // (update) What is your postcode? (ROUTE: ADD A NEW PREGNANCY - YES CONTACTS)
 
  router.post('/v24/postcode-update', function (req, res) {
 
@@ -415,7 +583,7 @@ router.post('/v24/name-update-2', function (req, res) {
   
 
 
- // (update) What is your postcode? (PARKED / NEXT ITERATION)
+ // (update) What is your postcode? (ROUTE: ADD A NEW PREGNANCY - NO CONTACTS)
 
  router.post('/v24/postcode-update-2', function (req, res) {
 
@@ -427,7 +595,33 @@ router.post('/v24/name-update-2', function (req, res) {
 
 
 
- // (update) What is your address 2? (PARKED / NEXT ITERATION)
+ // (update) What is your postcode? (ROUTE: ADD A NEW BABY OR CHILD - YES CONTACTS)
+
+ router.post('/v24/postcode-update-3', function (req, res) {
+
+  res.redirect('/v24/apply/address-2-update-2');
+
+})
+
+  
+
+
+
+ // (update) What is your postcode? (ROUTE: ADD A NEW BABY OR CHILD - NO CONTACTS)
+
+ router.post('/v24/postcode-update-4', function (req, res) {
+
+  res.redirect('/v24/apply/address-2-update-without-cv-2');
+
+})
+
+  
+
+
+
+
+
+ // (update) What is your address 2? (ROUTE: ADD A NEW PREGNANCY - YES CONTACTS)
 
  router.post('/v24/address-2-update', function (req, res) {
 
@@ -440,17 +634,44 @@ router.post('/v24/name-update-2', function (req, res) {
  
 
 
-// (update) What is your address 2? (test-persona no.2)  (PARKED / NEXT ITERATION) + NOT WORKING NOW
+// (update) What is your address 2?  (ROUTE: ADD A NEW PREGNANCY - NO CONTACTS)
 
 router.post('/v24/address-2-update-without-cv', function (req, res) {
 
-  res.redirect('cya');
+  res.redirect('/v24/apply/check-your-answers-no-nino'); 
+  // somehow this doesn't work but the link works in html.. so, go and check
 
 })
 
 
 
-// (update) Check your answers = personal details (PARKED / NEXT ITERATION)
+// (update) What is your address 2? (ROUTE: ADD A NEW BABY OR CHILD - YES CONTACTS)
+
+router.post('/v24/address-2-update-2', function (req, res) {
+
+  res.redirect('/v24/apply/personal-details-answers-update-2'); 
+   
+
+})
+
+
+
+
+
+// (update) What is your address 2? (ROUTE: ADD A NEW BABY OR CHILD - NO CONTACTS)
+
+router.post('/v24/address-2-update-without-cv-2', function (req, res) {
+
+  res.redirect('/v24/apply/check-your-answers-no-nino-2'); 
+   
+
+})
+
+
+
+
+
+// (update) Check your answers = personal details (ROUTE: ADD A NEW PREGNANCY - YES CONTACTS)
 
 router.post('/v24/apply/personal-details-answers-update', function (req, res) {
 
@@ -460,7 +681,15 @@ router.post('/v24/apply/personal-details-answers-update', function (req, res) {
 
  
 
- 
+ // (update) Check your answers = personal details (ROUTE: ADD A NEW BABY OR CHILD - YES CONTACTS)
+
+ router.post('/v24/apply/personal-details-answers-update-2', function (req, res) {
+
+  res.redirect('/v24/apply/get-your-security-code-2');
+
+})
+
+
 
 
 // Get your security code (ROUTE: ADD A NEW PREGNANCY)
@@ -641,12 +870,20 @@ router.post('/v24/security-code-text-message-2', function (req, res) {
         res.redirect('/v24/apply/childs-first-name-update')
       }
       else if (addanother === "no") {
-        res.redirect('/v24/apply/kickouts/request-completed')
+        res.redirect('/v24/apply/check-your-answers-add-baby-child')
       }
        
       })
 
 
+  // (update) Check your answer (ROUTE: ADD A NEW BABY OR CHILD)
+
+    router.post('/v24/cya-personal-add-baby-child', function (req, res) {
+
+    res.redirect('/v24/apply/kickouts/request-completed');
+
+  })
+  
 
 
 
