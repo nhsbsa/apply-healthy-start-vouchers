@@ -200,10 +200,10 @@ router.post('/v25/name', function (req, res) {
     var currentclaim = req.session.data['currentclaim']
 
     if (currentclaim === "no") {
-      res.redirect('/v25/apply/where-do-you-live')
+      res.redirect('/v25/before-you-start-apply-now')
     }
     else if (currentclaim === "yes") {
-      res.redirect('/v25/apply/what-change')
+      res.redirect('/v25/before-you-start-manage')
     }
     else {
       res.redirect('/v25/apply/kickouts/card-issue')
