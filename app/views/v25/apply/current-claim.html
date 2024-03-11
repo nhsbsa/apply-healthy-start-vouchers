@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have a current Healthy Start claim?
+Which service would you like to use?
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@ Do you have a current Healthy Start claim?
         <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              Do you have a current Healthy Start claim?
+              Which service would you like to use?
             </h1>
           </legend> 
       
@@ -28,22 +28,25 @@ Do you have a current Healthy Start claim?
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="newapplication" name="currentclaim" type="radio" value="no">
               <label class="nhsuk-label nhsuk-radios__label" for="currentclaim">
-                No, I’d like to start a new application
+                Apply for Healthy Start
               </label>
             </div>
       
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="cardissue" name="currentclaim" type="radio">
               <label class="nhsuk-label nhsuk-radios__label" for="currentclaim">
-                Yes, but my card has been lost, damaged or stolen
+                Replace a lost, damaged or stolen card
               </label>
             </div>
 
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="updatemydetails" name="currentclaim" type="radio" value="yes">
               <label class="nhsuk-label nhsuk-radios__label" for="currentclaim">
-                Yes, I’d like to update my details
+                Update my details
               </label>
+              <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                For example you need to add a new pregnancy or child, or update your personal details.
+              </div>
             </div>
 
           </div>
@@ -55,25 +58,22 @@ Do you have a current Healthy Start claim?
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-            If you are not sure
+            If your payments have stopped
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <p> If you do not currently get Healthy Start payments and would like to apply, 
-            select <strong>No, I’d like to make a new application.</strong></p>
-          <p>
-            If you need us to send you a new card, 
-            select <strong>No, my card has been lost damaged or stolen.</strong>
-          </p>  
-          <p>
-            Select <strong>Yes, I’d like to update my details</strong> if you have a Healthy Start card and you:
-            <ul>
-              <li>have changed your name or address</li>
-              <li>are more than 10 weeks pregnant</li>
-              <li>have had a new baby</li>
-              <li>would like to add a new child to your claim</li>
-            </ul>
-          </p>
+          <p> Your payments may stop if your income or benefits have changed.<p> 
+          <h5 class="nhsuk-heading-xs">If you get Universal Credit</h5>
+          <p>Your payments will stop if your monthly take-home pay is more than £408.</p>
+          <p>If you become entitled to Healthy Start again in the next 16 weeks, we’ll contact you. You do not need to do anything.
+          
+          <h5 class="nhsuk-heading-xs">If you get Child Tax Credit</h5>
+          <p>Your payments will stop if your annual household income is more than £16,190.</p>
+          <h5 class="nhsuk-heading-xs">If you think there’s been a mistake</h5>
+          <p>If your income or benefits have not changed and you think you should still get Healthy Start payments, 
+            you should <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us</a>.</p>
+
+
 
         </div>
         </details>
