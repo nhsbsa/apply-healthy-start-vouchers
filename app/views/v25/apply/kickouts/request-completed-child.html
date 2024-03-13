@@ -15,16 +15,16 @@ Application could not be completed
             Update successful
           </h1>
           <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
-            We’ve added your child to your Healthy Start claim
-          </h2>
+            We’ve added {{ data['childsfirstname'] }}<!--your child--> to your Healthy Start claim
+          </h2> 
         </div>
       </div>
 
       <p>We’ve updated your Healthy Start claim with the following details:</p>
       <p><strong>Child 1</strong></p>
       <ul>
-        <li>Name: Ziggy Bell</li>
-        <li>Date of birth: 30 January 2024</li>
+        <li>Name: {{ data['childsfirstname'] }} {{ data['childslastname'] }}</li>
+        <li>Date of birth: {{ data['childsdateofbirthday'] }} {{ data['childsdateofbirthmonth'] }} {{ data['childsdateofbirthyear'] }}</li> 
       </ul>
 
 
@@ -34,7 +34,7 @@ Application could not be completed
       <p>You’ll get:</p>
       <ul>
         <li>your existing payment for any children under 4</li>
-        <li>an extra £8.50 each week for Ziggy</li>
+        <li>an extra £8.50 each week for {{ data['childsfirstname'] }}</li>
       </ul>
       <p>These will be made as a single payment onto your card every 4 weeks.</p>
 

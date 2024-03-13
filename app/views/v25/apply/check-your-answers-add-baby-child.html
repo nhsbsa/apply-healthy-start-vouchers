@@ -19,7 +19,7 @@ Check your answers
 
         <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">Your details</h2>
 
-        <form action="v25/cya-add-baby-child" method="POST">
+        <form action="/v25/apply/check-your-answers-add-baby-child" method="POST">
             <dl class="nhsuk-summary-list">
 
                 <div class="nhsuk-summary-list__row">
@@ -87,12 +87,14 @@ Check your answers
 
         <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Children's details</h2>
         <dl class="nhsuk-summary-list">
-          
+
 
 
         {% for item in data['childList'] %}
         <div class="nhsuk-summary-list__row">
-                      <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>
+                      <dt class="nhsuk-summary-list__value" name="childsfirstname">
+                        <!--{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>-->
+                        {{ data['childsfirstname'] }} {{ data['childslastname'] }}</dt>
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions">
                         {% if data['childList'] | length  == 0 %}
@@ -106,10 +108,19 @@ Check your answers
 
 
 
-      </dl>
-      <p><a href="/v25/apply/kickouts/request-completed-child" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        </dl>
+
+        <!--
+        <p><a href="/v25/apply/kickouts/request-completed-child" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Continue
+        </a></p>-->
+
+
+        <button class="nhsuk-button" type="submit">
         Continue
-      </a></p>
+        </button>
+
+
     </form>
 
     </div>
