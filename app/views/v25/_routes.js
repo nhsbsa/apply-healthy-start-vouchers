@@ -299,20 +299,18 @@ router.post('/v25/national-insurance-number-update-3', function (req, res) {
 
   var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
   var checkbox = req.session.data['checkbox']
-   
- 
-  if (nationalinsurancenumberupdate == 'AB123456A') { 
+
+
+  if (nationalinsurancenumberupdate) { 
     res.redirect('/v25/apply/get-your-security-code-2') 
-  } 
-  if (nationalinsurancenumberupdate == 'CD654321B') { 
-    res.redirect('/v25/apply/get-your-security-code-3') //this is for testing, Mar 2024
-  } 
+  }
+
   else if (checkbox.checked = true) { 
     res.redirect('/v25/apply/date-of-birth-update-3')  
   } 
- 
 
- 
+
+
 })
 
 
@@ -697,26 +695,30 @@ router.post('/v25/address-2-update-without-cv-2', function (req, res) {
 
 router.post('/v25/apply/check-your-answers-no-nino', function (req, res) {
 
+  var firstname = req.session.data['firstname'].trim().toUpperCase()
+  var lastname = req.session.data['lastname'].trim().toUpperCase()
 
-  var firstname = req.session.data['firstname'].trim().toUpperCase() 
+  if (firstname == 'JOSHUA' && lastname == 'CADDY') { 
+    res.redirect('/v25/apply/kickouts/overlapping-pregnancies'); //scenario 2
+  } 
+  else if (firstname == 'MATTHEW' && lastname == 'GLASSTONE') {
+    res.redirect('/v25/apply/kickouts/contact-us-update'); //scenario 5
+  } 
+  else if (firstname == 'ANITA' && lastname == 'BILAL') {
+    res.redirect('/v25/apply/kickouts/unsuccessful-check-details'); //scenario 6
+  } 
+  else if (firstname == 'SAMANTHA' && lastname == 'MILLER') {
+    res.redirect('/v25/apply/kickouts/cannot-update-online'); //scenario 7
+  } 
+  else {
+    res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 2 listed, go here
+  }
+});
 
-
-      
-    if (firstname == 'CHARLIE') {
-      res.redirect('/v25/apply/kickouts/duplicate-child'); //scenario 1
-    } else if (firstname == 'RILEY') {
-      res.redirect('/v25/apply/kickouts/overlapping-pregnancies'); //scenario 2
-    } else if (firstname == 'ANITA') {
-      res.redirect('/v25/apply/kickouts/contact-us-update'); //scenario 5  
-    } else if (firstname == 'MALIA') {
-      res.redirect('/v25/apply/kickouts/unsuccessful-check-details'); //scenario 6
-    } else if (firstname == 'SARAH') {
-      res.redirect('/v25/apply/kickouts/confirmation-no-match'); //scenario 7
-    }  
   
 
 
-})
+
 
 
 // (update) Check your answers = personal details (ROUTE: ADD A NEW PREGNANCY - YES CONTACTS)
@@ -925,35 +927,22 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
 
 
 
-  // (testing) check your answers 
 
+// (testing) check your answers 
+router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
 
+  var childsFirstName = req.session.data['childsfirstname'].trim().toUpperCase()
+  var childsLastName = req.session.data['childslastname'].trim().toUpperCase()
 
-  router.post('/v25/apply/check-your-answers-add-baby-child', function (req, res) {
-
-    
-    var childsfirstname = req.session.data['childsfirstname'].trim().toUpperCase() 
-
-
-    console.log(childList);
-    console.log('Number of children:', childList.length);
-
-
-    childList.push({
-      "ChildsFirstName": childsfirstname,
-      "ChildsLastName": childslastname,
-  });
-
-    if (childsfirstname)
-
-      if (childsfirstname == 'CHARLIE' && lastname == 'SMITH') { 
-        res.redirect('/v25/apply/kickouts/duplicate-child'); //scenario 1
-      } 
-      else if (childsfirstname == 'RILEY' && lastname == 'JONES') {
-        res.redirect('/v25/apply/kickouts/request-completed-child'); //scenario 4
-      } 
-
-      })
+  if (childsFirstName == 'CHARLIE' && childsLastName == 'SMITH') { 
+    res.redirect('/v25/apply/kickouts/duplicate-child'); //scenario 1
+  } 
+  else if (childsFirstName == 'RILEY' && childsLastName == 'JONES') {
+    res.redirect('/v25/apply/kickouts/request-completed-child'); //scenario 4
+  } else {
+    res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 2 listed, go here
+  }
+});
 
 
 
