@@ -711,7 +711,7 @@ router.post('/v25/apply/check-your-answers-no-nino', function (req, res) {
     res.redirect('/v25/apply/kickouts/cannot-update-online'); //scenario 7
   } 
   else {
-    res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 2 listed, go here
+    res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 4 listed, go here
   }
 });
 
