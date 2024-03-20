@@ -698,10 +698,10 @@ router.post('/v25/apply/check-your-answers-no-nino', function (req, res) {
   var firstname = req.session.data['firstname'].trim().toUpperCase()
   var lastname = req.session.data['lastname'].trim().toUpperCase()
 
-  if (firstname == 'JOSHUA' && lastname == 'CADDY') { 
+  if (firstname == 'SUSAN' && lastname == 'JONES') { 
     res.redirect('/v25/apply/kickouts/overlapping-pregnancies'); //scenario 2
   } 
-  else if (firstname == 'MATTHEW' && lastname == 'GLASSTONE') {
+  else if (firstname == 'MATTHEW' && lastname == 'GLASS') {
     res.redirect('/v25/apply/kickouts/contact-us-update'); //scenario 5
   } 
   else if (firstname == 'ANITA' && lastname == 'BILAL') {
