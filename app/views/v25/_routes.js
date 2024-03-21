@@ -704,10 +704,10 @@ router.post('/v25/apply/check-your-answers-no-nino', function (req, res) {
   else if (firstname == 'MATTHEW' && lastname == 'GLASS') {
     res.redirect('/v25/apply/kickouts/contact-us-update'); //scenario 5
   } 
-  else if (firstname == 'ANITA' && lastname == 'BILAL') {
+  else if (firstname == 'SOPHIA' && lastname == 'BILAL') {
     res.redirect('/v25/apply/kickouts/unsuccessful-check-details'); //scenario 6
   } 
-  else if (firstname == 'SAMANTHA' && lastname == 'MILLER') {
+  else if (firstname == 'HELEN' && lastname == 'MILLER') {
     res.redirect('/v25/apply/kickouts/cannot-update-online'); //scenario 7
   } 
   else {
@@ -824,7 +824,7 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
   router.post('/v25/childs-first-name-update', function (req, res) {
   
     var childsfirstname = req.session.data['childsfirstname']
-    var childslastname = req.session.data['childslastname']
+    var childslastname = req.session.data['childslastname'] 
 
     if (childsfirstname && childslastname) {
       res.redirect('/v25/apply/childs-date-of-birth-update')
@@ -938,11 +938,18 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
     res.redirect('/v25/apply/kickouts/duplicate-child'); //scenario 1
   } 
   else if (childsFirstName == 'RILEY' && childsLastName == 'JONES') {
+    req.session.data = {}
     res.redirect('/v25/apply/kickouts/request-completed-child'); //scenario 4
   } else {
     res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 2 listed, go here
   }
 });
+
+
+
+
+
+
 
 
 

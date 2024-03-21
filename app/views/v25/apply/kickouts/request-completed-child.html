@@ -8,14 +8,15 @@ Application could not be completed
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
+  
+    
       <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
         <div class="nhsuk-card__content">
           <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
             Update successful
           </h1>
           <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
-            We’ve added {{ data['childsfirstname'] }}<!--your child--> to your Healthy Start claim
+            We’ve added Riley<!--{{ data['childsfirstname'] }}--> to your Healthy Start claim
           </h2> 
         </div>
       </div>
@@ -23,8 +24,8 @@ Application could not be completed
       <p>We’ve updated your Healthy Start claim with the following details:</p>
       <p><strong>Child 1</strong></p>
       <ul>
-        <li>Name: {{ data['childsfirstname'] }} {{ data['childslastname'] }}</li>
-        <li>Date of birth: {{ data['childsdateofbirthday'] }} October <!--{{ data['childsdateofbirthmonth'] }}--> {{ data['childsdateofbirthyear'] }}</li> 
+        <li>Name: Riley Jones<!--{{ data['childsfirstname'] }} {{ data['childslastname'] }}--></li>
+        <li>Date of birth: 1 <!--{{ data['childsdateofbirthday'] }}--> October <!--{{ data['childsdateofbirthmonth'] }} {{ data['childsdateofbirthyear'] }}--> 2023</li> 
       </ul>
 
 
@@ -49,17 +50,11 @@ Application could not be completed
       <p><a class="nhsuk-link" href="#" target="_blank">
         What did you think of this service?</a> (takes 2 minutes).</p>
 
-
-      <p><a href="/v25/how-to-apply" class="nhsuk-button" data-module="nhsuk-button" type="submit">
-        Finish
-      </a></p>
-
-
-
-        </div>
-        </details>
-
-
+      
+      
+        <p><a href="/v25/how-to-apply" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+          Finish
+        </a></p>
 
 
 

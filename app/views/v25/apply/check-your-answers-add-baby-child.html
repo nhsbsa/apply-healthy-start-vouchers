@@ -27,7 +27,7 @@ Check your answers
                     Full name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['firstname'] }} {{ data['lastname'] }}
+                    Jane doe<!--{{ data['firstname'] }} {{ data['lastname'] }}-->
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="name#firstname">
@@ -41,7 +41,7 @@ Check your answers
                     Address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['select-1'] }}
+                    Flat 1B, 12 Palm Road, London, NR33 4GP<!--{{ data['select-1'] }}-->
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="postcode">
@@ -55,7 +55,7 @@ Check your answers
                     Date of birth
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['dateofbirth'] }}
+                    4 May 2001<!--{{ data['dateofbirth'] }}-->
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="date-of-birth#dateofbirthday">
@@ -79,9 +79,7 @@ Check your answers
                 </div> -->
 
                 
-                        
             </dl>
-         
 
 
 
@@ -93,8 +91,8 @@ Check your answers
         {% for item in data['childList'] %}
         <div class="nhsuk-summary-list__row">
                       <dt class="nhsuk-summary-list__value" name="childsfirstname">
-                        <!--{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>-->
-                        {{ data['childsfirstname'] }} {{ data['childslastname'] }}</dt>
+                        {{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>
+                        <!--{{ data['childsfirstname'] }} {{ data['childslastname'] }}</dt>-->
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions">
                         {% if data['childList'] | length  == 0 %}
