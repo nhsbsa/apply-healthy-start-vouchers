@@ -221,7 +221,7 @@ router.post('/v25/name', function (req, res) {
     var whatchange = req.session.data['whatchange']
 
     if (whatchange === "add-pregnancy") {
-      res.redirect('/v25/apply/national-insurance-number-update-1')
+      res.redirect('/v25/apply/are-you-pregnant-update')
     }
     else if (whatchange === "add-baby-child") {
       res.redirect('/v25/apply/national-insurance-number-update-3') 
@@ -249,7 +249,7 @@ router.post('/v25/national-insurance-number-update-1', function (req, res) {
 
 
   if (nationalinsurancenumberupdate) { 
-    res.redirect('/v25/apply/get-your-security-code') 
+    res.redirect('/v25/apply/nino-answers') 
   } 
   
   else if (checkbox.checked = true) { 
@@ -302,7 +302,7 @@ router.post('/v25/national-insurance-number-update-3', function (req, res) {
 
 
   if (nationalinsurancenumberupdate) { 
-    res.redirect('/v25/apply/get-your-security-code-2') 
+    res.redirect('/v25/apply/nino-answers-2') 
   }
 
   else if (checkbox.checked = true) { 
@@ -711,7 +711,7 @@ router.post('/v25/apply/check-your-answers-no-nino', function (req, res) {
     res.redirect('/v25/apply/kickouts/cannot-update-online'); //scenario 7
   } 
   else {
-    res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 4 listed, go here
+    res.redirect('/v25/apply/get-your-security-code'); // If name is none of the 4 listed, go here
   }
 });
 
@@ -783,13 +783,13 @@ router.post('/v25/get-your-security-code-2', function (req, res) {
  
     router.post('/v25/security-code-email', function (req, res) {
 
-      res.redirect('/v25/apply/are-you-pregnant-update');
+      res.redirect('/v25/apply/due-date-update');
     
     })
   
     router.post('/v25/security-code-text-message', function (req, res) {
 
-      res.redirect('/v25/apply/are-you-pregnant-update');
+      res.redirect('/v25/apply/due-date-update');
     
     })
 
@@ -975,7 +975,7 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes") {
-      res.redirect('/v25/apply/due-date-update')
+      res.redirect('/v25/apply/national-insurance-number-update-1')
     }
     else if (pregnant === "no") {
       res.redirect('/v25/apply/kickouts/not-pregnant')
