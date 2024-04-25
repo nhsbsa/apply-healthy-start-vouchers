@@ -71,14 +71,17 @@
             </summary>
             <div class="nhsuk-details__text">
             <div class="nhsuk-width-container">
-               <h2 class="nhsuk-heading-l">'Apply' Journey Prototype </h2>
-                  <div class="nhsuk-hint" id="prototype-hint">New journey to include 'Before you start' and include Universal Credit content on multiple child screens. <a href="v24/user-journey" target="_blank" class="nhsuk-link">View the 'Apply' user journey on Miro (opens in a new tab.)</a></div> 
+               <h2 class="nhsuk-heading-l">Existing Claims Journey Prototype</h2>
+                  <div class="nhsuk-hint" id="prototype-hint">
+                     Existing claims sigh-posting journey is designed with the intention of preventing users from creating duplicate claims 
+                     and providing simpler journey. <a href="https://miro.com/app/board/uXjVNMpKiqo=/?share_link_id=191952731783" target="_blank" class="nhsuk-link">View the 'Existing Claims' user journey on Miro (opens in a new tab.)</a>
+                     <br><br>This prototype link below starts from the How to Apply screen.</div> 
                   <span><strong class="nhsuk-tag">Public beta</strong></span>
-                  <span><strong class="nhsuk-tag">Sprint 86</strong></span>
-                  <span><strong class="nhsuk-tag">Prototype #24</strong></span>
+                  <span><strong class="nhsuk-tag">Sprint 97 to 102</strong></span>
+                  <span><strong class="nhsuk-tag">Prototype #25</strong></span>
                 
                <p> 
-                  <a class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4" data-module="nhsuk-button" data-prevent-double-click="true" id="submit-button" href="v24/start" draggable="false" role="button">
+                  <a class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4" data-module="nhsuk-button" data-prevent-double-click="true" id="submit-button" href="v25/how-to-apply" draggable="false" role="button">
                      Start the prototype
                   </a>
                </p>
@@ -87,25 +90,160 @@
                
 
                <h3 class="nhsuk-heading-m">Before you start</h3>
-               <p class="nhsuk-body">You'll need the following details of personas to make a successful application in the 'Apply' prototype.</p>
-               <!--<div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
-                  <span class="nhsuk-u-visually-hidden">Information: </span> 
-                     <p> 
-                        <h3 class="nhsuk-heading-s">UC match and partial match children</h3>
-                        <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
-                           <li>Malia Elba</li>
-                           <li>1st Line of Address = 15 Melbourne</li>
-                           <li>Postcode = NE33 3ST</li>
-                           <li>Date of birth = 01 / 01 / 1999</li>
-                           <li>National Insurance number = ST 12 34 56 L</li>
-                           <li>Pregnant = NO</li>
-                           <li>Children Under 1 = YES</li>
-                           <li>Children Between 1 & 4 = YES</li>
-                        </ul>
-                        <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
-                           <li>Return to claim reference number = REF1234A</li>
-                        </ul>
-                      -->
+               <p class="nhsuk-body">You'll need the following details of personas to see intended end/kickout screen in the 'Existing Claims Journey' prototype.</p>
+
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 1: Attempting to add a child already on the claim</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Any National Insurance number (NINO) works</li>
+                              <li>Child's name: Charlie Smith</li>
+                              <li>DOB: 8 Febrary 2022</li>
+                           </ul>
+                      </div>
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 2: Attempting to add a pregnancy already on the claim</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Any National Insurance number (NINO) works</li>
+                              <li>Name: Susan Jones</li>
+                              <li>Postcode: NR33 4GP</li>
+                           </ul>
+                      </div>
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 3: Successfully adding a pregnancy</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>(No spedific information needed)</li>
+                           </ul>
+                      </div>
+
+
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 4: Successfully adding a child</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Any National Insurance number (NINO) works</li>
+                              <li>Child's name: Riley Jones</li>
+                              <li>DOB: (any day) October (any year)</li>
+                           </ul>
+                      </div>
+
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 5: No contact details on claim</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Any National Insurance number (NINO) works</li>
+                              <li>Name: Matthew Glass</li>
+                              <li>Postcode: NR33 4GP</li>
+                           </ul>
+                      </div>
+
+
+
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 6: No claim found</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Any National Insurance number (NINO) works</li>
+                              <li>Name: Sophia Bilal</li>
+                              <li>Postcode: NR33 4GP</li>
+                           </ul>
+                      </div>
+
+
+
+                      <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                        <span class="nhsuk-u-visually-hidden">Information: </span>
+                        <h3 class="nhsuk-heading-s">Scenario 7: Duplicate claim/more than one claim found</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Any National Insurance number (NINO) works</li>
+                              <li>Name: Helen Miller</li>
+                              <li>Postcode: NR33 4GP</li>
+                           </ul>
+                      </div>
+               
+               <hr> 
+
+               <h3 class="nhsuk-heading-m">What was updated:</h3>
+               <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li>New How to Apply screen (Homepage)</li>
+                  <li>New 'Update my details' button in Keep your details up to date</li>
+                  <li>New kickout/end screens</li>
+                  <li>Updating your claim: adding a new pregnancy & a baby/child</li>
+                  <li>Customer Varification functionality</li>
+               </ul>
+
+               <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-0">
+                  Last Updated: 16 April 2024</p>
+            </div>   
+            </div>
+         </details>
+      
+<hr>
+        
+         
+
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">Archive</span>
+            </summary>
+            
+            <div class="nhsuk-details__text">
+               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                  <summary class="nhsuk-details__summary">
+                     <span class="nhsuk-details__summary-text"><small>Private Beta</small></span>
+                  </summary> 
+                   
+
+
+
+                  <div class="nhsuk-details__text">
+                     <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+                        <summary class="nhsuk-details__summary">
+                           <span class="nhsuk-details__summary-text"><small>Sprint # to 96 (version 24)</small></span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                           <h2 class="nhsuk-heading-l">'Apply' Journey Prototype </h2>
+                           <div class="nhsuk-hint" id="prototype-hint">New journey to include 'Before you start' and include Universal Credit content on multiple child screens. <a href="v24/user-journey" target="_blank" class="nhsuk-link">View the 'Apply' user journey on Miro (opens in a new tab.)</a></div> 
+                           <span><strong class="nhsuk-tag">Public beta</strong></span>
+                           <span><strong class="nhsuk-tag">Sprint 86</strong></span>
+                           <span><strong class="nhsuk-tag">Prototype #24</strong></span>
+                           
+                        <p> 
+                        <a class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4" data-module="nhsuk-button" data-prevent-double-click="true" id="submit-button" href="v24/start" draggable="false" role="button">
+                           Start the prototype</a>
+                        </p>
+
+                        <hr>
+                  
+
+                  <h3 class="nhsuk-heading-m">Before you start</h3>
+                  <p class="nhsuk-body">You'll need the following details of personas to make a successful application in the 'Apply' prototype.</p>
+                  <!--<div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                     <span class="nhsuk-u-visually-hidden">Information: </span> 
+                        <p> 
+                           <h3 class="nhsuk-heading-s">UC match and partial match children</h3>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Malia Elba</li>
+                              <li>1st Line of Address = 15 Melbourne</li>
+                              <li>Postcode = NE33 3ST</li>
+                              <li>Date of birth = 01 / 01 / 1999</li>
+                              <li>National Insurance number = ST 12 34 56 L</li>
+                              <li>Pregnant = NO</li>
+                              <li>Children Under 1 = YES</li>
+                              <li>Children Between 1 & 4 = YES</li>
+                           </ul>
+                           <ul class="nhsuk-body-s nhsuk-list nhsuk-list--bullet">
+                              <li>Return to claim reference number = REF1234A</li>
+                           </ul>
+                        -->
 
                       
                       <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
@@ -199,25 +337,29 @@
 
                <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-0">
                   Last Updated: 13 December 2023</p>
-            </div>   
-            </div>
-         </details>
-      
-<hr>
-        
-         
 
-         <details class="nhsuk-details nhsuk-expander">
-            <summary class="nhsuk-details__summary">
-               <span class="nhsuk-details__summary-text">Archive</span>
-            </summary>
-            
-            <div class="nhsuk-details__text">
-               <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-                  <summary class="nhsuk-details__summary">
-                     <span class="nhsuk-details__summary-text"><small>Private Beta</small></span>
-                  </summary> 
-                   
+
+
+
+
+                        </div>
+                     </details>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!--divide-->
+
                   
                   <div class="nhsuk-details__text">
                      <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
