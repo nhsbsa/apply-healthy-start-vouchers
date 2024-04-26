@@ -19,6 +19,44 @@
       {% endif %}
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Your details</h2>
       <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['nationalinsurancenumberupdate'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="#">
+              Change<span class="nhsuk-u-visually-hidden">National Insurance number</span></a> 
+              </a>
+              </dd>
+        </div>
+
+
+
+
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+              Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              {{ data['dateofbirth'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="#">
+              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+        </div>
+        
+      </dl>
+
+
+
+
+      <!--<dl class="nhsuk-summary-list">
           
 
 
@@ -35,7 +73,7 @@
         </div>
      
  
-      </dl>
+      </dl>-->
  
           <!--<button class="nhsuk-button"
           type="submit">Continue

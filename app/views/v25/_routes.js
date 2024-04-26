@@ -249,11 +249,11 @@ router.post('/v25/national-insurance-number-update-1', function (req, res) {
 
 
   if (nationalinsurancenumberupdate) { 
-    res.redirect('/v25/apply/nino-answers') 
+    res.redirect('/v25/apply/date-of-birth-update') 
   } 
   
   else if (checkbox.checked = true) { 
-    res.redirect('/v25/apply/date-of-birth-update-2')  
+    res.redirect('/v25/apply/kickouts/no-nino')  
   } 
 
 
@@ -302,11 +302,11 @@ router.post('/v25/national-insurance-number-update-3', function (req, res) {
 
 
   if (nationalinsurancenumberupdate) { 
-    res.redirect('/v25/apply/nino-answers-2') 
+    res.redirect('/v25/apply/date-of-birth-update-3') 
   }
 
   else if (checkbox.checked = true) { 
-    res.redirect('/v25/apply/date-of-birth-update-3')  
+    res.redirect('/v25/apply/kickouts/no-nino')
   } 
 
 
@@ -387,7 +387,7 @@ router.post('/v25/date-of-birth-update', function (req, res) {
     if (yrs < 16) {
       res.redirect('/v25/apply/kickouts/under-sixteen-signpost')
     } else {
-      res.redirect('/v25/apply/name-update');
+      res.redirect('/v25/apply/nino-answers');
     }
   } else {
     res.redirect('/v25/apply/date-of-birth-update')
@@ -462,7 +462,7 @@ router.post('/v25/date-of-birth-update-3', function (req, res) {
     if (yrs < 16) {
       res.redirect('/v25/apply/kickouts/under-sixteen-signpost')
     } else {
-      res.redirect('/v25/apply/name-update-3');
+      res.redirect('/v25/apply/nino-answers-2');
     }
   } else {
     res.redirect('/v25/apply/date-of-birth-update-3')

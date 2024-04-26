@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your mobile phone number? - Get help to buy food and milk (Healthy Start) - NHSBSA
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v25/mobile-phone-number" method="post">
+
+            <div class="nhsuk-form-group">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="mobilephonenumber">
+                        What is your mobile phone number? {% if data['onlineaccount'] === 'yes' %}{% else %}<!--(optional)-->{% endif %}
+                    </label>
+                </h1>
+                <p class="nhsuk-hint">We’ll send you text messages with
+                    information about your card, including
+                    PIN reminders.</p>
+                    <div class="nhsuk-form-group">
+                        <label class="nhsuk-label" for="example">
+                        Enter your mobile phone number 
+                        </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="mobilephonenumber" name="mobilephonenumber" type="text" autocomplete="tel">
+            </div>
+            </div>
+            
+
+
+            
+        <br>
+         
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <div class="nhsuk-checkboxes">
+                    <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                            I do not have a mobile phone number
+                        </label>
+                    </div>
+                </div>
+                </fieldset>
+            </div>
+        
+
+
+
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    If you do not have a mobile phone number
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <!--{% if data['onlineaccount'] === 'yes' %}
+                        <p>We use this to create your online account. Without an email address, we can't create an online account. We also use it to send notifications about your application and payments.</p>
+                    {% else %} -->
+                    <p>If you cannot receive text messages, you’ll
+                        need to call us to get information about
+                        your card and PIN.</p>  
+                    <p> If you’ve told us your email address, we
+                        can still send you information about your
+                        payments. If you have not entered your
+                        email address, you can go back and do
+                        this on our <a href="/v25/apply/email-address">What is your email address?
+                        page.</a></p>
+                        {% endif %}
+                    <p>If we do not have you email address or
+                        your mobile phone number, we’ll send
+                        you notifications through the post but you
+                        will not be able to get regular payment or
+                        card updates.</p>    
+                </div>
+            </details>    
+                 
+
+            <button class="nhsuk-button" type="submit"> 
+                Continue  
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

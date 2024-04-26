@@ -1,0 +1,178 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout-hub-slim.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %}What you can buy - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+  
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      <h1>Get help to buy food and milk (Healthy Start)</h1>
+      <nav aria-label="Pages in this guide"
+           class="nhsuk-contents-list"
+           role="navigation">
+        <h2 class="nhsuk-u-visually-hidden">Contents</h2>
+        <ol class="nhsuk-contents-list__list">
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="how-to-apply">How it works</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="eligibility">Check if you’re eligible</a>
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="apply-for-healthy-start">Apply for Healthy Start</a>
+          </li>
+          <!--<li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="what-you-can-buy">What you can buy</a>-->
+          </li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="using-your-card">Using your card</a>
+          </li>
+          <!--<li aria-v25="page"
+              class="nhsuk-contents-list__item"><span class="nhsuk-contents-list__v25">How to apply</span></li>
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="contact-us">Contact us</a>
+          </li>-->
+          <li class="nhsuk-contents-list__item">
+            <a class="nhsuk-contents-list__link"
+                href="keep-your-details">Keep your details up to date</a>
+          </li>
+        </ol>
+      </nav><!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <h2>Using your card</h2>
+
+      <p>You’ll get your card by post within 5 to 10 working days. It will come with your first payment on it.</p>
+
+      <p>We’ll add money to your card every 4 weeks.</p>
+
+
+      <h2>Activating your card</h2>
+
+      <p>To activate your card, call 0300 330 2090 with your:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>date of birth</li>
+        <li>client ID – you can find this on the top of the letter that comes with your card</li>
+      </ul>
+
+      <p>This is an automated phone line that’s available 24 hours a day, 7 days a week.</p>
+
+      <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in a new tab)</a>.</p>
+    
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If you’re Deaf or have a hearing loss
+          </span>          
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Our automated phone line is not accessible if you’re Deaf or have a hearing loss or tinnitus.</p>
+          <p>You can contact us by calling 0300 330 7010 and using the:</p>
+          
+          <ul>
+            <li><a class="nhsuk-link" href="https://www.relayuk.bt.com/relay-uk-services/relay-uk-app.html" target="_blank">Relay app (opens in a new tab)</a></li>
+            <li><a class="nhsuk-link" href="https://www.relayuk.bt.com/how-to-use-relay-uk/use-relay-uk-with-textphone.html" target="_blank">Relay textphone service (opens in a new tab)</a></li>
+          </ul>
+
+          <p>This phone line is open Monday to Friday, 8am to 6pm (excluding public holidays).</p>
+        </div>
+      </details>
+
+
+
+      <h3>Choosing your access code</h3>
+
+      <p>When you activate your card, you’ll get to choose your telephone access code. This is a 6 digit code that you can use to get PIN reminders or check your balance.</p>
+
+
+      <h2>Getting your PIN</h2>
+
+      <p>When you’ve activated your card, we’ll send you your PIN by email or text message.</p>
+      <p>If you did not give us your email address or phone number when you applied, we’ll send your PIN by post 2 days after we send your card.</p>
+      <p>You can get a PIN reminder by calling 0300 330 2090. We’ll ask for your date of birth and client ID.</p>
+
+
+      <h2>Checking your balance</h2>
+
+      <p>You can check your balance:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>at a cashpoint using your PIN</li>
+        <li>by calling 0300 330 2090 - we’ll ask for your date of birth and 6 digit access code</li>
+      </ul>
+
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information:</span> 
+        <p>You can check your balance at a cashpoint but you cannot use your Healthy Start card to withdraw cash.</p>
+      </div>
+
+
+      <h2>Turning off contactless payments</h2>
+
+      <p>If you do not want to make contactless payments with your Healthy Start card, you can let us know by:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>emailing <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+        <li>calling 0300 330 7010</li>
+      </ul>
+
+      <p>If you turn off contactless payments, you’ll need to use your PIN when you buy healthy food and milk with your card.</p>
+
+
+
+      <nav aria-label="Pagination"
+           class="nhsuk-pagination"
+           role="navigation">
+        <ul class="nhsuk-list nhsuk-pagination__list">
+          <li class="nhsuk-pagination-item--previous">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+                href="apply-for-healthy-start"><span class="nhsuk-pagination__title">Previous</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Apply for Healthy Start</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-left"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path></svg></a>
+          </li>
+          <li class="nhsuk-pagination-item--next">
+            <a class="nhsuk-pagination__link nhsuk-pagination__link--next"
+                href="keep-your-details"><span class="nhsuk-pagination__title">Next</span> <span class="nhsuk-u-visually-hidden">:</span> <span class="nhsuk-pagination__page">Keep your details up to date</span> <svg aria-hidden="true"
+                 class="nhsuk-icon nhsuk-icon__arrow-right"
+                 viewbox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path></svg></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>{% endblock %}
+</body>
+</html>

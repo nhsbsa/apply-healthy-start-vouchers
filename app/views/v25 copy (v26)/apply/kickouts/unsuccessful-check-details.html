@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Claim not found
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-card" style="background: #4B6271; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            Claim not found
+          </h1>
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            Check your details match your Universal Credit account
+          </h2>
+        </div>
+      </div>
+
+
+      <p>We cannot find a Healthy Start claim with the details you’ve entered. You need to make sure the details you’ve given us match the details on your Universal Credit account.</p>
+      <p>Follow these steps to check you’re entering your details correctly.</p>
+      
+      <p>1. <a class="nhsuk-link" href="https://www.gov.uk/sign-in-universal-credit" target="_blank">Go to your Universal Credit account</a> and check how your details are listed on your claim.</p>
+      <p>2. <a class="nhsuk-link" href="https://apply-healthy-start-vouchers.herokuapp.com/v25/apply/what-change" target="_blank">Go back to the Update my Healthy Start claim service</a> and enter your details again exactly as they are listed on your Universal Credit account.</p>
+      
+      <p>If we still cannot update your Healthy Start claim online after you’ve checked your details match your Universal Credit account, 
+        you should <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us</a>.</p>
+      
+
+      
+      <h2 class="nhsuk-heading-m">If you're applying for Healthy Start for the first time</h2>
+      <p>You’ll need to go back and <a class="nhsuk-link" href="https://applyforhealthystart.nhsbsa.nhs.uk/apply-for-healthy-start/before-you-start" target="_blank">start a new application</a>.</p>
+
+
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If your card has been lost, damaged or stolen
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Call 0300 330 2090 to report your card as lost, damaged or stolen.</p>
+          <p>You’ll need to give us your date of birth and your client ID which you can find on any notifications we’ve sent you.</p>
+          <p>This is an automated phone line that’s available 24 hours a day, 7 days a week.</p>
+          <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">
+            Find out more about call charges (opens in a new tab).</a>
+          </p>
+
+          <h4>If you’re Deaf or have a hearing loss</h4>
+          
+          <p>Our automated phone line is not accessible if you’re Deaf or have a hearing loss or tinnitus.</p>
+          <p>You can contact us by calling 0300 330 7010 and using the:</p>
+          
+          <ul>
+            <li><a class="nhsuk-link" href="https://www.relayuk.bt.com/relay-uk-services/relay-uk-app.html" target="_blank">Relay app (opens in a new tab)</a></li>
+            <li><a class="nhsuk-link" href="https://www.relayuk.bt.com/how-to-use-relay-uk/use-relay-uk-with-textphone.html" target="_blank">Relay textphone service (opens in a new tab)</a></li>
+          </ul>
+
+
+          <p>This phone line is open Monday to Friday, 8am to 6pm (excluding public holidays).</p>
+          
+          
+        </div>
+        </details>
+
+
+        <h2 class="nhsuk-heading-m">Give feedback</h2>
+        <p><a class="nhsuk-link" href="#" target="_blank">
+          What did you think of this service?</a> (takes 2 minutes).</p>
+
+      </div>
+  </div>
+
+{% endblock %}

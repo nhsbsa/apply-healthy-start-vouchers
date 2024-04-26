@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Which type of Employment and Support Allowance (ESA) do you get?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Which type of Employment and Support Allowance (ESA) do you get?
+        </h1>
+
+        <p>There are 2 types of ESA, Income-related and Contribution-based.</p>
+
+        <form action="v25/employment-support-allowance" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                    <div class="nhsuk-radios">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="income" name="ESA" type="radio" value="income">
+                            <label class="nhsuk-label nhsuk-radios__label" for="income">
+                                Income-related ESA
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="contribution" name="ESA" type="radio" value="contribution">
+                            <label class="nhsuk-label nhsuk-radios__label" for="contribution">
+                                Contribution-based ESA
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <details class="nhsuk-details">
+                    <summary class="nhsuk-details__summary">
+                        <span class="nhsuk-details__summary-text">
+                            I'm not sure which type I get
+                        </span>
+                    </summary>
+                    <div class="nhsuk-details__text">
+                        <h2 class="nhsuk-heading-s">Check your benefit award notice</h2>
+        
+                        <p>The type of ESA you get is shown on the last page, under the heading <strong>'Income and Benefits'</strong>.</p>
+                        
+                        <p>It will say you either:</p>
+                
+                        <ul>
+                            <li>get an <strong>Income-related</strong> entitlement</li>
+                            <li>are entitled to <strong>Contribution-based</strong> ESA</li>
+                        </ul>
+                        
+                        <p>If you're still unsure, contact the <a href="https://www.gov.uk/contact-jobcentre-plus/existing-benefit-claims">Jobcentre Plus helpline</a>.</p>
+                    </div>
+                </details>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

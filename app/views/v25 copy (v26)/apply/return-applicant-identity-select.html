@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "return-task-list",
+            "text": "Go back"
+        }) }}
+
+        <form action="v25/return-applicant-identity-select" method="post">
+
+        <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+              <h1 class="nhsuk-fieldset__heading">
+                Prove identity
+              </h1>
+            </legend>
+          
+            <p>
+              You need to upload a copy of a document that proves your identity. We cannot accept expired documents. Make sure any copies you upload are valid documents.
+            </p>
+
+            <div class="nhsuk-hint" id="contact-hint">
+                Select one document to upload
+            </div>
+          
+            <div class="nhsuk-form-group">
+          
+              <div class="nhsuk-radios">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="applicantidentity-1" name="applicantidentity" type="radio" value="BC">
+                  <label class="nhsuk-label nhsuk-radios__label" for="applicantidentity-1">
+                    Your birth certificate (full or short version)
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="applicantidentity-2" name="applicantidentity" type="radio" value="P">
+                  <label class="nhsuk-label nhsuk-radios__label" for="applicantidentity-2">
+                    Your valid passport
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="applicantidentity-3" name="applicantidentity" type="radio" value="DL">
+                  <label class="nhsuk-label nhsuk-radios__label" for="applicantidentity-3">
+                    Your valid driving license (full or provisional)
+                  </label>
+                </div>
+
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="applicantidentity-4" name="applicantidentity" type="radio" value="IV">
+                    <label class="nhsuk-label nhsuk-radios__label" for="applicantidentity-4">
+                      Your immigration visa
+                    </label>
+                </div>
+          
+              </div>
+            </div>
+          
+          </fieldset>
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                Why do we need evidence of your identity
+                </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <p>We need evidence of your identity to be able to issue you with a card.</p>                      
+            </div>
+        </details>
+
+        <button class="nhsuk-button" type="submit">
+            Continue
+        </button>
+
+        </form>
+
+
+    </div>
+</div>
+
+{% endblock %}
