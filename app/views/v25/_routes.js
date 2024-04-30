@@ -748,11 +748,11 @@ router.post('/v25/get-your-security-code', function (req, res) {
 
   var getyoursecuritycode = req.session.data['getyoursecuritycode']
 
-  if (getyoursecuritycode === "email") {
-    res.redirect('/v25/apply/security-code-email')
+  if (getyoursecuritycode === "yes") {
+    res.redirect('/v25/apply/security-code-text-message')
   }
-  else if (getyoursecuritycode === "textmessage") {
-    res.redirect('/v25/apply/security-code-text-message') 
+  else if (getyoursecuritycode === "no") {
+    res.redirect('/v25/apply/kickouts/changed-phone-number') 
   }   
 
   })
@@ -768,11 +768,11 @@ router.post('/v25/get-your-security-code-2', function (req, res) {
 
   var getyoursecuritycode = req.session.data['getyoursecuritycode']
 
-  if (getyoursecuritycode === "email") {
-    res.redirect('/v25/apply/security-code-email-2')
+  if (getyoursecuritycode === "yes") {
+    res.redirect('/v25/apply/security-code-text-message-2')
   }
-  else if (getyoursecuritycode === "textmessage") {
-    res.redirect('/v25/apply/security-code-text-message-2') 
+  else if (getyoursecuritycode === "no") {
+    res.redirect('/v25/apply/kickouts/changed-phone-number') 
   }   
 
   })

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have a current Healthy Start claim?
+Check your phone
 {% endblock %}
 
 {% block content %}
@@ -14,23 +14,25 @@ Do you have a current Healthy Start claim?
         }) }}
 
     <form action="v25/security-code-text-message" method="post">
-
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              Enter your security code
+              Check your phone
             </h1>
           </legend> 
       
           
-        <p>We’ve sent your security code by text message to <strong>********338</strong></p>
-        <p>It may take a few minutes to arrive.</p>  
+        <p>We’ve sent a text message with your security code to <strong>********338</strong></p>
+        
 
         <div class="nhsuk-form-group">
-          <!--<label class="nhsuk-label" for="security-code">
-            label
-          </label> -->
+          <label class="nhsuk-label" for="security-code">
+            Security code
+          </label>
+          <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            This is a 5 digit code.
+          </div>
           <input class="nhsuk-input nhsuk-input--width-10" id="securitycodetextmessage" name="securitycodetextmessage" type="number">
         </div>
 
@@ -38,7 +40,22 @@ Do you have a current Healthy Start claim?
       </div>
        
       
-      <p>Didn’t get your security code? <a href="">Resend code.</a> </p>
+
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          Not received a security code?
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Text messages sometimes take a few minutes to arrive.</p>
+          <p>If you do not receive your text message, you can <a href="">request a new one.</a></p>
+      
+        </div>
+      </details>
+
+
 
       <button class="nhsuk-button" type="submit">
         Continue
