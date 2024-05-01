@@ -16,14 +16,14 @@
       {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
       
       {% endif %}
-      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Children's details</h2>
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">New children's details</h2>
       <dl class="nhsuk-summary-list">
           
 
 
         {% for item in data['childList'] %}
         <div class="nhsuk-summary-list__row">
-                      <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>
+                      <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions">
                         {% if data['childList'] | length  == 0 %}
@@ -49,7 +49,7 @@
 
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             <h2 class="nhsuk-fieldset__heading">
-              Do you want to add another child to your Healthy Start claim?
+              Do you want to add another new child to your Healthy Start claim?
             </h2>
         </legend>
         <div class="nhsuk-hint" id="contact-hint">

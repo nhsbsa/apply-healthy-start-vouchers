@@ -873,12 +873,14 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
             // Create a variable of the posted information
             
             const childsfirstname = req.session.data['childsfirstname'];
+            const childsmiddlename = req.session.data['childsmiddlename'];
             const childslastname = req.session.data['childslastname'];
             
             // Add the posted information into the 'childList' array
             
             childList.push({
                 "ChildsFirstName": childsfirstname,
+                "ChildsMiddleName" : childsmiddlename,
                 "ChildsLastName": childslastname,
                 "ChildsDOB": childsdateofbirthDisplay
             });

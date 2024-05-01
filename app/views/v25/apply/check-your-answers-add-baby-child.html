@@ -110,7 +110,7 @@ Check your answers
         {% for item in data['childList'] %}
         <div class="nhsuk-summary-list__row">
                       <dt class="nhsuk-summary-list__value" name="childsfirstname">
-                        {{ item.ChildsFirstName }} {{ item.ChildsLastName }}</dt>
+                        {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
                         <!--{{ data['childsfirstname'] }} {{ data['childslastname'] }}</dt>-->
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions">
