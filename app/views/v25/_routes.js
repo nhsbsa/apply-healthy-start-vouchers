@@ -878,18 +878,36 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
             
             // Add the posted information into the 'childList' array
             
-            childList.push({
+            childList.push({ 
                 "ChildsFirstName": childsfirstname,
                 "ChildsMiddleName" : childsmiddlename,
                 "ChildsLastName": childslastname,
                 "ChildsDOB": childsdateofbirthDisplay
             });
+
+
+
+            // Access the last child within childList
+            let childListIndex = childList.length - 1;
+            let lastChild = childList[childListIndex];
+            if (!Array.isArray(lastChild)) {
+              lastChild = [lastChild];
+            }
             
-            req.session.data.childList = childList;
+            req.session.data.childList = lastChild;
             
-            console.log(childList);
+            console.log('childList:', childList);
             console.log('Number of children:', childList.length);
+
+
+            //req.session.data.childList = childList;
             
+            //console.log(childList);
+            //console.log('Number of children:', childList.length);
+            
+
+
+
             // Redirect to the 'Do you get another?' page
             
             res.redirect('/v25/apply/children-under-four-answers-update'); 
@@ -915,6 +933,7 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
   // (update) children under 4 years old > answers (ROUTE: ADD A NEW BABY OR CHILD)
     
     router.post('/v25/children-under-four-answers-update', function (req, res) {
+ 
 
       var addanother = req.session.data['addanother']
     
@@ -923,9 +942,10 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
       }
       else if (addanother === "no") {
         res.redirect('/v25/apply/check-your-answers-add-baby-child')
-      }
-       
-      })
+      }  
+      
+      
+      });
 
 
 
@@ -1587,16 +1607,18 @@ router.post('/v25/pension-credit', function (req, res) {
   
       var removeChild = req.session.data['removechild'] 
     
-      // if (removeChild === "yes" && !req.session.data.childList) { 
-      //  res.redirect('/v25/apply/children-under-four');
+       if (removeChild === "yes") { 
+        res.redirect('/v25/apply/childs-first-name-update');
+        req.session.data = {};
       //}
 
-      if (removeChild === "yes" && req.session.data.childList) {
-        res.redirect('/v25/apply/children-under-four-answers-2');
+      //if (removeChild === "yes" && req.session.data.childList) {
+      //  res.redirect('/v25/apply/childs-first-name-update');
+        
       } else if (removeChild === "no") {
-        res.redirect('/v25/apply/children-under-four-answers')
+        res.redirect('/v25/apply/children-under-four-answers-update')
       } else {
-        res.redirect('/v25/apply/children-under-four-answers')
+        res.redirect('/v25/apply/children-under-four-answers-update')
       }
     
     })

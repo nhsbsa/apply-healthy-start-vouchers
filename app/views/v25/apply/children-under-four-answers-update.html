@@ -25,15 +25,18 @@
         <div class="nhsuk-summary-list__row">
                       <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
-                      <dd class="nhsuk-summary-list__actions">
+                      <dd class="nhsuk-summary-list__actions" id="list">
                         {% if data['childList'] | length  == 0 %}
-                        <a href="#">Change<span class="nhsuk-u-visually-hidden"> child</span></a>
-                        {% else %}
-                        <a href="childs-first-name-update">Change<span class="nhsuk-u-visually-hidden"> child</span></a> | <a href="remove-child">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        <a href="#" name="clearButton">Change<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        {% else %} 
+                        
+                        <a href="childs-first-name-update">Change<span class ="nhsuk-u-visually-hidden"> child</span></a> | <a href="remove-child">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
                         {% endif %}
+                        
                       </dd>
         </div>
         {% endfor %}
+
 
 
 
