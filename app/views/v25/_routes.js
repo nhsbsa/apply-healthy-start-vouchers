@@ -397,6 +397,103 @@ router.post('/v25/date-of-birth-update', function (req, res) {
 })
 
 
+
+
+
+  // (update) What is child's date of birth? > childs date of birth (MAY 2024 TESTING ROUTE)
+
+
+  router.post('/v25/childs-date-of-birth-update-yes', function (req, res) {
+
+    
+    var childsdateofbirthday = req.session.data['childsdateofbirthday']
+    var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
+    var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
+
+    var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
+
+    var today = moment().format('YYYY-MM-DD');
+    var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
+
+    console.log('Childs DOB: '+ childsdateofbirth);
+    console.log('Today: '+ today);
+    console.log('Four years from today: '+ fouryearsfromtoday);
+
+
+    
+    if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
+
+      if (moment(childsdateofbirth).isBefore(today)) {
+
+          if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
+
+            let childList = req.session.data.childList;
+            if (!Array.isArray(childList)) {
+                childList = [];
+            }
+            
+            // Create a variable of the posted information
+            
+            const childsfirstname = req.session.data['childsfirstname'];
+            const childsmiddlename = req.session.data['childsmiddlename'];
+            const childslastname = req.session.data['childslastname'];
+            
+            // Add the posted information into the 'childList' array
+            
+            childList.push({ 
+                "ChildsFirstName": childsfirstname,
+                "ChildsMiddleName" : childsmiddlename,
+                "ChildsLastName": childslastname,
+                "ChildsDOB": childsdateofbirthDisplay
+            });
+
+
+
+
+            req.session.data.childList = childList;
+            
+            console.log(childList);
+            console.log('Number of children:', childList.length);
+            
+
+
+
+            // Redirect to the 'Do you get another?' page
+            
+            
+            res.redirect('/v25/apply/children-under-four-answers-update-yes'); 
+
+          } else {
+            res.redirect('/v25/apply/childs-date-of-birth-update')
+          }
+
+      } else {
+        res.redirect('/v25/apply/childs-date-of-birth-update')
+      }
+      
+    }
+    else {
+      res.redirect('/v25/apply/childs-date-of-birth-update')
+    }
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // (update) What is your date of birth? (ROUTE: ADD A NEW PREGNANCY - NO CONTACTS)
 
 router.post('/v25/date-of-birth-update-2', function (req, res) {
@@ -461,6 +558,10 @@ router.post('/v25/date-of-birth-update-3', function (req, res) {
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
     if (yrs < 16) {
       res.redirect('/v25/apply/kickouts/under-sixteen-signpost')
+    } 
+    else if (dateofbirthday == '31' && dateofbirthmonth == '10' && dateofbirthyear == '1996') {
+      res.redirect('/v25/apply/nino-answers-3'); //testing scenario for duplicate phone numbers found
+    
     } else {
       res.redirect('/v25/apply/nino-answers-2');
     }
@@ -823,17 +924,32 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
   
   router.post('/v25/childs-first-name-update', function (req, res) {
   
-    var childsfirstname = req.session.data['childsfirstname']
-    var childslastname = req.session.data['childslastname'] 
+    var childsfirstname = req.session.data['childsfirstname'].trim().toUpperCase()
+    var childslastname = req.session.data['childslastname'].trim().toUpperCase()
 
-    if (childsfirstname && childslastname) {
-      res.redirect('/v25/apply/childs-date-of-birth-update')
+
+
+    if (childsfirstname == 'BEN' && childslastname == 'JONES') {  
+      res.redirect('/v25/apply/childs-date-of-birth-update-yes');  // removing one child scenario but this does not work
+    } 
+    else if (childsfirstname == 'RILEY' && childslastname == 'JONES') {
+      res.redirect('/v25/apply/childs-date-of-birth-update') 
     }
     else {
-      res.redirect('/v25/childs-first-name-update')
+      res.redirect('/v25/PAGE-DOESNT-EXIST'); 
     }
+  });
 
-  })
+
+
+    //if (childsfirstname && childslastname) {
+    //  res.redirect('/v25/apply/childs-date-of-birth-update')
+    //}
+    //else {
+    //  res.redirect('/v25/childs-first-name-update')
+    //}
+
+  
 
 
 
@@ -910,6 +1026,7 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
 
             // Redirect to the 'Do you get another?' page
             
+            
             res.redirect('/v25/apply/children-under-four-answers-update'); 
 
           } else {
@@ -930,6 +1047,13 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
 
 
 
+
+
+
+
+
+
+
   // (update) children under 4 years old > answers (ROUTE: ADD A NEW BABY OR CHILD)
     
     router.post('/v25/children-under-four-answers-update', function (req, res) {
@@ -947,6 +1071,26 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
       
       });
 
+
+
+
+
+  // (update) children under 4 years old > answers (ROUTE: ADD A NEW BABY OR CHILD) (MAY 2024 TESTING ROUTE)
+    
+    router.post('/v25/children-under-four-answers-update-yes-yes', function (req, res) {
+ 
+
+      var addanother = req.session.data['addanother']
+    
+      if (addanother === "yes") {
+        res.redirect('/v25/PAGE-DOESNT-EXIST')
+      }
+      else if (addanother === "no") {
+        res.redirect('/v25/apply/check-your-answers-add-baby-child-yes')
+      }  
+      
+      
+      });
 
 
 
@@ -1626,6 +1770,31 @@ router.post('/v25/pension-credit', function (req, res) {
 
 
   
+    // Do you want to remove this child? (MAY 2024 TESTING ROUTE)
+
+    
+    router.post('/v25/remove-child-yes', function (req, res) {
+  
+      var removeChild = req.session.data['removechild'] 
+    
+       if (removeChild === "yes") { 
+        res.redirect('/v25/apply/children-under-four-answers-update-yes-yes');
+        req.session.data = {};
+      //}
+
+      //if (removeChild === "yes" && req.session.data.childList) {
+      //  res.redirect('/v25/apply/childs-first-name-update');
+        
+      } else if (removeChild === "no") {
+        res.redirect('/v25/apply/children-under-four-answers-update')
+      } else {
+        res.redirect('/v25/apply/children-under-four-answers-update')
+      }
+    
+    })
+ 
+
+
   
   // What is your email address?
   
