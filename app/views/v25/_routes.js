@@ -930,7 +930,7 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
 
 
     if (childsfirstname == 'BEN' && childslastname == 'JONES') {  
-      res.redirect('/v25/apply/childs-date-of-birth-update-yes');  // removing one child scenario but this does not work
+      res.redirect('/v25/apply/childs-date-of-birth-update');  // removing one child scenario but this does not work
     } 
     else if (childsfirstname == 'TOM' && childslastname == 'JONES') {  
       res.redirect('/v25/apply/childs-date-of-birth-update-yes');  // removing one child scenario but this does not work
@@ -1110,8 +1110,10 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
     req.session.data = {}
     res.redirect('/v25/apply/child-terms-and-conditions'); //as we added T&C before the end screen 
     //res.redirect('/v25/apply/kickouts/request-completed-child'); //scenario 4
+  
   } else {
-    res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 2 listed, go here
+    res.redirect('/v25/apply/child-terms-and-conditions');
+    //res.redirect('/v25/PAGE-DOESNT-EXIST'); // If name is none of the 2 listed, go here
   }
 });
 
