@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot request a new security code for 24 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="v25/security-code-text-message" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              You cannot request a new security code for 24 hours
+            </h1>
+          </legend> 
+      
+          
+        <p>You’ve entered the wrong security code too many times.</p>
+        <p>We’ve put a temporary lock on your account to keep your details safe. You’ll need to wait 24 hours before you can request another security code.</p>
+
+
+        </fieldset>
+      </div>
+       
+      
+
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
