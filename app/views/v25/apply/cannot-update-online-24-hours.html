@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-You cannot request a new security code for 24 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
+You cannot update your claim online for 24 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
 {% block content %}
@@ -13,18 +13,18 @@ You cannot request a new security code for 24 hours – Get help to buy food and
             "text": "Go back"
         }) }}
 
-    <form action="v25/cannot-request-code" method="post">
+    <form action="v25/cannot-update-online-24-hours" method="post">
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              You cannot request a new security code for 24 hours
+              You cannot update your claim online for 24 hours
             </h1>
           </legend> 
       
           
-        <p>You’ve exceeded the number of times a security code can be sent.</p>
-        <p>You’ll need to wait 24 hours before you can request another code to update your claim online.</p>
+        <p>You’ve entered the wrong security code too many times.</p>
+        <p>You’ll need to wait 24 hours before you can update your claim online.</p>
         <p>If you need to update your claim within 24 hours, you can <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a>.</p>
 
 

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-You cannot request a new security code for 24 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
+Your account has been temporarily locked – Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
 {% block content %}
@@ -13,18 +13,22 @@ You cannot request a new security code for 24 hours – Get help to buy food and
             "text": "Go back"
         }) }}
 
-    <form action="v25/cannot-request-code" method="post">
+    <form action="v25/account-temporarily-locked" method="post">
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              You cannot request a new security code for 24 hours
+              Your account has been temporarily locked
             </h1>
           </legend> 
       
           
-        <p>You’ve exceeded the number of times a security code can be sent.</p>
-        <p>You’ll need to wait 24 hours before you can request another code to update your claim online.</p>
+        <p>You cannot currently update your claim online because you’ve either:</p>
+       <ul>
+        <li>exceeded the number of times a new security code can be sent</li>
+        <li>entered the wrong security code too many times</li>
+       </ul> 
+        <p>To update your claim online, you’ll need to wait 24 hours from the time you used your last security code.</p>
         <p>If you need to update your claim within 24 hours, you can <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a>.</p>
 
 
