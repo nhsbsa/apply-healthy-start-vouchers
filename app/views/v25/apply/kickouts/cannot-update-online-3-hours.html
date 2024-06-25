@@ -1,31 +1,31 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-You cannot update your claim online for 24 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
+You cannot update your claim online for 3 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
-    {{ backLink({
+    <!--{{ backLink({
             "href": "javascript:history.go(-1)",
             "text": "Go back"
-        }) }}
+        }) }}-->
 
     <form action="v25/cannot-update-online-24-hours" method="post">
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              You cannot update your claim online for 24 hours
+              You cannot update your claim online for 3 hours
             </h1>
           </legend> 
       
           
         <p>You’ve entered the wrong security code too many times.</p>
-        <p>You’ll need to wait 24 hours before you can update your claim online.</p>
-        <p>If you need to update your claim within 24 hours, you can <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a>.</p>
+        <p>You’ll need to wait 3 hours before you can update your claim online.</p>
+        <p>If you need to update your claim within 3 hours, you can <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a>.</p>
 
 
         </fieldset>
