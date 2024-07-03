@@ -19,10 +19,8 @@
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">New children's details</h2>
       <dl class="nhsuk-summary-list">
           
-
-
         {% for item in data['childList'] %}
-        <div class="nhsuk-summary-list__row">
+        <!--<div class="nhsuk-summary-list__row">
                       <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions" id="list">
@@ -34,11 +32,54 @@
                         {% endif %}
                         
                       </dd>
+        </div>-->
+        <br>
+        <h5>Child 1</h5>
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+            
+            <a href="childs-first-name-update">
+                Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
+      
+          </dd>
+      
         </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ item.ChildsDOB }}
+          </dd>
+      
+          <dd class="nhsuk-summary-list__actions">
+      
+             
+            <a href="childs-date-of-birth-update">
+                Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
+            
+            
+          </dd>
+      
+        </div>
+
+        <br>
+        <a href="#">
+            Remove this child<span class="nhsuk-u-visually-hidden"> child</span></a>
+      
+
+
         {% endfor %}
-
-
-
 
       </dl>
 
