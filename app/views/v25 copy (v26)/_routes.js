@@ -934,7 +934,8 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
   var childsFirstName = req.session.data['childsfirstname'].trim().toUpperCase()
   var childsLastName = req.session.data['childslastname'].trim().toUpperCase()
 
-  if (childsFirstName == 'CHARLIE' && childsLastName == 'SMITH') { 
+  if (childsFirstName == 'CHARLIE' && childsLastName == 'SMITH') {
+    req.session.data = {}
     res.redirect('/v25/apply/kickouts/duplicate-child'); //scenario 1
   } 
   else if (childsFirstName == 'RILEY' && childsLastName == 'JONES') {

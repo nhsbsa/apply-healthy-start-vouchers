@@ -938,6 +938,9 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
     else if (childsfirstname == 'RILEY' && childslastname == 'JONES') {
       res.redirect('/v25/apply/childs-date-of-birth-update') 
     }
+    else if (childsfirstname == 'CHARLIE' && childslastname == 'SMITH') {
+      res.redirect('/v25/apply/childs-date-of-birth-update') 
+    }
     else {
       res.redirect('/v25/PAGE-DOESNT-EXIST'); 
     }
@@ -1104,7 +1107,7 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
   var childsLastName = req.session.data['childslastname'].trim().toUpperCase()
 
   if (childsFirstName == 'CHARLIE' && childsLastName == 'SMITH') { 
-    res.redirect('/v25/apply/kickouts/duplicate-child'); //scenario 1
+    res.redirect('/v25/apply/child-terms-and-conditions-yes'); //scenario 1
   } 
   else if (childsFirstName == 'RILEY' && childsLastName == 'JONES') {
     req.session.data = {}
