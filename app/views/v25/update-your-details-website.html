@@ -1,0 +1,142 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+
+<body>
+  
+  {% extends 'layout-hub-slim.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %}Update your details - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+   
+
+
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      
+
+
+
+
+<br><br>
+      
+      
+      <h1>Update your details</h1>
+      <p>If you get Healthy Start payments, you need to let us know about any changes in your circumstances.</p> 
+      <p>This is so we can make sure you’re being paid correctly.</p>
+    
+
+
+      <h2>Tell us about a new pregnancy or child</h2>
+
+      <p>You can update your claim online if you’re currently getting Healthy Start payments and you need to add a new:</p>
+      <ul>
+        <li>pregnancy</li>
+        <li>baby or child - you may have recently given birth, or become responsible for an older child under 4</li>
+      </ul>
+
+
+
+ 
+
+      <h3>Universal Credit claimants</h3>
+      <p>If you’re adding a new child under 4 to your Healthy Start claim, you need to <a class="nhsuk-link" href="https://www.gov.uk/universal-credit/changes-of-circumstances" target="_blank">tell Universal Credit about your new child (opens in a new tab)</a> before we can start making payments. </p>
+
+
+
+
+      <p><a href="before-you-start-manage"><button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">Start now</button></a></p>
+
+
+
+
+
+
+
+
+      <h2>If you need to make another change</h2>
+
+      <p>Let us know by phone or email if there’s any other changes in circumstances that might affect your Healthy Start claim. For example, if you need to:</p>
+      <ul>
+        <li>change your name or address</li>
+        <li>change the name of any children on your claim</li>
+        <li>stop your payments for a pregnancy or a child</li>
+      </ul>
+
+
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>Email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a>
+          <p>Telephone: 0300 330 7010 <br>
+            Phone lines are open 8am to 6pm, Monday to Friday (except public holidays)      
+          </p>
+          <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in a new tab)</a>.</p>
+        
+      </div>
+
+      
+
+
+
+
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            If your card has been lost, damaged or stolen
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Call 0300 330 2090 if your card has been lost, damaged or stolen. When you call, you’ll need your: </p>
+          <ul>
+            <li>date of birth</li>
+            <li>10 digit client ID – you can find this on any letters, emails or text messages we’ve sent you </li>
+          </ul>
+          <p>This is an automated phone line that’s available 24 hours a day, 7 days a week.</p>
+          
+
+          <h5>If you’re Deaf or have a hearing loss</h5>
+          <p>Our automated phone line is not accessible if you’re Deaf or have a hearing loss or tinnitus.</p>
+
+          <p>You can call us on 0300 330 7010 and use the:</p>
+
+          <ul>
+            <li><a class="nhsuk-link" href="https://www.relayuk.bt.com/relay-uk-services/relay-uk-app.html" target="_blank">Relay app (opens in a new tab)</a></li>
+            <li><a class="nhsuk-link" href="https://www.relayuk.bt.com/how-to-use-relay-uk/use-relay-uk-with-textphone.html" target="_blank">Relay textphone service (opens in a new tab)</a></li>
+          </ul>
+
+          <p>This phone line is open Monday to Friday, 8am to 6pm (except public holidays).</p>
+
+        </div>
+      </details>
+
+
+
+    
+    </div>
+  </div>{% endblock %}
+</body>
+
+</html>
