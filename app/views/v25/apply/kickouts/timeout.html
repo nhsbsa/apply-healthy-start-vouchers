@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot request a new security code for 3 hours – Get help to buy food and milk (Healthy Start) - NHSBSA
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!--{{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}-->
+
+    <form action="v25/timeout" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              You have been signed out
+            </h1>
+          </legend> 
+      
+          
+        <p>To keep your information secure, we can't save what you have done so far as you stopped using the service for 30 minutes. You will need to start again.</p>
+        
+        <p>If you want to sign back into the service, select Start your application again. If you think you have a techinical issue, you can <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a>.</p>
+
+        </fieldset>
+      </div>
+
+    </form>
+
+
+    <p><a href="#" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Start your application again</a></p>
+
+  </div>
+</div>
+
+{% endblock %}
