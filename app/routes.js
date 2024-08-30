@@ -60,8 +60,11 @@ router.use('/v3/apply', require('./views/v3/_routes'));
 router.use('/v2/apply', require('./views/v2/_routes'));
 router.use('/v1/apply', require('./views/v1/_routes'));
 
+
 router.use('/future/v1/apply', require('./views/future/_routes'));
 router.use('/current/apply', require('./views/current/_routes'));
+
+router.use('/v1-error-and-fraud/apply', require('./views/v1-error-and-fraud/_routes'));
 
 // ****************************************
 // PERSONAS
