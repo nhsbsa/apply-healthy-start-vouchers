@@ -455,3 +455,47 @@
   background: $color_nhsuk-blue;
   color: $color_nhsuk-white;
 }
+
+
+
+// ************************************
+// popup modal dialog box with dimmed background
+// ************************************
+
+.hs-timeout-overlay {
+  background-color: #0b0c0c;
+  filter: alpha(opacity=80);
+  height: 100%;
+  left: 0;
+  opacity: .8;
+  -moz-opacity: .8;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+@media (min-width: 320px) {
+  .hs-timeout-dialog {
+      background-color: #fff;
+      border: 5px solid #0b0c0c;
+      left: 50%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 30px;
+      position: fixed;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 435px;
+      z-index: 1002;
+  }
+}
+
+@media (min-width: 768px) {
+  .hs-timeout-dialog {
+      width: 600px;
+      .nhsuk-button:first-of-type {
+          margin-right: 20px;
+      }
+  }
+}
