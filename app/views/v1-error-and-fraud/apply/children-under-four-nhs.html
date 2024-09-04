@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you know you NHS number?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v1-error-and-fraud/nhs" method="post">
+
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                <h1 class="nhsuk-fieldset__heading">
+                  Do you know ..add child name here.. NHS number?
+                </h1>
+              </legend>
+          
+              <div class="nhsuk-radios">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-1" name="nhs" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                    Yes, I know their NHS number
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-2" name="nhs" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                    No, I don't know their NHS number
+                  </label>
+                </div>
+          
+              </div>
+            </fieldset>
+          
+          </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

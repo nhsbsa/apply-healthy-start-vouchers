@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Who is pregnant?
+{% endblock %}
+
+
+<!-- Content logic -->
+{% set radio2 = data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize %}
+
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v1-error-and-fraud/who-is-pregnant" method="post">
+
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                <h1 class="nhsuk-fieldset__heading">
+                  Who is pregnant?
+                </h1>
+              </legend>
+          
+              <div class="nhsuk-radios">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-1" name="who-is-pregnant" type="radio" value="me">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                    Me
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-2" name="who-is-pregnant" type="radio" value="partner">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                    {{radio2}} 
+                  </label>
+                </div>
+          
+              </div>
+            </fieldset>
+          
+          </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

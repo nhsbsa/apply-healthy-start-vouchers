@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Do you have any children under the age of 4?
+Do you live with a partner?
 {% endblock %}
 
 {% block content %}
@@ -13,35 +13,33 @@ Do you have any children under the age of 4?
             "text": "Go back"
         }) }}
 
-        <h1 class="nhsuk-fieldset__legend--xl">
-            Do you have a child under 4 years old?    
-        </h1>
-
-        <!--<p>This means children who live with you all the time, or they normally live with you and you’re the main carer.</p>-->
-
-        <form action="v1-error-and-fraud/children-under-four" method="post">
+        <form action="v1-error-and-fraud/partner" method="post">
 
             <div class="nhsuk-form-group">
 
-                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Do you live with a partner?
+                    </h1>
+                </legend>
 
                     <div class="nhsuk-radios nhsuk-radios--inline">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="yes" name="childrenunderfour" type="radio" value="yes">
+                            <input class="nhsuk-radios__input" id="yes" name="partner" type="radio" value="yes">
                             <label class="nhsuk-label nhsuk-radios__label" for="yes">
                                 Yes
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="no" name="childrenunderfour" type="radio" value="no">
+                            <input class="nhsuk-radios__input" id="no" name="partner" type="radio" value="no">
                             <label class="nhsuk-label nhsuk-radios__label" for="no">
                                 No
                             </label>
                         </div>
                     </div>
                 </fieldset>
-
-
 
             </div>
 

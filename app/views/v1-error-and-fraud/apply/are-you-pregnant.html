@@ -4,6 +4,26 @@
 Are you pregnant?
 {% endblock %}
 
+
+<!-- Content logic -->
+{% if data['firstname-partner'] %}
+{% set title = "Are you or" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "pregnant?" %}
+{% set radio1 = "Me" %}
+{% set radio2 = data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize %}
+{% set detailsSpan = "If you or" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "are less than 10 weeks pregnant"%}
+
+{% else %}
+
+{% set title = "Are you or pregnant?" %}
+{% set radio1 = "Yes" %}
+{% set radio2 = "No" %}
+{% set detailsSpan = "If you're less than 10 weeks pregnant"%}
+
+{% endif %}
+
+
+
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
@@ -13,7 +33,7 @@ Are you pregnant?
             "text": "Go back"
         }) }}
 
-        <form action="current/are-you-pregnant" method="post">
+        <form action="v1-error-and-fraud/are-you-pregnant" method="post">
 
             <div class="nhsuk-form-group">
 
@@ -21,7 +41,7 @@ Are you pregnant?
 
                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
                     <h1 class="nhsuk-fieldset__heading">
-                        Are you more than 10 weeks pregnant?
+                        {{title}}
                     </h1>
                 </legend>
                 
@@ -50,7 +70,7 @@ Are you pregnant?
             <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
                   <span class="nhsuk-details__summary-text">
-                    If you're less than 10 weeks pregnant
+                    {{detailsSpan}}
                   </span>
                 </summary>
                 <div class="nhsuk-details__text">

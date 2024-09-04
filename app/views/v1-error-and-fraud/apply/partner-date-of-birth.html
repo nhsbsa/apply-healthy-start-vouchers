@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your date of birth?
+What is your partner date of birth?
 {% endblock %}
 
 {% block content %}
@@ -14,14 +14,14 @@ What is your date of birth?
         }) }}
 
 
-    <form action="v1-error-and-fraud/date-of-birth" method="post">
+    <form action="v1-error-and-fraud/date-of-birth-partner" method="post">
 
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              What is your date of birth?
+              What is ...add name here..date of birth?
             </h1>
           </legend>
           <span class="nhsuk-hint" id="hint">
@@ -60,6 +60,17 @@ What is your date of birth?
         </fieldset>
 
       </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Why we ask for your date of birth
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>We use this to work out your age and check your eligibility.</p>
+        </div>
+      </details>
 
       <button class="nhsuk-button" type="submit">
         Continue

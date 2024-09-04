@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your name?
+What is your partner name?
 {% endblock %}
 
 {% block content %}
@@ -14,25 +14,25 @@ What is your name?
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
-            What is your name?
+            What is your partner name?
         </h1>
 
-        <p>Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.</p>
+        <p>Use the name that’s on their official documents, such as passport, driving licence, or any benefit claims.</p>
 
-        <form action="v1-error-and-fraud/name" method="post">
+        <form action="v1-error-and-fraud/name-partner" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="firstname">
                     First name
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text" autocomplete="given-name">
+                <input class="nhsuk-input nhsuk-input--width-20" id="firstname-partner" name="firstname-partner" type="text" autocomplete="given-name">
             </div>
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="lastname">
                     Last name
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text" autocomplete="family-name">
+                <input class="nhsuk-input nhsuk-input--width-20" id="lastname-partner" name="lastname-partner" type="text" autocomplete="family-name">
             </div>
 
             <button class="nhsuk-button" type="submit">

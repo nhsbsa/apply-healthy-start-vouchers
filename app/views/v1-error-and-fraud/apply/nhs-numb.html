@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your national insurance number?
+What is your NHS number?
 {% endblock %}
 
 {% block content %}
@@ -13,18 +13,18 @@ What is your national insurance number?
             "text": "Go back"
         }) }}
 
-        <form action="v1-error-and-fraud/national-insurance-number" method="post">
+        <form action="v1-error-and-fraud/nhs-numb" method="post">
 
             <div class="nhsuk-form-group">
                 <h1 class="nhsuk-label-wrapper">
                     <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="nationalinsurancenumber">
-                    What is your National Insurance number?
+                    What is your NHS number?
                     </label>
                 </h1>
                 <span class="nhsuk-hint" id="example-with-hint-text-hint">
-                    It's on your National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'.
+                   Your NHS number is a 10 digit number that you find on any letter the NHS has sent you. For example, 485 777 3456.
                 </span>
-                <input class="nhsuk-input nhsuk-input--width-20" id="nationalinsurancenumber" name="nationalinsurancenumber" type="text">
+                <input class="nhsuk-input nhsuk-input--width-20" id="nhs-numb" name="nhs-numb" type="text">
             </div>
 
             <button class="nhsuk-button" type="submit">
