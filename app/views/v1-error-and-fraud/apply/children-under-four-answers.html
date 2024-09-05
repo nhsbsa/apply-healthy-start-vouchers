@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  {% extends 'layout.html' %} {% block pageTitle %} Children under four you have told us about {% endblock %} {% block content %}
+
+{% extends 'layout.html' %} {% block pageTitle %} Children under four you have told us about {% endblock %} {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
@@ -32,7 +27,7 @@
 
       </dl>
       <h2 class="nhsuk-fieldset__legend--m">Do you have any other children under 4 years old?</h2>
-      <form action="current/children-under-four-answers"
+      <form action="v1-error-and-fraud/children-under-four-answers"
             method="post">
         <div class="nhsuk-form-group">
           <fieldset aria-describedby="example-hint"
@@ -40,7 +35,7 @@
             <div class="nhsuk-radios nhsuk-radios--inline">
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input"
-                     id="yes"
+                     id="childrenunderfouranswers-1"
                      name="childrenunderfouranswers"
                      type="radio"
                      value="yes"> <label class="nhsuk-label nhsuk-radios__label"
@@ -48,7 +43,7 @@
               </div>
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input"
-                     id="no"
+                     id="childrenunderfouranswers-2"
                      name="childrenunderfouranswers"
                      type="radio"
                      value="no"> <label class="nhsuk-label nhsuk-radios__label"
@@ -60,6 +55,21 @@
               type="submit">Continue</button>
       </form>
     </div>
-  </div>{% endblock %}
-</body>
-</html>
+  </div>
+
+  <script>
+  
+    const childrenunderfouranswers = req.session.data['childrenunderfouranswerss']
+    const radioButton1 = document.getElementById('childrenunderfouranswers-1');
+    const radioButton2 = document.getElementById('childrenunderfouranswers-2');
+  
+    if (childrenunderfouranswers === 'yes') {
+      radioButton1.checked = true;
+    } else if (childrenunderfouranswers === 'no') {
+      radioButton2.checked = true;
+    };
+  
+  </script>
+
+{% endblock %}
+

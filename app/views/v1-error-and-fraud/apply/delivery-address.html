@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Is this address you would like the Healthy Start card delivered to?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v1-error-and-fraud/delivery-address" method="post">
+
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                <h1 class="nhsuk-fieldset__heading">
+                  Is this address you would like the Healthy Start card delivered to?
+                </h1>
+              </legend>
+              <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                {{data['firstname']}} {{data['lastname']}}
+                <br>
+                Flat 22, Manor Court
+                <br>
+                100, James Street
+                <br>
+                SE23 4EL
+                <br>
+                London
+              </span>
+          
+              <div class="nhsuk-radios">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="delivery-1" name="delivery" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                    Yes, send my Healthy Start card to this address.
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="delivery-2" name="delivery" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                    No, I want to add a different delivery address.
+                  </label>
+                </div>
+          
+              </div>
+            </fieldset>
+          
+          </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+  
+  const delivery = req.session.data['delivery']
+  const radioButton1 = document.getElementById('delivery-1');
+  const radioButton2 = document.getElementById('delivery-2');
+
+  if (delivery === 'yes') {
+    radioButton1.checked = true;
+  } else if (delivery === 'no') {
+    radioButton2.checked = true;
+  };
+
+</script>
+
+{% endblock %}

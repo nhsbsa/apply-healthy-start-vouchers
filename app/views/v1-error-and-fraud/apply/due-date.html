@@ -4,6 +4,18 @@
 What is your due date?
 {% endblock %}
 
+
+<!-- Content logic -->
+{% if data['who-is-pregnant'] === 'me' %}
+{% set title = "What is your due date?" %}
+
+{% else %}
+
+{% set title = "What is" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "due date?" %}
+
+{% endif %}
+
+
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
@@ -13,14 +25,14 @@ What is your due date?
             "text": "Go back"
         }) }}
 
-    <form action="current/due-date" method="post">
+    <form action="v1-error-and-fraud/due-date" method="post">
 
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              What is your due date?
+              {{title}}
             </h1>
           </legend>
 

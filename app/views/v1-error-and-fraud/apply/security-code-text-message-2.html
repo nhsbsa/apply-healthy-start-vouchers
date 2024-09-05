@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your phone
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!--{{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+  }) }}-->
+
+    <form action="v25/security-code-text-message-2" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Check your phone
+            </h1>
+          </legend> 
+      
+          
+        <p>We’ve sent a text message with your security code to <strong>********338</strong></p>
+        <p>Your code will expire after 5 minutes.</p>
+        <p>If you enter the wrong code 5 times, you will not be able to request another one for 24 hours.</p>
+        
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="security-code">
+            Security code
+          </label>
+          <div class="nhsuk-hint" id="example-with-hint-text-hint">
+            This is a 6 digit code.
+          </div>
+          <input class="nhsuk-input nhsuk-input--width-10" type="password" id="securitycodetextmessage" name="securitycodetextmessage" type="number">
+        </div>
+
+        </fieldset>
+      </div>
+       
+      
+
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          Not received a security code?
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>Text messages sometimes take a few minutes to arrive.</p>
+          <p>If you do not receive your text message, you can <a href="request-new-security-code-2">request a new one.</a></p>
+      
+        </div>
+      </details>
+
+
+
+
+
+
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
