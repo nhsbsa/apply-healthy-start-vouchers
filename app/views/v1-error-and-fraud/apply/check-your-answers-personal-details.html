@@ -6,7 +6,7 @@ Check your answers
 
 {% block content %}
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-three-thirds">
 
         {{ backLink({
             "href": "javascript:history.go(-1)",
@@ -19,39 +19,40 @@ Check your answers
 
         <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">Your details</h2>
 
-        <form action="current/cya-personal-details" method="POST">
+        <form action="v1-error-and-fraud/cya-personal-details" method="POST">
             <dl class="nhsuk-summary-list">
 
-                <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Full name
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['firstname'] }} {{ data['lastname'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="name#firstname">
-                    Change<span class="nhsuk-u-visually-hidden"> name</span>
-                    </a>
-                </dd>
-                </div>
+                {%if data['firstname']%}
+                    <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Full name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['firstname'] }} {{ data['lastname'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="name#firstname">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                        </a>
+                    </dd>
+                    </div>
+                {%endif%}
             
-                <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                    Address
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                    {{ data['addressline1'] }},<br>
-                    {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                    {{ data['towncity'] }},<br>
-                    {{ data['postcode'] }}
-                </dd>
-                <dd class="nhsuk-summary-list__actions">
-                    <a href="address#addressline1">
-                    Change<span class="nhsuk-u-visually-hidden"> address</span>
-                    </a>
-                </dd>
-                </div>
+                {%if data['postcode']%}
+                    <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Postcode
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['postcode'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="postcode#postcode">
+                        Change<span class="nhsuk-u-visually-hidden"> postcode</span>
+                        </a>
+                    </dd>
+                    </div>
+                {%endif%}
             
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -66,6 +67,22 @@ Check your answers
                     </a>
                 </dd>
                 </div>
+
+                {% if data['nhs-numb'] %}
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            NHS number
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            {{ data['nhs-numb'] }}
+                        </dd>
+                        <dd class="nhsuk-summary-list__actions">
+                            <a href="national-insurance-number#nationalinsurancenumber">
+                                Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
+                            </a>
+                        </dd>
+                    </div>
+                {% endif %}
             
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
@@ -79,45 +96,7 @@ Check your answers
                     Change<span class="nhsuk-u-visually-hidden"> national insurance number</span>
                     </a>
                 </dd>
-                </div>
-
-                <!-- {% if data['benefits'] %}
-                    <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Benefits
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-
-                            {% if data['benefits'] == "UC" %}
-                            Universal Credit<br>
-                            {% elseif data['benefits'] == "CTC" %}
-                            Child Tax Credit<br>
-                            {% elseif data['benefits'] == "JSA" %}
-                            Jobseeker's Allowance (JSA)<br>
-                            {% elseif data['benefits'] == "ESA" %}
-                            Employment and Support Allowance (ESA)<br>
-                            {% elseif data['benefits'] == "IS" %}
-                            Income Support<br>
-                            {% elseif data['benefits'] == "PC" %}
-                            Pension Credit<br>
-                            {% elseif data['benefits'] == "WTC" %}
-                            Working Tax Credit<br>
-                            {% else %}
-                            
-                            {% endif %}
-                        </dd>
-
-                        <dd class="nhsuk-summary-list__actions">
-
-                            <a href="benefits">
-                                Change<span class="nhsuk-u-visually-hidden"> you get benefits</span>
-                            </a>
-
-                        </dd>
-
-                    </div>
-                {% endif %} -->
-                        
+                </div>        
             </dl>
             <input class="nhsuk-button" type="submit" value="Continue">
         </form>

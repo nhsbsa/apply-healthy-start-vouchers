@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your postcode?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your postcode?
+        </h1>
+
+        <p>You must enter the home postcode you registered with your GP surgery. For example EN1 1BE.</p>
+
+        <form action="v1-error-and-fraud/postcode" method="post">
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code" value="{{ data['postcode'] }}">
+            </div>
+
+            <!-- <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                        Why we ask for your postcode
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>We use your address to match your
+                        details with the benefit agency and
+                        check you’re eligible for Healthy
+                        Start.</p>
+                        
+                      <p>If you’re eligible, we’ll send your
+                        Healthy Start card to this address.</p>
+
+                      <p>If you’re under 18 and do not have a
+                        current benefit award notice, you
+                        cannot apply online. You’ll need to
+                        contact us by:</p>
+
+                        <ul>
+                            <li>email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+                            <li>telephone: 0300 330 7010 - this call will be charged at the local rate</li>
+                          </ul>
+                          <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in new tab)</a>.</p>  
+                        
+                        <p></p>    
+                </div>
+            </details> -->
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

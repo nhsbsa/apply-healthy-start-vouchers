@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your date of birth?
+What is your partner date of birth?
 {% endblock %}
 
 {% block content %}
@@ -14,14 +14,14 @@ What is your date of birth?
         }) }}
 
 
-    <form action="v1-error-and-fraud/date-of-birth" method="post">
+    <form action="v1-error-and-fraud/date-of-birth-partner" method="post">
 
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              What is your date of birth?
+              What is {{data['firstname-partner']}} {{data['lastname-partner']}}'s date of birth?
             </h1>
           </legend>
           <span class="nhsuk-hint" id="hint">
@@ -35,7 +35,7 @@ What is your date of birth?
                   Day
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthday"
-                  name="dateofbirthday" type="number" pattern="[0-9]*" value="{{ data['dateofbirthday'] }}">
+                  name="dateofbirthday" type="number" pattern="[0-9]*">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -44,7 +44,7 @@ What is your date of birth?
                   Month
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthmonth"
-                  name="dateofbirthmonth" type="number" pattern="[0-9]*" value="{{ data['dateofbirthmonth'] }}">
+                  name="dateofbirthmonth" type="number" pattern="[0-9]*">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -53,7 +53,7 @@ What is your date of birth?
                   Year
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateofbirthyear"
-                  name="dateofbirthyear" type="number" pattern="[0-9]*" value="{{ data['dateofbirthyear'] }}">
+                  name="dateofbirthyear" type="number" pattern="[0-9]*">
               </div>
             </div>
           </div>
