@@ -10,6 +10,9 @@ pageTitle – Get help to buy food and milk (Healthy Start) - NHSBSA
 {% block outerContent %}
 <div id="hs-timeout-dialog" tabindex="-1" role="dialog" aria-modal="true" class="hs-timeout-dialog" aria-labelledby="hs-timeout-heading hs-timeout-message">
   <div>
+
+
+
       <h1 id="hs-timeout-heading" class="nhsuk-heading-xl">Your session will time out soon</h1>
       <p class="nhsuk-body hs-timeout-dialog__message" aria-hidden="true">Your session will end if you do not continue within <span id="hs-timeout-countdown" class="hs-timeout-dialog__countdown"><strong>4 minutes 59 seconds</strong></span>.</p>
       <p>If your session ends, you’ll need to start again. We do this to keep your information secure.</p>
@@ -18,9 +21,9 @@ pageTitle – Get help to buy food and milk (Healthy Start) - NHSBSA
         Continue
       </a>
 
-      <a id="hs-timeout-keep-restart-btn" class="nhsuk-button nhsuk-button--secondary" href="respond-to-your-letter" role="button">
+      <!--<a id="hs-timeout-keep-restart-btn" class="nhsuk-button nhsuk-button--secondary" href="respond-to-your-letter" role="button">
         End session
-      </a>
+      </a>-->
     </div>
   </div>
 <div id="hs-timeout-overlay" class="hs-timeout-overlay"></div>
@@ -37,6 +40,11 @@ pageTitle – Get help to buy food and milk (Healthy Start) - NHSBSA
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Go back"
+}) }} 
 
       <form action="v25/date-of-birth-update" method="post">
 
