@@ -21,7 +21,7 @@ What is your partner date of birth?
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h1 class="nhsuk-fieldset__heading">
-              What is ...add name here..date of birth?
+              What is {{data['firstname-partner']}} {{data['lastname-partner']}}'s date of birth?
             </h1>
           </legend>
           <span class="nhsuk-hint" id="hint">
@@ -60,17 +60,6 @@ What is your partner date of birth?
         </fieldset>
 
       </div>
-
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Why we ask for your date of birth
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>We use this to work out your age and check your eligibility.</p>
-        </div>
-      </details>
 
       <button class="nhsuk-button" type="submit">
         Continue

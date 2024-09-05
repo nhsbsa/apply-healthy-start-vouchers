@@ -22,7 +22,7 @@ Check your answers
         <form action="v1-error-and-fraud/cya-personal-details" method="POST">
             <dl class="nhsuk-summary-list">
 
-                {%if data[fistname]%}
+                {%if data['firstname']%}
                     <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         Full name
@@ -38,7 +38,7 @@ Check your answers
                     </div>
                 {%endif%}
             
-                {%if data[postcode]%}
+                {%if data['postcode']%}
                     <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         Postcode
@@ -47,7 +47,7 @@ Check your answers
                         {{ data['postcode'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
-                        <a href="address#addressline1">
+                        <a href="postcode#postcode">
                         Change<span class="nhsuk-u-visually-hidden"> postcode</span>
                         </a>
                     </dd>

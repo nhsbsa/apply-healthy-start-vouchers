@@ -148,49 +148,19 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
     var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
   
     if (nationalinsurancenumber) {
-      res.redirect('/v1-error-and-fraud/apply/email-address')
+      res.redirect('/v1-error-and-fraud/apply/check-your-answers-personal-details')
     } else {
       res.redirect('/v1-error-and-fraud/apply/national-insurance-number-error') // error state
     }
 
   });
 
-    // What is your email address?
-  
-  router.post('/v1-error-and-fraud/email-address', function (req, res) {
-  
-    var emailaddress = req.session.data['emailaddress']
-  
-    res.redirect('/v1-error-and-fraud/apply/check-your-answers-personal-details')
-  
-  });
+
 
     // Check your answers - personal details
 
     router.post('/v1-error-and-fraud/cya-personal-details', (req, res) => {
-
-      var dateofbirthday = req.session.data['dateofbirthday']
-      var dateofbirthmonth = req.session.data['dateofbirthmonth']
-      var dateofbirthyear = req.session.data['dateofbirthyear']
-    
-      var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
-      var dateofbirth = moment(dob).format('MM/DD/YYYY');
-      req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
-  
-      var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-      var ageDate = new Date(today - dobYrs.getTime())
-      var temp = ageDate.getFullYear();
-      var yrs = Math.abs(temp - 1970);
-  
-      var firstname = req.session.data['firstname'].trim().toUpperCase()
-      var lastname = req.session.data['lastname'].trim().toUpperCase()
-      req.session.fullName = firstname + ' ' + lastname
-
-      var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
-      var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-
       res.redirect('/v1-error-and-fraud/apply/get-your-security-code');
-
     });
 
 
@@ -266,7 +236,7 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
   
       var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
       var dateofbirth = moment(dob).format('MM/DD/YYYY');
-      req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(dateofbirth));
+      req.session.data['dateofbirth-partner'] = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(dateofbirth));
   
       var dobYrs = new Date(dateofbirthyear, dateofbirthmonth - 1, dateofbirthday); // month is 0-indexed
       var ageDate = new Date(Date.now() - dobYrs.getTime());
@@ -404,89 +374,104 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
   
   });
 
-  //What is your chil's first name
-  
+  // What is your child's first name
   router.post('/v1-error-and-fraud/childs-first-name', function (req, res) {
-  
-    var childsfirstname = req.session.data['childsfirstname']
-    var childslastname = req.session.data['childslastname']
+    var childsfirstname = req.session.data['childsfirstname'];
+    var childslastname = req.session.data['childslastname'];
 
     if (childsfirstname && childslastname) {
-      res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth')
+      res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth');
+    } else {
+      res.redirect('/v1-error-and-fraud/apply/childs-first-name'); // error state
     }
-    else {
-      res.redirect('/v1-error-and-fraud/apply/childs-first-name') // error state
-    }
-
   });
-     
 
-    // What is the child date of birth?
+  // What is the child's date of birth?
+  router.post('/v1-error-and-fraud/childs-date-of-birth', function (req, res) {
+    var childsdateofbirthday = req.session.data['childsdateofbirthday'];
+    var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth'];
+    var childsdateofbirthyear = req.session.data['childsdateofbirthyear'];
 
-    router.post('/v1-error-and-fraud/childs-date-of-birth', function (req, res) {
+    var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(childsdateofbirth));
 
-      var childsdateofbirthday = req.session.data['childsdateofbirthday']
-      var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
-      var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
+    var today = moment().format('YYYY-MM-DD');
+    var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
 
-      var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
-      var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
+    if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
+      if (moment(childsdateofbirth).isBefore(today) && moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
 
-      var today = moment().format('YYYY-MM-DD');
-      var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
+        // Retrieve or initialize the childList array
+        var childList = req.session.data.childList || [];
 
-      console.log('Childs DOB: '+ childsdateofbirth);
-      console.log('Today: '+ today);
-      console.log('Four years from today: '+ fouryearsfromtoday);
+        // Retrieve the child's first and last name
+        var childsfirstname = req.session.data['childsfirstname'];
+        var childslastname = req.session.data['childslastname'];
 
-      if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
+        // Add the child's name and date of birth to the childList array
+        childList.push({
+          "ChildsFirstName": childsfirstname,
+          "ChildsLastName": childslastname,
+          "ChildsDOB": childsdateofbirthDisplay,
+          "ChildsNhsNumb": null // Placeholder for the NHS number (if they provide it later)
+        });
 
-        if (moment(childsdateofbirth).isBefore(today)) {
+        // Save the updated childList back to the session
+        req.session.data.childList = childList;
 
-            if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
+        // Redirect to the 'Do you know their NHS number?' page
+        res.redirect('/v1-error-and-fraud/apply/children-under-four-nhs');
 
-              var childList = req.session.data.childList
-              
-              // If no array exists, create one called 'childList'. If one already exists, do nothing.
-              
-              childList = ( typeof childList != 'undefined' && childList instanceof Array ) ? childList : []
-              
-              // Create a variable of the posted information
-              
-              var childsfirstname = req.session.data['childsfirstname']
-              var childslastname = req.session.data['childslastname']
-              
-              // Add the posted information into the 'childList' array
-              
-              childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
-              
-              req.session.data.childList = childList;
-              
-              console.log(childList)
-              
-              console.log('Number of children:', childList.length)
-              
-              // Redirect to the 'Do you know their NHS number?' page
-              
-              res.redirect('/v1-error-and-fraud/apply/children-under-four-nhs');          
-
-
-
-            } else {
-              res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth')
-            }
-
-        } else {
-          res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth')
-        }
-        
+      } else {
+        // Redirect back if the date of birth is invalid (too young or future date)
+        res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth');
       }
-      else {
-        res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth')
+    } else {
+      // Redirect back if the date of birth is incomplete
+      res.redirect('/v1-error-and-fraud/apply/childs-date-of-birth');
+    }
+  });
+
+
+  // Do you know the child's NHS number?
+  router.post('/v1-error-and-fraud/children-under-four-nhs', function (req, res) {
+    var childNhs = req.session.data['child-nhs'];
+
+    if (childNhs === 'yes') {
+      res.redirect('/v1-error-and-fraud/apply/child-nhs-numb');
+    } else {
+      res.redirect('/v1-error-and-fraud/apply/children-under-four-answers');
+    }
+  });
+
+
+  // What is your child's NHS number?
+  router.post('/v1-error-and-fraud/child-nhs-numb', function (req, res) {
+    var childsNhsNumb = req.session.data['child-nhs-numb'];
+
+
+    if (childsNhsNumb) {
+      // Retrieve the childList from the session
+      var childList = req.session.data.childList;
+
+      // Find the last child added (this assumes the NHS number is provided for the last child entered)
+      if (childList && childList.length > 0) {
+        // Update the last child's NHS number
+        childList[childList.length - 1].ChildsNhsNumb = childsNhsNumb;
+
+        // Save the updated childList back to the session
+        req.session.data.childList = childList;
+
+        res.redirect('/v1-error-and-fraud/apply/children-under-four-answers');
+      } else {
+        // Handle the case where no children have been added yet (this shouldn't happen normally)
+        res.redirect('/v1-error-and-fraud/apply/child-nhs-num');
       }
-
-
-    });
+    } else {
+      // Redirect if NHS number is not provided
+      res.redirect('/v1-error-and-fraud/apply/child-nhs-num');
+    }
+  });
 
 
 
@@ -507,6 +492,33 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
       }
 
     });
+
+    // What is your email address?
+
+    router.post('/v1-error-and-fraud/email-address', function (req, res) {
+    
+      var emailaddress = req.session.data['emailaddress']
+    
+      res.redirect('/v1-error-and-fraud/apply/delivery-address')
+    
+    });
+
+
+    // Is this the address you would like the Healthy Start card delivered to?
+
+    router.post('/v1-error-and-fraud/delivery-address', function(req, res) {
+
+      var delivery = req.session.data['delivery'];
+
+      if (delivery === 'yes'){
+        res.redirect('/v1-error-and-fraud/apply/check-your-answers')
+      }
+      else{
+        res.redirect('/v1-error-and-fraud/apply/new-address')
+      }
+    });
+
+
 
 
 

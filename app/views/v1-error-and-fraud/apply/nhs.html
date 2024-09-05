@@ -27,15 +27,15 @@ Do you know you NHS number?
               <div class="nhsuk-radios">
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-1" name="nhs" type="radio" value="yes">
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  <input class="nhsuk-radios__input" id="nhs-1" name="nhs" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="nhs-1">
                     Yes, I know my NHS number
                   </label>
                 </div>
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-2" name="nhs" type="radio" value="no">
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  <input class="nhsuk-radios__input" id="nhs-2" name="nhs" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="nhs-1">
                     No, continue another way
                   </label>
                 </div>
@@ -54,4 +54,21 @@ Do you know you NHS number?
     </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    const nhs = "{{data['nhs']}}";
+    const radioButton1 = document.getElementById('nhs-1');
+    const radioButton2 = document.getElementById('nhs-2');
+  
+    if (nhs === 'yes') {
+      radioButton1.checked = true;
+    } else if (nhs === 'no') {
+      radioButton2.checked = true;
+    }
+  });
+</script>
+
 {% endblock %}
+
+

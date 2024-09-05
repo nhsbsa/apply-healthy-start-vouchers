@@ -27,13 +27,13 @@ Do you live with a partner?
 
                     <div class="nhsuk-radios nhsuk-radios--inline">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="yes" name="partner" type="radio" value="yes">
+                            <input class="nhsuk-radios__input" id="partner-1" name="partner" type="radio" value="yes">
                             <label class="nhsuk-label nhsuk-radios__label" for="yes">
                                 Yes
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="no" name="partner" type="radio" value="no">
+                            <input class="nhsuk-radios__input" id="partner-2" name="partner" type="radio" value="no">
                             <label class="nhsuk-label nhsuk-radios__label" for="no">
                                 No
                             </label>
@@ -51,5 +51,19 @@ Do you live with a partner?
 
     </div>
 </div>
+
+<script>
+  
+    const partner = "{{data['partner']}}";
+    const radioButton1 = document.getElementById('partner-1');
+    const radioButton2 = document.getElementById('partner-2');
+  
+    if (partner === 'yes') {
+       radioButton1.checked = true;
+    } else if (partner === 'no') {
+      radioButton2.checked = true;
+    };
+  
+</script>
 
 {% endblock %}

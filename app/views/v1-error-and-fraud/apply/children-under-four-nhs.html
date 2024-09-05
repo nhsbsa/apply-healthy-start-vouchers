@@ -13,28 +13,28 @@ Do you know you NHS number?
             "text": "Go back"
         }) }}
 
-        <form action="v1-error-and-fraud/nhs" method="post">
+        <form action="v1-error-and-fraud/children-under-four-nhs" method="post">
 
           <div class="nhsuk-form-group">
 
             <fieldset class="nhsuk-fieldset">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
                 <h1 class="nhsuk-fieldset__heading">
-                  Do you know ..add child name here.. NHS number?
+                  Do you know {{ data['childsfirstname']}} {{data['childslastname']}}'s NHS number?
                 </h1>
               </legend>
           
               <div class="nhsuk-radios">
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-1" name="nhs" type="radio" value="yes">
+                  <input class="nhsuk-radios__input" id="child-nhs-1" name="child-nhs" type="radio" value="yes">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                     Yes, I know their NHS number
                   </label>
                 </div>
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-2" name="nhs" type="radio" value="no">
+                  <input class="nhsuk-radios__input" id="child-nhs-2" name="child-nhs" type="radio" value="no">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-2">
                     No, I don't know their NHS number
                   </label>
@@ -53,5 +53,19 @@ Do you know you NHS number?
 
     </div>
 </div>
+
+<script>
+  
+  const childnhs = req.session.data['child-nhs']
+  const radioButton1 = document.getElementById('child-nhs-1');
+  const radioButton2 = document.getElementById('child-nhs-2');
+
+  if (childnhs === 'yes') {
+    radioButton1.checked = true;
+  } else if (childnhs === 'no') {
+    radioButton2.checked = true;
+  };
+
+</script>
 
 {% endblock %}

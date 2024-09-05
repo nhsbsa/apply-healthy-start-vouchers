@@ -33,14 +33,14 @@ Who is pregnant?
               <div class="nhsuk-radios">
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-1" name="who-is-pregnant" type="radio" value="me">
+                  <input class="nhsuk-radios__input" id="who-is-pregnant-1" name="who-is-pregnant" type="radio" value="me">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                     Me
                   </label>
                 </div>
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-2" name="who-is-pregnant" type="radio" value="partner">
+                  <input class="nhsuk-radios__input" id="who-is-pregnant-2" name="who-is-pregnant" type="radio" value="partner">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-2">
                     {{radio2}} 
                   </label>
@@ -59,5 +59,19 @@ Who is pregnant?
 
     </div>
 </div>
+
+<script>
+  
+  const whoispregnant = req.session.data['who-is-pregnant']
+  const radioButton1 = document.getElementById('who-is-pregnant-1');
+  const radioButton2 = document.getElementById('who-is-pregnant-2');
+
+  if (whoispregnant === 'me') {
+    radioButton1.checked = true;
+  } else if (whoispregnant === 'partner') {
+    radioButton2.checked = true;
+  };
+
+</script>
 
 {% endblock %}

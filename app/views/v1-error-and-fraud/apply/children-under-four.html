@@ -27,13 +27,13 @@ Do you have any children under the age of 4?
 
                     <div class="nhsuk-radios nhsuk-radios--inline">
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="yes" name="childrenunderfour" type="radio" value="yes">
+                            <input class="nhsuk-radios__input" id="childrenunderfour-1" name="childrenunderfour" type="radio" value="yes">
                             <label class="nhsuk-label nhsuk-radios__label" for="yes">
                                 Yes
                             </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                            <input class="nhsuk-radios__input" id="no" name="childrenunderfour" type="radio" value="no">
+                            <input class="nhsuk-radios__input" id="childrenunderfour-2" name="childrenunderfour" type="radio" value="no">
                             <label class="nhsuk-label nhsuk-radios__label" for="no">
                                 No
                             </label>
@@ -53,5 +53,19 @@ Do you have any children under the age of 4?
 
     </div>
 </div>
+
+<script>
+  
+    const childrenunderfour = req.session.data['childrenunderfour']
+    const radioButton1 = document.getElementById('childrenunderfour-1');
+    const radioButton2 = document.getElementById('childrenunderfour-2');
+  
+    if (childrenunderfour === 'yes') {
+      radioButton1.checked = true;
+    } else if (childrenunderfour === 'no') {
+      radioButton2.checked = true;
+    };
+  
+</script>
 
 {% endblock %}

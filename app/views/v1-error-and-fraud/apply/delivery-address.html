@@ -13,7 +13,7 @@ Is this address you would like the Healthy Start card delivered to?
             "text": "Go back"
         }) }}
 
-        <form action="v1-error-and-fraud/nhs" method="post">
+        <form action="v1-error-and-fraud/delivery-address" method="post">
 
           <div class="nhsuk-form-group">
 
@@ -24,7 +24,7 @@ Is this address you would like the Healthy Start card delivered to?
                 </h1>
               </legend>
               <span class="nhsuk-hint" id="example-with-hint-text-hint">
-                Tammy Tenembaum
+                {{data['firstname']}} {{data['lastname']}}
                 <br>
                 Flat 22, Manor Court
                 <br>
@@ -38,14 +38,14 @@ Is this address you would like the Healthy Start card delivered to?
               <div class="nhsuk-radios">
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-1" name="nhs" type="radio" value="yes">
+                  <input class="nhsuk-radios__input" id="delivery-1" name="delivery" type="radio" value="yes">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                     Yes, send my Healthy Start card to this address.
                   </label>
                 </div>
           
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-2" name="nhs" type="radio" value="no">
+                  <input class="nhsuk-radios__input" id="delivery-2" name="delivery" type="radio" value="no">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-2">
                     No, I want to add a different delivery address.
                   </label>
@@ -64,5 +64,19 @@ Is this address you would like the Healthy Start card delivered to?
 
     </div>
 </div>
+
+<script>
+  
+  const delivery = req.session.data['delivery']
+  const radioButton1 = document.getElementById('delivery-1');
+  const radioButton2 = document.getElementById('delivery-2');
+
+  if (delivery === 'yes') {
+    radioButton1.checked = true;
+  } else if (delivery === 'no') {
+    radioButton2.checked = true;
+  };
+
+</script>
 
 {% endblock %}

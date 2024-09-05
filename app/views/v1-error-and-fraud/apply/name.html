@@ -25,14 +25,14 @@ What is your name?
                 <label class="nhsuk-label" for="firstname">
                     First name
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text" autocomplete="given-name">
+                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text" autocomplete="given-name" value="{{ data['firstname'] }}">
             </div>
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="lastname">
                     Last name
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text" autocomplete="family-name">
+                <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text" autocomplete="family-name" value="{{ data['lastname'] }}">
             </div>
 
             <button class="nhsuk-button" type="submit">
