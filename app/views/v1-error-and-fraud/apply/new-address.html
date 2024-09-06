@@ -18,34 +18,34 @@ What is your address?
             What is your address?
         </h1>
 
-        <form action="v1/address" method="post">
+        <form action="v1-error-and-fraud/new-address" method="post">
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="addressline1">
                     Building and street
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1" value="{{ data['addressline1']}}">
             </div>
 
             <div class="nhsuk-form-group">
                     <label class="nhsuk-label" for="addressline2">
                     Address line 2 (optional)
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="addressline2" name="addressline2" type="text" autocomplete="address-line2">
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline2" name="addressline2" type="text" autocomplete="address-line2" value="{{ data['addressline2']}}">
             </div>
 
             <div class="nhsuk-form-group">
                     <label class="nhsuk-label" for="towncity">
                     Town or city
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level2">
+                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level2" value="{{ data['towncity']}}">
             </div>
 
             <div class="nhsuk-form-group">
                     <label class="nhsuk-label" for="postcode">
                     Postcode
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode-address" name="postcode-address" type="text" autocomplete="postal-code" value="{{ data['postcode-address']}}">
             </div>
 
             <button class="nhsuk-button" type="submit">

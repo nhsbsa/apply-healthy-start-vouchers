@@ -67,7 +67,7 @@ Is this address you would like the Healthy Start card delivered to?
 
 <script>
   
-  const delivery = req.session.data['delivery']
+  const delivery = "{{data['delivery']}}";
   const radioButton1 = document.getElementById('delivery-1');
   const radioButton2 = document.getElementById('delivery-2');
 

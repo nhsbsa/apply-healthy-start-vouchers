@@ -62,7 +62,7 @@ Who is pregnant?
 
 <script>
   
-  const whoispregnant = req.session.data['who-is-pregnant']
+  const whoispregnant = "{{data['who-is-pregnant']}}";
   const radioButton1 = document.getElementById('who-is-pregnant-1');
   const radioButton2 = document.getElementById('who-is-pregnant-2');
 

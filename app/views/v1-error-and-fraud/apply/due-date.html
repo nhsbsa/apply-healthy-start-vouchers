@@ -6,14 +6,20 @@ What is your due date?
 
 
 <!-- Content logic -->
-{% if data['who-is-pregnant'] === 'me' %}
-{% set title = "What is your due date?" %}
+{% if data['who-is-pregnant'] == 'me' %}
+
+  {% set title = "What is your due date?" %}
+
+{% elif data['partner'] == 'no' %}
+
+  {% set title = "What is your due date?" %}
 
 {% else %}
 
-{% set title = "What is" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "due date?" %}
+  {% set title = "What is " + data['firstname-partner'] | capitalize + " " + data['lastname-partner'] | capitalize + "'s due date?" %}
 
 {% endif %}
+
 
 
 {% block content %}
@@ -47,7 +53,7 @@ What is your due date?
                   Day
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedateday"
-                  name="duedateday" type="number" pattern="[0-9]*">
+                  name="duedateday" type="number" pattern="[0-9]*" value="{{ data['duedateday']}}">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -56,7 +62,7 @@ What is your due date?
                   Month
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedatemonth"
-                  name="duedatemonth" type="number" pattern="[0-9]*">
+                  name="duedatemonth" type="number" pattern="[0-9]*" value="{{ data['duedatemonth']}}">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
@@ -65,7 +71,7 @@ What is your due date?
                   Year
                 </label>
                 <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="duedateyear"
-                  name="duedateyear" type="number" pattern="[0-9]*">
+                  name="duedateyear" type="number" pattern="[0-9]*" value="{{ data['duedateyear']}}">
               </div>
             </div>
           </div>
