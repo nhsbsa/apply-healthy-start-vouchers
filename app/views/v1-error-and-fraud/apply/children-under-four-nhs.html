@@ -56,7 +56,7 @@ Do you know you NHS number?
 
 <script>
   
-  const childnhs = req.session.data['child-nhs']
+  const childnhs = "{{data['child-nhs']}}";
   const radioButton1 = document.getElementById('child-nhs-1');
   const radioButton2 = document.getElementById('child-nhs-2');
 

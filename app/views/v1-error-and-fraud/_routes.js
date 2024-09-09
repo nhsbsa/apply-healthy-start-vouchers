@@ -230,9 +230,9 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
 
     router.post('/v1-error-and-fraud/date-of-birth-partner', function (req, res) {
 
-      var dateofbirthday = req.session.data['dateofbirthday'];
-      var dateofbirthmonth = req.session.data['dateofbirthmonth'];
-      var dateofbirthyear = req.session.data['dateofbirthyear'];
+      var dateofbirthday = req.session.data['dateofbirthday-partner'];
+      var dateofbirthmonth = req.session.data['dateofbirthmonth-partner'];
+      var dateofbirthyear = req.session.data['dateofbirthyear-partner'];
   
       var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
       var dateofbirth = moment(dob).format('MM/DD/YYYY');
@@ -353,7 +353,7 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
   
   });
 
-  // Do you have any children under the age of 4?
+  // Do you have a child under the age of 4?
   
   router.post('/v1-error-and-fraud/children-under-four', function (req, res) {
   
@@ -361,7 +361,7 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes" && childrenunderfour === "no") {
-      res.redirect('/v1-error-and-fraud/apply/check-your-answers')
+      res.redirect('/v1-error-and-fraud/apply/email-address')
     } else if (pregnant === "no" && childrenunderfour === "yes") {
       res.redirect('/v1-error-and-fraud/apply/childs-first-name')
     } else if (pregnant === "yes" && childrenunderfour === "yes") {
@@ -474,6 +474,31 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
   });
 
 
+  // Remove a child from the list
+  router.post('/v1-error-and-fraud/apply/remove-child', function (req, res) {
+    var childIndex = req.body.childIndex;
+
+    // Retrieve the childList from the session
+    var childList = req.session.data.childList || [];
+
+    // Convert childIndex to an integer
+    childIndex = parseInt(childIndex, 10);
+
+    // Check if the childIndex is valid and within the array bounds
+    if (childIndex >= 0 && childIndex < childList.length) {
+        // Remove the child at the specified index
+        childList.splice(childIndex, 1);
+    }
+
+    // Save the updated childList back to the session
+    req.session.data.childList = childList;
+
+    // Redirect to the 'Check Your Answers' screen
+    res.redirect('/v1-error-and-fraud/apply/check-your-answers');
+  });
+
+
+
 
     // Do you have another child under four?
   
@@ -492,6 +517,8 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
       }
 
     });
+
+
 
     // What is your email address?
 
@@ -518,46 +545,45 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
       }
     });
 
+    // what is your new address? 
+
+    router.post('/v1-error-and-fraud/new-address', function(req, res) {
+
+      res.redirect('/v1-error-and-fraud/apply/check-your-answers')
+
+    });
 
 
 
 
+    // // POST REMOVE CHILD OR KEEP CHILD 
 
-  
-  
-//   // What is your email address?
-  
-//   router.post('/current/email-address', function (req, res) {
-  
-//     var emailaddress = req.session.data['emailaddress']
-  
-//     res.redirect('/current/apply/mobile-phone-number')
-  
-//   })
-  
-//   // What is your mobile phone number?
-  
-//   router.post('/current/mobile-phone-number', function (req, res) {
-  
-//     var mobilePhoneNumber = req.session.data['mobilephonenumber']
-  
-//     res.redirect('/current/apply/check-your-answers')
-  
-//   })
-  
-//   // Feedback
-  
-//   router.post('/current/feedback', function (req, res) {
-//     res.redirect('/current/feedback')
-//   })
+    // // Route to handle the removal of the child based on the user's selection
+    // router.post('/v1-error-and-fraud/apply/remove-child', function (req, res) {
+    //   var removeChildDecision = req.body.removechild; // Capture the 'yes' or 'no' decision
+    //   var childIndex = parseInt(req.body.childIndex, 10); // Capture the child index from the hidden input
 
+    //   // Retrieve the childList from the session
+    //   var childList = req.session.data.childList || [];
 
-// // Current Check Your Answers
+    //   // Check if the user selected 'yes'
+    //   if (removeChildDecision === 'yes') {
+    //       // Check if the childIndex is valid and within the array bounds
+    //       if (childIndex >= 0 && childIndex < childList.length) {
+    //           // Remove the child at the specified index
+    //           childList.splice(childIndex, 1);
+    //       }
 
-// // N.B ALL PERSONALISATION VARIABLES NEED TO BE THERE, IF THEY'RE NOT REQUIRED YOU STILL NEED TO SEND AN EMPTY STRING ""
+    //       // Save the updated childList back to the session
+    //       req.session.data.childList = childList;
 
-// router.post('/current/check-your-answers', function (req, res) {
-//   res.redirect('/current/apply/confirmation-successful');
-// })
+    //       // Redirect to the 'Check Your Answers' screen
+    //       res.redirect('/v1-error-and-fraud/apply/children-under-four-answers');
+    //   } else {
+    //       // If the user selected 'no', redirect back to the 'Check Your Answers' screen without removing the child
+    //       res.redirect('/v1-error-and-fraud/apply/children-under-four-answers');
+    //   }
+    // });
+
   
 module.exports = router;
