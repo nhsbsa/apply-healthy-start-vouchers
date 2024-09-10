@@ -15,6 +15,7 @@ Check your answers
 
         <!-- partner logic -->
 
+        {% if data['partner'] == 'yes' %}
         <h2>Partner Details</h2>
 
         <dl class="nhsuk-summary-list">
@@ -39,19 +40,25 @@ Check your answers
                     <a href="partner-national-insurance-number">Change<span class="nhsuk-u-visually-hidden"> Partner national insurance number</span></a>
                 </dd>
             </div>
-            <div class=" nhsuk-u-margin-top-4">
-                <a class="nhsuk-link" href="remove-partner">Remove partner<span class="nhsuk-u-visually-hidden"> Remove partner</span></a>
+
+            <div class="nhsuk-u-margin-top-4">
+                <a href="#" class="nhsuk-link remove-child" data-index="{{ loop.index }}">
+                    Remove this child
+                </a><span class="nhsuk-u-visually-hidden"> Remove this child</span>
             </div>
+            
         </dl>
+        {% endif %}
 
         <!-- pregnancy logic -->
 
+        {% if data['pregnant'] == 'yes'%}
         <h2>About pregnancy</h2>
 
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Who is pregnant?</dt>
-                <dd class="nhsuk-summary-list__value">{{data['who-is-pregnant']}}</dd>
+                <dd class="nhsuk-summary-list__value" id="pregnant-name"></dd>  
                 <dd class="nhsuk-summary-list__actions">
                     <a href="who-is-pregnant">Change<span class="nhsuk-u-visually-hidden"> Who is pregnant?</span></a>
                 </dd>
@@ -64,6 +71,7 @@ Check your answers
                 </dd>
             </div>
         </dl>
+        {% endif %}
 
 
         <!-- children logic -->
@@ -95,6 +103,7 @@ Check your answers
                     </dd>
                 </div>
 
+                {% if item.ChildsNhsNumb %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">NHS number</dt>
                     <dd class="nhsuk-summary-list__value">{{ item.ChildsNhsNumb }}</dd>
@@ -102,9 +111,14 @@ Check your answers
                         <a href="due-date">Change<span class="nhsuk-u-visually-hidden"> Change child's NHS number</span></a>
                     </dd>
                 </div>
-                <div class=" nhsuk-u-margin-top-4">
-                    <a class="nhsuk-link" href="remove-partner">Remove this child<span class="nhsuk-u-visually-hidden"> Remove this child</span></a>
+                {% endif %}
+
+                <div class="nhsuk-u-margin-top-4">
+                    <a href="/v1-error-and-fraud/apply/remove-child?index={{ loop.index -1 }}" class="nhsuk-link remove-child">
+                        Remove this child
+                    </a><span class="nhsuk-u-visually-hidden"> Remove this child</span>
                 </div>
+
                 {% endfor %}
             </dl>
         {% endif %}
@@ -124,30 +138,71 @@ Check your answers
             </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Delivery address</dt>
+                {% if data['addressline1']%}
                 <dd class="nhsuk-summary-list__value">
-                    Building and street
+                    {{data['addressline1']}}
+                    {% if data['addressline2']%}
                     <br>
-                    Address line 2 (optional)
+                    {{data['addressline2']}}
+                    {% endif %}
                     <br>
-                    Town or city
+                    {{data['towncity']}}
                     <br>
-                    Postcode
+                    {{data['postcode-address']}}
                 </dd>
+                {% else %}
+                <dd class="nhsuk-summary-list__value">
+                    22B Manor Court
+                    <br>
+                    London Road
+                    <br>
+                    Birmigham
+                    <br>
+                    SE23 4L5
+                </dd>
+                {% endif %}
                 <dd class="nhsuk-summary-list__actions">
                     <a href="delivery-address">Change<span class="nhsuk-u-visually-hidden"> delivery address</span></a>
                 </dd>
             </div>
         </dl>
 
-        <h2>Now send your application</h2>
-
-        <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-        <p>Your details will be sent to Rose Medical Practice to begin your registration.</p>
-
-        <a href="confirmation-successful" class="nhsuk-button">Accept and send registration</a>
+        <a href="confirmation-successful" class="nhsuk-button">Send application</a>
 
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    
+        // Get values directly from the template
+        const whoIsPregnant = "{{ data['who-is-pregnant'] }}";
+        const firstNamePartner = "{{ data['firstname-partner'] }}";
+        const lastNamePartner = "{{ data['lastname-partner'] }}";
+        const firstName = "{{ data['firstname'] }}";
+        const lastName = "{{ data['lastname'] }}";
+    
+        // Select the element where the name will be displayed
+        const pregnantNameElement = document.getElementById('pregnant-name');
+    
+        // Logic to display partner's name or user's name
+        if (whoIsPregnant === 'partner') {
+            pregnantNameElement.textContent = `${firstNamePartner} ${lastNamePartner}`;
+        } else if (firstName){
+            pregnantNameElement.textContent = `${firstName} ${lastName}`;
+        }else pregnantNameElement.textContent = 'Me';
+
+        console.log("whoIsPregnant:", whoIsPregnant);
+        console.log("firstNamePartner:", firstNamePartner);
+        console.log("lastNamePartner:", lastNamePartner);
+        console.log("firstName:", firstName);
+        console.log("lastName:", lastName);
+
+    });
+
+    </script>
+    
+
 {% endblock %}
 
 
