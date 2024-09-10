@@ -114,7 +114,7 @@ Check your answers
                 {% endif %}
 
                 <div class="nhsuk-u-margin-top-4">
-                    <a href="/v1-error-and-fraud/apply/remove-child?index={{ loop.index }}" class="nhsuk-link remove-child">
+                    <a href="/v1-error-and-fraud/apply/remove-child?index={{ loop.index -1 }}" class="nhsuk-link remove-child">
                         Remove this child
                     </a><span class="nhsuk-u-visually-hidden"> Remove this child</span>
                 </div>
@@ -167,12 +167,7 @@ Check your answers
             </div>
         </dl>
 
-        <h2>Now send your application</h2>
-
-        <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-        <p>Your details will be sent to Rose Medical Practice to begin your registration.</p>
-
-        <a href="confirmation-successful" class="nhsuk-button">Accept and send registration</a>
+        <a href="confirmation-successful" class="nhsuk-button">Send application</a>
 
     </div>
 </div>

@@ -22,7 +22,25 @@ Do you know you NHS number?
                 <h1 class="nhsuk-fieldset__heading">
                   Do you know {{ data['childsfirstname']}} {{data['childslastname']}}'s NHS number?
                 </h1>
+                <div class="nhsuk-u-margin-top-3">
+                  <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                    Their NHS number is a 10 digit number that you find on any letter the NHS has sent them. 
+                  </span>
+                </div>
               </legend>
+
+              <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    How to find their NHS number
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <p>You can find it on the NHS app or use our online <a href="#">NHS number finder (opens in a new tab)</a></p>
+
+              
+                </div>
+              </details>
           
               <div class="nhsuk-radios">
           
@@ -36,7 +54,7 @@ Do you know you NHS number?
                 <div class="nhsuk-radios__item">
                   <input class="nhsuk-radios__input" id="child-nhs-2" name="child-nhs" type="radio" value="no">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                    No, I don't know their NHS number
+                    No, I don't know their NHS number, continue without.
                   </label>
                 </div>
           
@@ -56,15 +74,15 @@ Do you know you NHS number?
 
 <script>
   
-  const childnhs = "{{data['child-nhs']}}";
-  const radioButton1 = document.getElementById('child-nhs-1');
-  const radioButton2 = document.getElementById('child-nhs-2');
+  // const childnhs = "{{data['child-nhs']}}";
+  // const radioButton1 = document.getElementById('child-nhs-1');
+  // const radioButton2 = document.getElementById('child-nhs-2');
 
-  if (childnhs === 'yes') {
-    radioButton1.checked = true;
-  } else if (childnhs === 'no') {
-    radioButton2.checked = true;
-  };
+  // if (childnhs === 'yes') {
+  //   radioButton1.checked = true;
+  // } else if (childnhs === 'no') {
+  //   radioButton2.checked = true;
+  // };
 
 </script>
 
