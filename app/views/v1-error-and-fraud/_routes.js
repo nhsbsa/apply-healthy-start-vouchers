@@ -275,7 +275,7 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
       if (nationalinsurancenumberPartner) {
         res.redirect('/v1-error-and-fraud/apply/are-you-pregnant')
       } else {
-        res.redirect('/v1-error-and-fraud/apply/national-insurance-number-error') // error state
+        res.redirect('/v1-error-and-fraud/apply/partner-national-insurance-number') // error state
       }
   
     });
