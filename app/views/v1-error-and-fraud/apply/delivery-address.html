@@ -20,7 +20,7 @@ Is this address you would like the Healthy Start card delivered to?
             <fieldset class="nhsuk-fieldset">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
                 <h1 class="nhsuk-fieldset__heading">
-                  Is this address you would like the Healthy Start card delivered to?
+                  Is this the address you would like the Healthy Start card delivered to?
                 </h1>
               </legend>
               <span class="nhsuk-hint" id="example-with-hint-text-hint">
@@ -67,7 +67,7 @@ Is this address you would like the Healthy Start card delivered to?
 
 <script>
   
-  const delivery = req.session.data['delivery']
+  const delivery = "{{data['delivery']}}";
   const radioButton1 = document.getElementById('delivery-1');
   const radioButton2 = document.getElementById('delivery-2');
 

@@ -6,22 +6,11 @@ Are you pregnant?
 
 
 <!-- Content logic -->
-{% if data['firstname-partner'] %}
-{% set title = "Are you or" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "pregnant?" %}
-{% set radio1 = "Me" %}
-{% set radio2 = data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize %}
-{% set detailsSpan = "If you or" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "are less than 10 weeks pregnant"%}
-
+{% if data['partner'] == 'yes' %}
+{% set title = "Are you or" + " " + data['firstname-partner'] | capitalize  + " " + data['lastname-partner'] | capitalize + " " + "more than 10 weeks pregnant?" %}
 {% else %}
-
-{% set title = "Are you or pregnant?" %}
-{% set radio1 = "Yes" %}
-{% set radio2 = "No" %}
-{% set detailsSpan = "If you're less than 10 weeks pregnant"%}
-
+{% set title = "Are you more than 10 weeks pregnant?" %}
 {% endif %}
-
-
 
 
 {% block content %}
@@ -67,27 +56,14 @@ Are you pregnant?
 
             </div>
 
-            <details class="nhsuk-details">
-                <summary class="nhsuk-details__summary">
-                  <span class="nhsuk-details__summary-text">
-                    {{detailsSpan}}
-                  </span>
-                </summary>
-                <div class="nhsuk-details__text">
-                    <p>If you are less than 10 weeks pregnant and have children under 4 years old, you can add your pregnancy onto your application when you’ve completed your 10th week of pregnancy by:</p>
-                    <ul>
-                      <li>emailing <a href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
-                      <li>calling 0300 330 7010 – charges may apply</li>
-                    </ul>
-                    <p><a href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in a new tab)</a>.</p>
-                    <p>If you are less than 10 weeks pregnant and have no other children under 4 years old, you’ll need to apply again when you’ve completed your 10th week of pregnancy.</p>
-                  </div>
-              </details>
-
 
             <button class="nhsuk-button" type="submit">
                 Continue
             </button>
+
+            <div class="nhsuk-u-margin-top-5">
+                <a class="nhsuk-link" href="/v1-error-and-fraud/apply/kickouts/confirmation-duplicates">error-page</a>
+            </div>
 
         </form>
 
@@ -96,13 +72,13 @@ Are you pregnant?
 
 <script>
   
-    const pregnant = req.session.data['pregnant']
+    const pregnant = "{{data['pregnant']}}";
     const radioButton1 = document.getElementById('pregnant-1');
     const radioButton2 = document.getElementById('pregnant-2');
   
-    if (pregnant === 'yes') {
+    if (pregnant == 'yes') {
       radioButton1.checked = true;
-    } else if (pregnant === 'no') {
+    } else if (pregnant == 'no') {
       radioButton2.checked = true;
     };
   
