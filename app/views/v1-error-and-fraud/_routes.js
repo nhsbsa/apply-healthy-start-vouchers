@@ -275,7 +275,7 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
       if (nationalinsurancenumberPartner) {
         res.redirect('/v1-error-and-fraud/apply/are-you-pregnant')
       } else {
-        res.redirect('/v1-error-and-fraud/apply/national-insurance-number-error') // error state
+        res.redirect('/v1-error-and-fraud/apply/partner-national-insurance-number') // error state
       }
   
     });
@@ -464,7 +464,7 @@ router.post('/v1-error-and-fraud/where-do-you-live', function (req, res) {
 
         res.redirect('/v1-error-and-fraud/apply/children-under-four-answers');
       } else {
-        // Handle the case where no children have been added yet (this shouldn't happen normally)
+        // Handle the case where no children have been added yet (this shouldn't happen normally)//
         res.redirect('/v1-error-and-fraud/apply/child-nhs-num');
       }
     } else {
