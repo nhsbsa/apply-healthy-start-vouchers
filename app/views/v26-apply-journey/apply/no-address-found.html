@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+No address found
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            No results found for that {% if (data['housenumber']) and (data['postcode']) %}building number or name and postcode{% else %}postcode{% endif %}
+        </h1>
+
+        <dl class="nhsuk-summary-list">
+
+
+
+{% if data['housenumber'] %}
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Building number or name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['housenumber'] %}{{ data['housenumber'] }}{% else %}11{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="find-address#housenumber">
+                        Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} house number or name</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+{% endif %}
+
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Postcode
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {% if data['postcode'] %}{{ data['postcode'] }}{% else %}NE15 8NY{% endif %}
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="find-address#postcode">
+                        Change<span class="nhsuk-u-visually-hidden"> {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} postcode</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+        </dl>
+
+        <p><a href="address">Enter {% if data['applyingfor'] == "someoneelse" %}their{% else %}your{% endif %} address manually</a> if {% if data['applyingfor'] == "someoneelse" %}they're{% else %}you're{% endif %} sure the information {% if data['applyingfor'] == "someoneelse" %}they{% else %}you{% endif %} gave is correct.</p>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
