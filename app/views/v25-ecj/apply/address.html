@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            What is your address?
+        </h1>
+
+        <p>You should enter the address listed on your most recent benefit award notice.</p>
+
+
+        <form action="v25/address" method="post">
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="addressline1">
+                    Address line 1
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="addressline2">
+                    Address line 2 (optional)
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="addressline2" name="addressline2" type="text" autocomplete="address-line2">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="towncity">
+                    Town or city
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-20" id="towncity" name="towncity" type="text" autocomplete="address-level2">
+            </div>
+
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="postcode">
+                    Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+            </div>
+
+            <p><a href="postcode">Search by postcode</a></p>
+
+
+
+
+        <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Why we ask for your address
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+                <!-- <p><b>If you're under 18 and not claiming any benefits</b></p> -->
+                <p>We use your address to match your
+                    details with the benefit agency and
+                    check you’re eligible for Healthy
+                    Start.</p>
+                <!-- <p><b>If you do not have a permanent address</b></p> -->
+                <p>If you’re eligible, we’ll send your
+                    Healthy Start card to this address.</p>
+                <p>If you’re under 18 and do not have a
+                    current benefit award notice, you
+                    cannot apply online. You’ll need to
+                    contact us by:</p>
+                <ul>
+                  <li>email: <a href="">healthy.start@nhsbsa.nhs.uk</a></li>
+                  <li>telephone: 0300 330 7010 - this call will be charged at the local rate</li>
+                </ul>
+                <p><a href="">Find out more about call charges (opens in new tab).</a></p>
+            </div>
+          </details>
+
+          
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

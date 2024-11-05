@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Is your mobile number correct?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="v25/get-your-security-code" method="post">
+
+      
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Is your mobile number correct?
+            </h1>
+          </legend> 
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>We need to send you a security code by text message.</p>
+            <p>Your code will expire after 5 minutes.</p>
+          </div>
+
+
+          <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>********338</p>
+          </div>
+
+          <div class="nhsuk-radios nhsuk-radios--inline">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="textmessage" name="getyoursecuritycode" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="getyoursecuritycode">
+                Yes
+              </label>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="changed" name="getyoursecuritycode" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="getyoursecuritycode">
+                No
+              </label>
+            </div>
+      
+          </div>
+
+        </fieldset>
+      
+
+      </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            I do not have access to this mobile number
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This is the mobile phone number you gave us when you first applied for Healthy Start.</p>
+          <p>If your mobile number has changed, you’ll need to <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/">contact us by phone or email</a> to update your claim.</p>
+            
+        </div>
+        </details>
+
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

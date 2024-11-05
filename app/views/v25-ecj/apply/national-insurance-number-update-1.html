@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your national insurance number?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v25/national-insurance-number-update-1" method="post">
+
+            <div class="nhsuk-form-group">
+                <h1 class="nhsuk-label-wrapper">
+                    <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="nationalinsurancenumberupdate">
+                    What is your National Insurance number?
+                    </label>
+                </h1>
+                <span class="nhsuk-hint" id="example-with-hint-text-hint">
+                    <p>You need your National Insurance number to update your Healthy Start claim online.</p>
+                    <p>You can find it on your National Insurance card or letter, benefit award notice, payslip or P60. For example, QQ 12 34 56 C.</p>
+
+                </span>
+                <input class="nhsuk-input nhsuk-input--width-20" id="nationalinsurancenumberupdate" name="nationalinsurancenumberupdate" type="text">
+            </div>
+
+
+            <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                    
+                    <div class="nhsuk-checkboxes">
+                        <div class="nhsuk-checkboxes__item">
+                            <input class="nhsuk-checkboxes__input" id="checkbox" name="checkbox" type="checkbox" 
+                                value="donotremember">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="donotremember">
+                                I do not know my National Insurance number.
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                  <span class="nhsuk-details__summary-text">
+                    Why we ask for your National Insurance number
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                  <p>We use your National Insurance number to find the details of your Healthy Start claim.</p>                      
+                </div>
+              </details>
+  
+  
+  
+  
+           
+              
+            <br>
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

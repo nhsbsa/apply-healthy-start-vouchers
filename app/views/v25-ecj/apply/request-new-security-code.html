@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Request a new security code – Get help to buy food and milk (Healthy Start) – NHSBSA
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="v25/request-new-security-code" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Request a new security code
+            </h1>
+          </legend> 
+      
+          
+        <p>Text messages sometimes take a few minutes to arrive. If you do not receive a text message, you can request a new one.</P>
+        <p>If you enter the wrong security code 5 times, you will not be able to request another one for 3 hours.</p>
+      
+
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            I do not have access to my mobile phone
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>You cannot update your claim online without a security code.</p>
+          <p>You can <a href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a> to make any changes.</p>
+      
+        </div>
+      </details>
+
+      <br>
+      <p><a href="/v25/apply/security-code-text-message" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Request a new code</a></p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

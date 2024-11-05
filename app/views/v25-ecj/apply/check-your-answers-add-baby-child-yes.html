@@ -1,0 +1,144 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">Your details</h2>
+
+        <form action="v25/check-your-answers-add-baby-child-yes" method="POST">
+            <dl class="nhsuk-summary-list">
+
+                <!--<div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Jane doe
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="name#firstname">
+                    Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Flat 1B, 12 Palm Road, London, NR33 4GP
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="postcode">
+                    Change<span class="nhsuk-u-visually-hidden"> address</span>
+                    </a>
+                </dd>
+                </div>-->
+
+
+
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__value">
+                      National Insurance number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                    MN987544C
+                      <!-- {{ data['nationalinsurancenumberupdate'] }}--> 
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                     <!--<a href="#">
+                        Change<span class="nhsuk-u-visually-hidden">National Insurance number</span></a> -->
+                        </dd>
+                  </div>
+
+
+
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__value">
+                    Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    4 May 2001
+                    <!--{{ data['dateofbirth'] }}-->
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <!--<a href="date-of-birth#dateofbirthday">
+                    Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+                    </a>-->
+                </dd>
+                </div>
+              <!--
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National Insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['nationalinsurancenumber'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="national-insurance-number#nationalinsurancenumber">
+                    Change<span class="nhsuk-u-visually-hidden"> national insurance number</span>
+                    </a>
+                </dd>
+                </div> -->
+
+                
+            </dl>
+
+
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">New children's details</h2>
+        <dl class="nhsuk-summary-list">
+
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__value">Ben Jones</dt>
+                <dd class="nhsuk-summary-list__value">Born on 9 May 2022</dd>
+                <dd class="nhsuk-summary-list__actions" id="list">
+                  {% if data['childList'] | length  == 0 %}
+                  <a href="#" name="clearButton">Change<span class="nhsuk-u-visually-hidden"> child</span></a> | <a href="remove-child-yes">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                  {% else %} 
+                  
+                  <a href="childs-first-name-update">Change<span class ="nhsuk-u-visually-hidden"> child</span></a> | <a href="remove-child-yes">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                  {% endif %}
+                  
+                </dd>
+  </div>
+  
+
+
+        </dl>
+
+        
+        <p><a href="/v25/apply/child-terms-and-conditions-yes" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Continue
+        </a></p>
+
+        <!--
+        <button class="nhsuk-button" type="submit">
+        Continue
+        </button>-->
+
+
+    </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Your account has been temporarily locked – Get help to buy food and milk (Healthy Start) - NHSBSA 
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+   <!-- {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }} -->
+
+    <form action="v25/account-temporarily-locked" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Your account has been temporarily locked
+            </h1>
+          </legend> 
+      
+          
+        <p>You cannot currently update your claim online because you’ve either:</p>
+       <ul>
+        <li>exceeded the number of times a new security code can be sent</li>
+        <li>entered the wrong security code too many times</li>
+       </ul> 
+        <p>To update your claim online, you’ll need to wait 3 hours from the time you used your last security code.</p>
+        <p>If you need to update your claim within 3 hours, you can <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us by phone or email</a>.</p>
+
+
+        </fieldset>
+      </div>
+
+
+
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+      <p><a class="nhsuk-link" href="https://online1.snapsurveys.com/interview/8d5b21b1-9312-43c4-86f8-61d749cb1800" target="_blank">
+        What did you think of this service?</a> (takes 2 minutes)</p>
+
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

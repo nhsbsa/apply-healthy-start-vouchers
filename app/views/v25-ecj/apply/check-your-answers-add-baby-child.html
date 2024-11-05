@@ -1,0 +1,237 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your children’s details - Get help to buy food and milk (Healthy Start) - NHSBSA
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        <!--<h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">Your details</h2>-->
+
+        <form action="v25/check-your-answers-add-baby-child" method="POST">
+            <dl class="nhsuk-summary-list">
+
+                <!--<div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Full name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Jane doe
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="name#firstname">
+                    Change<span class="nhsuk-u-visually-hidden"> name</span>
+                    </a>
+                </dd>
+                </div>
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Flat 1B, 12 Palm Road, London, NR33 4GP
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="postcode">
+                    Change<span class="nhsuk-u-visually-hidden"> address</span>
+                    </a>
+                </dd>
+                </div>-->
+
+                <!--
+
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      National Insurance number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['nationalinsurancenumberupdate'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                        </dd>
+                  </div>
+
+
+
+            
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['dateofbirth'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions"> 
+                </dd>
+                </div>-->
+
+              <!--
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National Insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['nationalinsurancenumber'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="national-insurance-number#nationalinsurancenumber">
+                    Change<span class="nhsuk-u-visually-hidden"> national insurance number</span>
+                    </a>
+                </dd>
+                </div> -->
+
+                
+            </dl>
+
+
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">New children's details</h2>
+        
+
+
+            <!--
+        {% for item in data['childList'] %}
+        <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__value" name="childsfirstname">
+                        {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
+                        
+                      <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
+                      <dd class="nhsuk-summary-list__actions">
+                        {% if data['childList'] | length  == 0 %}
+                        <a href="#">Change<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        {% else %}
+                        <a href="childs-first-name-update">Change<span class="nhsuk-u-visually-hidden"> child</span></a> | <a href="remove-child">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        {% endif %}
+                      </dd>
+        </div> -->
+
+
+
+
+        <br>
+        <!--<dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row"> 
+            <dt class="nhsuk-summary-list__key">
+            Child 1
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          </dd> 
+          <dd class="nhsuk-summary-list__actions"> 
+            <a href="#">
+                Remove<span class="nhsuk-u-visually-hidden"> child</span></a> 
+          </dd>
+        </div>
+        </dl> MASSIVE GAP ONE...--> 
+
+
+
+        <dl class="nhsuk-summary-list"> 
+
+            <!--<div class="nhsuk-summary-list__row"> 
+                <dt class="nhsuk-summary-list__key">
+                Child 1
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+               
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+                <a href="#">
+                    Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+              </dd>
+            </div> A LINE UNDERNEATH ONE-->
+
+
+
+            <h5>Child 1</h5>  
+
+            <div class="nhsuk-summary-list__row"> 
+                <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                
+                <a href="childs-first-name-update">
+                    Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
+                 
+          
+              </dd>
+          
+            </div>
+          
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ item.ChildsDOB }}
+              </dd>
+          
+              <dd class="nhsuk-summary-list__actions">
+          
+                 
+                <a href="childs-date-of-birth-update">
+                    Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
+                 
+                
+              </dd>
+          
+            </div>
+           <br>
+            <a href="remove-child">Remove this child<span class="nhsuk-u-visually-hidden"> child</span></a>
+          
+          </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% endfor %}
+
+
+
+        </dl>
+
+        <!--
+        <p><a href="/v25/apply/kickouts/request-completed-child" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Continue
+        </a></p>-->
+
+
+        <button class="nhsuk-button" type="submit">
+        Continue
+        </button>
+
+
+    </form>
+
+    </div>
+</div>
+
+{% endblock %}

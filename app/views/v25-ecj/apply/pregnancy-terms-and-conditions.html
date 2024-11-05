@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Declaration - Get help to buy food and milk (Healthy Start) - NHSBSA
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1>Declaration</h1>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+          <p>When you submit this application, you confirm that you have read and understood the following terms and conditions. 
+          </p><p>If you are completing this application on behalf of someone else, you confirm that they have read, or have had read to them, and understood the following terms and conditions.
+          </p></div>
+
+
+          <!--
+        <div class="nhsuk-warning-callout">
+            <h3 class="nhsuk-warning-callout__label">Declaration</h3>-->
+
+  <!-- 
+
+            <p>You confirm that this information is correct as of
+              <script>
+                var today = new Date();
+                var dd = today.getDate();
+
+                var month = new Array();
+                month[0] = "January";
+                month[1] = "February";
+                month[2] = "March";
+                month[3] = "April";
+                month[4] = "May";
+                month[5] = "June";
+                month[6] = "July";
+                month[7] = "August";
+                month[8] = "September";
+                month[9] = "October";
+                month[10] = "November";
+                month[11] = "December";
+
+                var mm = month[today.getMonth()]; //January is 0!
+
+
+                var yyyy = today.getFullYear();
+
+                if (dd < 10) {
+                  dd = '0' + dd
+                }
+
+                if (mm < 10) {
+                  mm = '0' + mm
+                }
+
+                today = dd + ' ' + mm + ' ' + yyyy;
+                document.write(today);
+              </script>.</p>
+
+-->
+
+<div class="nhsuk-warning-callout">
+  <h3 class="nhsuk-warning-callout__label">
+    <span role="text">
+      <span class="nhsuk-u-visually-hidden">Important: </span>  
+      Declaration</span>
+  </h3>
+            <p>I confirm that:</p>
+            <ul>
+              <li>My claim is correct, complete and up to date to the best of my knowledge.</li>
+              <li>I am responsible for any children listed on this claim.</li>
+              <li>If this claim includes a pregnancy, I am currently more than 10 weeks pregnant.</li>
+              <li>I am not aware of any existing Healthy Start claims for any children or pregnancies listed on this claim and have no reason to believe any could exist.</li>
+              <li>I’ve read and understood the <a href="https://www.healthystart.nhs.uk/scheme-rules/" target="_blank"> rules of the Healthy Start scheme (opens in a new tab)</a> and agree to the terms of these rules.</li>
+            </ul>
+              <br>  
+            <p>I understand that:</p>  
+            <ul><li>If I withhold information or provide false or misleading information, my Healthy Start payments may be refused or withdrawn and I may be liable for disciplinary action, civil proceedings or criminal prosecution.</li>
+              <li>I need to update the NHS Business Services Authority (NHSBSA) if any of the details I’ve given on this application change.</li>
+              <li>NHSBSA may use the information that I’ve provided in this application and may share it with the Department of Health and Social Care (DHSC) and the NHS Counter Fraud Authority (NHSCFA) for the purpose of the prevention, detection, loss measurement, investigation and prosecution of fraud and any other unlawful activity affecting the NHS.</li>
+            </ul>  
+               
+          </div>        
+
+ 
+
+          <p><a href="/v25/apply/kickouts/request-completed-pregnancy" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+            Accept and send</a></p>
+
+
+          <!--<form action="v25/check-your-answers" method="post">
+
+            <button class="nhsuk-button" type="submit">
+              Accept and send
+            </button>
+
+          </form>-->
+
+    </div>
+</div>
+
+{% endblock %}

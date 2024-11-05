@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Upload evidence
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "return-applicant-identity-select",
+            "text": "Go back"
+        }) }}
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="file-upload">
+                    <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Prove your identity</h1>
+                </label>
+                <p>You need to upload a copy of your {% if data['applicantidentity'] == "BC" %}birth certificate{% elseif data['applicantidentity'] == "P" %}passport{% elseif data['applicantidentity'] == "DL" %}drivers licence{% elseif data['applicantidentity'] == "IV" %}immigration visa{% else %}documents{% endif %} to prove your identity.</p>
+                <input class="nhsuk-file-upload" id="file-upload" name="file-upload" type="file">
+            </div>
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    Need help uploading your document?
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>You can use a digital camera, smartphone or tablet, or use a scanner. If you already have digital versions of your documents, they will need to be PNG, GIF, JPG or PDF files, and no larger than 20MB each.</p>
+                    <p>We've created a <a href="step-by-step-guide-step-1">step-by-step guide</a> on how to upload a document. We'll bring you back to this page after you've read the guide.</p>
+                    <p>If you're unable to upload the requested documents, call us on 0300 330 7010.</p>                      
+                </div>
+            </details>
+
+            <a href="return-applicant-identity-upload" class="nhsuk-button">
+                Continue
+            </a>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Application completed
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+  
+    
+      <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+            Update successful
+          </h1>
+          <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+            We’ve added your child<!--{{ data['childsfirstname'] }}--> to your Healthy Start claim
+          </h2> 
+        </div>
+      </div>
+
+      <p>We’ve updated your Healthy Start claim with the following details:</p>
+      <p><strong>Child 1</strong></p>
+      <ul>
+        <li>Name: Riley Jones<!--{{ data['childsfirstname'] }} {{ data['childslastname'] }}--></li>
+        <li>Date of birth: 1 <!--{{ data['childsdateofbirthday'] }}--> October <!--{{ data['childsdateofbirthmonth'] }} {{ data['childsdateofbirthyear'] }}--> 2023</li> 
+      </ul>
+<br>
+      <p><strong>Existing children </strong></p>
+      <p>You already get payments for some of the children you’ve told us about. We’ll continue to make your existing payments for:</p>
+      <ul>
+        <li>Stewy</li>
+      </ul>
+
+
+
+      <h2 class="nhsuk-heading-m">Your new payment</h2>
+      <p>Every 4 weeks, you’ll get a payment onto your card made up of:</p>
+      <ul>
+        <li>your existing payment for any children under 4</li>
+        <li>an extra £34 for Riley</li>
+      </ul>
+
+
+
+
+      <h2 class="nhsuk-heading-m">What happens next</h2>
+      <p>We’ll send you confirmation of your updated details and new payment amount.</p>
+      <p>This will come to the email address or mobile phone number we send your regular payment notifications to. It should arrive within one hour.</p>
+
+
+      <h2 class="nhsuk-heading-m">Give feedback</h2>
+      <p><a class="nhsuk-link" href="#" target="_blank">
+        What did you think of this service?</a> (takes 2 minutes).</p>
+
+      
+        
+        <!--<p><a href="/v25/how-to-apply" class="nhsuk-button" data-module="nhsuk-button" type="submit">
+          Finish
+        </a></p>-->
+        
+
+
+
+      </div>
+  </div>
+
+{% endblock %}
