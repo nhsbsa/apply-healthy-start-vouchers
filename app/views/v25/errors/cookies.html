@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Enable cookies to continue
+Cookies - Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
 {% block content %}
@@ -9,19 +9,142 @@ Enable cookies to continue
     <div class="nhsuk-grid-column-two-thirds">
 
         <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">
-            Enable cookies to continue
+            Cookies
         </h1>
 
         <p>
-            Our Get help to buy food and milk (Healthy Start) service puts small files (known as 'cookies') onto your
-            device.
+            Cookies are small files saved on your phone, tablet or computer when you visit a website.
+        </p>
+        <p>
+            We use cookies to make this site work and collect information about how you use this service.
         </p>
 
         <p>
-            To be able to use this service online, you need to enable cookies.
+            You can find out <a target="_blank" href="https://www.nhsbsa.nhs.uk/our-policies/cookies">more about cookies (opens in a new tab)</a> 
+            and <a target="_blank" href="https://allaboutcookies.org/">how to manage them (opens in a new tab)</a>.
         </p>
 
-        <div class="nhsuk-inset-text nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-5">
+
+
+        <h2 class="nhsuk-heading-l">Essential cookies</h2>
+        <p>
+            Essential cookies keep your information secure while you use this service. We do not need to ask permission to use them.
+        </p>
+
+
+
+        <table class="nhsuk-table">
+            <!--<caption class="nhsuk-table__caption">Prescription prepayment certificate (PPC) charges</caption>-->
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                Name
+                </th>
+                <th role="columnheader" class="" scope="col">
+                Purpose
+                </th>
+                <th role="columnheader" class="" scope="col">
+                Expires
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+                <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__header" scope="row">session_cookie</td>
+                <td class="nhsuk-table__cell">Used to keep you signed in</td>
+                <td class="nhsuk-table__cell">20 hours</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__header" scope="row">cookie_policy</td>
+                <td class="nhsuk-table__cell">Saves your cookie consent settings</td>
+                <td class="nhsuk-table__cell">1 year</td>
+              </tr>
+            
+            </tbody>
+          </table>
+
+
+
+
+
+          <h2 class="nhsuk-heading-l">Cookies that remember your settings (optional)</h2>
+          <p>These cookies do things like remember your preferences and the choices you make, 
+            to personalise your experience of using Healthy Start.</p>
+
+
+          <h2 class="nhsuk-heading-l">Cookies that measure website use (optional)</h2>
+          <p>With your permission, we use Google Analytics to collect data about how you use the service. This information helps us to improve our service.
+          </p>
+          <p>Google is not allowed to use or share our analytics data with anyone.</p>
+
+
+
+          <h2 class="nhsuk-heading-l">Change your cookie settings</h2>
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h3 class="nhsuk-heading-m">
+                    Do you want to accept functional cookies?
+                </h3>
+              </legend>
+          
+              <div class="nhsuk-radios nhsuk-radios--inline">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-1" name="example-inline" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+                    Yes
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+                    No
+                  </label>
+                </div>
+          
+              </div>
+            </fieldset>
+          </div>
+
+
+
+
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h3 class="nhsuk-heading-m">
+                    Do you want to accept analytics cookies?
+                </h3>
+              </legend>
+          
+              <div class="nhsuk-radios nhsuk-radios--inline">
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-1" name="example-inline" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+                    Yes
+                  </label>
+                </div>
+          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+                    No
+                  </label>
+                </div>
+          
+              </div>
+            </fieldset>
+          </div>
+
+
+
+
+        <!--<div class="nhsuk-inset-text nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-5">
             <span class="nhsuk-u-visually-hidden">Information: </span>
             <h2 class="nhsuk-heading-m">Why we use cookies</h2>
             <p>Cookies help us understand how you use our service and make improvements.</p>
@@ -29,11 +152,15 @@ Enable cookies to continue
             <p>Find out <a target="_blank" href="https://www.nhsbsa.nhs.uk/cookies">more about cookies<span
                         class="nhsuk-u-visually-hidden"> (Opens in a new tab)</span></a> and <a target="_blank"
                     href="http://www.allaboutcookies.org/">how to manage them<span class="nhsuk-u-visually-hidden"> (Opens in a new tab)</span></a>.</p>
-        </div>
+        </div>-->
+ 
 
-        <p>
-            If you've enabled cookies you can <a href="../start">start your application again</a>.
-        </p>
+
+        <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Save cookie settings
+          </button>
+          
+
 
     </div>
 </div>
