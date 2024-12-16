@@ -8426,6 +8426,10 @@ b {
   padding-top: 56.25%;
 }
 
+.info-status {
+  border-color: #005EB8 !important;
+}
+
 .nhsuk-image__img__350 {
   width: 100%;
 }

@@ -4,15 +4,39 @@
 Cookies - Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
+
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
+
+<div class="nhsuk-error-summary info-status" id="cookie-preference-saved" aria-labelledby="error-summary-title" role="alert">
+  
+<p class="nhsuk-error-summary__title" id="error-summary-title">
+    We have saved your cookies settings
+  </p>
+  <div class="nhsuk-error-summary__body">
+    <p>
+      We'll ask you about your cookies preferences either:
+    </p>
+    <ul>
+      <li>
+        one year after you last saved your preferences
+      </li>
+      <li>
+        when we add new cookies or change the cookies we use
+      </li>
+    </ul>
+  </div>
+</div>
+
+
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
 
         <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">
@@ -72,7 +96,16 @@ Cookies - Get help to buy food and milk (Healthy Start) - NHSBSA
                 <td class="nhsuk-table__cell">This cookie is used to set default language.</td>
                 <td class="nhsuk-table__cell">30 minutes</td>
               </tr>
-              
+              <!--<tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__header" scope="row">_ga_CMQKFFB9XH</td>
+                <td class="nhsuk-table__cell">This cookie registers a unique ID that is used to generate statistical data on how the visitor uses the website.</td>
+                <td class="nhsuk-table__cell">2 years</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__header" scope="row">_ga</td>
+                <td class="nhsuk-table__cell">This cookie registers a unique ID that is used to generate statistical data on how the visitor uses the website.</td>
+                <td class="nhsuk-table__cell">2 years</td>
+              </tr>-->
             
             </tbody>
           </table>

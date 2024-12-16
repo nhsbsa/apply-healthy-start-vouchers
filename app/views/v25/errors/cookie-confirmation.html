@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Get help to buy food and milk (Healthy Start)
+{% endblock %}
+
+{% block content %}
+
+
+
+{{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+}) }}
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>Your cookie settings have been saved</h1>
+    </div>
+</div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+                <p>We'll save your settings for a year.</p>
+                <p>We'll ask you if you're still OK with us using cookies when either:</p>
+                <ul>
+                    <li>it's been a year since you last saved your settings</li>
+                    <li>we add any new cookies or change the cookies we use</li>
+                </ul>
+                <p>You can also change your settings at any time using our <a
+                        href="/cookies/cookies">cookies page</a>.</p>
+                <p>Select 'Continue' to go back to the page you were looking at.</p>
+
+                <form action="/cookies/cookie-confirmation" method="post">
+
+                    <button class="nhsuk-button" type="submit">
+                        Continue
+                    </button>
+        
+                </form>
+
+    </div>
+</div>
+{% endblock %}
