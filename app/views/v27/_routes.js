@@ -1,5 +1,5 @@
 // ********************************
-// APPLY (Current)
+// APPLY - NHS LOGIN (v27)
 // ********************************
 
 // External dependencies
@@ -19,6 +19,36 @@ const { listenerCount } = require('gulp');
 
 // ********************************
 
+
+
+
+
+
+
+// Which service would you like to use?
+
+
+router.post('/v27/which-service', function (req, res) {
+
+  var whichservice = req.session.data['whichservice']
+
+    if (whichservice === "newapplication") {
+      res.redirect('/v27/apply/where-do-you-live')
+    }
+    else if (whichservice === "updatemydetails") {
+      res.redirect('/v25/before-you-start-manage')
+    }
+    else {
+      res.redirect('/v27/apply/kickouts/card-issue')
+    }
+
+    })
+
+
+
+
+
+
 // Do you live in England, Wales or Northern Ireland?
 
 
@@ -33,6 +63,9 @@ router.post('/current/where-do-you-live', function (req, res) {
   }
 
 })
+
+
+
 
 // What is your name?
 

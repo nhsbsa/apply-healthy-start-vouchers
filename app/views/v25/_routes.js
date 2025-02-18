@@ -193,7 +193,7 @@ router.post('/v25/name', function (req, res) {
   })
 
 
-  // Do you have a current Healthy Start claim?
+  // Which service would you like to use?
 
   router.post('/v25/current-claim', function (req, res) {
 
