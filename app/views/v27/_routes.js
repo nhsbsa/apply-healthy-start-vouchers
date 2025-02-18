@@ -47,22 +47,42 @@ router.post('/v27/which-service', function (req, res) {
 
 
 
+    // Where do you live?
+
+    router.post('/v27/where-do-you-live', function (req, res) {
+
+      
+    var location = req.session.data['location']
+
+    if (location === "england or wales") {
+      res.redirect('/v27/before-you-start')
+    }
+    else if (location === "northern ireland") {
+      res.redirect('/v25/apply/name')
+    }
+    else if (location === "somewhere else") {
+      res.redirect('/v27/kickout/')
+    }
+    else {
+      res.redirect('/v27/not-existing-page')
+    }
+
+    })
 
 
-// Do you live in England, Wales or Northern Ireland?
 
 
-router.post('/current/where-do-you-live', function (req, res) {
 
-  const whereDoYouLive = req.session.data['where-do-you-live']
 
-  if (whereDoYouLive == 'yes') {
-    res.redirect('/current/apply/name');
-  } else {
-    res.redirect('/current/apply/kickouts/not-eligible-country');
-  }
 
-})
+
+
+
+
+
+
+
+
 
 
 
