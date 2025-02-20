@@ -1,0 +1,40 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+Enter your email address
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h2><span role="text">Enter your email address</span></h2>
+
+    </div>
+</div>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <p>If you have used the NHS App or other NHS websites, you should enter the email address you used to register for them.</p>
+
+
+        <p>We will check if you have an NHS login. If not, you can set one up.</p>
+        
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="input-width-20">
+              Email address
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="test-width-20" type="email">
+          </div>
+        
+          <p><a href="password" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Continue</a></p>
+
+
+        <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <h2>What is NHS login?</h2>
+            <p>NHS logiin allows you to securely access health websites and apps with just your email address and a password.</p>
+          </div>
+
+</div>
+{% endblock %}
