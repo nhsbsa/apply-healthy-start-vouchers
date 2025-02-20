@@ -34,6 +34,8 @@ router.post('/clear-data', function (req, res) {
 // Route File Versions
 // ****************************************
 
+router.use('/v27', require('./views/v27/_routes'));
+router.use('/v27/nhs-login', require('./views/v27/_routes'));
 router.use('/v27/apply', require('./views/v27/_routes'));
 router.use('/v26-ecj/apply', require('./views/v26-ecj/_routes'));
 router.use('/v26-apply-journey/apply', require('./views/v26-apply-journey/_routes'));

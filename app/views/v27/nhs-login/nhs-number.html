@@ -8,14 +8,14 @@ What is your NHS Number?
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/v27/nhs-login/nhs-number" method="post">
+      <form action="v27/nhs-login/nhs-number" method="post">
 
       <div class="nhsuk-form-group"> 
         <h2>What is your NHS Number?</h2>
         <span class="nhsuk-hint" id="example-with-hint-text-hint">
           Your NHS number is a 10 digit number. For example, '485 777 3456'.
       </span>
-      <input class="nhsuk-input nhsuk-input--width-20" id="nhsnumber" name="nhsnumber" type="number">
+      <input class="nhsuk-input nhsuk-input--width-20" id="nhsnumber" name="nhsnumber" type="text" pattern="[0-9]{10}" maxlength="10" inputmode="numeric">
       </div>
  
 
@@ -24,9 +24,9 @@ What is your NHS Number?
             
             <div class="nhsuk-checkboxes">
                 <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="donotremember" name="checkbox" type="checkbox" 
-                        value="donotremember">
-                    <label class="nhsuk-label nhsuk-checkboxes__label" for="donotremember">
+                    <input class="nhsuk-checkboxes__input" id="donotknow" name="checkbox" type="checkbox" 
+                        value="donotknow">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="donotknow">
                         I do not know my NHS Number.
                     </label>
                 </div>
@@ -61,14 +61,6 @@ What is your NHS Number?
 
 
   </form>
-
   </div>    
-
-
-
-
-
-
-
 </div>
 {% endblock %}

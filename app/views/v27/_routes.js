@@ -31,18 +31,15 @@ const { listenerCount } = require('gulp');
 router.post('/v27/which-service', function (req, res) {
 
   var whichservice = req.session.data['whichservice']; 
-  console.log('whichservice value: ', whichservice)
 
-    if (whichservice === "new-application") {
-      console.log('new-application success')
-      res.redirect('/v27/apply/where-do-you-live')
-    }
-    else if (whichservice === "update-my-details") {
-      console.log('update-my-details success')
-      res.redirect('/v25/before-you-start-manage')
-    }
-    else {
+  if (whichservice === "new-application") {
+    res.redirect('/v27/where-do-you-live')
+  }
+    if (whichservice === "card-issue") {
       res.redirect('/v27/apply/kickouts/card-issue')
+    }
+    if (whichservice === "update-my-details") {
+      res.redirect('/v25/before-you-start-manage')
     }
 
     })
@@ -60,14 +57,11 @@ router.post('/v27/which-service', function (req, res) {
     if (location === "england or wales") {
       res.redirect('/v27/before-you-start')
     }
-    else if (location === "northern ireland") {
+    if (location === "northern ireland") {
       res.redirect('/v27/apply/name')
     }
-    else if (location === "somewhere else") {
+    if (location === "somewhere else") {
       res.redirect('/v27/apply/kickouts/not-eligible-country')
-    }
-    else {
-      res.redirect('/not-existing')
     }
 
     })
@@ -80,22 +74,24 @@ router.post('/v27/which-service', function (req, res) {
   // What is your NHS Number?
   
 
-  router.post('/v27/nhs-login/nhs-number', function (req, res) {
+ 
+router.post('/v27/nhs-login/nhs-number', function (req, res) {
 
 
-    var nhsnumber = req.session.data['nhsnumber']
-    var checkbox = req.session.data['checkbox']
+  var nhsnumber = req.session.data['nhsnumber']
+  var checkbox = req.session.data['checkbox']
+
+
+  if (nhsnumber) { 
+    res.redirect('/v27/nhs-login/date-of-birth') 
+  } 
   
-  
-    if (nhsnumber) { 
-      res.redirect('/v27/nhs-login/date-of-birth') 
-    } 
-    
-    else if (checkbox.checked = true) { 
-      res.redirect('/v27/nhs-login/name')  
-    } 
-  
-  })
+  else if (checkbox === "donotknow") { 
+    res.redirect('/v27/nhs-login/name')  
+  } 
+
+})
+
 
 
 
@@ -134,7 +130,7 @@ router.post('/v27/name', function (req, res) {
 
 
 
-  // What is your address 2? (== Select your address)
+  // APPLY (NI) - What is your address 2? (== Select your address)
 
   router.post('/v27/apply/address-2', function (req, res) {
 
@@ -146,6 +142,16 @@ router.post('/v27/name', function (req, res) {
 
 
   
+
+  // NHS Login - What is your address 2? (== Select your address)
+
+  router.post('/v27/nhs-login/select-address', function (req, res) {
+
+    res.redirect('/v27/nhs-login/check-your-answer');
+  
+  })
+
+
   
     // Date of birth
     
@@ -220,23 +226,24 @@ router.post('/v27/name', function (req, res) {
         var temp = ageDate.getFullYear();
         var yrs = Math.abs(temp - 1970);
     
-        var firstname = req.session.data['firstname'].trim().toUpperCase()
-        var lastname = req.session.data['lastname'].trim().toUpperCase()
+
+        //I added ' || ""' before .trim to prevent the .trim() error. This provides default values for undefined session data. (BY CHAE, 20 FEB 2025)
+        var firstname = req.session.data['firstname'] || "".trim().toUpperCase()
+        var lastname = req.session.data['lastname'] || "".trim().toUpperCase()
         req.session.fullName = firstname + ' ' + lastname
-        var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
-        var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
+        var addressline1 = req.session.data['addressline1'] || "".trim().toUpperCase()
+        //var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
         var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
         var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
     
-        if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
-          res.redirect('/v27/apply/are-you-pregnant')
+        if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '15 PALM ROAD') {
+          res.redirect('/current/apply/are-you-pregnant')
         }
         else {
-          res.redirect('/v27/apply/kickouts/confirmation-no-match')
+          res.redirect('/v27/apply/are-you-pregnant')
         }
         
       })
-    
 
 
 
@@ -251,14 +258,14 @@ router.post('/v27/name', function (req, res) {
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes") {
-      res.redirect('/current/apply/due-date')
+      res.redirect('/v27/apply/due-date')
     }
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
-      res.redirect('/current/apply/children-under-four')
+      res.redirect('/v27/apply/children-under-four')
     }
     else {
-      res.redirect('/current/apply/are-you-pregnant')
+      res.redirect('/v27/apply/are-you-pregnant')
     }
   
   })
@@ -269,9 +276,9 @@ router.post('/v27/name', function (req, res) {
 
 
 
-  // Are you pregnant? > Due Date
+  // Are you pregnant? > Due Date == Wwhat is your due date?
   
-  router.post('/current/due-date', function (req, res) {
+  router.post('/v27/due-date', function (req, res) {
   
     var duedateday = req.session.data['duedateday']
     var duedatemonth = req.session.data['duedatemonth']
@@ -289,9 +296,9 @@ router.post('/v27/name', function (req, res) {
     if (duedateday && duedatemonth && duedateyear) {
   
       if (duedate < today) {
-        res.redirect('/current/apply/due-date')
+        res.redirect('/v27/apply/due-date')
       } else if (duedate > fulltermpregnancy) {
-        res.redirect('/current/apply/due-date')
+        res.redirect('/v27/apply/due-date')
       } else {
   
         if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
@@ -300,55 +307,70 @@ router.post('/v27/name', function (req, res) {
           req.session.data.lessThanTenWeeksPregnant = false;
         }
   
-        res.redirect('/current/apply/children-under-four')
+        res.redirect('/v27/apply/children-under-four')
       }
   
     }
     else {
-      res.redirect('/current/apply/due-date')
+      res.redirect('/v27/apply/due-date')
     }
   
   })
+
+
+
+
+
+
   // Do you have any children under the age of 4?
   
-  router.post('/current/children-under-four', function (req, res) {
+  router.post('/v27/children-under-four', function (req, res) {
   
     var childrenunderfour = req.session.data['childrenunderfour']
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes" && childrenunderfour === "no") {
-      res.redirect('/current/apply/email-address')
+      res.redirect('/v27/apply/email-address')
     } else if (pregnant === "no" && childrenunderfour === "yes") {
-      res.redirect('/current/apply/childs-first-name')
+      res.redirect('/v27/apply/childs-first-name')
     } else if (pregnant === "yes" && childrenunderfour === "yes") {
-      res.redirect('/current/apply/childs-first-name')
+      res.redirect('/v27/apply/childs-first-name')
     } else if (childrenunderfour === "no" && pregnant ==="no") {
-      res.redirect('/current/apply/kickouts/not-eligible')
+      res.redirect('/v27/apply/kickouts/not-pregnant-no-children')
     } else {
-      res.redirect('/current/apply/children-under-four')
+      res.redirect('/v27/apply/children-under-four')
     }
   
   })
+
+
+
+
   // Do you have any children under the age of 4? > Childs first name
   
-  router.post('/current/childs-first-name', function (req, res) {
+  router.post('/v27/childs-first-name', function (req, res) {
   
     var childsfirstname = req.session.data['childsfirstname']
     var childslastname = req.session.data['childslastname']
 
     if (childsfirstname && childslastname) {
-      res.redirect('/current/apply/childs-date-of-birth')
+      res.redirect('/v27/apply/childs-date-of-birth')
     }
     else {
-      res.redirect('/current/apply/childs-first-name')
+      res.redirect('/v27/apply/childs-first-name')
     }
 
   })
+
+
+
+
+
      
 
     // Do you have any children under the age of 4? > Childs date of birth
 
-    router.post('/current/childs-date-of-birth', function (req, res) {
+    router.post('/v27/childs-date-of-birth', function (req, res) {
 
       var childsdateofbirthday = req.session.data['childsdateofbirthday']
       var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
@@ -393,28 +415,34 @@ router.post('/v27/name', function (req, res) {
               
               // Redirect to the 'Do you get another?' page
               
-              res.redirect('/current/apply/children-under-four-answers');          
+              res.redirect('/v27/apply/children-under-four-answers');          
 
 
 
             } else {
-              res.redirect('/current/apply/childs-date-of-birth')
+              res.redirect('/v27/apply/childs-date-of-birth')
             }
 
         } else {
-          res.redirect('/current/apply/childs-date-of-birth')
+          res.redirect('/v27/apply/childs-date-of-birth')
         }
         
       }
       else {
-        res.redirect('/current/apply/childs-date-of-birth')
+        res.redirect('/v27/apply/childs-date-of-birth')
       }
 
 
     })
-    // Do you have any children under the age of 4? > Do you have another child under four?
+
+
+
+
+
+
+    // Do you have any children under the age of 4? > Do you have any other children under 4 yearsa old? == Children under 4 years old that you have told us about
   
-    router.post('/current/children-under-four-answers', function (req, res) {
+    router.post('/v27/children-under-four-answers', function (req, res) {
   
       var childrenunderfouranswers = req.session.data['childrenunderfouranswers']
 
@@ -428,16 +456,17 @@ router.post('/v27/name', function (req, res) {
       var temp = ageDate.getFullYear();
       var yrs = Math.abs(temp - 1970);
 
-      var lastname = req.session.data['lastname'].trim().toUpperCase()
+      //I added ' || ""' before .trim to prevent the .trim() error. This provides default values for undefined session data. (BY CHAE, 20 FEB 2025)
+      var lastname = req.session.data['lastname'] || "".trim().toUpperCase()
 
       if (childrenunderfouranswers === "yes") {
-        res.redirect('/current/apply/childs-first-name')
+        res.redirect('/v27/apply/childs-first-name')
       }
       else if (childrenunderfouranswers === "no") {
-        res.redirect('/current/apply/email-address')
+        res.redirect('/v27/apply/email-address')
       }
       else {
-        res.redirect('/current/apply/children-under-four-answers')
+        res.redirect('/v27/apply/children-under-four-answers')
       }
 
     })
@@ -446,24 +475,29 @@ router.post('/v27/name', function (req, res) {
   
   // What is your email address?
   
-  router.post('/current/email-address', function (req, res) {
+  router.post('/v27/email-address', function (req, res) {
   
     var emailaddress = req.session.data['emailaddress']
   
-    res.redirect('/current/apply/mobile-phone-number')
+    res.redirect('/v27/apply/mobile-phone-number')
   
   })
   
   // What is your mobile phone number?
   
-  router.post('/current/mobile-phone-number', function (req, res) {
+  router.post('/v27/mobile-phone-number', function (req, res) {
   
     var mobilePhoneNumber = req.session.data['mobilephonenumber']
   
-    res.redirect('/current/apply/check-your-answers')
+    res.redirect('/v27/apply/check-your-answers')
   
   })
   
+
+
+
+
+
   // Feedback
   
   router.post('/current/feedback', function (req, res) {
@@ -475,8 +509,8 @@ router.post('/v27/name', function (req, res) {
 
 // N.B ALL PERSONALISATION VARIABLES NEED TO BE THERE, IF THEY'RE NOT REQUIRED YOU STILL NEED TO SEND AN EMPTY STRING ""
 
-router.post('/current/check-your-answers', function (req, res) {
-  res.redirect('/current/apply/confirmation-successful');
+router.post('/v27/check-your-answers', function (req, res) {
+  res.redirect('/v27/apply/confirmation-successful');
 })
   
 module.exports = router;
