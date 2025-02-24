@@ -147,9 +147,59 @@ router.post('/v27/name', function (req, res) {
 
   router.post('/v27/nhs-login/select-address', function (req, res) {
 
-    res.redirect('/v27/nhs-login/check-your-answer');
+    res.redirect('/v27/apply/check-your-answers-nhs-login');
   
   })
+
+
+
+
+  // Check your answers (== after NHS Login)
+
+  router.post('/v27/apply/cya-nhs-login', function (req, res) {
+
+    var information = req.session.data['information']
+    
+    
+    if (information === "yes") {
+      res.redirect('/v27/apply/national-insurance-number-nhs-login');
+    }
+    else if (information === "no") {
+      res.redirect('/v27/apply/kickouts/CREATE-A-NEW-KICKOUT-SCREEN')
+    }
+    else {
+      res.redirect('/v27/apply/cya-nhs-login')
+    }
+
+  })
+
+    
+   
+
+
+
+
+  // What is your National Insurance number? (== after NHS Login)
+
+
+  router.post('/v27/national-insurance-number-nhs-login', function (req, res) {
+
+    var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
+  
+    if (nationalinsurancenumber) {
+      res.redirect('/v27/apply/are-you-pregnant')
+    } else {
+      res.redirect('/v27/apply/national-insurance-number-nhs-login')
+    }
+
+  })
+
+
+
+
+
+
+
 
 
   
