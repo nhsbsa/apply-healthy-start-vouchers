@@ -130,6 +130,8 @@ router.post('/v27/name', function (req, res) {
 
 
 
+
+
   // APPLY (NI) - What is your address 2? (== Select your address)
 
   router.post('/v27/apply/address-2', function (req, res) {
@@ -139,6 +141,15 @@ router.post('/v27/name', function (req, res) {
   })
 
 
+
+
+  // APPLY (NI) - What is your address? (== Enter address manually, == My address is not listed)
+  
+  router.post('/v27/address', function (req, res) {
+
+    res.redirect('/v27/apply/date-of-birth');
+  
+  })
 
 
   

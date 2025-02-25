@@ -7397,6 +7397,42 @@ b {
   }
 }
 
+
+
+
+/* NEW PANEL COMPONENT*/
+
+.nhsuk-panel {
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 24px; /* used to be 16px */
+  background: #007f3b;
+  border: 4px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  color: #fff;
+  padding: 28px;
+}
+
+
+.nhsuk-panel-unsuccessful {
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 24px; /* used to be 16px */
+  background: #4B6271;
+  border: 4px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  color: #fff;
+  padding: 28px;
+}
+
+
+
+
+
+
+
 .nhsuk-panel--confirmation {
   margin-top: 0;
 }
@@ -7409,7 +7445,7 @@ b {
 
 .nhsuk-panel__title {
   margin-bottom: 16px;
-  text-align: center;
+  text-align: left;
 }
 @media (min-width: 40.0625em) {
   .nhsuk-panel__title {
@@ -7422,7 +7458,7 @@ b {
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.4;
-  text-align: center;
+  text-align: left;
 }
 @media (min-width: 40.0625em) {
   .nhsuk-panel__body {
