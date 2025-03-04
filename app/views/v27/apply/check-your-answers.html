@@ -45,18 +45,14 @@ Check your answers
                 </div>
             {% endif %}
             {% if (data['selectaddress']) %}
-                <div class="nhsuk-summary-list__row">
+                <!--<div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         Address
                     </dt>
-                    <!--<dd class="nhsuk-summary-list__value">
-                        {{ data['selectaddress'] | replace(", ", ",<br>") | safe }}
-                    </dd>-->
                     <dd class="nhsuk-summary-list__value">
-                        15 Palm Road,<br>
-                        London,<br>
-                        NR33 4GP
+                        {{ data['selectaddress'] | replace(", ", ",<br>") | safe }}
                     </dd>
+                    
 
                     <dd class="nhsuk-summary-list__actions">
 
@@ -66,17 +62,22 @@ Check your answers
 
                     </dd>
 
-                </div>
+                </div>-->
             {% else %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         Address
                     </dt>
-                    <dd class="nhsuk-summary-list__value">
+                    <!--<dd class="nhsuk-summary-list__value">
                         {{ data['addressline1'] }},<br>
                         {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
                         {{ data['towncity'] }},<br>
                         {{ data['postcode'] }}
+                    </dd>-->
+                    <dd class="nhsuk-summary-list__value">
+                        15 Palm Road,<br>
+                        London,<br>
+                        NR33 4GP
                     </dd>
 
                     <dd class="nhsuk-summary-list__actions">

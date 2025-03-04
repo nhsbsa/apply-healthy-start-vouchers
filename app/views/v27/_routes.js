@@ -69,6 +69,23 @@ router.post('/v27/which-service', function (req, res) {
 
  
 
+  // You did not agree to share your NHS login information
+
+  router.post('/v27/nhs-login/no-consent', function (req, res) {
+
+    var consent = req.session.data['consent'];
+
+
+    if (consent === "agree") {
+      res.redirect('/v27/nhs-login/consent')
+    }
+    if (consent === "disagree") {
+      res.redirect('/v27/nhs-login/email-address')
+    }
+  })
+
+
+
 
 
   // What is your NHS Number?
@@ -176,7 +193,7 @@ router.post('/v27/name', function (req, res) {
       res.redirect('/v27/apply/national-insurance-number-nhs-login');
     }
     else if (information === "no") {
-      res.redirect('/v27/apply/kickouts/CREATE-A-NEW-KICKOUT-SCREEN')
+      res.redirect('/v27/apply/kickouts/login-details-incorrect')
     }
     else {
       res.redirect('/v27/apply/cya-nhs-login')
