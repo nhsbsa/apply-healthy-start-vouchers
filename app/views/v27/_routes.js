@@ -193,7 +193,7 @@ router.post('/v27/name', function (req, res) {
       res.redirect('/v27/apply/national-insurance-number-nhs-login');
     }
     else if (information === "no") {
-      res.redirect('/v27/apply/kickouts/login-details-incorrect')
+      res.redirect('/v27/apply/kickouts/contact-your-gp')
     }
     else {
       res.redirect('/v27/apply/cya-nhs-login')
