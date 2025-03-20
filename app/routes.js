@@ -39,6 +39,7 @@ router.use('/v27/nhs-login', require('./views/v27/_routes'));
 router.use('/v27/apply', require('./views/v27/_routes'));
 router.use('/v26-ecj/apply', require('./views/v26-ecj/_routes'));
 router.use('/v26-apply-journey/apply', require('./views/v26-apply-journey/_routes'));
+router.use('/v26-apply-journey', require('./views/v26-apply-journey/_routes'));
 router.use('/v25/apply', require('./views/v25/_routes'));
 router.use('/v24/apply', require('./views/v24/_routes'));
 router.use('/v23/apply', require('./views/v23/_routes'));

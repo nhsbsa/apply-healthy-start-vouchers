@@ -23,71 +23,65 @@ const { listenerCount } = require('gulp');
 
 
 
-
 // Do you live in England, Wales or Northern Ireland?
 
 
+router.post('/v26-apply-journey/where-do-you-live', function (req, res) {
 
-// Do you live in England, Wales or Northern Ireland?
+  const whereDoYouLive = req.session.data['where-do-you-live']
 
-router.post('/v26-apply-journey/apply/where-do-you-live', function (req, res) {
-
-  var wheredoyoulive = req.session.data['wheredoyoulive']
-
-  if (wheredoyoulive === "yes") {
-    res.redirect('/v26-apply-journey/apply/name')
-  }
-  else if (wheredoyoulive === "no") {
-    res.redirect('/v26-apply-journey/apply/kickouts/not-eligible-country')
-  }
-  else {
-    res.redirect('/v26-apply-journey/apply/hmmm')
+  if (whereDoYouLive == 'yes') {
+    res.redirect('/v26-apply-journey/apply/name');
+  } else {
+    res.redirect('/v26-apply-journey/apply/kickouts/not-eligible-country');
   }
 
 })
 
-// ^ each yes and no button works, but it doesn't route to the correct page. 
-
-
 
 // What is your name?
 
-router.post('/current/name', function (req, res) {
+router.post('/v26-apply-journey/name', function (req, res) {
 
     var firstname = req.session.data['firstname']
     var lastname = req.session.data['lastname']
   
     if (firstname && lastname) {
-      res.redirect('/current/apply/address')
+      res.redirect('/v26-apply-journey/apply/postcode')
     }
     else {
-      res.redirect('/current/apply/name')
+      res.redirect('/v26-apply-journey/apply/name')
     }
   
   })
   
-  // What is your address?
+
+
+
+  // What is your postcode?
   
-  router.post('/current/address', function (req, res) {
-  
-    delete req.session.data['selectaddress']
-  
-    var addressline1 = req.session.data['addressline1']
-    var addressline2 = req.session.data['addressline2']
-    var towncity = req.session.data['towncity']
-    var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
-  
-    if (addressline1 && towncity && postcode) {
-      res.redirect('/current/apply/date-of-birth')
-    } else {
-      res.redirect('/current/apply/address')
-    }
+  router.post('/v26-apply-journey/apply/postcode', function (req, res) {
+
+    res.redirect('/v26-apply-journey/apply/address-2');
   
   })
+
+
+
+
+  // What is your address 2? (== Select your address)
+
+  router.post('/v26-apply-journey/apply/address-2', function (req, res) {
+
+    res.redirect('/v26-apply-journey/apply/date-of-birth');
+  
+  })
+
+
   
   // Date of birth
   
-  router.post('/current/date-of-birth', function (req, res) {
+  router.post('/v26-apply-journey/date-of-birth', function (req, res) {
   
     var dateofbirthday = req.session.data['dateofbirthday']
     var dateofbirthmonth = req.session.data['dateofbirthmonth']
@@ -102,12 +96,6 @@ router.post('/current/name', function (req, res) {
     var temp = ageDate.getFullYear();
     var yrs = Math.abs(temp - 1970);
   
-    var firstname = req.session.data['firstname'].trim().toUpperCase()
-    var lastname = req.session.data['lastname'].trim().toUpperCase()
-    var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
-    var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
-    var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
-  
     const addressRegex = RegExp('^[0-9]+$'); 
   
     if (addressRegex.test(addressline1) === true) {
@@ -119,20 +107,20 @@ router.post('/current/name', function (req, res) {
     if (yrs < 16) {
   
       if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-        res.redirect('/current/apply/kickouts/confirmation-under-16')
+        res.redirect('/v26-apply-journey/apply/kickouts/confirmation-under-16')
       }
       else {
-        res.redirect('/current/apply/date-of-birth')
+        res.redirect('/v26-apply-journey/apply/date-of-birth')
       }    
   
     }
     else {
   
       if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-        res.redirect('/current/apply/national-insurance-number')
+        res.redirect('/v26-apply-journey/apply/national-insurance-number')
       }
       else {
-        res.redirect('/current/apply/date-of-birth')
+        res.redirect('/v26-apply-journey/apply/date-of-birth')
       }    
   
     }
@@ -142,21 +130,21 @@ router.post('/current/name', function (req, res) {
   
   // What is your national insurance number?
   
-  router.post('/current/national-insurance-number', function (req, res) {
+  router.post('/v26-apply-journey/national-insurance-number', function (req, res) {
 
     var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
   
     if (nationalinsurancenumber) {
-      res.redirect('/current/apply/check-your-answers-personal-details')
+      res.redirect('/v26-apply-journey/apply/check-your-answers-personal-details')
     } else {
-      res.redirect('/current/apply/national-insurance-number')
+      res.redirect('/v26-apply-journey/apply/national-insurance-number')
     }
 
   })
 
     // Check your answers - personal details
 
-    router.post('/current/cya-personal-details', (req, res) => {
+    router.post('/v26-apply-journey/cya-personal-details', (req, res) => {
 
       var dateofbirthday = req.session.data['dateofbirthday']
       var dateofbirthmonth = req.session.data['dateofbirthmonth']
@@ -180,36 +168,39 @@ router.post('/current/name', function (req, res) {
       var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
   
       if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
-        res.redirect('/current/apply/are-you-pregnant')
+        res.redirect('/v26-apply-journey/apply/are-you-pregnant')
       }
       else {
-        res.redirect('/current/apply/kickouts/confirmation-no-match')
+        res.redirect('/v26-apply-journey/apply/kickouts/confirmation-no-match')
       }
       
     })
   
+
+
+
   // Are you pregnant?
   
-  router.post('/current/are-you-pregnant', function (req, res) {
+  router.post('/v26-apply-journey/are-you-pregnant', function (req, res) {
   
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes") {
-      res.redirect('/current/apply/due-date')
+      res.redirect('/v26-apply-journey/apply/due-date')
     }
     else if (pregnant === "no") {
       req.session.data.lessThanTenWeeksPregnant = true;
-      res.redirect('/current/apply/children-under-four')
+      res.redirect('/v26-apply-journey/apply/children-under-four')
     }
     else {
-      res.redirect('/current/apply/are-you-pregnant')
+      res.redirect('/v26-apply-journey/apply/are-you-pregnant')
     }
   
   })
   
   // Are you pregnant? > Due Date
   
-  router.post('/current/due-date', function (req, res) {
+  router.post('/v26-apply-journey/due-date', function (req, res) {
   
     var duedateday = req.session.data['duedateday']
     var duedatemonth = req.session.data['duedatemonth']
@@ -227,9 +218,9 @@ router.post('/current/name', function (req, res) {
     if (duedateday && duedatemonth && duedateyear) {
   
       if (duedate < today) {
-        res.redirect('/current/apply/due-date')
+        res.redirect('/v26-apply-journey/apply/due-date')
       } else if (duedate > fulltermpregnancy) {
-        res.redirect('/current/apply/due-date')
+        res.redirect('/v26-apply-journey/apply/due-date')
       } else {
   
         if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
@@ -238,55 +229,63 @@ router.post('/current/name', function (req, res) {
           req.session.data.lessThanTenWeeksPregnant = false;
         }
   
-        res.redirect('/current/apply/children-under-four')
+        res.redirect('/v26-apply-journey/apply/children-under-four')
       }
   
     }
     else {
-      res.redirect('/current/apply/due-date')
+      res.redirect('/v26-apply-journey/apply/due-date')
     }
   
   })
+
+
+
   // Do you have any children under the age of 4?
   
-  router.post('/current/children-under-four', function (req, res) {
+  router.post('/v26-apply-journey/children-under-four', function (req, res) {
   
     var childrenunderfour = req.session.data['childrenunderfour']
     var pregnant = req.session.data['pregnant']
   
     if (pregnant === "yes" && childrenunderfour === "no") {
-      res.redirect('/current/apply/email-address')
+      res.redirect('/v26-apply-journey/apply/email-address')
     } else if (pregnant === "no" && childrenunderfour === "yes") {
-      res.redirect('/current/apply/childs-first-name')
+      res.redirect('/v26-apply-journey/apply/childs-first-name')
     } else if (pregnant === "yes" && childrenunderfour === "yes") {
-      res.redirect('/current/apply/childs-first-name')
+      res.redirect('/v26-apply-journey/apply/childs-first-name')
     } else if (childrenunderfour === "no" && pregnant ==="no") {
-      res.redirect('/current/apply/kickouts/not-eligible')
+      res.redirect('/v26-apply-journey/apply/kickouts/not-eligible')
     } else {
-      res.redirect('/current/apply/children-under-four')
+      res.redirect('/v26-apply-journey/apply/children-under-four')
     }
   
   })
+
+
+
   // Do you have any children under the age of 4? > Childs first name
   
-  router.post('/current/childs-first-name', function (req, res) {
+  router.post('/v26-apply-journey/childs-first-name', function (req, res) {
   
     var childsfirstname = req.session.data['childsfirstname']
     var childslastname = req.session.data['childslastname']
 
     if (childsfirstname && childslastname) {
-      res.redirect('/current/apply/childs-date-of-birth')
+      res.redirect('/v26-apply-journey/apply/childs-date-of-birth')
     }
     else {
-      res.redirect('/current/apply/childs-first-name')
+      res.redirect('/v26-apply-journey/apply/childs-first-name')
     }
 
   })
-     
+  
+
+
 
     // Do you have any children under the age of 4? > Childs date of birth
 
-    router.post('/current/childs-date-of-birth', function (req, res) {
+    router.post('/v26-apply-journey/childs-date-of-birth', function (req, res) {
 
       var childsdateofbirthday = req.session.data['childsdateofbirthday']
       var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
@@ -331,28 +330,32 @@ router.post('/current/name', function (req, res) {
               
               // Redirect to the 'Do you get another?' page
               
-              res.redirect('/current/apply/children-under-four-answers');          
+              res.redirect('/v26-apply-journey/apply/children-under-four-answers');          
 
 
 
             } else {
-              res.redirect('/current/apply/childs-date-of-birth')
+              res.redirect('/v26-apply-journey/apply/childs-date-of-birth')
             }
 
         } else {
-          res.redirect('/current/apply/childs-date-of-birth')
+          res.redirect('/v26-apply-journey/apply/childs-date-of-birth')
         }
         
       }
       else {
-        res.redirect('/current/apply/childs-date-of-birth')
+        res.redirect('/v26-apply-journey/apply/childs-date-of-birth')
       }
 
 
     })
+
+
+
+
     // Do you have any children under the age of 4? > Do you have another child under four?
   
-    router.post('/current/children-under-four-answers', function (req, res) {
+    router.post('/v26-apply-journey/children-under-four-answers', function (req, res) {
   
       var childrenunderfouranswers = req.session.data['childrenunderfouranswers']
 
@@ -369,13 +372,13 @@ router.post('/current/name', function (req, res) {
       var lastname = req.session.data['lastname'].trim().toUpperCase()
 
       if (childrenunderfouranswers === "yes") {
-        res.redirect('/current/apply/childs-first-name')
+        res.redirect('/v26-apply-journey/apply/childs-first-name')
       }
       else if (childrenunderfouranswers === "no") {
-        res.redirect('/current/apply/email-address')
+        res.redirect('/v26-apply-journey/apply/email-address')
       }
       else {
-        res.redirect('/current/apply/children-under-four-answers')
+        res.redirect('/v26-apply-journey/apply/children-under-four-answers')
       }
 
     })
@@ -384,21 +387,21 @@ router.post('/current/name', function (req, res) {
   
   // What is your email address?
   
-  router.post('/current/email-address', function (req, res) {
+  router.post('/v26-apply-journey/email-address', function (req, res) {
   
     var emailaddress = req.session.data['emailaddress']
   
-    res.redirect('/current/apply/mobile-phone-number')
+    res.redirect('/v26-apply-journey/apply/mobile-phone-number')
   
   })
   
   // What is your mobile phone number?
   
-  router.post('/current/mobile-phone-number', function (req, res) {
+  router.post('/v26-apply-journey/mobile-phone-number', function (req, res) {
   
     var mobilePhoneNumber = req.session.data['mobilephonenumber']
   
-    res.redirect('/current/apply/check-your-answers')
+    res.redirect('/v26-apply-journey/apply/check-your-answers')
   
   })
   
