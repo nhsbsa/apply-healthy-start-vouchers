@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="v27/email-address-option3" method="post">
+
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              What is your email address?
+            </h1>
+          </legend> 
+
+          <div class="nhsuk-hint" id="contact-hint">
+            <p>We'll only use this to send notifications about your application and payments.</p>
+          </div>
+
+
+
+
+
+
+          <div class="nhsuk-radios nhsuk-radios--conditional">    
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="email">
+              Email address
+            </label>
+            <div class="nhsuk-input__wrapper">
+              <input type="email" name="email" id="email" class="form-control nhsuk-input nhsuk-input" 
+              aria-required="true" maxlength="50" aria-describedby="email-hint" jf-ext-cache-id="0" data-gtm-form-interact-field-id="0" 
+              aria-controls="conditional-email-address">
+            </div> 
+          </div>
+        
+                        
+
+                      <!-- Inset Text (Hidden Initially) -->
+                      <div class="nhsuk-inset-text dialog-is-open claim-email-dialog-div" id="conditional-email-address" style="display: none;">
+                        <p class="nhsuk-hint nhsuk-!-margin-bottom-0">
+                            An email will be sent to:
+                            <span id="emailDisplay" style="color: black;"><strong></strong></span>
+                        </p>
+                    </div>
+          </div>
+          
+
+          <script>
+          // JavaScript to update the <strong> tag with the entered email address and show/hide the inset text
+  const emailInput = document.getElementById('email');
+  const emailDisplay = document.getElementById('emailDisplay').querySelector('strong');
+  const conditionalEmailDiv = document.getElementById('conditional-email-address');
+
+  emailInput.addEventListener('input', function() {
+    // Update the content of the <strong> tag with the email input value
+    emailDisplay.textContent = emailInput.value;
+
+    // Show or hide the conditional inset text based on whether the email field has content
+    if (emailInput.value !== "") {
+      conditionalEmailDiv.style.display = 'block';  // Show the inset
+    } else {
+      conditionalEmailDiv.style.display = 'none';   // Hide the inset if the field is empty
+    }
+  });
+          </script>
+  
+    <!--An email will be sent to: &nbsp;<span class="govuk-body email-feedback govuk-!-font-weight-bold" id="health-email-show">rwefs@</span>-->
+  
+
+
+
+
+      </fieldset>
+    </div>
+
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
