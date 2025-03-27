@@ -27,17 +27,24 @@ What is your address?
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="select-1">
-                  
+                 
                 </label>
-                <select class="nhsuk-select" id="select-1" name="select-1">
+                <select class="nhsuk-select" id="select-1" name="select-1" name="address" onchange="parseAddress()"> 
                   <option value="" selected>Select your address</option>
-                  <option value="Flat 1A, 12 Palm Road, London, NR33 4GP">Flat 1A, 12 Palm Road, London, NR33 4GP</option>
-                  <option value="Flat 1B, 12 Palm Road, London, NR33 4GP">Flat 1B, 12 Palm Road, London, NR33 4GP</option>
+                  <option value="11 Palm Road, London, NR33 4GP">11 Palm Road, London, NR33 4GP</option>
+                  <option value="12 Palm Road, London, NR33 4GP">12 Palm Road, London, NR33 4GP</option>
                   <option value="13 Palm Road, London, NR33 4GP">13 Palm Road, London, NR33 4GP</option>
                   <option value="14 Palm Road, London, NR33 4GP">14 Palm Road, London, NR33 4GP</option>
                   <option value="15 Palm Road, London, NR33 4GP">15 Palm Road, London, NR33 4GP</option>
                </select>
               </div>
+
+
+              <!-- Hidden input fields to store the split address components -->
+              <input type="hidden" name="addressline1" id="addressline1">
+              <input type="hidden" name="addressline2" id="addressline2">
+              <input type="hidden" name="towncity" id="towncity">
+              <input type="hidden" name="postcode" id="postcode">
 
             <p><a href="address">My address is not listed</a></p>
 

@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your email address?
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <!--<form action="v27/email-address" method="post">-->
+
+        <div class="nhsuk-form-group">
+            <h1 class="nhsuk-label-wrapper">
+                <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="emailaddress">
+                What is the best way to contact you?
+                </label>
+            </h1>
+
+            <div class="nhsuk-hint" id="contact-hint">
+                We'll only use this to send notifications about your application and payments.
+            </div>
+
+
+          <div class="nhsuk-radios nhsuk-radios--conditional">    
+               
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="contact-email" name="contact" type="radio" value="email" aria-controls="conditional-contact-1">
+              <label class="nhsuk-label nhsuk-radios__label" for="contact-email">
+                Email
+              </label>
+            </div>
+            
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-grid-row">
+                  <div class="nhsuk-input--width-20">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label" for="email-input">
+                        Your email address
+                      </label>
+                      <input class="nhsuk-input nhsuk-u-width-full" id="email-input" name="email" type="text" value="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="number" aria-controls="conditional-contact-2">
+              <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+                  Mobile phone
+              </label>
+          </div>
+          
+          <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-2">
+              <div class="nhsuk-form-group">
+                  <div class="nhsuk-grid-row">
+                      <div class="nhsuk-input--width-20">
+                          <div class="nhsuk-form-group">
+                              <label class="nhsuk-label" for="phone-number">
+                                  Your mobile phone number
+                              </label>
+                              <input class="nhsuk-input nhsuk-u-width-full" id="phone-number" name="phone" type="text" value="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+
+
+    </div>
+  </div>
+
+
+
+    <br>
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        <!--</form>-->
+
+    </div>
+</div>
+
+{% endblock %}

@@ -43,8 +43,20 @@ Check your answers
                 <dd class="nhsuk-summary-list__value">
                     {{ data['addressline1'] }},<br>
                     {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                    {{ data['towncity'] }},<br>
+                    {{ data['towncity'] }}<br>
                     {{ data['postcode'] }}
+                    <!--{% if data['addressline1'] %}
+                    {{ data['addressline1'] }},<br>
+                {% endif %}
+                {% if data['addressline2'] %}
+                    {{ data['addressline2'] }},<br>
+                {% endif %}
+                {% if data['towncity'] %}
+                    {{ data['towncity'] }},<br>
+                {% endif %}
+                {% if data['postcode'] %}
+                    {{ data['postcode'] }}
+                {% endif %}-->
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="address#addressline1">
