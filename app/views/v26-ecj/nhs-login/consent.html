@@ -1,0 +1,42 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+Agree to share your NHS login information
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h2><span role="text">Agree to share your NHS login information</span></h2>
+
+    </div>
+</div>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <p>To continue, you need to agree to share your NHS login information with <strong>Healthy Start</strong>.</p>
+        <p><strong>Healthy Start</strong> will use your:</p>
+
+        <ul>
+            <li>first names</li> 
+            <li>last names</li> 
+            <li>date of birth</li> 
+            <li>email address</li> 
+            <li>phone numbers</li> 
+            <li>NHS numbers</li> 
+        </ul>
+
+        <p>Read the <a href="#" target="_blank">terms of use and privacy policy</a> for <strong>Healthy Start</strong> to check how your information will be used.</p>
+        <p>If you do not agree to share this information you will not be able to use NHS login with <strong>Healthy Start</strong>.</p>
+
+        
+        <!--<button class="nhsuk-button" type="submit">I agree</button>-->
+
+        <p><a href="email-address" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">I agree</a></p>
+
+        <p><a href="#" target="_blank">I do not agree to share this information</a></p>
+    </div>
+
+</div>
+{% endblock %}

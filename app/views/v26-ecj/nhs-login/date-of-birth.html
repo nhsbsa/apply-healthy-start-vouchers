@@ -1,7 +1,7 @@
-{% extends 'layout.html' %}
+{% extends 'layout-nhs-login.html' %}
 
 {% block pageTitle %}
-What is your due date?
+What is your date of birth?
 {% endblock %}
 
 {% block content %}
@@ -13,47 +13,45 @@ What is your due date?
             "text": "Go back"
         }) }}
 
-    <form action="v26-ecj/due-date" method="post">
-
+ 
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
-            <h1 class="nhsuk-fieldset__heading">
-              What is your due date?
-            </h1>
+            <h2>
+              What is your date of birth?
+            </h2>
           </legend>
-
           <span class="nhsuk-hint" id="hint">
-            For example, 21 8 2020
+            For example, 15 3 1984
           </span>
 
           <div class="nhsuk-date-input">
             <div class="nhsuk-date-input__item">
               <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-date-input__label" for="duedateday">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateofbirthday">
                   Day
                 </label>
-                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedateday"
-                  name="duedateday" type="number" pattern="[0-9]*">
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthday"
+                  name="dateofbirthday" type="number" pattern="[0-9]*">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
               <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-date-input__label" for="duedatemonth">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateofbirthmonth">
                   Month
                 </label>
-                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="duedatemonth"
-                  name="duedatemonth" type="number" pattern="[0-9]*">
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateofbirthmonth"
+                  name="dateofbirthmonth" type="number" pattern="[0-9]*">
               </div>
             </div>
             <div class="nhsuk-date-input__item">
               <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-date-input__label" for="duedateyear">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateofbirthyear">
                   Year
                 </label>
-                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="duedateyear"
-                  name="duedateyear" type="number" pattern="[0-9]*">
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateofbirthyear"
+                  name="dateofbirthyear" type="number" pattern="[0-9]*">
               </div>
             </div>
           </div>
@@ -64,19 +62,18 @@ What is your due date?
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-            If you're unsure of your due date
+            Why we ask for your date of birth
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <p>You can use <a href="">the NHS pregnancy and due date calculator</a> if you're unsure of your due date or still waiting for a <a href="">dating scan</a>.</p>
+          <p>We use your date of birth to confirm your identity and eligibility.</p>
         </div>
       </details>
 
-      <button class="nhsuk-button" type="submit">
-        Continue
-      </button>
 
-    </form>
+      <p><a href="postcode" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Continue</a></p>
+
+
 
   </div>
 </div>

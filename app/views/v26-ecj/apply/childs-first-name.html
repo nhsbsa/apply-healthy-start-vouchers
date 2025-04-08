@@ -1,7 +1,7 @@
  {% extends 'layout.html' %}
 
 {% block pageTitle %}
-What is your child’s first name?
+Enter your new child’s name - Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
 {% block content %}
@@ -9,16 +9,20 @@ What is your child’s first name?
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
+        <!--{{ backLink({
             "href": "javascript:history.go(-1)",
             "text": "Go back"
-        }) }}
+    }) }}-->
 
-        <h1 class="nhsuk-fieldset__legend--xl">What is your child’s name?</h1>
+        
 
-        <p>If you have more than one child under 4 years old, you'll be able to tell us about them later.</p>
+        <h1 class="nhsuk-fieldset__legend--xl">Enter your new child’s name</h1>
 
-        <form action="v25/childs-first-name" method="post">
+        <p>Enter your child’s name exactly as it appears on your <a class="nhsuk-link" href="https://www.gov.uk/sign-in-universal-credit" target="_blank">Universal Credit claim (opens in a new tab)</a> or Child Tax Credit letter.</p>
+           
+        <p>If you need to add more than one child, you’ll be able to tell us about them later.</p>
+
+        <form action="v26-ecj/childs-first-name" method="post">
 
         <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
@@ -32,8 +36,15 @@ What is your child’s first name?
 
                 <div class="nhsuk-form-group">
 
+                    <label class="nhsuk-label" for="childsmiddlename">Middle names</label>
+                    <input class="nhsuk-input nhsuk-input--width-20" id="childsmiddlename" name="childsmiddlename" type="text">
+  
+                  </div>
+
+                <div class="nhsuk-form-group">
+
                   <label class="nhsuk-label" for="childslastname">Last name</label>
-                  <input class="nhsuk-input nhsuk-input--width-20" id="childsfirstname" name="childslastname" type="text">          
+                  <input class="nhsuk-input nhsuk-input--width-20" id="childslastname" name="childslastname" type="text">          
                   
                 </div>
 
@@ -48,7 +59,7 @@ What is your child’s first name?
                     </span>
                 </summary>
                 <div class="nhsuk-details__text">
-                    <p>We use your child’s name to confirm your eligibility.</p>
+                    <p>We need your child’s name so we can add their details to your Healthy Start claim and make sure you’re being paid correctly.</p>
                 </div>
             </details>
 

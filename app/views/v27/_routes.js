@@ -39,7 +39,7 @@ router.post('/v27/which-service', function (req, res) {
       res.redirect('/v27/apply/kickouts/card-issue')
     }
     if (whichservice === "update-my-details") {
-      res.redirect('/v25/before-you-start-manage')
+      res.redirect('/v26-ecj/where-do-you-live')
     }
 
     })

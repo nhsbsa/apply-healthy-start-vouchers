@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+
+    <form action="v26-ecj/apply/check-your-answers-nino" method="post">
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        
+ 
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Your details</h2>
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['nationalinsurancenumber'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">
+                Change<span class="nhsuk-u-visually-hidden">National Insurance number</span></a> 
+                </a>
+                </dd>
+          </div>
+  
+  
+  
+  
+  
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+                Date of birth
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+                <!--{{ data['dateofbirth'] }}-->
+                 2 February 1999
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">
+                Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+                </a>
+              </dd>
+          </div>
+  
+        </dl>
+   
+            <button class="nhsuk-button"
+            type="submit">Continue
+            </button>
+             
+
+            </form>
+    </div>
+</div>
+
+{% endblock %}

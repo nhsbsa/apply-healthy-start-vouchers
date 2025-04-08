@@ -1,5 +1,5 @@
 // ********************************
-// APPLY (v25)
+// APPLY (v26-ecj)
 // ********************************
 
 // External dependencies
@@ -19,21 +19,256 @@ const { listenerCount } = require('gulp');
 
 // ********************************
 
-// Do you live in England, Wales or Northern Ireland?
 
 
-router.post('/v25/where-do-you-live', function (req, res) {
 
-  const whereDoYouLive = req.session.data['where-do-you-live']
 
-  if (whereDoYouLive == 'yes') {
-    res.redirect('/v25/apply/date-of-birth');
-  } else {
-    res.redirect('/v25/apply/kickouts/not-eligible-country');
+// Where do you live?
+
+
+router.post('/v26-ecj/where-do-you-live', function (req, res) {
+
+      
+  var location = req.session.data['location']
+
+  if (location === "england or wales") {
+    res.redirect('/v26-ecj/apply/what-update-nhs-login')
   }
+  if (location === "northern ireland") {
+    res.redirect('/v26-ecj/apply/what-update-ni')
+  }
+  if (location === "somewhere else") {
+    res.redirect('/v26-ecj/apply/kickouts/not-eligible-country')
+  }
+
+  })
+
+
+
+
+// What update would you like to make to your claim? (NHS LOGIN)
+
+
+router.post('/v26-ecj/what-update-nhs-login', function (req, res) {
+
+  var whatupdate = req.session.data['whatupdate']
+
+  if (whatupdate === "add-pregnancy") {
+    res.redirect('/v26-ecj/apply/are-you-pregnant-nhs-login')
+  }
+  else if (whatupdate === "add-baby-child") {
+    res.redirect('/v26-ecj/nhs-login/before-you-start-nhs-login-child') 
+  }  
+  else if (whatupdate === "card-issue") {
+    res.redirect('/v26-ecj/apply/kickouts/card-issue') 
+  }  
+  else {
+    res.redirect('/v26-ecj/apply/kickouts/call-us-to-update') 
+  }   
+
+  })
+
+
+
+// Are you more than 10 weeks pregnant? (NHS LOGIN)
+
+
+router.post('/v26-ecj/are-you-pregnant-nhs-login', function (req, res) {
+
+  var pregnant = req.session.data['pregnant']
+
+  if (pregnant === "yes") {
+    res.redirect('/v26-ecj/nhs-login/before-you-start-nhs-login')
+  }
+  else if (pregnant === "no") {
+    res.redirect('/v26-ecj/apply/kickouts/not-pregnant')
+  }
+   
+  })
+
+
+
+
+  // Before you start (NHS Login) (Add a new baby or child)
+
+
+  router.post('/v26-ecj/nhs-login/before-you-start-nhs-login-child', function (req, res) {
+
+    res.redirect('/v26-ecj/nhs-login/email-address');
+  
+  })
+
+  
+
+
+
+
+  // What is your NHS Number?
+  
+
+ 
+  router.post('/v26-ecj/nhs-login/nhs-number', function (req, res) {
+
+
+    var nhsnumber = req.session.data['nhsnumber']
+    var checkbox = req.session.data['checkbox']
+  
+  
+    if (nhsnumber) { 
+      res.redirect('/v26-ecj/nhs-login/date-of-birth') 
+    } 
+    
+    else if (checkbox === "donotknow") { 
+      res.redirect('/v26-ecj/nhs-login/name')  
+    } 
+  
+  })
+  
+
+
+
+  // NHS Login - What is your address 2? (== Select your address)
+
+  router.post('/v26-ecj/nhs-login/select-address', function (req, res) {
+
+    res.redirect('/v26-ecj/apply/check-your-answers-nhs-login');
+  
+  })
+
+
+
+
+  // Check your answers (== after NHS Login)
+
+  router.post('/v26-ecj/apply/cya-nhs-login', function (req, res) {
+
+    var information = req.session.data['information']
+    
+    
+    if (information === "yes") {
+      res.redirect('/v26-ecj/apply/national-insurance-number-nhs-login');
+    }
+    else if (information === "no") {
+      res.redirect('/v26-ecj/apply/kickouts/contact-your-gp')
+    }
+    else {
+      res.redirect('/v26-ecj/apply/cya-nhs-login')
+    }
+
+  })
+
+
+
+
+
+  // What is your National Insurance number? (== after NHS Login)
+
+
+  router.post('/v26-ecj/national-insurance-number-nhs-login', function (req, res) {
+
+    var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
+  
+    if (nationalinsurancenumber == 'AB123456C') {
+      res.redirect('/v26-ecj/apply/check-your-answers-nino')
+    } 
+    else if (nationalinsurancenumber == 'CD123456F') {
+      res.redirect('/v26-ecj/apply/childs-first-name')
+    } 
+    else {
+      res.redirect('/v26-ecj/apply/national-insurance-number-nhs-login')
+    }
+
+  })
+
+
+
+  // Check your answers (NINO and DOB)
+
+  // router.post('/v26-ecj/apply/check-your-answers-nino', function (req, res) {
+  //   res.redirect('/v26-ecj/apply/due-date');
+  // })
+
+  router.post('/v26-ecj/apply/check-your-answers-nino', function (req, res) {
+  var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
+  
+  if (nationalinsurancenumber == 'AB123456C') {
+    res.redirect('/v26-ecj/apply/due-date')
+  } 
+  else if (nationalinsurancenumber == 'CD123456F') {
+    res.redirect('/v26-ecj/apply/childs-first-name')
+  } 
+  else {
+    res.redirect('/v26-ecj/apply/national-insurance-number-nhs-login')
+  } 
+})
+
+
+
+// What is your due date?
+
+router.post('/v26-ecj/due-date', function (req, res) {
+
+  res.redirect('/v26-ecj/apply/check-your-answers-due-date');
 
 })
 
+
+// Check your answers - due date
+
+router.post('/v26-ecj/check-your-answers-due-date', function (req, res) {
+
+  res.redirect('/v26-ecj/apply/pregnancy-terms-and-conditions');
+
+})
+
+
+
+// Enter your new child’s name
+
+  
+router.post('/v26-ecj/childs-first-name', function (req, res) {
+  
+  var childsfirstname = req.session.data['childsfirstname'].trim().toUpperCase()
+  var childslastname = req.session.data['childslastname'].trim().toUpperCase()
+
+
+
+  if (childsfirstname == 'BEN' && childslastname == 'JONES') {  
+    res.redirect('/v26-ecj/apply/childs-date-of-birthe');  // removing one child scenario but this does not work
+  }
+  else if (childsfirstname == 'RILEY' && childslastname == 'JONES') {
+    res.redirect('/v26-ecj/apply/childs-date-of-birth') 
+  }
+  else if (childsfirstname == 'CHARLIE' && childslastname == 'SMITH') {
+    res.redirect('/v26-ecj/apply/childs-date-of-birth') 
+  }
+  else {
+    res.redirect('/v25/PAGE-DOESNT-EXIST'); 
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
   // Date of birth
   
 router.post('/v25/date-of-birth', function (req, res) {

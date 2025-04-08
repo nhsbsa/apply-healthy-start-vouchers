@@ -1,0 +1,65 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+What is your NHS Number?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="v26-ecj/nhs-login/nhs-number" method="post">
+
+      <div class="nhsuk-form-group"> 
+        <h2>What is your NHS Number?</h2>
+        <span class="nhsuk-hint" id="example-with-hint-text-hint">
+          Your NHS number is a 10 digit number. For example, '485 777 3456'.
+      </span>
+      <input class="nhsuk-input nhsuk-input--width-20" id="nhsnumber" name="nhsnumber" type="text" pattern="[0-9]{10}" maxlength="10" inputmode="numeric">
+      </div>
+ 
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+            
+            <div class="nhsuk-checkboxes">
+                <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="donotknow" name="checkbox" type="checkbox" 
+                        value="donotknow">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="donotknow">
+                        I do not know my NHS Number.
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Why we ask for your NHS Number?
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>We use your NHS Number to help verify your details.</p>                      
+      </div>
+    </details>
+
+
+
+
+
+    
+    <button class="nhsuk-button" type="submit">
+      Continue
+  </button>
+
+
+
+
+  </form>
+  </div>    
+</div>
+{% endblock %}
