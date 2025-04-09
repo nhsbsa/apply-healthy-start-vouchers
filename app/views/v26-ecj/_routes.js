@@ -35,7 +35,7 @@ router.post('/v26-ecj/where-do-you-live', function (req, res) {
     res.redirect('/v26-ecj/apply/what-update-nhs-login')
   }
   if (location === "northern ireland") {
-    res.redirect('/v26-ecj/apply/what-update-ni')
+    res.redirect('/v26-ecj/before-you-start-ni')
   }
   if (location === "somewhere else") {
     res.redirect('/v26-ecj/apply/kickouts/not-eligible-country')
@@ -70,6 +70,30 @@ router.post('/v26-ecj/what-update-nhs-login', function (req, res) {
 
 
 
+// What update would you like to make to your claim? (NI)
+
+
+router.post('/v26-ecj/what-update-ni', function (req, res) {
+
+  var whatupdate = req.session.data['whatupdate']
+
+  if (whatupdate === "add-pregnancy") {
+    res.redirect('/v26-ecj/apply/are-you-pregnant-ni')
+  }
+  else if (whatupdate === "add-baby-child") {
+    res.redirect('/v26-ecj/') 
+  }  
+  else if (whatupdate === "card-issue") {
+    res.redirect('/v26-ecj/apply/kickouts/card-issue') 
+  }  
+  else {
+    res.redirect('/v26-ecj/apply/kickouts/call-us-to-update') 
+  }   
+
+  })
+
+
+
 // Are you more than 10 weeks pregnant? (NHS LOGIN)
 
 
@@ -88,6 +112,47 @@ router.post('/v26-ecj/are-you-pregnant-nhs-login', function (req, res) {
 
 
 
+// Are you more than 10 weeks pregnant? (NI)
+
+
+router.post('/v26-ecj/are-you-pregnant-ni', function (req, res) {
+
+  var pregnant = req.session.data['pregnant']
+
+  if (pregnant === "yes") {
+    res.redirect('/v26-ecj/apply/national-insurance-number-ni')
+  }
+  else if (pregnant === "no") {
+    res.redirect('/v26-ecj/apply/kickouts/not-pregnant')
+  }
+   
+  })
+
+
+
+  // What is your National insurance number?
+  
+router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
+
+
+  var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
+  var checkbox = req.session.data['checkbox']
+
+
+  if (nationalinsurancenumberupdate) { 
+    res.redirect('/v26-ecj/apply/date-of-birth') 
+  } 
+  
+  else if (checkbox.checked = true) { 
+    res.redirect('/v26-ecj/apply/kickouts/no-nino')  
+  } 
+
+
+
+
+})
+
+
 
   // Before you start (NHS Login) (Add a new baby or child)
 
@@ -101,6 +166,7 @@ router.post('/v26-ecj/are-you-pregnant-nhs-login', function (req, res) {
   
 
 
+  
 
 
   // What is your NHS Number?
@@ -175,7 +241,7 @@ router.post('/v26-ecj/are-you-pregnant-nhs-login', function (req, res) {
       res.redirect('/v26-ecj/apply/childs-first-name')
     } 
     else {
-      res.redirect('/v26-ecj/apply/national-insurance-number-nhs-login')
+      res.redirect('/v26-ecj/apply/check-your-answers-nino')
     }
 
   })
@@ -208,9 +274,53 @@ router.post('/v26-ecj/are-you-pregnant-nhs-login', function (req, res) {
 
 router.post('/v26-ecj/due-date', function (req, res) {
 
-  res.redirect('/v26-ecj/apply/check-your-answers-due-date');
+  
+      var duedateday = req.session.data['duedateday']
+      var duedatemonth = req.session.data['duedatemonth']
+      var duedateyear = req.session.data['duedateyear']
+    
+      var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
+      req.session.data['duedate'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(duedate))
+    
+      var today = moment();
+    
+      var fulltermpregnancy = moment().add(42, 'weeks'); // 42 weeks from today is a full term pregnancy
+      var tenweekspregnant = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
+    
+      
+      if (duedateday && duedatemonth && duedateyear) {
+    
+        if (duedate < today) {
+          res.redirect('/v26-ecj/apply/due-date')
+          console.log('IF IS RUNNING HERE')
+        } else if (duedate > fulltermpregnancy) {
+          req.session.data.lessThanTenWeeksPregnant = true;
+          res.redirect('/v26-ecj/apply/childs-first-name')
+          console.log('ELSE IF IS RUNNING HERE')
+        } else {
+    
+          if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
+            req.session.data.lessThanTenWeeksPregnant = true;
+            console.log('LESS THAN 10 WEEKS')
+          } else {
+            req.session.data.lessThanTenWeeksPregnant = false;
+            console.log('MORE THAN 10 WEEKS')
+          }
+    
+          res.redirect('/v26-ecj/apply/check-your-answers-due-date')
+        }
+    
+      }
+      else {
+        res.redirect('/v26-ecj/apply/check-your-answers-due-date')
+      }
+    
+    })
 
-})
+
+
+
+
 
 
 // Check your answers - due date
@@ -251,6 +361,128 @@ router.post('/v26-ecj/childs-first-name', function (req, res) {
 
 
 
+// What is child's date of birth?
+
+  router.post('/v26-ecj/childs-date-of-birth', function (req, res) {
+
+    
+    var childsdateofbirthday = req.session.data['childsdateofbirthday'] || '';
+    var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth'] || '';
+    var childsdateofbirthyear = req.session.data['childsdateofbirthyear'] || '';
+
+    var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
+
+    var today = moment().format('YYYY-MM-DD');
+    var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
+
+    console.log('Childs DOB: '+ childsdateofbirth);
+    console.log('Today: '+ today);
+    console.log('Four years from today: '+ fouryearsfromtoday);
+
+
+    
+    if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
+      var dobString = `${childsdateofbirthday}-${childsdateofbirthmonth}-${childsdateofbirthyear}`; // chae
+      var childsdateofbirth = moment(dobString, 'DD-MM-YYYY').format('YYYY-MM-DD'); // chae
+      // continue as normal...
+      
+      if (moment(childsdateofbirth).isBefore(today)) {
+
+          if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
+
+            let childList = req.session.data.childList;
+            if (!Array.isArray(childList)) {
+                childList = [];
+            }
+            
+            // Create a variable of the posted information
+            
+            const childsfirstname = req.session.data['childsfirstname'];
+            const childsmiddlename = req.session.data['childsmiddlename'];
+            const childslastname = req.session.data['childslastname'];
+            
+            // Add the posted information into the 'childList' array
+            
+            childList.push({ 
+                "ChildsFirstName": childsfirstname,
+                "ChildsMiddleName" : childsmiddlename,
+                "ChildsLastName": childslastname,
+                "ChildsDOB": childsdateofbirthDisplay
+            });
+
+
+
+            // Access the last child within childList
+            let childListIndex = childList.length - 1;
+            let lastChild = childList[childListIndex];
+            if (!Array.isArray(lastChild)) {
+              lastChild = [lastChild];
+            }
+            
+            req.session.data.childList = lastChild;
+            
+            console.log('childList:', childList);
+            console.log('Number of children:', childList.length);
+
+
+            req.session.data.childList = childList;
+            
+            console.log(childList);
+            console.log('Number of children:', childList.length);
+            
+
+
+            res.redirect('/v26-ecj/apply/children-under-four-answers'); 
+
+          } else {
+            res.redirect('/v26-ecj/apply/childs-date-of-birth')
+          }
+
+      } else {
+        res.redirect('/v26-ecj/apply/childs-date-of-birth')
+      }
+      
+    }
+    else {
+      res.redirect('/v26-ecj/apply/childs-date-of-birth')
+    }
+
+
+    })
+
+
+
+
+
+  // Check your new children’s details
+  router.post('/v26-ecj/children-under-four-answers', function (req, res) {
+    var addanother = req.session.data['addanother'];
+  
+    var dateofbirthday = req.session.data['dateofbirthday'];
+    var dateofbirthmonth = req.session.data['dateofbirthmonth'];
+    var dateofbirthyear = req.session.data['dateofbirthyear'];
+    var pregnant = req.session.data['pregnant'];
+    var childrenunderfour = req.session.data['childrenunderfour'];
+  
+    var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
+    var today = new Date();
+    var ageDate = new Date(today - dob.getTime());
+    var temp = ageDate.getFullYear();
+    var yrs = Math.abs(temp - 1970);
+  
+    // Safe check for lastname
+    var lastnameRaw = req.session.data['lastname'];
+    var lastname = lastnameRaw ? lastnameRaw.trim().toUpperCase() : '';
+  
+    if (addanother === "yes") {
+      res.redirect('/v26-ecj/apply/childs-first-name');
+    } else if (addanother === "no" && lastname === 'JONES') {
+      res.redirect('/v26-ecj/apply/check-your-answers-add-baby-child');
+    } else if (addanother === "no") {
+      res.redirect('/v26-ecj/apply/check-your-answers-add-baby-child');
+    }
+  });
 
 
 
@@ -260,6 +492,24 @@ router.post('/v26-ecj/childs-first-name', function (req, res) {
 
 
 
+// Check your answers 
+router.post('/v26-ecj/check-your-answers-add-baby-child', function (req, res) {
+
+  var childsFirstName = req.session.data['childsfirstname'].trim().toUpperCase()
+  var childsLastName = req.session.data['childslastname'].trim().toUpperCase()
+
+  
+  if (childsFirstName == 'CHARLIE' && childsLastName == 'SMITH') { 
+    res.redirect('/v26-ecj/apply/child-terms-and-conditions-yes'); 
+  } 
+  else if (childsFirstName == 'RILEY' && childsLastName == 'JONES') {
+    req.session.data = {}
+    res.redirect('/v26-ecj/apply/child-terms-and-conditions');
+  
+  } else {
+    res.redirect('/v26-ecj/apply/child-terms-and-conditions');
+  }
+});
 
 
 
@@ -267,11 +517,9 @@ router.post('/v26-ecj/childs-first-name', function (req, res) {
 
 
   
-
+  // What is your date of birth?
   
-  // Date of birth
-  
-router.post('/v25/date-of-birth', function (req, res) {
+router.post('/v26-ecj/date-of-birth', function (req, res) {
 
   var dateofbirthday = req.session.data['dateofbirthday']
   var dateofbirthmonth = req.session.data['dateofbirthmonth']
@@ -293,16 +541,66 @@ router.post('/v25/date-of-birth', function (req, res) {
 
   if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
     if (yrs < 16) {
-      res.redirect('/v25/apply/kickouts/under-sixteen-signpost')
+      res.redirect('/v26-ecj/apply/kickouts/under-sixteen-signpost')
     } else {
-      res.redirect('/v25/apply/name');
+      res.redirect('/v26-ecj/apply/nino-answers');
     }
   } else {
-    res.redirect('/v25/apply/date-of-birth')
+    res.redirect('/v26-ecj/apply/date-of-birth')
   }
 
 
 })
+
+
+
+
+
+
+// Is your mobile number correct?
+
+router.post('/v26-ecj/get-your-security-code', function (req, res) {
+
+  var getyoursecuritycode = req.session.data['getyoursecuritycode']
+
+  if (getyoursecuritycode === "yes") {
+    res.redirect('/v26-ecj/apply/security-code-text-message')
+  }
+  else if (getyoursecuritycode === "no") {
+    res.redirect('/v26-ecj/apply/kickouts/changed-phone-number') 
+  }   
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+  // Check your phone
+
+  router.post('/v26-ecj/apply/security-code-text-message', function (req, res) {
+
+    res.redirect('/v26-ecj/apply/due-date');
+  
+  })
+
+
+
+
+  
+
+
+
+
+
+
 
 // What is your name?
 
@@ -564,72 +862,7 @@ router.post('/v25/get-your-security-code-3', function (req, res) {
 
   })
 
-
-
-
-
-
-// (update) What is your National Insurance number? (ROUTE: ADD A NEW BABY OR CHILD - NO CONTACTS)
-
-
-
-
-router.post('/v25/national-insurance-number-update-4', function (req, res) {
-
-  var nationalinsurancenumberupdate = req.session.data['nationalinsurancenumberupdate']
-  var checkbox = req.session.data['checkbox']
-   
  
-  if (nationalinsurancenumberupdate) { 
-    res.redirect('/v25/apply/get-your-security-code-2') 
-  } 
-  
-  else if (checkbox.checked = true) { 
-    res.redirect('/v25/apply/date-of-birth-update-4')  
-  } 
- 
-
- 
-})
-
-
-
-
-
-// (update) What is your date of birth? (ROUTE: ADD A NEW PREGNANCY -YES CONTACTS)
-
-router.post('/v25/date-of-birth-update', function (req, res) {
-
-  var dateofbirthday = req.session.data['dateofbirthday']
-  var dateofbirthmonth = req.session.data['dateofbirthmonth']
-  var dateofbirthyear = req.session.data['dateofbirthyear']
-
-  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
-  var dateofbirth = moment(dob).format('MM/DD/YYYY');
-  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
-
-  var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-  var ageDate = new Date(today - dobYrs.getTime())
-  var temp = ageDate.getFullYear();
-  var yrs = Math.abs(temp - 1970);
-  req.session.applicantAge = yrs
-
-  // Checking the actual age of the beneficiary 
-  var ageInMilliseconds = new Date() - new Date(dateofbirth);
-  var actualAge = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
-
-  if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-    if (yrs < 16) {
-      res.redirect('/v25/apply/kickouts/under-sixteen-signpost')
-    } else {
-      res.redirect('/v25/apply/nino-answers');
-    }
-  } else {
-    res.redirect('/v25/apply/date-of-birth-update')
-  }
-
-
-})
 
 
 
@@ -1077,27 +1310,6 @@ router.post('/v25/apply/personal-details-answers-update', function (req, res) {
 
 
 
-
-// Get your security code (ROUTE: ADD A NEW PREGNANCY)
-
-router.post('/v25/get-your-security-code', function (req, res) {
-
-  var getyoursecuritycode = req.session.data['getyoursecuritycode']
-
-  if (getyoursecuritycode === "yes") {
-    res.redirect('/v25/apply/security-code-text-message')
-  }
-  else if (getyoursecuritycode === "no") {
-    res.redirect('/v25/apply/kickouts/changed-phone-number') 
-  }   
-
-  })
-
-
-
- 
-
-
 // Get your security code (ROUTE: ADD A NEW BABY OR CHILD)
 
 router.post('/v25/get-your-security-code-2', function (req, res) {
@@ -1151,168 +1363,7 @@ router.post('/v25/security-code-text-message-2', function (req, res) {
 
 
 
-
-
-
-// (update) What is child's name? > Childs first name (ROUTE: ADD A NEW BABY OR CHILD)
-  
-  
-  router.post('/v25/childs-first-name-update', function (req, res) {
-  
-    var childsfirstname = req.session.data['childsfirstname'].trim().toUpperCase()
-    var childslastname = req.session.data['childslastname'].trim().toUpperCase()
-
-
-
-    if (childsfirstname == 'BEN' && childslastname == 'JONES') {  
-      res.redirect('/v25/apply/childs-date-of-birth-update');  // removing one child scenario but this does not work
-    } 
-    else if (childsfirstname == 'TOM' && childslastname == 'JONES') {  
-      res.redirect('/v25/apply/childs-date-of-birth-update-yes');  // removing one child scenario but this does not work
-    } 
-    else if (childsfirstname == 'RILEY' && childslastname == 'JONES') {
-      res.redirect('/v25/apply/childs-date-of-birth-update') 
-    }
-    else if (childsfirstname == 'CHARLIE' && childslastname == 'SMITH') {
-      res.redirect('/v25/apply/childs-date-of-birth-update') 
-    }
-    else {
-      res.redirect('/v25/PAGE-DOESNT-EXIST'); 
-    }
-  });
-
-
-
-    //if (childsfirstname && childslastname) {
-    //  res.redirect('/v25/apply/childs-date-of-birth-update')
-    //}
-    //else {
-    //  res.redirect('/v25/childs-first-name-update')
-    //}
-
-  
-
-
-
-  // (update) What is child's date of birth? > childs date of birth (ROUTE: ADD A NEW BABY OR CHILD)
-
-
-  router.post('/v25/childs-date-of-birth-update', function (req, res) {
-
-    
-    var childsdateofbirthday = req.session.data['childsdateofbirthday']
-    var childsdateofbirthmonth = req.session.data['childsdateofbirthmonth']
-    var childsdateofbirthyear = req.session.data['childsdateofbirthyear']
-
-    var childsdateofbirth = moment(childsdateofbirthday + '-' + childsdateofbirthmonth + '-' + childsdateofbirthyear, 'DD-MM-YYYY').format('YYYY-MM-DD');
-    var childsdateofbirthDisplay = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(childsdateofbirth))
-
-    var today = moment().format('YYYY-MM-DD');
-    var fouryearsfromtoday = moment().subtract(4, 'years').format('YYYY-MM-DD');
-
-    console.log('Childs DOB: '+ childsdateofbirth);
-    console.log('Today: '+ today);
-    console.log('Four years from today: '+ fouryearsfromtoday);
-
-
-    
-    if (childsdateofbirthday && childsdateofbirthmonth && childsdateofbirthyear) {
-
-      if (moment(childsdateofbirth).isBefore(today)) {
-
-          if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
-
-            let childList = req.session.data.childList;
-            if (!Array.isArray(childList)) {
-                childList = [];
-            }
-            
-            // Create a variable of the posted information
-            
-            const childsfirstname = req.session.data['childsfirstname'];
-            const childsmiddlename = req.session.data['childsmiddlename'];
-            const childslastname = req.session.data['childslastname'];
-            
-            // Add the posted information into the 'childList' array
-            
-            childList.push({ 
-                "ChildsFirstName": childsfirstname,
-                "ChildsMiddleName" : childsmiddlename,
-                "ChildsLastName": childslastname,
-                "ChildsDOB": childsdateofbirthDisplay
-            });
-
-
-
-            // Access the last child within childList
-            let childListIndex = childList.length - 1;
-            let lastChild = childList[childListIndex];
-            if (!Array.isArray(lastChild)) {
-              lastChild = [lastChild];
-            }
-            
-            req.session.data.childList = lastChild;
-            
-            console.log('childList:', childList);
-            console.log('Number of children:', childList.length);
-
-
-            //req.session.data.childList = childList;
-            
-            //console.log(childList);
-            //console.log('Number of children:', childList.length);
-            
-
-
-
-            // Redirect to the 'Do you get another?' page
-            
-            
-            res.redirect('/v25/apply/children-under-four-answers-update'); 
-
-          } else {
-            res.redirect('/v25/apply/childs-date-of-birth-update')
-          }
-
-      } else {
-        res.redirect('/v25/apply/childs-date-of-birth-update')
-      }
-      
-    }
-    else {
-      res.redirect('/v25/apply/childs-date-of-birth-update')
-    }
-
-
-    })
-
-
-
-
-
-
-
-
-
-
-  // (update) children under 4 years old > answers (ROUTE: ADD A NEW BABY OR CHILD)
-    
-    router.post('/v25/children-under-four-answers-update', function (req, res) {
  
-
-      var addanother = req.session.data['addanother']
-    
-      if (addanother === "yes") {
-        res.redirect('/v25/apply/childs-first-name-update')
-      }
-      else if (addanother === "no") {
-        res.redirect('/v25/apply/check-your-answers-add-baby-child')
-      }  
-      
-      
-      });
-
-
 
 
 
@@ -1444,55 +1495,6 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
 
 
 
-  // (update) Children under 4 years old > Do you want to add another child to your Healthy Start claim? 
-
-
-  router.post('/v25/children-under-four-answers-update', function (req, res) {
-
-    var addanother = req.session.data['addanother']
-
-    var dateofbirthday = req.session.data['dateofbirthday']
-    var dateofbirthmonth = req.session.data['dateofbirthmonth']
-    var dateofbirthyear = req.session.data['dateofbirthyear']
-    var pregnant = req.session.data['pregnant']
-    var childrenunderfour = req.session.data['childrenunderfour']
-    var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-    var ageDate =  new Date(today - dob.getTime())
-    var temp = ageDate.getFullYear();
-    var yrs = Math.abs(temp - 1970);
-
-    var lastname = req.session.data['lastname'].trim().toUpperCase()
-
-    if (addanother === "yes") {
-      res.redirect('/v25/apply/childs-first-name-update')
-    }
-    else if (addanother === "no" && lastname == 'JONES') {
-      res.redirect('/v25/apply/another-change')
-    }
-    else if (addanother === "no" && lastname == 'GREEN') {
-      res.redirect('/v25/apply/another-change')
-    }
-    else if (addanother === "no" && lastname == 'BILAL') {
-      res.redirect('/v25/apply/another-change')
-    }
-    else if (addanother === "no" && lastname == 'ELBA') {
-      res.redirect('/v25/apply/another-change')
-    }
-    else if (addanother === "no" && lastname == 'JOHNSON') {
-      res.redirect('/v25/apply/another-change')
-    }
-    else if (addanother === "no" && lastname == 'BROWN') {
-      res.redirect('/v25/apply/another-change')
-    } 
-
-
-  })
-
-
-
-
-
-
 
 
 
@@ -1543,222 +1545,7 @@ router.post('/v25/check-your-answers-add-baby-child', function (req, res) {
 
 
 
-
-  // Do you get any of these benefits?
-
-  router.post('/v25/benefits', function (req, res) {
-
-    let benefits = req.session.data['benefits']
-    req.session.benefitsList = benefits
-    let fullName = req.session.fullName
-  
-      if (Array.isArray(benefits)) {
-  
-        if (benefits.includes('UC')) {
-          if (fullName == "SARAH GREEN") {
-            res.redirect('/v25/apply/universal-credit')
-          } else {
-            res.redirect('/v25/apply/universal-credit')
-          }
-        } else if (benefits.includes('CTC')) {
-          if (fullName == "SARAH GREEN") {
-            res.redirect('/v25/apply/kickouts/confirmation-no-match')
-          } else {
-            res.redirect('/v25/apply/are-you-pregnant')
-          }
-  
-  
-        } else if (benefits.includes('JSA') && benefits.includes('WTC') && benefits.includes('ESA') && benefits.includes('IS')) {
-          res.redirect('/v25/apply/benefits')
-        } else if (benefits.includes('JSA' && 'WTC') && !benefits.includes('ESA') && !benefits.includes('IS')) {
-          res.redirect('/v25/apply/jobseekers-allowance')
-        } else if (benefits.includes('ESA' && 'WTC') && !benefits.includes('JSA') && !benefits.includes('IS')) {
-          res.redirect('/v25/apply/working-tax-credits')
-        } else if (benefits.includes('IS' && 'WTC')) {
-          res.redirect('/v25/apply/are-you-pregnant')
-        } else {
-          res.redirect('/v25/apply/benefits')
-        }
-  
-      } else {
-  
-          const applicantsAge = req.session.applicantAge
-  
-          if (benefits.includes('UC')) {
-            if (fullName == "SARAH GREEN") {
-              res.redirect('/v25/apply/universal-credit')
-            } else {
-              res.redirect('/v25/apply/universal-credit')
-            }
-          } else if (benefits.includes('CTC')) {
-            if (fullName == "SARAH GREEN") {
-              res.redirect('/v25/apply/child-tax-credits')
-            } else {
-              res.redirect('/v25/apply/child-tax-credits')
-            }
-          } else if (benefits.includes('JSA')) {
-            res.redirect('/v25/apply/jobseekers-allowance')
-          } else if (benefits.includes('ESA')) {  
-            res.redirect('/v25/apply/employment-support-allowance')
-          } else if (benefits.includes('IS')) {
-            res.redirect('/v25/apply/are-you-pregnant')
-          } else if (benefits.includes('PC')) {
-            res.redirect('/v25/apply/pension-credit')
-          } else if (benefits.includes('WTC')) {
-            res.redirect('/v25/apply/working-tax-credits')
-          } else if (benefits.includes('NONE')) {
-            if (applicantsAge <= 16 && applicantsAge >= 18) {
-              res.redirect('/v25/apply/kickouts/confirmation-no-pregnancy-no-children')
-            } else {
-              res.redirect('/v25/apply/kickouts/confirmation-no-pregnancy-no-children')
-            }
-          } else {
-            res.redirect('/v25/apply/benefits')
-          }
-      }
-  
-  })
-
-// Benefit type routing
-
-router.post('/v25/universal-credit', function (req, res) {
-
-  var universalcredit = req.session.data['universalcredit']
-
-  if (universalcredit === "yes") {
-    res.redirect('/v25/apply/are-you-pregnant')
-  }
-  else if (universalcredit === "no") {
-    res.redirect('/v25/apply/kickouts/not-eligible')
-  }
-  else {
-    res.redirect('/v25/apply/universal-credit')
-  }
-
-})
-
-router.post('/v25/child-tax-credits', function (req, res) {
-
-  var childtaxcredits = req.session.data['childtaxcredits']
-
-  if (childtaxcredits === "yes") {
-    res.redirect('/v25/apply/working-tax-credit')
-  }
-  else if (childtaxcredits === "no") {
-    res.redirect('/v25/apply/kickouts/not-eligible')
-  }
-  else {
-    res.redirect('/v25/apply/child-tax-credits')
-  }
-
-})
-
-router.post('/v25/working-tax-credit', function (req, res) {
-
-  var workingtaxcredit = req.session.data['workingtaxcredit']
-
-  if (workingtaxcredit === "yes") {
-    res.redirect('/v25/apply/kickouts/not-eligible')
-  }
-  else if (workingtaxcredit === "no") {
-    res.redirect('/v25/apply/are-you-pregnant')
-  }
-  else {
-    res.redirect('/v25/apply/working-tax-credit')
-  }
-
-})
-
-router.get('/v25/jobseekers-allowance', (req, res) => {
-  const typeOfJSA = req.session.data['JSA']
-  let benefitsList = req.session.benefitsList
-
-  if (typeOfJSA == 'income') {
-    res.redirect('/v25/apply/are-you-pregnant')
-  } else if (typeOfJSA == 'contribution') {
-    if (benefitsList.includes('JSA' && 'WTC') && !benefitsList.includes('ESA')) {
-      res.redirect('/v25/apply/working-tax-credits')
-    } if (benefitsList.includes('JSA' && 'ESA' && 'WTC')) {
-      res.redirect('/v25/apply/working-tax-credits')
-    } else {
-      res.redirect('/v25/apply/kickouts/not-eligible')
-    }
-  } else {
-    res.redirect('/v25/apply/jobseekers-allowance')
-  }
-})
-
-router.get('/v25/employment-support-allowance', (req, res) => {
-  const typeOfESA = req.session.data['ESA']
-  let benefitsList = req.session.benefitsList
-
-  if (typeOfESA == 'income') {
-    res.redirect('/v25/apply/are-you-pregnant')
-  } else if (typeOfESA == 'contribution') {
-    if (benefitsList.includes('ESA' && 'WTC') && !benefitsList.includes('JSA')) {
-      res.redirect('/v25/apply/kickouts/not-eligible')
-    } else if (benefitsList.includes('JSA' && 'ESA' && 'WTC')) {
-      res.redirect('/v25/apply/kickouts/not-eligible')
-    } else {
-      res.redirect('/v25/apply/kickouts/not-eligible')
-    }
-  } else {
-    res.redirect('/v25/apply/kickouts/not-eligible')
-  }
-})
-
-router.get('/v25/working-tax-credits', (req, res) => {
-  const wtcRunOnPayment = req.session.data['workingtaxcredits']
-  let benefitsList = req.session.benefitsList
-
-  if (wtcRunOnPayment == 'yes') {
-    res.redirect('/v25/apply/are-you-pregnant')
-  } else if (wtcRunOnPayment == 'no') {
-    if (benefitsList.includes('JSA' && 'WTC') && !benefitsList.includes('ESA')) {
-      res.redirect('/v25/apply/kickouts/not-eligible')
-    } else if (benefitsList.includes('ESA' && 'WTC') && !benefitsList.includes('JSA')) {
-      res.redirect('/v25/apply/employment-support-allowance')
-    } else if (benefitsList.includes('JSA' && 'ESA' && 'WTC')) {
-      res.redirect('/v25/apply/employment-support-allowance')
-    } else {
-      res.redirect('/v25/apply/kickouts/not-eligible')
-    }
-  } else {
-    res.redirect('/v25/apply/kickouts/not-eligible')
-  }
-})
-
-
-router.post('/v25/pension-credit', function (req, res) {
-
-  var pensioncredit = req.session.data['pensioncredit']
-
-  if (pensioncredit === "yes") {
-    res.redirect('/v25/apply/are-you-pregnant')
-  }
-  else if (pensioncredit === "no") {
-    res.redirect('/v25/apply/kickouts/not-eligible')
-  }
-  else {
-    res.redirect('/v25/apply/pension-credit')
-  }
-
-})
-  
-  // What is your nationality?
-  
-  router.post('/v25/nationality', function (req, res) {
-  
-    var nationality = req.session.data['input-autocomplete']
-  
-    if (nationality) {
-      res.redirect('/v25/apply/are-you-pregnant')
-    }
-    else {
-      res.redirect('/v25/apply/nationality')
-    }
-  
-  })
+    
   
   // Are you pregnant?
   
@@ -1943,50 +1730,7 @@ router.post('/v25/pension-credit', function (req, res) {
 
 
     })
-    
-    // Do you have any children under the age of 4? > Do you have another child under four?
-  
-    router.post('/v25/children-under-four-answers', function (req, res) {
-  
-      var childrenunderfouranswers = req.session.data['childrenunderfouranswers']
-
-      var dateofbirthday = req.session.data['dateofbirthday']
-      var dateofbirthmonth = req.session.data['dateofbirthmonth']
-      var dateofbirthyear = req.session.data['dateofbirthyear']
-      var pregnant = req.session.data['pregnant']
-      var childrenunderfour = req.session.data['childrenunderfour']
-      var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-      var ageDate =  new Date(today - dob.getTime())
-      var temp = ageDate.getFullYear();
-      var yrs = Math.abs(temp - 1970);
-
-      var lastname = req.session.data['lastname'].trim().toUpperCase()
-
-      if (childrenunderfouranswers === "yes") {
-        res.redirect('/v25/apply/childs-first-name')
-      }
-      else if (childrenunderfouranswers === "no" && lastname == 'JONES') {
-        res.redirect('/v25/apply/email-address')
-      }
-      else if (childrenunderfouranswers === "no" && lastname == 'GREEN') {
-        res.redirect('/v25/apply/email-address')
-      }
-      else if (childrenunderfouranswers === "no" && lastname == 'BILAL') {
-        res.redirect('/v25/apply/email-address')
-      }
-      else if (childrenunderfouranswers === "no" && lastname == 'ELBA') {
-        res.redirect('/v25/apply/email-address')
-      }
-      else if (childrenunderfouranswers === "no" && lastname == 'JOHNSON') {
-        res.redirect('/v25/apply/kickouts/no-eligible-children')
-      }
-      else if (childrenunderfouranswers === "no" && lastname == 'BROWN') {
-        res.redirect('/v25/apply/kickouts/no-eligible-children')
-      } 
- 
-
-    })
-
+   
     // Do you want to remove this child? 
 
     
@@ -2038,68 +1782,6 @@ router.post('/v25/pension-credit', function (req, res) {
  
 
 
-  
-  // What is your email address?
-  
-  router.post('/v25/email-address', function (req, res) {
-  
-    var emailaddress = req.session.data['emailaddress']
-  
-    res.redirect('/v25/apply/mobile-phone-number')
-  
-  })
-  
-  // What is your mobile phone number?
-  
-  router.post('/v25/mobile-phone-number', function (req, res) {
-  
-    var mobilePhoneNumber = req.session.data['mobilephonenumber']
-    req.session.data['savedUntil'] = moment().add(3, 'months').format("D MMMM YYYY")
-  
-    res.redirect('/v25/apply/check-your-answers')
-  
-  })
-  
-  // Contact Preferences
-  
-  router.post('/v25/contact-preferences', function (req, res) {
-  
-    var contact = req.session.data['contact']
-    var emailAddress = req.session.data['emailaddress']
-    var mobile = req.session.data['mobile']
-  
-    if (contact) {
-  
-      if (emailAddress || mobile || contact === 'NONE'){
-        res.redirect('/v25/apply/bank-details')    
-      }
-      else {
-        res.redirect('/v25/apply/contact-preferences')
-      }
-  
-    }
-    else {
-      res.redirect('/v25/apply/contact-preferences')
-    }
-  
-  })
-  
-  // Bank Details
-  
-  router.post('/v25/bank-details', function (req, res) {
-  
-    var accountName = req.session.data['accountname']
-    var sortCode = req.session.data['sortcode']
-    var accountNumber = req.session.data['accountnumber']
-  
-    if (accountName && sortCode && accountNumber){
-      res.redirect('/v25/apply/check-your-answers')    
-    }
-    else {
-      res.redirect('/v25/apply/bank-details')
-    }
-  
-  })
   
   // Feedback
   
@@ -2173,133 +1855,7 @@ router.post('/v25/check-your-answers', function (req, res) {
   }
 
 })
-
-// **************
-// SAVE & RETURN
-// **************
-
-// What is your reference number?
-
-router.post('/v25/return-reference-number', function (req, res) {
-
-  var referencenumber = req.session.data['referencenumber']
-  req.session.data['savedUntil'] = moment().add(3, 'months').format("D MMMM YYYY")
-
-  if (referencenumber) {
-    res.redirect('/v25/apply/return-date-of-birth')
-  }
-  else {
-    res.redirect('/v25/apply/return-reference-number')
-  }
-
-})
-
-// What is your date of birth?
-
-router.post('/v25/return-date-of-birth', function (req, res) {
-
-  var returnday = req.session.data['returnday']
-  var returnmonth = req.session.data['returnmonth']
-  var returnyear = req.session.data['returnyear']
-  
-  if (returnday && returnmonth && returnyear) {
-    res.redirect('/v25/apply/return-task-list')
-  }
-  else {
-    res.redirect('/v25/apply/return-date-of-birth')
-  }
-
-})
-
-// Applicant Identity Type
-
-router.post('/v25/return-applicant-identity-select', function (req, res) {
-
-  var applicantidentity = req.session.data['applicantidentity']
-
-  if (applicantidentity) {
-    res.redirect('/v25/apply/return-applicant-identity')
-  }
-  else {
-    res.redirect('/v25/apply/return-applicant-identity')
-  }
-
-})
-
-// Applicant Identity
-
-router.post('/v25/return-applicant-identity-upload', function (req, res) {
-
-  const anotherFile = req.session.data['add-file1']
-
-  if (anotherFile === 'yes') {
-    res.redirect('/v25/apply/return-applicant-identity')
-  } else if (anotherFile === 'no') {
-    req.session.data["applicant-identity"] = "Complete";
-    res.redirect('/v25/apply/return-task-list')
-  } else {
-    res.redirect('/v25/apply/return-applicant-identity-upload')
-  }
-  
-
-})
-
-// Applicant Eligibility
-
-router.post('/v25/return-applicant-eligibility-upload', function (req, res) {
-
-  const anotherFile = req.session.data['add-file2']
-
-  if (anotherFile === 'yes') {
-    res.redirect('/v25/apply/return-applicant-eligibility')
-  } else if (anotherFile === 'no') {
-    req.session.data["applicant-eligibility"] = "Complete";
-    res.redirect('/v25/apply/return-task-list')
-  } else {
-    res.redirect('/v25/apply/return-applicant-eligibility-upload')
-  }
-  
-
-})
-
-// Child Eligibility
-
-router.post('/v25/return-child-eligibility-upload', function (req, res) {
-
-  const anotherFile = req.session.data['add-file3']
-
-  if (anotherFile === 'yes') {
-    res.redirect('/v25/apply/return-child-eligibility')
-  } else if (anotherFile === 'no') {
-    req.session.data["child-eligibility"] = "Complete";
-    res.redirect('/v25/apply/return-task-list')
-  } else {
-    res.redirect('/v25/apply/return-child-eligibility-upload')
-  }
-  
-  res.redirect('/v25/apply/return-task-list')
-
-})
-
-
-
-
-// Online Account
-
-
-
-router.post('/v25/online-account', function (req, res) {
-  
-  var onlineAccount = req.session.data['onlineaccount']
-
-  if (onlineAccount) {
-    res.redirect('/v25/apply/email-address')
-  } else {
-    res.redirect('/v25/apply/online-account')
-  }
-
-})
-
+ 
 
 // What is your email address 2?
 
