@@ -237,8 +237,8 @@ router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
     if (nationalinsurancenumber == 'AB123456C') {
       res.redirect('/v26-ecj/apply/check-your-answers-nino')
     } 
-    else if (nationalinsurancenumber == 'CD123456F') {
-      res.redirect('/v26-ecj/apply/childs-first-name')
+    else if (nationalinsurancenumber == 'CD123456E') {
+      res.redirect('/v26-ecj/apply/check-your-answers-nino')
     } 
     else {
       res.redirect('/v26-ecj/apply/check-your-answers-nino')
@@ -260,11 +260,11 @@ router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
   if (nationalinsurancenumber == 'AB123456C') {
     res.redirect('/v26-ecj/apply/due-date')
   } 
-  else if (nationalinsurancenumber == 'CD123456F') {
+  else if (nationalinsurancenumber == 'CD123456E') {
     res.redirect('/v26-ecj/apply/childs-first-name')
   } 
   else {
-    res.redirect('/v26-ecj/apply/national-insurance-number-nhs-login')
+    res.redirect('/v26-ecj/apply/due-date')
   } 
 })
 
@@ -500,7 +500,7 @@ router.post('/v26-ecj/check-your-answers-add-baby-child', function (req, res) {
 
   
   if (childsFirstName == 'CHARLIE' && childsLastName == 'SMITH') { 
-    res.redirect('/v26-ecj/apply/child-terms-and-conditions-yes'); 
+    res.redirect('/v26-ecj/apply/child-terms-and-conditions'); 
   } 
   else if (childsFirstName == 'RILEY' && childsLastName == 'JONES') {
     req.session.data = {}
