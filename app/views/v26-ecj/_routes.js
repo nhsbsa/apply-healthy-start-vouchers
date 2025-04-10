@@ -235,13 +235,13 @@ router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
     var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
   
     if (nationalinsurancenumber == 'AB123456C') {
-      res.redirect('/v26-ecj/apply/check-your-answers-nino')
+      res.redirect('/v26-ecj/apply/due-date')
     } 
     else if (nationalinsurancenumber == 'CD123456E') {
-      res.redirect('/v26-ecj/apply/check-your-answers-nino')
+      res.redirect('/v26-ecj/apply/childs-first-name')
     } 
     else {
-      res.redirect('/v26-ecj/apply/check-your-answers-nino')
+      res.redirect('/v26-ecj/apply/due-date')
     }
 
   })
@@ -249,10 +249,6 @@ router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
 
 
   // Check your answers (NINO and DOB)
-
-  // router.post('/v26-ecj/apply/check-your-answers-nino', function (req, res) {
-  //   res.redirect('/v26-ecj/apply/due-date');
-  // })
 
   router.post('/v26-ecj/apply/check-your-answers-nino', function (req, res) {
   var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
