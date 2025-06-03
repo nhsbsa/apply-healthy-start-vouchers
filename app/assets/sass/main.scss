@@ -2,7 +2,7 @@
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
 // Components that are not in the NHS.UK frontend library
-@import 'components/panel-confirmation';
+// @import 'components/panel-confirmation';
 @import 'components/related-nav';
 @import 'components/spinner';
 @import "components/interruption-card";
@@ -58,6 +58,12 @@
 }
 
 
+// Updated back link
+
+.nhsuk-grid-column-two-thirds > .nhsuk-back-link {
+  padding-top: 0;
+  margin-bottom: 16px;
+}
 
 
 // Images
