@@ -130,6 +130,8 @@ router.post('/v26-ecj/are-you-pregnant-ni', function (req, res) {
 
 
 
+
+
   // What is your National insurance number?
   
 router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
@@ -147,11 +149,18 @@ router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
     res.redirect('/v26-ecj/apply/kickouts/no-nino')  
   } 
 
-
-
-
 })
 
+
+ 
+  // Before you start (NHS Login) (Add a new preg)
+
+
+  router.post('/v26-ecj/nhs-login/before-you-start-nhs-login', function (req, res) {
+
+    res.redirect('/v26-ecj/nhs-login/email-address');
+  
+  })
 
 
   // Before you start (NHS Login) (Add a new baby or child)
