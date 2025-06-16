@@ -21,7 +21,7 @@ Check your answers
 
         <dl class="nhsuk-summary-list">
             
-
+            
             {% if (data['firstname']) and (data['lastname']) %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
@@ -44,6 +44,27 @@ Check your answers
 
                 </div>
             {% endif %}
+
+            <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Name
+                    </dt>
+                    <!--<dd class="nhsuk-summary-list__value">
+                        {{ data['firstname'] }} {{ data['lastname'] }}
+                    </dd>-->
+                    <dd class="nhsuk-summary-list__value">
+                        Riley Jones
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+
+                        <!--<a href="name">
+                            Change<span class="nhsuk-u-visually-hidden"> your name</span>
+                        </a>-->
+
+                    </dd>
+
+                </div>
             {% if (data['selectaddress']) %}
                 <!--<div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
@@ -82,15 +103,16 @@ Check your answers
 
                     <dd class="nhsuk-summary-list__actions">
 
-                        <a href="address">
+                        <!-- <a href="address">
                             Change<span class="nhsuk-u-visually-hidden"> your address</span>
-                        </a>
+                        </a> -->
 
                     </dd>
 
                 </div>
             {% endif %}
             {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
+            {% else %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         Date of birth
@@ -104,9 +126,9 @@ Check your answers
 
                     <dd class="nhsuk-summary-list__actions">
 
-                        <a href="date-of-birth">
+                        <!-- <a href="date-of-birth">
                             Change<span class="nhsuk-u-visually-hidden"> your date of birth</span>
-                        </a>
+                        </a> -->
 
                     </dd>
 
