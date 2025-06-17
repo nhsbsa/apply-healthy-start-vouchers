@@ -71,7 +71,7 @@ router.post('/v27/which-service', function (req, res) {
 
 
 
-  // You did not agree to share your NHS login information
+  // You did not agree to share your NHS login information - NHS LOGIN -
 
   router.post('/v27/nhs-login/no-consent', function (req, res) {
 
@@ -90,26 +90,79 @@ router.post('/v27/which-service', function (req, res) {
 
 
 
-  // What is your NHS Number?
+  // Do you know your NHS Number? - NHS LOGIN -
   
 
  
 router.post('/v27/nhs-login/nhs-number', function (req, res) {
 
+  var nhsnumber = req.session.data['nhsnumber']; 
 
-  var nhsnumber = req.session.data['nhsnumber']
-  var checkbox = req.session.data['checkbox']
+  if (nhsnumber === "yes") {
+    res.redirect('/v27/nhs-login/date-of-birth')
+  }
+    if (nhsnumber === "no") {
+      res.redirect('/v27/nhs-login/name')
+    }
 
-
-  if (nhsnumber) { 
-    res.redirect('/v27/nhs-login/date-of-birth') 
-  } 
-  
-  else if (checkbox === "donotknow") { 
-    res.redirect('/v27/nhs-login/name')  
-  } 
 
 })
+
+
+  // Enter your date of birth - NHS LOGIN -
+
+
+router.post('/v27/nhs-login/date-of-birth', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
+
+  
+res.redirect('/v27/nhs-login/postcode');
+
+  })
+
+
+  // Enter your full name - NHS LOGIN -
+
+
+router.post('/v27/nhs-login/name', function (req, res) {
+
+  
+res.redirect('/v27/nhs-login/date-of-birth');
+
+  })
+
+
+
+
+// Enter your postcode - NHS LOGIN -
+
+
+
+router.post('/v27/nhs-login/postcode', function (req, res) {
+
+  
+res.redirect('/v27/nhs-login/check-your-details');
+
+  })
+
+
+
+// Check your details - NHS LOGIN -
+
+
+router.post('/v27/nhs-login/check-your-details', function (req, res) {
+
+  
+res.redirect('/v27/apply/check-your-answers-nhs-login');
+
+  })
 
 
 
@@ -134,7 +187,7 @@ router.post('/v27/name', function (req, res) {
   
   
 
-
+  
 
   // What is your postcode?
   

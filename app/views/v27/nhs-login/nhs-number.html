@@ -1,7 +1,7 @@
 {% extends 'layout-nhs-login.html' %}
 
 {% block pageTitle %}
-What is your NHS Number?
+Do you know your NHS Number?
 {% endblock %}
 
 {% block content %}
@@ -10,42 +10,69 @@ What is your NHS Number?
 
       <form action="v27/nhs-login/nhs-number" method="post">
 
-      <div class="nhsuk-form-group"> 
-        <h2>What is your NHS Number?</h2>
-        <span class="nhsuk-hint" id="example-with-hint-text-hint">
-          Your NHS number is a 10 digit number. For example, '485 777 3456'.
-      </span>
-      <input class="nhsuk-input nhsuk-input--width-20" id="nhsnumber" name="nhsnumber" type="text" pattern="[0-9]{10}" maxlength="10" inputmode="numeric">
-      </div>
- 
+                      <div class="nhsuk-form-group"> 
+                        <h2>Do you know your NHS Number?</h2>
+                        
+                      <div class="nhsuk-inset-text">
+                      <span class="nhsuk-u-visually-hidden">Information: </span>
+                      <p>Telling us your NHS number will give us the best chance of matching you to your NHS record.</p>
+                      </div>
 
-      <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-            
-            <div class="nhsuk-checkboxes">
-                <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="donotknow" name="checkbox" type="checkbox" 
-                        value="donotknow">
-                    <label class="nhsuk-label nhsuk-checkboxes__label" for="donotknow">
-                        I do not know my NHS Number.
-                    </label>
-                </div>
-            </div>
-        </fieldset>
+
+                      <details class="nhsuk-details">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                          How to find your NHS number
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+                          <p>You can find it:</p>
+                          <ul>
+                              <li>by using the Find your NHS number service</li>
+                              <li>by logging in to a GP online service</li>
+                              <li>on any document the NHS has sent you</li>
+                              <li>on any prescriptions</li>
+                          </ul>
+                          <p>Ask your GP surgery for help if you cannot find your NHS number.</p>
+                        </div>
+                      </details>
+                
+
+                      
+       <div class="nhsuk-radios nhsuk-radios--conditional">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="yes" name="nhsnumber" type="radio" value="yes" aria-controls="conditional-contact-1" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="yes">
+          Yes, I know my NHS number
+        </label>
+      </div>
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+        <div class="nhsuk-hint nhsuk-radios__hint">
+          <label class="nhsuk-label" for="number"> 
+            Example: 485 777 3456
+          </label> <input class="nhsuk-input nhsuk-u-width-one-third" id="nhsnumber_value" name="nhsnumber_value" type="text" maxlength="10" inputmode="numeric">
+        </div>
+
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="no" name="nhsnumber" type="radio" value="no" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="no">
+          No, I do not know my NHS number
+        </label>
+      </div>
+      
+
+      </div>
     </div>
 
 
 
-    <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          Why we ask for your NHS Number?
-        </span>
-      </summary>
-      <div class="nhsuk-details__text">
-        <p>We use your NHS Number to help verify your details.</p>                      
-      </div>
-    </details>
+
+
+
+
+
 
 
 
@@ -54,11 +81,6 @@ What is your NHS Number?
     <button class="nhsuk-button" type="submit">
       Continue
     </button>
-    
-    <!--<p><a href="date-of-birth" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Continue</a></p>-->
-
-
-
 
   </form>
   </div>    

@@ -10,14 +10,18 @@ What is your name?
 
         {{ backLink({
             "href": "javascript:history.go(-1)",
-            "text": "Go back"
+            "text": "Back to: Do you know your NHS number"
         }) }}
-
+<form action="v27/nhs-login/name" method="post"> 
         <h2>
-            What is your name?
+            Enter your full name
         </h2>
 
-        <p>Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.</p>
+       
+          <span class="nhsuk-hint" id="hint">
+            Use the same name that you registered with your GP surgery.
+          </span>
+
 
         <form action="v27/name" method="post">
 
@@ -25,30 +29,33 @@ What is your name?
                 <label class="nhsuk-label" for="firstname">
                     First name
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="firstname" name="firstname" type="text" autocomplete="given-name">
+                <input class="nhsuk-input nhsuk-u-width-full" id="three-quarters" id="firstname" name="firstname" type="text" autocomplete="given-name">
             </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="middlenames">
+                    Middle names (if you have any)
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-full" id="three-quarters" id="middlenames" name="middlenames" type="text" autocomplete="family-name">
+            </div>
+
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="lastname">
                     Last name
                 </label>
-                <input class="nhsuk-input nhsuk-input--width-20" id="lastname" name="lastname" type="text" autocomplete="family-name">
+                <input class="nhsuk-input nhsuk-u-width-full" id="three-quarters" id="lastname" name="lastname" type="text" autocomplete="family-name">
             </div>
 
 
-                  <details class="nhsuk-details">
-                        <summary class="nhsuk-details__summary">
-                          <span class="nhsuk-details__summary-text">
-                            Why we ask for your name
-                          </span>
-                        </summary>
-                        <div class="nhsuk-details__text">
-                          <p>We use your name to confirm your identity and eligibility.</p>                      
-                        </div>
-                      </details>
 
-            <p><a href="date-of-birth" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Continue</a></p>
+        
+        
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
 
+        </form>
 
         </form>
 

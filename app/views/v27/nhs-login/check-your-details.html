@@ -1,0 +1,119 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+What is your address?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        
+        <form action="v27/nhs-login/check-your-details" method="post">
+
+        <h2>
+          Check your details
+        </h2>
+
+        <p>We will try and match you to your NHS record using the information you give us.</p>
+
+        
+
+
+        <dl class="nhsuk-summary-list">
+            
+            {% if (data['nhsnumber_value']) %}
+            <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        NHS Number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['nhsnumber_value'] }} 
+                    </dd>
+                    
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="name">
+                            Change NHS number<span class="nhsuk-u-visually-hidden"></span>
+                        </a>
+                    </dd>
+                </div>
+            {% endif %}    
+
+
+                {% if (data['firstname']) and (data['middlenames']) and (data['lastname']) %}
+                <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Name
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                         {{ data['firstname'] }} {{ data['middlenames'] }} {{ data['lastname'] }}
+                    </dd>
+                    
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="name">
+                            Change name<span class="nhsuk-u-visually-hidden"></span>
+                        </a>
+                    </dd>
+                </div>
+                {% endif %}
+            <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Date of birth
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                          {{ data['dateofbirth'] }}
+
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="name">
+                            Change date of birth<span class="nhsuk-u-visually-hidden"></span>
+                        </a>
+                    </dd>
+                </div>
+
+            <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Postcode
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['postcode'] }}
+                    </dd>
+
+                    <dd class="nhsuk-summary-list__actions">
+                        <a href="name">
+                            Change postcode<span class="nhsuk-u-visually-hidden"></span>
+                        </a>
+                    </dd>
+                </div>
+
+
+
+
+
+
+
+
+
+
+        </dl>
+            
+            
+
+
+
+
+        
+
+
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
