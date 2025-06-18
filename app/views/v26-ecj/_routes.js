@@ -94,6 +94,101 @@ router.post('/v26-ecj/what-update-ni', function (req, res) {
 
 
 
+
+
+
+
+
+  // Do you know your NHS Number? - NHS LOGIN -
+  
+
+ 
+router.post('/v26-ecj/nhs-login/nhs-number', function (req, res) {
+
+  var nhsnumber = req.session.data['nhsnumber']; 
+
+  if (nhsnumber === "yes") {
+    res.redirect('/v26-ecj/nhs-login/date-of-birth')
+  }
+    if (nhsnumber === "no") {
+      res.redirect('/v26-ecj/nhs-login/name')
+    }
+
+
+})
+
+
+
+
+
+  // Enter your date of birth - NHS LOGIN -
+
+
+router.post('/v26-ecj/nhs-login/date-of-birth', function (req, res) {
+
+  var dateofbirthday = req.session.data['dateofbirthday']
+  var dateofbirthmonth = req.session.data['dateofbirthmonth']
+  var dateofbirthyear = req.session.data['dateofbirthyear']
+
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = moment(dob).format('MM/DD/YYYY');
+  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
+
+  
+res.redirect('/v26-ecj/nhs-login/postcode');
+
+  })
+
+
+
+
+
+  // Enter your full name - NHS LOGIN -
+
+
+router.post('/v26-ecj/nhs-login/name', function (req, res) {
+
+  
+res.redirect('/v26-ecj/nhs-login/date-of-birth');
+
+  })
+
+
+
+
+
+
+// Enter your postcode - NHS LOGIN -
+
+router.post('/v26-ecj/nhs-login/postcode', function (req, res) {
+
+  
+res.redirect('/v26-ecj/nhs-login/check-your-details');
+
+  })
+
+
+
+
+
+
+// Check your details - NHS LOGIN -
+
+router.post('/v26-ecj/nhs-login/check-your-details', function (req, res) {
+
+  
+res.redirect('/v26-ecj/apply/check-your-answers-nhs-login');
+
+  })
+
+
+
+
+
+
+
+
+
 // Are you more than 10 weeks pregnant? (NHS LOGIN)
 
 

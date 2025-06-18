@@ -1,7 +1,7 @@
 {% extends 'layout-nhs-login.html' %}
 
 {% block pageTitle %}
-What is your date of birth?
+Enter your date of birth
 {% endblock %}
 
 {% block content %}
@@ -10,16 +10,18 @@ What is your date of birth?
 
     {{ backLink({
             "href": "javascript:history.go(-1)",
-            "text": "Go back"
+            "text": "Back to: Do you know your NHS number"
         }) }}
 
  
-      <div class="nhsuk-form-group">
+        <form action="v26-ecj/nhs-login/date-of-birth" method="post">
+          
+          <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
             <h2>
-              What is your date of birth?
+              Enter your date of birth
             </h2>
           </legend>
           <span class="nhsuk-hint" id="hint">
@@ -59,19 +61,14 @@ What is your date of birth?
 
       </div>
 
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Why we ask for your date of birth
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>We use your date of birth to confirm your identity and eligibility.</p>
-        </div>
-      </details>
 
 
-      <p><a href="postcode" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Continue</a></p>
+        
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
 
 
 
