@@ -160,7 +160,8 @@ res.redirect('/v27/nhs-login/check-your-details');
 router.post('/v27/nhs-login/check-your-details', function (req, res) {
 
   
-res.redirect('/v27/nhs-login/authorise');
+res.redirect('/v27/apply/check-your-answers-nhs-login');
+// res.redirect('/v27/nhs-login/authorise');
 
   })
 
