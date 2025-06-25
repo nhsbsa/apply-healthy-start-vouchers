@@ -3702,7 +3702,7 @@ b {
 .nhsuk-button--warning::after {
   box-shadow: 0 4px 0 #6b140e;
 }
-/* 
+
 .nhsuk-button--login {
   background-color: #005eb8;
 }
@@ -3717,7 +3717,7 @@ b {
 
 .nhsuk-button--login::after {
   box-shadow: 0 4px 0 #002f5c;
-} */
+} 
 
 
 .nhslogin-button {
