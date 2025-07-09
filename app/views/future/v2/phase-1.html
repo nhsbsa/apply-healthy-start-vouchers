@@ -3,8 +3,23 @@
 {% block pageTitle %}
 Get help to buy food and milk (Healthy Start) 
 {% endblock %}
+ 
+<!-- <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-claim-search">1</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-claim-search-ANITA-BILAL">2</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link"
+          href="manage-claim-search-results-ANITA-BILAL">Anita Bilal</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href=""></a></p>
+  </div>
+</nav> -->
+ 
+{% block content %}
 
-{% block content %}    
+
+ 
 <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-two-thirds">
@@ -74,7 +89,7 @@ Get help to buy food and milk (Healthy Start)
 
 
 <h3 class="nhsuk-heading-m">About your eligibility</h3> 
-<p style="text-align: right; margin: 0;">Total payment you receive: £34</p> <br>
+<p style="text-align: right; margin: 0;">Total payment of current cycle: £34</p> <br>
 <div class="nhsuk-tabs" data-module="nhsuk-tabs">
   <h2 class="nhsuk-tabs__title">
     Contents
@@ -97,7 +112,7 @@ Get help to buy food and milk (Healthy Start)
       <thead class="nhsuk-table__head" role="rowgroup">
         <tr role="row">
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Eligibility</th>
-          <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Due date</th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Estimated due date</th>
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Entitlement</th>
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Status</th>
         </tr>
@@ -105,12 +120,17 @@ Get help to buy food and milk (Healthy Start)
       <tbody class="nhsuk-table__body">
         <tr class="nhsuk-table__row" role="row">
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Eligibility </span>Pregnancy</td>
-          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Due date </span>2 February 2023</td>
+          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Estimated due date </span>2 February 2023</td>
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Entitlement </span>£4.25 each week</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span><strong class="nhsuk-tag">Active</strong></td>
         </tr>
       </tbody>
-    </table>
+    </table> 
+
+    <p><a href="/v26-ecj/apply/what-update-nhs-login" class="nhsuk-button">Update a baby birth</a></p>
+    <!-- <p><a href="/v26-ecj/apply/what-update-nhs-login" class="nhsuk-button">Add a new pregnancy</a></p> -->
+
+
   </div>  
 
 
@@ -123,7 +143,7 @@ Get help to buy food and milk (Healthy Start)
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Date of birth</th>
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Entitlement</th>
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Start date</th>
-          <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">End date</th>
+          <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Expiry date</th>
           <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Status</th>
         </tr>
       </thead>
@@ -134,7 +154,7 @@ Get help to buy food and milk (Healthy Start)
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Date of birth </span>2 February 2023</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Entitlement </span>£8.50 each week</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>6 July 2025</td>
-          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>4 August 2025</td>
+          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry date </span>4 August 2025</td>
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span><strong class="nhsuk-tag">Active</strong></td>
         </tr>
       </tbody>
@@ -145,7 +165,7 @@ Get help to buy food and milk (Healthy Start)
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Date of birth </span>17 May 2023</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Entitlement </span>£4.25 each week</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>6 July 2025</td>
-          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>4 August 2025</td>
+          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry date </span>4 August 2025</td>
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span><strong class="nhsuk-tag nhsuk-tag--grey">Inactive</strong></td>
         </tr>
         
@@ -158,13 +178,16 @@ Get help to buy food and milk (Healthy Start)
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Date of birth </span>17 May 2023</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Entitlement </span>£4.25 each week</td> 
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Start date </span>6 July 2025</strong></td>
-          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">End date </span>4 August 2025</strong></td>
+          <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry date </span>4 August 2025</strong></td>
           <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Status </span><strong class="nhsuk-tag nhsuk-tag--grey">Inactive</strong></td>
         </tr> 
       </tbody>
     
-    
 </table>
+    
+    <p><a href="/v26-ecj/apply/what-update-nhs-login" class="nhsuk-button">Add a new baby or child</a></p>
+
+
 </div>
 
 

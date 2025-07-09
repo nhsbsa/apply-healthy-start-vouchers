@@ -10301,3 +10301,12 @@ ul.list-menu {
 .ie8 .nhslogin-button:focus {
   outline: 1px dotted #003087;
 }
+
+.nhsuk-header__menu-toggle {
+  display: block;
+  color: #ffffff;
+}
+
+.nhsuk-header__menu-toggle:hover, .nhsuk-header__menu-toggle:visited {
+  color: #ffffff;
+}

@@ -683,3 +683,17 @@
       outline: 1px dotted #003087;
     }
     
+
+
+
+    // Header log out button override style
+
+    .nhsuk-header__menu-toggle {
+      display: block;
+      color: $color_nhsuk-white;
+    }
+    // Header log out (Hover state)
+    .nhsuk-header__menu-toggle:hover, .nhsuk-header__menu-toggle:visited {
+    color: $color_nhsuk-white
+    }
+
