@@ -81,7 +81,7 @@ router.post('/v26-ecj/what-update-ni', function (req, res) {
     res.redirect('/v26-ecj/apply/are-you-pregnant-ni')
   }
   else if (whatupdate === "add-baby-child") {
-    res.redirect('/v26-ecj/') 
+    res.redirect('/v26-ecj/apply/national-insurance-number-ni') 
   }  
   else if (whatupdate === "card-issue") {
     res.redirect('/v26-ecj/apply/kickouts/card-issue') 
@@ -687,12 +687,20 @@ router.post('/v26-ecj/get-your-security-code', function (req, res) {
 
   router.post('/v26-ecj/apply/security-code-text-message', function (req, res) {
 
-    res.redirect('/v26-ecj/apply/due-date');
+
+  var securityCode = req.session.data['securityCode']
   
-  })
 
-
-
+  if (securityCode == '111111') {
+    res.redirect('/v26-ecj/apply/due-date')
+  } 
+  else if (securityCode == '222222') {
+    res.redirect('/v26-ecj/apply/childs-first-name')
+  } 
+  else {
+    res.redirect('/v26-ecj/apply/PAGE-DOESNT-EXIST')
+  } 
+})
 
   
 
