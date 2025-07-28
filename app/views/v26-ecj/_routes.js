@@ -176,16 +176,37 @@ res.redirect('/v26-ecj/nhs-login/check-your-details');
 
 router.post('/v26-ecj/nhs-login/check-your-details', function (req, res) {
 
-  
+res.redirect('/v26-ecj/nhs-login/consent');
+// res.redirect('/v26-ecj/apply/check-your-answers-nhs-login');
+
+})
+
+
+
+
+// Agree to share your NHS login information 
+
+router.post('/v26-ecj/nhs-login/consent', function (req, res) {
+
 res.redirect('/v26-ecj/apply/check-your-answers-nhs-login');
+})
 
+
+
+// You did not agree to share your NHS login information
+
+  router.post('/v26-ecj/no-consent', function (req, res) {
+
+  var consent = req.session.data['consent']
+
+  if (consent === "agree") {
+    res.redirect('/v26-ecj/nhs-login/consent')
+  }
+  else if (consent === "disagree") {
+    res.redirect('/v26-ecj/apply/kickouts/not-consent')
+  }
+   
   })
-
-
-
-
-
-
 
 
 

@@ -35,7 +35,6 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
 
         <dl class="nhsuk-summary-list"> 
 
-
           {% for item in data['childList'] %}
         
             <h5>Child 1</h5>  
@@ -47,16 +46,11 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
               <dd class="nhsuk-summary-list__value">
                 {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}
               </dd>
-          
+        
               <dd class="nhsuk-summary-list__actions">
-          
-                
                 <a href="childs-first-name-update">
                     Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
-                 
-          
               </dd>
-          
             </div>
           
             <div class="nhsuk-summary-list__row">
@@ -80,7 +74,7 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
            <br>
             <a href="remove-child">Remove this child<span class="nhsuk-u-visually-hidden"> child</span></a>
           
-          </dl>
+        </dl>
 
 
 
@@ -88,14 +82,8 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
 
 
 
+<br>
 
-
-
-
-
-
-
-        </dl>
 
         <!--
         <p><a href="/v25/apply/kickouts/request-completed-child" class="nhsuk-button" data-module="nhsuk-button" type="submit">
