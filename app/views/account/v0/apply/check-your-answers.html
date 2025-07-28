@@ -1,0 +1,346 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-u-margin-bottom-5">
+            Check your answers
+        </h1>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About you and your partner</h2>
+
+        <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    National Insurance number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    QQ 12 34 56 C
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="national-insurance-number">
+                        Change<span class="nhsuk-u-visually-hidden"> your National Insurance number</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Samantha Jones
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="name">
+                        Change<span class="nhsuk-u-visually-hidden"> your name</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    18 / 05 / 1985
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="date-of-birth">
+                        Change<span class="nhsuk-u-visually-hidden"> your date of birth</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Partners name</dt>
+                <dd class="nhsuk-summary-list__value">Paul Jones</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="partners-name">Change<span class="nhsuk-u-visually-hidden"> your partners name</span></a>
+                </dd>
+            </div>
+            
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Partners date of birth
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    07 / 04 / 1992
+                </dd>
+            
+                <dd class="nhsuk-summary-list__actions">
+            
+                    <a href="partners-date-of-birth">
+                        Change<span class="nhsuk-u-visually-hidden"> your partners date of birth</span>
+                    </a>
+            
+                </dd>
+            
+            </div>
+            
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Currently pregnant
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Yes
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="are-you-pregnant">
+                        Change<span class="nhsuk-u-visually-hidden"> if you are pregnant</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Due date
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    25 / 12 / 2020
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="due-date">
+                        Change<span class="nhsuk-u-visually-hidden"> your due date</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    123 Fake House<br>
+                    Fake Road,<br>
+                    Fake Town,<br>
+                    FKE1 PC1
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="address">
+                        Change<span class="nhsuk-u-visually-hidden"> your address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+
+
+
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    email@emailaddress.com
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="email-address">
+                        Change<span class="nhsuk-u-visually-hidden"> your email address</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Mobile phone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    01234 567890
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="mobile-phone-number">
+                        Change<span class="nhsuk-u-visually-hidden"> your mobile phone number</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+        </dl>
+
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About your children</h2>
+
+        <dl class="nhsuk-summary-list">
+
+            <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child 1 </h3>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Child’s first name</dt>
+                <dd class="nhsuk-summary-list__value">Freya</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s first
+                            name</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
+                <dd class="nhsuk-summary-list__value">01 / 01 / 2018</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of
+                            birth</span></a>
+                </dd>
+            </div>
+
+
+        </dl>
+
+        <dl class="nhsuk-summary-list">
+
+            <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-2">Child 2 </h3>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Child’s first name</dt>
+                <dd class="nhsuk-summary-list__value">Oliver</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="childs-first-name">Change<span class="nhsuk-u-visually-hidden"> your child’s first
+                            name</span></a>
+                </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Child’s date of birth</dt>
+                <dd class="nhsuk-summary-list__value">10 / 09 / 2017</dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="childs-date-of-birth">Change<span class="nhsuk-u-visually-hidden"> your child’s date of
+                            birth</span></a>
+                </dd>
+            </div>
+
+
+        </dl>
+
+        <h2 class="nhsuk-heading-m">Bank or building society account details</h2>
+
+        <dl class="nhsuk-summary-list">
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Name on the account
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    Mrs Samantha Jones
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="bank-details#accountname">
+                        Change<span class="nhsuk-u-visually-hidden"> name on the account</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Sort code
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    12-34-56
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="bank-details#sortcode">
+                        Change<span class="nhsuk-u-visually-hidden"> sort code</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Account number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    1234567890
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="bank-details#accountnumber">
+                        Change<span class="nhsuk-u-visually-hidden"> account number</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Building society roll number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    FK1234568
+                </dd>
+
+                <dd class="nhsuk-summary-list__actions">
+
+                    <a href="bank-details#buildingsocietynumber">
+                        Change<span class="nhsuk-u-visually-hidden"> building society roll number</span>
+                    </a>
+
+                </dd>
+
+            </div>
+
+
+        </dl>
+
+        <form action="future/v1/apply/confirmation-successful" method="post">
+
+            <button class="nhsuk-button" type="submit">
+                Confirm and send
+            </button>
+
+        </form>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

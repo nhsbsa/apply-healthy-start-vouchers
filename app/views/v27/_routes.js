@@ -71,22 +71,6 @@ router.post('/v27/which-service', function (req, res) {
 
 
 
-  // You did not agree to share your NHS login information - NHS LOGIN -
-
-  router.post('/v27/nhs-login/no-consent', function (req, res) {
-
-    var consent = req.session.data['consent'];
-
-
-    if (consent === "agree") {
-      res.redirect('/v27/nhs-login/consent')
-    }
-    if (consent === "disagree") {
-      res.redirect('/v27/nhs-login/email-address')
-    }
-  })
-
-
 
 
 
@@ -151,6 +135,50 @@ router.post('/v27/nhs-login/postcode', function (req, res) {
 res.redirect('/v27/nhs-login/check-your-details');
 
   })
+
+
+
+
+  
+
+
+
+// Check your details - NHS LOGIN -
+
+router.post('/v27/nhs-login/check-your-details', function (req, res) {
+
+res.redirect('/v27/nhs-login/consent');
+// res.redirect('/v26-ecj/apply/check-your-answers-nhs-login');
+
+})
+
+
+
+// Agree to share your NHS login information 
+
+router.post('/v27/nhs-login/consent', function (req, res) {
+
+res.redirect('/v27/apply/check-your-answers-nhs-login');
+})
+
+
+
+
+// You did not agree to share your NHS login information
+
+  router.post('/v27/no-consent', function (req, res) {
+
+  var consent = req.session.data['consent']
+
+  if (consent === "agree") {
+    res.redirect('/v27/nhs-login/consent')
+  }
+  else if (consent === "disagree") {
+    res.redirect('/v27/apply/kickouts/not-consent')
+  }
+   
+  })
+
 
 
 

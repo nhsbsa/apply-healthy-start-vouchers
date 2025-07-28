@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Get help to buy food and milk (Healthy Start) 
+{% endblock %}
+
+{% block content %}    
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+       <!-- <span class="nhsuk-caption-xl nhsuk-caption--top">Based on your circumstances</span> -->
+
+        <h1 class="nhsuk-u-margin-bottom-5">You are entitled to get help to buy food and milk (Healthy Start)</h1>
+
+        <p class="nhsuk-caption-l nhsuk-caption--bottom">This is a new online service and we're only inviting a limited number of people to apply.</p>
+
+        <div class="nhsuk-care-card nhsuk-care-card--non-urgent">
+            <div class="nhsuk-care-card__heading-container">
+                <h3 class="nhsuk-care-card__heading"><span role="text">Based on your circumstances</span></h3>
+                <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
+            </div>
+            <div class="nhsuk-care-card__content">
+                <h3>You are entitled to:</h3>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                    <li>£6.20 each week for children between 1 and 4 years old</li>
+                </ul>
+                <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+                    <span class="nhsuk-u-visually-hidden">Information:</span>
+                    <p>The money will stop when your child is 4 years old or if you no longer receive benefits.</p>
+                </div>
+                <a class="nhsuk-button" href="/future/v1/apply/check-your-answers">Apply now</a>
+                
+
+            </div>
+        </div>
+
+          
+    </div>
+
+</div>
+{% endblock %}

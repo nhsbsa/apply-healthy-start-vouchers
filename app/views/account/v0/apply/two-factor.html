@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Get help to buy food and milk (Healthy Start) 
+{% endblock %}
+
+{% block content %}    
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-back-link">
+            <a class="nhsuk-back-link__link" href="javascript:history.go(-1)">
+                <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    aria-hidden="true">
+                    <path
+                        d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z">
+                    </path>
+                </svg>
+                Go back</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-bottom-4">
+        <!---->
+        <h1 tabindex="-1" class="nhsuk-heading-l removeFocusOutline"> Check your mobile phone </h1>
+        <p>Enter the 6 digit security code we've sent to •••••••2600.</p>
+        <form novalidate="" class="ng-untouched ng-pristine ng-invalid">
+            <login-otp formcontrolname="otp" class="ng-untouched ng-pristine ng-invalid">
+                <div class="nhsuk-form-group"><label for="otp-input" class="nhsuk-label"> Security code </label><span
+                        id="security-code-with-hint-text" class="nhsuk-hint">The code is 6 numbers</span>
+                    <!----><input data-qa="otp-input" id="otp-input" name="otp" type="text" inputmode="numeric"
+                        logininputpattern="[0-9]" maxlength="6" autocomplete="off"
+                        class="nhsuk-input full-width nhsuk-input--width-10 ng-untouched ng-pristine ng-invalid"></div>
+                <!---->
+            </login-otp>
+            <div class="nhsuk-checkboxes nhsuk-u-margin-bottom-4">
+                <div class="nhsuk-checkboxes__item"><input data-qa="rmd-checkbox" id="rmd" name="rmd" type="checkbox"
+                        formcontrolname="remember" class="nhsuk-checkboxes__input ng-untouched ng-pristine ng-valid"
+                        style="padding-right: 16px;"><label for="rmd" class="nhsuk-label nhsuk-checkboxes__label">
+                        Remember this device and stop sending security codes </label></div>
+            </div>
+            <details nhsuk-polyfilled="true" id="nhsuk-details0" class="nhsuk-details">
+                <summary role="button" aria-controls="nhsuk-details__text0" tabindex="0" aria-expanded="false"
+                    class="nhsuk-details__summary"><span class="nhsuk-details__summary-text"> What does remember this
+                        device mean? </span></summary>
+                <div id="nhsuk-details__text0" aria-hidden="true" class="nhsuk-details__text">
+                    <p>We can remember the device you are using now, so you won’t need to enter a security code when you
+                        log in with this device in the future.</p>
+                    <p>To keep your NHS login secure, you should only do this on your own personal or trusted devices.
+                    </p>
+                    <p>We may ask if you still want us to remember this device in the future.</p>
+                </div>
+            </details><button type="submit" data-qa="otp-submit" class="nhsuk-button full-width"> Continue </button>
+            <div id="account-recovery-link">
+                <p>If you don't have access to your phone, you can <a
+                        href="https://account.login.nhs.uk/#/account/login">change your phone number securely</a>.</p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
