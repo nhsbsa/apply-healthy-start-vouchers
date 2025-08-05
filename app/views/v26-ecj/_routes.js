@@ -358,18 +358,26 @@ router.post('/v26-ecj/national-insurance-number-ni', function (req, res) {
   router.post('/v26-ecj/national-insurance-number-nhs-login', function (req, res) {
 
     var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-  
+    var checkbox = req.session.data['checkbox'] //
+
     if (nationalinsurancenumber == 'AB123456C') {
       res.redirect('/v26-ecj/apply/due-date')
     } 
     else if (nationalinsurancenumber == 'CD123456E') {
       res.redirect('/v26-ecj/apply/childs-first-name')
     } 
-    else {
-      res.redirect('/v26-ecj/apply/due-date')
-    }
+  else if (checkbox.checked = true) { 
+    res.redirect('/v26-ecj/apply/kickouts/no-nino')  
+  } 
 
   })
+
+
+
+
+
+
+
 
 
 
