@@ -166,7 +166,7 @@ res.redirect('/v27/apply/check-your-answers-nhs-login');
 
 // You did not agree to share your NHS login information
 
-  router.post('/v27/no-consent', function (req, res) {
+  router.post('/v27/nhs-login/no-consent', function (req, res) {
 
   var consent = req.session.data['consent']
 
@@ -174,7 +174,7 @@ res.redirect('/v27/apply/check-your-answers-nhs-login');
     res.redirect('/v27/nhs-login/consent')
   }
   else if (consent === "disagree") {
-    res.redirect('/v27/apply/kickouts/not-consent')
+    res.redirect('/v27/apply/kickouts/no-consent')
   }
    
   })
