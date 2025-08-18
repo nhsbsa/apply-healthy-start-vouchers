@@ -111,8 +111,7 @@ Check your answers
 
                 </div>
             {% endif %}
-            {% if (data['dateofbirthday']) and (data['dateofbirthmonth']) and (data['dateofbirthyear']) %}
-            {% else %}
+            
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         Date of birth
@@ -124,16 +123,17 @@ Check your answers
                         2 February 1999
                     </dd>
 
+
                     <dd class="nhsuk-summary-list__actions">
 
-                        <!-- <a href="date-of-birth">
-                            Change<span class="nhsuk-u-visually-hidden"> your date of birth</span>
+                        <!-- <a href="birthday">
+                            Change<span class="nhsuk-u-visually-hidden"> your birthday</span>
                         </a> -->
 
                     </dd>
 
                 </div>
-            {% endif %}
+                
             {% if (data['nationalinsurancenumber']) %}
                 <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
