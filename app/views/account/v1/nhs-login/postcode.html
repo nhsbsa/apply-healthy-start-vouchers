@@ -1,0 +1,46 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+Enter your postcode
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Back to: Enter your date of birth"
+        }) }}
+
+        <form action="account/v1/nhs-login/postcode" method="post">
+            <h2>
+                Enter your postcode
+            </h2>
+
+            <span class="nhsuk-hint" id="hint">
+                <p>Your postcode should be:</p>
+            <ul>
+                <li>in England, Wales or the Isle of Man</li>
+                <li>the one your GP has on record for you</li>
+                </ul>
+            </span>
+          
+            <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="postcode" >
+                </label>
+                <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
+            </div>
+
+    
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+
+    </div>
+</div>
+
+{% endblock %}

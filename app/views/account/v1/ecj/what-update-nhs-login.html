@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you have a current Healthy Start claim?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+    <form action="account/v1/what-update-nhs-login" method="post">
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              What update would you like to make to your claim?
+            </h1>
+          </legend> 
+      
+          <div class="nhsuk-radios">
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="pregnant" name="whatupdate" type="radio" value="add-pregnancy">
+              <label class="nhsuk-label nhsuk-radios__label" for="whatupdate">
+                Add a new pregnancy
+              </label>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="addnew" name="whatupdate" type="radio" value="add-baby-child">
+              <label class="nhsuk-label nhsuk-radios__label" for="whatupdate">
+                Add a new baby or child
+              </label>
+              <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                You can let us know if you’re responsible for a new child, including if you get pregnancy payments and you’ve recently had your baby
+              </div>
+            </div>
+
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="addnew" name="whatupdate" type="radio" value="card-issue">
+              <label class="nhsuk-label nhsuk-radios__label" for="whatupdate">
+                Replace a lost, damaged or stolen card
+              </label>
+            </div>
+
+
+            <div class="nhsuk-radios__divider">or</div>
+
+
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="personaldetail" name="whatupdate" type="radio" value="else">
+              <label class="nhsuk-label nhsuk-radios__label" for="whatupdate">
+                I need to do something else
+              </label>
+            </div> 
+          </div>
+        </fieldset>
+      
+
+      </div>      
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

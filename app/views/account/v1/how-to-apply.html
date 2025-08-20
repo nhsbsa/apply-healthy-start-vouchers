@@ -1,0 +1,176 @@
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /views/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  {% extends 'layout-hub-slim.html' %} <!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+   <!-- Set the page title inside the pageTitle block -->
+   {% block pageTitle %}How to apply - Get help to buy food and milk - NHS{% endblock %} <!-- Breadcrumb goes inside the beforeContent block -->
+   {% block beforeContent %} {% endblock %} <!-- Your page content goes inside the content block -->
+   <!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+   {% block content %}
+
+   <script>
+    var ref = document.referrer;
+    if (ref.match("step-by-step-index")){
+      document.write('<div class="nhsuk-grid-row"><div class="nhsuk-grid-column-full"><div class="nhsuk-card nhsuk-card--clickable"><div class="nhsuk-card__content"><h3><span class="nhsuk-caption-m nhsuk-caption--top">Part of</span><a class="nhsuk-card__link" href="step-by-step-index">Get help to buy food and milk: step by step</a></h3></div></div></div></div>');
+    }
+  </script>
+  
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <!-- Change the page title here -->
+      <h1>How to apply </h1>
+      
+      <h2>Applying online</h2>
+
+      <h3>If you get Universal Credit</h3> 
+        <p>You can apply online if:</p>
+
+          <ul>
+              <li>you’re more than 10 weeks pregnant or have at least one child under 4 years old</li>
+              <li>your family’s monthly ‘take-home pay’ (also called ‘earned income’) is £408 or less from employment</li>
+          </ul>
+
+          <div class="nhsuk-warning-callout nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-6">
+            <h3 class="nhsuk-warning-callout__label">
+                <span role="text">
+                    <span class="nhsuk-u-visually-hidden">Important: </span>
+                    Universal Credit claimants
+                </span>
+            </h3>
+            <p>The details you use to apply for Healthy Start must match the details on your Universal Credit claim.</p>
+            <p>Go to your <a href="https://www.gov.uk/sign-in-universal-credit" target="_blank">Universal Credit
+                    account (opens in a new tab)</a> to check:
+            </p>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                    <li>your address details, including your postcode</li>
+                    <li>all of your children are named and verified on your Universal Credit claim</li>
+                </ul>   
+        </div>
+
+
+
+      <!--<h3>If you get Child Tax Credit</h3> 
+        <p>You may be eligible for Healthy Start if:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>your family’s annual income is £16,190 or less</li>
+          <li>you do not get Working Tax Credit</li>
+        </ul>   
+
+
+        <p>Most people who get Child Tax Credit can apply online. You can apply online if you’re either:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>more than 10 weeks pregnant and have children under the age of 4</li>
+          <li>not pregnant but have children under the age of 4</li>
+        </ul>   
+
+        <p>If you’re more than 10 weeks pregnant and have other children who are all aged 4 or older, you’ll need to apply by email or phone.</p>
+
+
+
+
+
+      <h3>Child Tax Credit is ending on 5 April 2025</h3> 
+        <p>If you get Child Tax Credit, you’ll still be eligible for NHS Healthy Start payments if you move to Universal Credit and your take-home pay (also called ‘earned income’) is £408 or less.</p>
+        <p>To continue to get your NHS Healthy Start payments after you move to Universal Credit, there are 2 things you need to do:</p>
+        <ol class>
+          <li>Apply for Universal Credit within 16 weeks of your Child Tax Credit coming to an end.</li>
+          <li>Make sure all your children are listed as dependents and verified on your Universal Credit claim.</li>
+        </ol>   
+        <p>If we’ve sent you a text message asking for you to confirm your children’s first name, last name and date of birth before 5 April 2025, you can tell us by:</p>
+
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>using our <a href="https://faq.nhsbsa.nhs.uk/contact-us/" target="_blank">online form</a></li>
+          <li>calling 0300 330 7010</li>
+        </ul>   
+
+        <p>Phone lines are open Monday to Friday, 8pm to 6pm (except public holidays).</p>
+        <p><a href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in a new tab)</a>.</p>-->
+
+
+        <p>To apply online, you'll need your NHS login details. This allows us to access your:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>name</li>
+          <li>address</li>
+          <li>date of birth</li>
+          <li>National Insurance number</li>
+        </ul>
+
+        <p>You'll also need your:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>baby’s due date (if you’re pregnant)</li>
+          <li>benefit award letter if you’re over 18 – make sure you enter the exact details shown on your benefit award letter</li>
+        </ul>   
+
+
+
+        <p>Make sure that your details are up to date with HMRC or DWP – you may wish to contact them to check or update your details before you apply.</p>
+
+
+        <p><a href="/account/v1/start" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Apply now</a></p>
+
+
+
+
+
+        <h2>Applying by email or phone</h2>
+        <p>You can apply by email or phone if you’re more than 10 weeks pregnant, or have at least one child under 4 years old, and get either:</p>
+
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>Income Support</li>
+          <li>Income-based Jobseeker’s Allowance</li>
+          <li>Pension Credit (which includes the child addition)</li>
+        </ul>   
+
+        <p>You can also apply by email or phone if you’re more than 10 weeks pregnant and either:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>under 18 years old and not getting any benefits</li>
+          <li>getting Income-related Employment and Support Allowance (ESA)</li>
+        </ul>   
+
+        <!--<p>If you get Child Tax Credit, you’ll need to apply by email or phone 
+          if you’re more than 10 weeks pregnant and have other children who are all aged 4 or older.</p>-->
+
+        <p>You can apply by either:</p>   
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>emailing <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+          <li>calling 0300 330 7010</li>
+        </ul>  
+
+        <p>Phone lines are open 8am to 6pm Monday to Friday (except public holidays). <a href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in a new tab)</a>.</p>
+
+
+
+
+
+        <h2>If you’re not a British citizen but your child is</h2>
+        <p>You might be eligible for Healthy Start depending on your immigration status.</p>
+        <p>You can get Healthy Start if all the following are true:</p>
+
+
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>you have at least 1 British child under 4 years old – <a href="https://www.gov.uk/check-british-citizenship" target="_blank">check if your child is automatically a British citizen (opens in a new tab) if you’re not sure</a></li>
+          <li>your family earns £408 or less per month after tax</li>
+          <li>you cannot claim <a href="https://www.gov.uk/government/publications/public-funds--2" target="_blank">‘public funds’ (opens in a new tab)</a> (for example, benefits) – either because of your immigration status or because you do not have an immigration status</li>
+        </ul>   
+
+        <p>Your biometric residence permit (BRP) or your  <a href="https://www.gov.uk/view-prove-immigration-status" target="_blank">online immigration status (opens in a new tab)</a> will say if you cannot claim public funds. You might also have a letter from the Home Office about it.</p>
+
+
+        <p>To apply for Healthy Start, ask for an application form via email. Only use this email address if you think you cannot claim public funds because of your immigration status.</p>
+
+        <p><a class="nhsuk-link" href="mailto:Healthystartclaim@dhsc.gov.uk">Healthystartclaim@dhsc.gov.uk</a></p>
+
+
+  </div>{% endblock %}
+</body>
+</html>

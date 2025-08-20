@@ -264,7 +264,7 @@ router.post('/v27/name', function (req, res) {
 
 
 
-  // Check your answers (== after NHS Login)
+  // Confirm your details (== after NHS Login)
 
   router.post('/v27/apply/cya-nhs-login', function (req, res) {
 

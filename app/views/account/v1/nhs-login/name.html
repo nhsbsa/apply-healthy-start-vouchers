@@ -1,0 +1,61 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+Enter your full name
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Back to: Do you know your NHS number"
+        }) }}
+<form action="account/v1/nhs-login/name" method="post"> 
+        <h2>
+            Enter your full name
+        </h2>
+
+       
+          <span class="nhsuk-hint" id="hint">
+            Use the same name that you registered with your GP surgery.
+          </span>
+
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="firstname">
+                    First name
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-full" id="three-quarters" id="firstname" name="firstName" type="text" autocomplete="given-name">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="middlenames">
+                    Middle names (if you have any)
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-full" id="three-quarters" id="middlenames" name="middleNames" type="text" autocomplete="family-name">
+            </div>
+
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="lastname">
+                    Last name
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-full" id="three-quarters" id="lastname" name="lastName" type="text" autocomplete="family-name">
+            </div>
+
+
+
+        
+        
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

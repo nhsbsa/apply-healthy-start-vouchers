@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you want to apply for Healthy Start?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="account/v1/apply/apply-for-healthy-start" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Do you want to apply for Healthy Start?
+                    </h1>
+                </legend>
+
+                            
+                <div class="nhsuk-hint" id="example-hints-hint">
+                <p class="nhsuk-u-margin-bottom-2">We can't find an active claim with your details. You can create one to get help to buy food and milk.</p>
+                </div>
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="example-inline-1" name="application" type="radio" value="yes">
+                        <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+                        Yes
+                        </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="example-inline-2" name="application" type="radio" value="no">
+                        <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+                        No
+                        </label>
+                    </div>
+
+
+
+
+                </fieldset>
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

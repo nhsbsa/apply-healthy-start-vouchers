@@ -1,0 +1,78 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+Enter your date of birth
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Back to: Do you know your NHS number"
+        }) }}
+
+ 
+        <form action="account/v1/nhs-login/date-of-birth" method="post">
+          
+          <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="hint" role="group">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h2>
+              Enter your date of birth
+            </h2>
+          </legend>
+          <span class="nhsuk-hint" id="hint">
+            For example, 15 3 1984
+          </span>
+
+          <div class="nhsuk-date-input">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfBirthDay">
+                  Day
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfBirthDay"
+                  name="dateOfBirthDay" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfBirthMonth">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dateOfBirthMonth"
+                  name="dateOfBirthMonth" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dateOfBirthYear">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dateOfBirthYear"
+                  name="dateOfBirthYear" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+      </div>
+
+
+
+        
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

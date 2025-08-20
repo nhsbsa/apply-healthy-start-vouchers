@@ -1,0 +1,46 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+You did not agree to share your NHS login information
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="account/v1/nhs-login/not-agree-to-share" method="post">
+
+
+        <h2><span role="text">You did not agree to share your NHS login information</span></h2>
+        <div class="nhsuk-form-group">    
+            <p>You may not be able to use <strong>Healthy Start</strong> as they need your NHS login information to verify your identity.</p>
+            <h3>What do you want to do?</h3>
+
+                        <div class="nhsuk-radios">
+                            <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="agree" name="consent" type="radio" value="agree">
+                            <label class="nhsuk-label nhsuk-radios__label" for="agree">
+                                Go back and agree to share your NHS login information
+                            </label>
+                            </div>
+                    
+                            <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="disagree" name="consent" type="radio" value="disagree">
+                            <label class="nhsuk-label nhsuk-radios__label" for="disagree">
+                                Go to <strong>Healthy Start</strong> without sharing your NHS login information
+                            </label>
+                            </div>
+                        </div> 
+                        <br>
+
+                        <button class="nhsuk-button" type="submit">
+                            Continue
+                        </button>
+        </div>        
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

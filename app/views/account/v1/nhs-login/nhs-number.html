@@ -1,0 +1,88 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+Do you know your NHS Number?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="account/v1/nhs-login/nhs-number" method="post">
+
+                      <div class="nhsuk-form-group"> 
+                        <h2>Do you know your NHS Number?</h2>
+                        
+                      <div class="nhsuk-inset-text">
+                      <span class="nhsuk-u-visually-hidden">Information: </span>
+                      <p>Telling us your NHS number will give us the best chance of matching you to your NHS record.</p>
+                      </div>
+
+
+                      <details class="nhsuk-details">
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                          How to find your NHS number
+                          </span>
+                        </summary>
+                        <div class="nhsuk-details__text">
+                          <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+                          <p>You can find it:</p>
+                          <ul>
+                              <li>by using the Find your NHS number service</li>
+                              <li>by logging in to a GP online service</li>
+                              <li>on any document the NHS has sent you</li>
+                              <li>on any prescriptions</li>
+                          </ul>
+                          <p>Ask your GP surgery for help if you cannot find your NHS number.</p>
+                        </div>
+                      </details>
+                
+
+                      
+       <div class="nhsuk-radios nhsuk-radios--conditional">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="yes" name="nhsNumberLogin" type="radio" value="yes" aria-controls="conditional-contact-1" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="yes">
+          Yes, I know my NHS number
+        </label>
+      </div>
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+        <div class="nhsuk-hint nhsuk-radios__hint">
+          <label class="nhsuk-label" for="number"> 
+            Example: 485 777 3456
+          </label> <input class="nhsuk-input nhsuk-u-width-one-third" id="nhsNumber_value" name="nhsNumber_value" type="text" maxlength="10" inputmode="numeric">
+        </div>
+
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="no" name="nhsNumberLogin" type="radio" value="no" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="no">
+          No, I do not know my NHS number
+        </label>
+      </div>
+      
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <button class="nhsuk-button" type="submit">
+      Continue
+    </button>
+
+  </form>
+  </div>    
+</div>
+{% endblock %}

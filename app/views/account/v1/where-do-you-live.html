@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Where do you live?
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <form action="account/v1/where-do-you-live" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset">
+
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                    <h1 class="nhsuk-fieldset__heading">
+                        Where do you live?
+                    </h1>
+                </legend>
+
+                                
+                    <div class="nhsuk-radios">
+
+                        <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="radio-1" name="location" type="radio" value="england or wales">
+                        <label class="nhsuk-label nhsuk-radios__label" for="location">
+                            England or Wales
+                        </label>
+                        </div>
+                
+                        <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="radio-2" name="location" type="radio" value="northern ireland">
+                        <label class="nhsuk-label nhsuk-radios__label" for="location">
+                            Northern Ireland
+                        </label>
+                        </div>
+                
+                        <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="radio-3" name="location" type="radio" value="somewhere else">
+                        <label class="nhsuk-label nhsuk-radios__label" for="location">
+                            Somewhere else
+                        </label>
+                        </div>
+                
+                    </div>
+
+
+
+
+                </fieldset>
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
