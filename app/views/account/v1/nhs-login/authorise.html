@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout-nhs-login.html' %}
 
 {% block pageTitle %}
 Get help to buy food and milk (Healthy Start) 
@@ -7,7 +7,7 @@ Get help to buy food and milk (Healthy Start)
 {% block content %}
 
 <script>
-  setTimeout("location.href = '/account/v1/nhs-login/check-your-answers-nhs-login';", 2000);
+  setTimeout("location.href = '/account/v1/nhs-login/consent';", 1000);
 </script>
 
 <div class="nhsuk-grid-row">
@@ -15,7 +15,7 @@ Get help to buy food and milk (Healthy Start)
 
         <form action="auth" method="post">
             <section class="loading-container" id="gp-connect-0" style="display:block; min-height: 16em;">
-      
+              <h2>Checking your details</h2>
               <div class="bar_container">
                 <div id="main_container">
                   <div id="pbar" class="progress-spinner" data-percent="0">

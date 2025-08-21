@@ -79,17 +79,17 @@ router.post('/account/v1/nhs-login/password', (req, res) => {
 
 // Enter the security code
 
-router.post('/account/v1/nhs-login/security-code', (req, res) => {
-  const emailAddress = (req.session.emailAddress || '').trim().toLowerCase();
-  console.log('Session email is:', emailAddress);
+// router.post('/account/v1/nhs-login/security-code', (req, res) => {
+//   const emailAddress = (req.session.emailAddress || '').trim().toLowerCase();
+//   console.log('Session email is:', emailAddress);
 
 
-  if (emailAddress === 'rileyjones1999@gmail.com') {
-    res.redirect('/account/v1/nhs-login/consent');
-  } else {
-    res.redirect('/account/v1/nhs-login/nhs-number');
-  }
-});
+//   if (emailAddress === 'rileyjones1999@gmail.com') {
+//     res.redirect('/account/v1/nhs-login/consent');
+//   } else {
+//     res.redirect('/account/v1/nhs-login/nhs-number');
+//   }
+// });
 
 
 
@@ -97,6 +97,18 @@ router.post('/account/v1/nhs-login/security-code', (req, res) => {
 
 
 // Authorise
+
+router.post('/account/v1/nhs-login/security-code', (req, res) => {
+  const emailAddress = (req.session.emailAddress || '').trim().toLowerCase();
+  console.log('Session email is:', emailAddress);
+
+
+  if (emailAddress === 'rileyjones1999@gmail.com') {
+    res.redirect('/account/v1/nhs-login/authorise');
+  } else {
+    res.redirect('/account/v1/nhs-login/nhs-number');
+  }
+});
 
 
 // router.post('/account/v1/nhs-login/security-code', (req, res) => {
@@ -231,6 +243,7 @@ router.post('/account/v1/nhs-login/postcode', (req, res) => {
 
   // ✅ Redirect AFTER saving
   res.redirect('/account/v1/nhs-login/check-your-details');
+
 });
 
 
@@ -238,22 +251,26 @@ router.post('/account/v1/nhs-login/postcode', (req, res) => {
 
 // Check your details
 
-// router.get('/account/v1/nhs-login/check-your-details', (req, res) => {
-//   res.render('check-your-details', {
-//     nhsNumber_value: req.session.nhsNumber_value,
-//     firstName: req.session.firstName,
-//     middleNames: req.session.middleNames,
-//     lastName: req.session.lastName,
-//     dateOfBirth: req.session.dateOfBirth,
-//     postcode: req.session.postcode
-//   });
-// });
+
+router.get('/account/v1/nhs-login/check-your-details', (req, res) => {
+  console.log('Rendering check-your-details with session data:', req.session);
+  res.render('/account/v1/nhs-login/check-your-details', {
+    data: {
+      firstName: req.session.firstName,
+      middleNames: req.session.middleNames,
+      lastName: req.session.lastName,
+      dateOfBirth: req.session.dateOfBirth,
+      postcode: req.session.postcode
+    }
+  });
+});
+
+
+
 
 router.post('/account/v1/nhs-login/check-your-details', (req, res) => {
-
-res.redirect('/account/v1/nhs-login/consent');
-
-  })
+  res.redirect('/account/v1/nhs-login/consent');
+});
 
 
 
@@ -530,7 +547,7 @@ const application = req.body.application;
       var dateofbirthmonth = req.session.data['dateofbirthmonth']
       var dateofbirthyear = req.session.data['dateofbirthyear']
       var pregnant = req.session.data['pregnant']
-      var childrenunderfour = req.session.data['childrenunderfour']
+      var childrenUnderFour = req.session.data['childrenUnderFour']
       var dob = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
       var ageDate =  new Date(today - dob.getTime())
       var temp = ageDate.getFullYear();
