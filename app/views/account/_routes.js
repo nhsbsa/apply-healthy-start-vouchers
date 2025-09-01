@@ -322,7 +322,7 @@ const application = req.body.application;
     if (application === "yes") {
         res.redirect('/account/v1/apply/confirm-your-details');
     } else {
-        res.redirect('/account/v1/apply/kickouts/end-screen');
+        res.redirect('/account/v1/apply/kickouts/no-active-claim');
     }
 });
 

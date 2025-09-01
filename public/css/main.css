@@ -5477,7 +5477,6 @@ b {
   flex-wrap: wrap;
   width: calc(100% + 16px);
   margin: 0 -8px;
-  
 }
 
 @media (min-width: 40.0625em) {
@@ -5503,7 +5502,7 @@ b {
 }
 .nhsuk-header__navigation-item {
   margin-bottom: 0;
-  padding: 0 8px;  
+  padding: 0 8px;
 }
 
 @media (min-width: 40.0625em) {
