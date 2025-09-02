@@ -1,0 +1,46 @@
+{% extends 'layout-nhs-login.html' %}
+
+{% block pageTitle %}
+You chose not to create a Healthy Start application
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="account/v1/nhs-login/chose-not-to-create" method="post">
+
+
+        <h2><span role="text">You chose not to create a Healthy Start application</span></h2>
+        <div class="nhsuk-form-group">    
+            <p>To apply for <strong>Healthy Start</strong>, you need to go through an application process. Since you didn’t choose to start one, you may not be able to use the service.</p>
+            <h3>What do you want to do?</h3>
+
+                        <div class="nhsuk-radios">
+                            <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="agree" name="consent" type="radio" value="agree">
+                            <label class="nhsuk-label nhsuk-radios__label" for="agree">
+                                Go back and start a Healthy Start application
+                            </label>
+                            </div>
+                    
+                            <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="disagree" name="consent" type="radio" value="disagree">
+                            <label class="nhsuk-label nhsuk-radios__label" for="disagree">
+                                Go to <strong>Healthy Start</strong> without creating an application
+                            </label>
+                            </div>
+                        </div> 
+                        <br>
+
+                        <button class="nhsuk-button" type="submit">
+                            Continue
+                        </button>
+        </div>        
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
