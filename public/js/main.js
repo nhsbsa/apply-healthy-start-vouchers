@@ -1,1 +1,1 @@
-// ES6 or Vanilla JavaScript
+// ES6 or Vanilla JavaScript//# sourceMappingURL=main.js.map

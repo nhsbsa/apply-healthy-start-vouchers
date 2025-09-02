@@ -1,8 +1,6 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 
-{% block pageTitle %}
-  Mini hub - Page two
-{% endblock %}
+{% set pageName = "Mini hub - Page two" %}
 
 {% block beforeContent %}
   {{ breadcrumb({
@@ -57,10 +55,10 @@
       </p>
 
       {{ pagination({
-        "previousUrl": "/example-templates/mini-hub",
-        "previousPage": "Main page",
-        "nextUrl": "/example-templates/mini-hub/page-3",
-        "nextPage": "Page two"
+        previousUrl: "/example-templates/mini-hub",
+        previousPage: "Main page",
+        nextUrl: "/example-templates/mini-hub/page-3",
+        nextPage: "Page two"
       }) }}
 
     </div>
