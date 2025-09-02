@@ -572,20 +572,22 @@ const application = req.body.application;
     
 
 
- // What is your email address?
-  
-  router.post('/account/v1/apply/email-address', function (req, res) {
-  
-    var emailaddress = req.session.data['emailaddress']
-  
-    res.redirect('/account/v1/apply/mobile-phone-number')
-  
+// What is your email address?
+ 
+// GET route to display the email address page with prefilled data
+router.get('/account/v1/apply/email-address', function (req, res) {
+  res.render('your-email-template', {
+    data: {
+      emailaddress: req.session.data['emailaddress'] || ''
+    }
+  });
+});
 
-    
-  })
-
-
-
+// Your existing POST route
+router.post('/account/v1/apply/email-address', function (req, res) {
+  var emailaddress = req.session.data['emailaddress']
+  res.redirect('/account/v1/apply/mobile-phone-number')
+})
 
   
   // What is your mobile phone number?
