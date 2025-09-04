@@ -5,14 +5,18 @@ Before you start
 {% endblock %}
 
 {% block content %}
+
+
 <div class="nhsuk-grid-row">
+
+    
     <div class="nhsuk-grid-column-two-thirds">
+{{ backLink({
+  href: "javascript:history.go(-1)",
+  text: "Back"
+}) }}
 
 
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <form action="account/v1/before-you-start" method="post"> 
 

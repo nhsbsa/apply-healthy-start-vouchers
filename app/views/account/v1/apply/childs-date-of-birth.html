@@ -5,14 +5,16 @@ What is {{ data['childsfirstname'] }}’s date of birth?
 {% endblock %}
 
 {% block content %}
+
+
+
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
-
+{{ backLink({
+  href: "javascript:history.go(-1)",
+  text: "Back"
+}) }}
         <h1 class="nhsuk-fieldset__legend--xl">
             What is {{ data['childsfirstname'] }}’s date of birth?
         </h1>

@@ -33,35 +33,37 @@
   {% endblock %}
   <!-- Footer goes inside the footer block -->
   <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
-  {% block footer %}
+ {% block footer %}
+  {% from 'footer/macro.njk' import footer %}
   {{ footer({
-    "links": [
+meta: {
+    items: [
       {
-        "URL": "https://www.nhsbsa.nhs.uk/our-policies/privacy/healthy-start-privacy-notice",
-        "label": "Privacy"
+        "href": "https://www.nhsbsa.nhs.uk/our-policies/privacy/healthy-start-privacy-notice",
+        "text": "Privacy"
       },
       {
-        "URL": "/cookies/cookies",
-        "label": "Cookies"
+        "href": "https://faq.nhsbsa.nhs.uk/contact-us/",
+        "text": "Contact us"
       },
       {
-        "URL": "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions",
-        "label": "Terms and conditions"
+        "href": "/cookies/cookies",
+        "text": "Cookies"
       },
       {
-        "URL": "https://www.nhsbsa.nhs.uk/our-policies/accessibility/accessibility-statement-get-help-buy-food-and-milk-healthy-start",
-        "label": "Accessibility"
+        "href": "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions",
+        "text": "Terms and conditions"
       },
       {
-        "URL": "https://www.healthystart.nhs.uk/contact-us/",
-        "label": "Contact us"
+        "href": "https://www.nhsbsa.nhs.uk/our-policies/accessibility/accessibility-statement-get-help-buy-food-and-milk-healthy-start",
+        "text": "Accessibility"
       },
       {
-        "URL": "/clear-data",
-        "label": "Clear data"        
+        "href": "/clear-data",
+        "text": "Clear data"        
       }
-    ]
-  })}}
+    ]}
+  }) }}
   <div class="app-ogl-footer">
     <div class="nhsuk-width-container">
       <p class="app-ogl-footer--text">

@@ -11,13 +11,14 @@ What is your mobile phone number? - Get help to buy food and milk (Healthy Start
     top: 9px;
 }
 </style>
+
+
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
+{{ backLink({
+  href: "javascript:history.go(-1)",
+  text: "Back"
+}) }}
 
         <form action="account/v1/apply/mobile-phone-number" method="post">
 

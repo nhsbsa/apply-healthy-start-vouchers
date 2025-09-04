@@ -5,14 +5,14 @@ Are you more than 10 weeks pregnant? - Get help to buy food and milk (Healthy St
 {% endblock %}
 
 {% block content %}
+
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-<!-- 
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }} -->
 
+{{ backLink({
+  href: "javascript:history.go(-1)",
+  text: "Back"
+}) }}
         <form action="account/v1/apply/are-you-pregnant" method="post">
 
             <div class="nhsuk-form-group">
