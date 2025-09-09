@@ -7,7 +7,7 @@
   {% extends 'layout.html' %} {% block pageTitle %} Children under 4 years old that you have told us about {% endblock %} {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
+      {{ backLink({ "href": "javascript:history.go(-1)", "text": "Back" }) }}
       <h1 class="nhsuk-fieldset__legend--xl">Children under 4 years old that you have told us about</h1>
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Children under 4 years old</h2>
       <dl class="nhsuk-summary-list">
@@ -22,7 +22,7 @@
                         {% if data['childList'] | length  == 0 %}
                          
                         {% else %}
-                        <a href="#">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
+                        <a href="remove-child">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
                         {% endif %}
                       </dd>
         </div>

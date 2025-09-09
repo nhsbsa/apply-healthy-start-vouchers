@@ -10,20 +10,40 @@ Do you want to remove this child?
 
         {{ backLink({
             "href": "javascript:history.go(-1)",
-            "text": "Go back"
+            "text": "Back"
         }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
             Do you want to remove this child?
         </h1>
+        
+{% for item in data.childList %}
+  <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+    <span class="nhsuk-u-visually-hidden">Information: </span>
 
-        <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p class="nhsuk-heading-m">{% if data['childsfirstname'] %}{{ data['childsfirstname'] }}{% else %}Simon{% endif %}</p>
-        <p>Born on {% if data['childsdateofbirthday'] and data['childsdateofbirthmonth'] and data['childsdateofbirthyear']  %}{{ data['childsdateofbirthday'] }}/{{ data['childsdateofbirthmonth'] }}/{{ data['childsdateofbirthyear'] }}{% else %}01/04/2019{% endif %}</p>
-        </div>
+    <p class="nhsuk-heading-m">
+      {% if item.ChildsFirstName %}
+        {{ item.ChildsFirstName }} {{ item.ChildsLastName }}
+      {% else %}
+        Charlie Lee
+      {% endif %}
+    </p>
 
-        <form action="current/remove-child" method="post">
+    <p>
+      Born on
+      {% if item.ChildsDOB %}
+        {{ item.ChildsDOB }}
+      {% elif data.childsdateofbirthday and data.childsdateofbirthmonth and data.childsdateofbirthyear %}
+        {{ data.childsdateofbirthday }}/{{ data.childsdateofbirthmonth }}/{{ data.childsdateofbirthyear }}
+      {% else %}
+        1 September 2025
+      {% endif %}
+    </p>
+  </div>
+{% endfor %}
+
+
+        <form action="v27/remove-child" method="post">
 
             <div class="nhsuk-form-group">
 
