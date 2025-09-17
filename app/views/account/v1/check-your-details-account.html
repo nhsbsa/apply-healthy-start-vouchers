@@ -6,6 +6,7 @@ Get help to buy food and milk (Healthy Start)
 {% block header %}
 
 
+
 <header class="nhsuk-header" role="banner" data-module="nhsuk-header">
   <div class="nhsuk-header__container nhsuk-width-container">
     <div class="nhsuk-header__service">
@@ -35,7 +36,11 @@ Get help to buy food and milk (Healthy Start)
     <div class="nhsuk-header__navigation-container nhsuk-width-container">
       <ul class="nhsuk-header__navigation-list">
         <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="#">Account</a>
+          <a class="nhsuk-header__navigation-link" href="/account/v1/account-dashboard">Dashboard</a>
+        </li>
+
+                <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="#">NHS login settings</a>
         </li>
        
         <li class="nhsuk-header__menu" hidden>
@@ -47,6 +52,14 @@ Get help to buy food and milk (Healthy Start)
     </div>
   </nav>
 </header>
+
+
+
+
+
+
+
+
 
 
 
@@ -132,6 +145,10 @@ Get help to buy food and milk (Healthy Start)
 
                 <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Email address</h2>
                 <p id="userDOB">rileyjones1999@gmail.com</p>
+<!-- 
+                                <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Qualifying benefit</h2>
+                <p id="userDOB">Universal Credit</p> -->
+
 
             </div>
             <div class="nhsuk-grid-column-one-third">
@@ -140,6 +157,10 @@ Get help to buy food and milk (Healthy Start)
 
                 <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Mobile number</h2>
                 <p id="userMobile">07510318338</p>
+<!-- 
+                                <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Application submitted</h2>
+                <p id="userMobile">11 April 2025</p> -->
+
 
             </div>
             <div class="nhsuk-grid-column-one-third">
@@ -149,21 +170,115 @@ Get help to buy food and milk (Healthy Start)
                     London, <br>
                     NR33 4GP
                 </p>
+                <!-- <h2 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Application expiry date</h2>
+                <p id="userMobile">11 July 2025</p> -->
 
             </div>
         </div>
 
 
 
-<details class="nhsuk-details">
+        <hr>
+        
+
+
+
+
+
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <h3 class="nhsuk-card__heading"> Your eligibility details</h3>
+
+  <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Qualifying benefit
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Universal Credit
+    </dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Application submitted
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      11 April 2025
+    </dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Application expiry date
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      11 July 2025
+    </dd>
+  </div>
+</dl>
+</div>
+
+
+
+
+
+<!-- <h3 class="nhsuk-card__heading"> Your eligibility details</h3>
+        <div class="nhsuk-card">
+  <div class="nhsuk-card__content">
+     <table class="nhsuk-table-responsive" role="table"> 
+  <thead class="nhsuk-table__head" role="rowgroup">
+    <tr role="row">
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Qualifying benefit</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Application submitted</th>
+      <th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Application expiry date</th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row" role="row">
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Age </span>Universal Credit</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">How much? </span>11 April 2025</td>
+      <td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">How often? </span>11 July 2025</td>
+    </tr>
+  </tbody>
+</table>
+    
+  </div>
+</div> -->
+
+
+
+
+
+<!-- 
+<table class="nhsuk-table-responsive" role="table"> 
+<caption class="nhsuk-table__caption">View your eligibility details</caption>
+<thead class="nhsuk-table__head" role="rowgroup">
+<tr role="row">
+<th scope="col" class="nhsuk-table__header nhsuk-u-width-one-half" role="columnheader">Qualifying benefit</th>
+<th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Application submitted</th>
+<th scope="col" class="nhsuk-table__header nhsuk-u-width-one-quarter" role="columnheader">Application expiry date</th>
+</tr>
+</thead>
+<tbody class="nhsuk-table__body">
+<tr class="nhsuk-table__row" role="row">
+<td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">Age </span>Universal Credit</td>
+<td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">How much? </span>11 April 2025</td>
+<td class="nhsuk-table__cell" role="cell"><span class="nhsuk-table-responsive__heading" aria-hidden="true">How often? </span>11 July 2025</td>
+</tr>
+
+</tbody>
+</table> -->
+
+
+
+
+
+<!-- <details class="nhsuk-details">
   <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text">
       View your eligibility details
     </span>
   </summary>
   <div class="nhsuk-details__text">
-
-       
 <dl class="nhsuk-summary-list">
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
@@ -188,25 +303,14 @@ Get help to buy food and milk (Healthy Start)
     <dd class="nhsuk-summary-list__value">
       11 July 2025
     </dd>
-  </div>
-  <!-- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Estimated pregnancy due date
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      21 December 2025
-    </dd>
-  </div> -->
+  </div> 
 </dl>
 
     
   </div>
 </details>
+ -->
 
-
-
-        <hr>
-        
 
         <div class="nhsuk-card">
         <div class="nhsuk-card__content">
