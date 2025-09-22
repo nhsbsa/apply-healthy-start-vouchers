@@ -42,8 +42,7 @@ Do you know your NHS Number?
                           <p>Ask your GP surgery for help if you cannot find your NHS number.</p>
                         </div>
                       </details>
-                
-
+            
                       
 <div class="nhsuk-radios nhsuk-radios--conditional" data-module="nhsuk-radios">
       <div class="nhsuk-radios__item">
@@ -52,7 +51,7 @@ Do you know your NHS Number?
         name="nhsNumberLogin" 
         type="radio" 
         value="yes" 
-        aria-controls="conditional-contact-1" 
+        aria-controls="conditional-nhs-number" 
         aria-expanded="false"
         >
         <label class="nhsuk-label nhsuk-radios__label" for="yes">
@@ -60,9 +59,10 @@ Do you know your NHS Number?
         </label>
       </div>
 
-      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+      <!-- Conditional reveal for NHS number input -->
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-nhs-number">
         <div class="nhsuk-form-group">
-          <label class="nhsuk-label" for="number"> 
+          <label class="nhsuk-label" for="nhsNumber_value"> 
             Example: 485 777 3456
           </label> 
           <input class="nhsuk-input nhsuk-u-width-one-third" 
@@ -75,24 +75,29 @@ Do you know your NHS Number?
         </div>
       </div>
 
+
+
+ 
+
+
+
+
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" 
         id="no" 
         name="nhsNumberLogin" 
         type="radio" 
         value="no" 
-        aria-expanded="false"
         >
         <label class="nhsuk-label nhsuk-radios__label" for="no">
           No, I do not know my NHS number
         </label>
       </div>
-      </div> 
+    </div> 
 
       
-      </fieldset>
-    </div>
-
+      </fieldset> 
+</div> 
 
 
 

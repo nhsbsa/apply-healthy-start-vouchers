@@ -322,7 +322,7 @@ const application = req.body.application;
     if (application === "yes") {
         res.redirect('/account/v1/apply/confirm-your-details');
     } else {
-        res.redirect('/account/v1/apply/chose-not-to-create');
+        res.redirect('/account/v1/apply/kickouts/no-active-claim');
     }
 });
 
@@ -331,19 +331,19 @@ const application = req.body.application;
 
 // You chose not to create a Healthy Start application
 
-router.post('/account/v1/apply/chose-not-to-create', (req, res) => {
+// router.post('/account/v1/apply/chose-not-to-create', (req, res) => {
 
   
-    var consent = req.session.data['consent']
+//     var consent = req.session.data['consent']
 
-    if (consent === "agree") {
-      res.redirect('/account/v1/apply/apply-for-healthy-start')
-    }
-    else if (consent === "disagree") {
-      res.redirect('/account/v1/apply/kickouts/no-active-claim')
-    }
+//     if (consent === "agree") {
+//       res.redirect('/account/v1/apply/apply-for-healthy-start')
+//     }
+//     else if (consent === "disagree") {
+//       res.redirect('/account/v1/apply/kickouts/no-active-claim')
+//     }
 
-});
+// });
 
 
 
