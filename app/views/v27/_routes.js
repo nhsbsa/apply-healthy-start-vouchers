@@ -54,8 +54,11 @@ router.post('/v27/which-service', function (req, res) {
       
     var location = req.session.data['location']
 
-    if (location === "england or wales") {
+    if (location === "england") {
       res.redirect('/v27/before-you-start')
+    }
+    if (location === "wales") {
+      res.redirect('/v27/before-you-start-ni')
     }
     if (location === "northern ireland") {
       res.redirect('/v27/before-you-start-ni')

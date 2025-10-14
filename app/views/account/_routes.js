@@ -36,8 +36,11 @@ router.use(express.urlencoded({ extended: true }));
       
     var location = req.session.data['location']
 
-    if (location === "england or wales") {
+    if (location === "england") {
       res.redirect('/account/v1/before-you-start')
+    }
+    if (location === "wales") {
+    res.redirect('/account/v1/before-you-start-ni')
     }
     if (location === "northern ireland") {
       res.redirect('/account/v1/before-you-start-ni')

@@ -31,8 +31,11 @@ router.post('/v26-ecj/where-do-you-live', function (req, res) {
       
   var location = req.session.data['location']
 
-  if (location === "england or wales") {
+  if (location === "england") {
     res.redirect('/v26-ecj/apply/what-update-nhs-login')
+  }
+  if (location === "wales") {
+    res.redirect('/v26-ecj/before-you-start-ni')
   }
   if (location === "northern ireland") {
     res.redirect('/v26-ecj/before-you-start-ni')
