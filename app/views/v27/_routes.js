@@ -129,20 +129,14 @@ res.redirect('/v27/nhs-login/date-of-birth');
 
 
 // Enter your postcode - NHS LOGIN -
+router.post('/v27/nhs-login/postcode', (req, res) => {
+  req.session.data['postcode'] = req.body.postcode.trim();
+  console.log('Postcode is saved:', req.session.data['postcode']);
+  res.redirect('/v27/nhs-login/check-your-details');
+});
 
 
 
-router.post('/v27/nhs-login/postcode', function (req, res) {
-
-  
-res.redirect('/v27/nhs-login/check-your-details');
-
-  })
-
-
-
-
-  
 
 
 
@@ -161,10 +155,35 @@ res.redirect('/v27/nhs-login/consent');
 
 router.post('/v27/nhs-login/consent', function (req, res) {
 
-res.redirect('/v27/apply/check-your-answers-nhs-login');
-})
+
+  let postcode = req.session.data['postcode'] || '';
+
+// Trim spaces
+postcode = postcode.trim();
+
+// Remove any internal whitespace
+postcode = postcode.replace(/\s+/g, '');
+
+// Uppercase everything
+postcode = postcode.toUpperCase();
+
+// Insert space before last 3 characters
+if (postcode.length > 3) {
+  postcode = postcode.slice(0, postcode.length - 3) + ' ' + postcode.slice(-3);
+}
+  
+  if (postcode === 'N1 2GP') {
+    res.redirect('/v27/apply/postcode-nhslogin');
+  } else {
+    res.redirect('/v27/apply/check-your-answers-nhs-login');
+  }
+
+});
 
 
+
+  
+  
 
 
 // You did not agree to share your NHS login information
@@ -185,7 +204,38 @@ res.redirect('/v27/apply/check-your-answers-nhs-login');
 
 
 
-// Check your details - NHS LOGIN -
+
+// What is your postcode? - NO PDS -
+
+router.post('/v27/postcode-nhslogin', function (req, res) {
+
+res.redirect('/v27/apply/address-2-nhslogin');
+})
+
+
+
+
+
+
+// Select your address - NO PDS -
+router.post('/v27/address-2-nhslogin', function (req, res) {
+
+res.redirect('/v27/apply/check-your-answers-nhs-login');
+})
+
+
+
+// What is your address? - NO PDS -
+
+router.post('/v27/address-nhslogin', function (req, res) {
+
+res.redirect('/v27/apply/check-your-answers-nhs-login');
+})
+
+
+
+
+// Confirm your details - NHS LOGIN -
 
 
 router.post('/v27/nhs-login/check-your-details', function (req, res) {

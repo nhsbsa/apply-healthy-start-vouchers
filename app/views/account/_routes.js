@@ -227,7 +227,7 @@ router.post('/account/v1/nhs-login/date-of-birth', (req, res) => {
 router.post('/account/v1/nhs-login/postcode', (req, res) => {
   let { postcode } = req.body;
 
-  // ✅ Format BEFORE saving
+  
   function formatUKPostcode(postcode) {
     if (!postcode) return '';
     const cleaned = postcode.replace(/\s+/g, '').toUpperCase();
@@ -238,13 +238,11 @@ router.post('/account/v1/nhs-login/postcode', (req, res) => {
 
   const formattedPostcode = formatUKPostcode(postcode);
 
-  // ✅ Save formatted version to session
+  
   req.session.postcode = formattedPostcode;
 
-  // ✅ Log to confirm
   console.log('Saved formatted postcode:', req.session.postcode);
 
-  // ✅ Redirect AFTER saving
   res.redirect('/account/v1/nhs-login/check-your-details');
 
 });
