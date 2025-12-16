@@ -158,7 +158,7 @@ router.post('/v27/nhs-login/consent', function (req, res) {
 
   let postcode = req.session.data['postcode'] || '';
 
-// Trim spaces
+// Trim spaces at the start and end
 postcode = postcode.trim();
 
 // Remove any internal whitespace
