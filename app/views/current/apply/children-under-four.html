@@ -4,17 +4,29 @@
 Do you have any children under the age of 4?
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
-
         <h1 class="nhsuk-fieldset__legend--xl">
-            Do you have a child under 4 years old?    
+            Do you have a child under 4 years old?
         </h1>
 
         <!--<p>This means children who live with you all the time, or they normally live with you and you’re the main carer.</p>-->

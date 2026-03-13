@@ -4,6 +4,19 @@
 Check your phone
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
@@ -20,9 +33,9 @@ Check your phone
             <h1 class="nhsuk-fieldset__heading">
               Check your phone
             </h1>
-          </legend> 
-      
-          
+          </legend>
+
+
         <p>We’ve sent a text message with your security code to <strong>********338</strong></p>
         <p>Your code will expire after 5 minutes.</p>
         <p>If you enter the wrong code 5 times, you will not be able to request another one for 3 hours.</p>
@@ -39,8 +52,8 @@ Check your phone
 
         </fieldset>
       </div>
-       
-      
+
+
 
 
       <details class="nhsuk-details">
@@ -52,7 +65,7 @@ Check your phone
         <div class="nhsuk-details__text">
           <p>Text messages sometimes take a few minutes to arrive.</p>
           <p>If you do not receive your text message, you can <a href="request-new-security-code">request a new one.</a></p>
-      
+
         </div>
       </details>
 

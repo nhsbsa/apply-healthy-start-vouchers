@@ -4,14 +4,26 @@
 Do you have a current Healthy Start claim?
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
-
-    {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
     <form action="v25/what-change" method="post">
 
@@ -21,17 +33,17 @@ Do you have a current Healthy Start claim?
             <h1 class="nhsuk-fieldset__heading">
               What update would you like to make to your claim?
             </h1>
-          </legend> 
-      
+          </legend>
+
           <div class="nhsuk-radios">
-      
+
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="pregnant" name="whatchange" type="radio" value="add-pregnancy">
               <label class="nhsuk-label nhsuk-radios__label" for="whatchange">
                 Add a new pregnancy
               </label>
             </div>
-      
+
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="addnew" name="whatchange" type="radio" value="add-baby-child">
               <label class="nhsuk-label nhsuk-radios__label" for="whatchange">
@@ -79,7 +91,7 @@ Do you have a current Healthy Start claim?
 
           </div>
         </fieldset>
-      
+
 
       </div>
       <!--
@@ -89,17 +101,17 @@ Do you have a current Healthy Start claim?
             I need to do something else
           </span>
         </summary>
-        <div class="nhsuk-details__text"> 
+        <div class="nhsuk-details__text">
           <p>
-            If you need to update your claim in a different way or 
+            If you need to update your claim in a different way or
             let us know about a child or baby loss, you can contact us by: </p>
 
             <p>Email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a>
               </p>
-            
-            <p>Phone:</p> 
+
+            <p>Phone:</p>
             <p>Phone lines are open Monday to Friday, 8am to 6pm.</p>
-          
+
             <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">
                 Find out more about call charges (opens in new tab).</a></p>
 
@@ -113,7 +125,7 @@ Do you have a current Healthy Start claim?
               <li><a class="nhsuk-link" href="https://www.sands.org.uk/" target="_blank">
                 Sands</a></li>
               <li><a class="nhsuk-link" href="https://www.tommys.org/" target="_blank">
-                Tommy's</a></li> 
+                Tommy's</a></li>
               <li><a class="nhsuk-link" href="https://www.arc-uk.org/" target="_blank">
                 Antenatal Results and Choices (ARC)</a></li>
               <li><a class="nhsuk-link" href="https://www.sayinggoodbye.org/" target="_blank">
@@ -129,11 +141,11 @@ Do you have a current Healthy Start claim?
 
 
 
-  
+
 
         </div>
         </details>
-        -->        
+        -->
       <button class="nhsuk-button" type="submit">
         Continue
       </button>

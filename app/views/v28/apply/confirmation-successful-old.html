@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Application successful
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+          <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
+            <div class="nhsuk-card__content">
+              <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+                Application successful
+              </h1>
+              <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+                You’re entitled to <strong>{% if data['lessThanTenWeeksPregnant'] == true %}£3.10{% else %}£6.20{% endif %}</strong> a week.<br>
+                Your first payment will be <strong>{% if data['lessThanTenWeeksPregnant'] == true %}£12.40{% else %}£24.80{% endif %}</strong>.
+              </h2>
+              <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+                Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
+              </h3>
+            </div>
+          </div>
+
+          <h2 class="nhsuk-heading-m">What happens next</h2>
+
+          <p>We’ve sent you more information about your payment.</p>      
+
+          <p>You should get your card by post within 5 to 10 working days. It’ll already have your first payment on it and will come with instructions on how to activate and use it.</p>
+
+          <p>Money will be added to your card every 4 weeks.</p>
+
+          <h2 class="nhsuk-heading-m">Any problems</h2>
+
+          <p>If you do not get your card, there’s a change in your circumstances or you think a mistake has been made, you can contact us by:</p>
+
+          <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+
+            <ul class="nhsuk-list">
+              <li>Telephone: 0300 330 7010</li>
+              <li>This phoneline is available Monday to Friday, 8am to 6pm (except public holidays).</li>
+            </ul>
+            
+            <p>
+              <a class="nhsuk-link" href="hhttps://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out about call charges</a>
+            </p>
+
+            <ul class="nhsuk-list">
+              <li>Email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+              <li>We aim to respond to your email within 2 working days.</li>
+            </ul>
+
+          </div>
+
+          <h2 class="nhsuk-heading-m">Give feedback</h2>
+          <p><a href="https://wh1.snapsurveys.com/s.asp?k=159241192074" target="_blank">What did you think of this service?<span class="nhsuk-u-visually-hidden"> (opens in a new window)</span></a> (takes 30 seconds).</p>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

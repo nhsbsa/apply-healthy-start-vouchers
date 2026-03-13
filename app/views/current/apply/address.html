@@ -4,14 +4,26 @@
 What is your address?
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
             What is your address?
@@ -23,7 +35,7 @@ What is your address?
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label" for="addressline1">
-                    Building and street
+                    Address line 1
                 </label>
                 <input class="nhsuk-input nhsuk-input--width-20" id="addressline1" name="addressline1" type="text" autocomplete="address-line1">
             </div>
@@ -49,6 +61,8 @@ What is your address?
                 <input class="nhsuk-input nhsuk-input--width-10" id="postcode" name="postcode" type="text" autocomplete="postal-code">
             </div>
 
+            <p><a href="postcode">Search by postcode</a></p>
+
             <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
                     <span class="nhsuk-details__summary-text">
@@ -60,7 +74,7 @@ What is your address?
                         details with the benefit agency and
                         check you’re eligible for Healthy
                         Start.</p>
-                        
+
                       <p>If you’re eligible, we’ll send your
                         Healthy Start card to this address.</p>
 
@@ -73,9 +87,9 @@ What is your address?
                             <li>email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
                             <li>telephone: 0300 330 7010 - this call will be charged at the local rate</li>
                           </ul>
-                          <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in new tab)</a>.</p>  
-                        
-                        <p></p>    
+                          <p><a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out more about call charges (opens in new tab)</a>.</p>
+
+                        <p></p>
                 </div>
             </details>
 

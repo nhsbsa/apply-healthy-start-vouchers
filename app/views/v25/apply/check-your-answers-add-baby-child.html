@@ -4,14 +4,26 @@
 Check your children’s details - Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <h1 class="nhsuk-u-margin-bottom-5">
             Check your answers
@@ -35,7 +47,7 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
                     </a>
                 </dd>
                 </div>
-            
+
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Address
@@ -65,7 +77,7 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
 
 
 
-            
+
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Date of birth
@@ -73,7 +85,7 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
                 <dd class="nhsuk-summary-list__value">
                     {{ data['dateofbirth'] }}
                 </dd>
-                <dd class="nhsuk-summary-list__actions"> 
+                <dd class="nhsuk-summary-list__actions">
                 </dd>
                 </div>-->
 
@@ -92,13 +104,13 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
                 </dd>
                 </div> -->
 
-                
+
             </dl>
 
 
 
         <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">New children's details</h2>
-        
+
 
 
             <!--
@@ -106,7 +118,7 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
         <div class="nhsuk-summary-list__row">
                       <dt class="nhsuk-summary-list__value" name="childsfirstname">
                         {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
-                        
+
                       <dd class="nhsuk-summary-list__value">Born on {{ item.ChildsDOB }}</dd>
                       <dd class="nhsuk-summary-list__actions">
                         {% if data['childList'] | length  == 0 %}
@@ -123,29 +135,29 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
         <br>
         <!--<dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
 
-        <div class="nhsuk-summary-list__row"> 
+        <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
             Child 1
           </dt>
           <dd class="nhsuk-summary-list__value">
-          </dd> 
-          <dd class="nhsuk-summary-list__actions"> 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
             <a href="#">
-                Remove<span class="nhsuk-u-visually-hidden"> child</span></a> 
+                Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
           </dd>
         </div>
-        </dl> MASSIVE GAP ONE...--> 
+        </dl> MASSIVE GAP ONE...-->
 
 
 
-        <dl class="nhsuk-summary-list"> 
+        <dl class="nhsuk-summary-list">
 
-            <!--<div class="nhsuk-summary-list__row"> 
+            <!--<div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                 Child 1
               </dt>
               <dd class="nhsuk-summary-list__value">
-               
+
               </dd>
               <dd class="nhsuk-summary-list__actions">
                 <a href="#">
@@ -155,27 +167,27 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
 
 
 
-            <h5>Child 1</h5>  
+            <h5>Child 1</h5>
 
-            <div class="nhsuk-summary-list__row"> 
+            <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                 Name
               </dt>
               <dd class="nhsuk-summary-list__value">
                 {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}
               </dd>
-          
+
               <dd class="nhsuk-summary-list__actions">
-          
-                
+
+
                 <a href="childs-first-name-update">
-                    Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
-                 
-          
+                    Change<span class="nhsuk-u-visually-hidden"> child</span></a>
+
+
               </dd>
-          
+
             </div>
-          
+
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Date of birth
@@ -183,20 +195,20 @@ Check your children’s details - Get help to buy food and milk (Healthy Start) 
               <dd class="nhsuk-summary-list__value">
                 {{ item.ChildsDOB }}
               </dd>
-          
+
               <dd class="nhsuk-summary-list__actions">
-          
-                 
+
+
                 <a href="childs-date-of-birth-update">
-                    Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
-                 
-                
+                    Change<span class="nhsuk-u-visually-hidden"> child</span></a>
+
+
               </dd>
-          
+
             </div>
            <br>
             <a href="remove-child">Remove this child<span class="nhsuk-u-visually-hidden"> child</span></a>
-          
+
           </dl>
 
 

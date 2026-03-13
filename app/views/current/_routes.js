@@ -1,5 +1,5 @@
 // ********************************
-// APPLY (Current)
+// APPLY (current)
 // ********************************
 
 // External dependencies
@@ -19,20 +19,32 @@ const { listenerCount } = require('gulp');
 
 // ********************************
 
-// Do you live in England, Wales or Northern Ireland?
 
+
+
+
+// Where do you live?
 
 router.post('/current/where-do-you-live', function (req, res) {
 
-  const whereDoYouLive = req.session.data['where-do-you-live']
 
-  if (whereDoYouLive == 'yes') {
-    res.redirect('/current/apply/name');
-  } else {
-    res.redirect('/current/apply/kickouts/not-eligible-country');
-  }
+var location = req.session.data['location']
+
+if (location === "england") {
+  res.redirect('/current/apply/name')
+}
+if (location === "wales") {
+  res.redirect('/current/apply/name')
+}
+if (location === "northern ireland") {
+  res.redirect('/current/apply/name')
+}
+if (location === "somewhere else") {
+  res.redirect('/current/apply/kickouts/not-eligible-country')
+}
 
 })
+
 
 // What is your name?
 
@@ -40,144 +52,225 @@ router.post('/current/name', function (req, res) {
 
     var firstname = req.session.data['firstname']
     var lastname = req.session.data['lastname']
-  
-    if (firstname && lastname) {
-      res.redirect('/current/apply/address')
-    }
-    else {
-      res.redirect('/current/apply/name')
-    }
-  
+
+    res.redirect('/current/apply/postcode')
+
   })
-  
-  // What is your address?
-  
-  router.post('/current/address', function (req, res) {
-  
-    delete req.session.data['selectaddress']
-  
-    var addressline1 = req.session.data['addressline1']
-    var addressline2 = req.session.data['addressline2']
-    var towncity = req.session.data['towncity']
-    var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
-  
-    if (addressline1 && towncity && postcode) {
-      res.redirect('/current/apply/date-of-birth')
-    } else {
-      res.redirect('/current/apply/address')
-    }
-  
+
+
+
+
+  // What is your postcode?
+
+  router.post('/current/apply/postcode', function (req, res) {
+
+    res.redirect('/current/apply/address-2');
+
   })
-  
-  // Date of birth
-  
+
+
+
+
+  // What is your address 2? (== Select your address)
+
+  function capitalizeWords(str) {
+    return str
+        .split(' ') // Split string into words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter of each word
+        .join(' '); // Join the words back into a single string
+}
+
+
+  router.post('/current/apply/address-2', function (req, res) {
+
+
+    // Get the selected address from the form data
+    var selectedAddress = req.body['select-1'];
+
+    // Check if an address was selected
+    if (selectedAddress) {
+        // Split the selected address into parts (AddressLine1, AddressLine2, Town/City, Postcode)
+        var addressParts = selectedAddress.split(',');
+
+
+    // Assign the address components to variables and capitalize only the first letter of each word
+    var addressline1 = addressParts[0] ? capitalizeWords(addressParts[0].trim()) : '';
+    var addressline2 = addressParts[1] ? capitalizeWords(addressParts[1].trim()) : '';
+    var towncity = addressParts[2] ? addressParts[2].trim().toUpperCase() : ''; // should remain in uppercase
+    var postcode = addressParts[3] ? addressParts[3].trim().toUpperCase() : ''; // should remain in uppercase
+
+        // Save the parsed address to session data
+        req.session.data['addressline1'] = addressline1;
+        req.session.data['addressline2'] = addressline2;
+        req.session.data['towncity'] = towncity;
+        req.session.data['postcode'] = postcode;
+    }
+
+    // Redirect to the next page after processing the address
+    res.redirect('/current/apply/date-of-birth');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Date of birth -Chae-
+
   router.post('/current/date-of-birth', function (req, res) {
-  
-    var dateofbirthday = req.session.data['dateofbirthday']
-    var dateofbirthmonth = req.session.data['dateofbirthmonth']
-    var dateofbirthyear = req.session.data['dateofbirthyear']
-  
-    var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
-    var dateofbirth = moment(dob).format('MM/DD/YYYY');
-  req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
-  
-    var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-    var ageDate =  new Date(today - dobYrs.getTime())
-    var temp = ageDate.getFullYear();
-    var yrs = Math.abs(temp - 1970);
-  
-    var firstname = req.session.data['firstname'].trim().toUpperCase()
-    var lastname = req.session.data['lastname'].trim().toUpperCase()
-    var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
-    var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
-    var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
-  
-    const addressRegex = RegExp('^[0-9]+$'); 
-  
-    if (addressRegex.test(addressline1) === true) {
-  
-      var addressline1 = [addressline1,addressline2].join(" ").toUpperCase();
-  
-    }
-  
-    if (yrs < 16) {
-  
-      if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-        res.redirect('/current/apply/kickouts/confirmation-under-16')
-      }
-      else {
-        res.redirect('/current/apply/date-of-birth')
-      }    
-  
-    }
-    else {
-  
-      if (dateofbirthday && dateofbirthmonth && dateofbirthyear) {
-        res.redirect('/current/apply/national-insurance-number')
-      }
-      else {
-        res.redirect('/current/apply/date-of-birth')
-      }    
-  
-    }
-  
-  
-  })
-  
+
+
+    // Ensure session data exists
+    if (!req.session.data) {
+      req.session.data = {};
+  }
+
+    // Extract date of birth fields safely
+  var dateofbirthday = req.session.data['dateofbirthday'] || '';
+  var dateofbirthmonth = req.session.data['dateofbirthmonth'] || '';
+  var dateofbirthyear = req.session.data['dateofbirthyear'] || '';
+
+  var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+  var dateofbirth = dob.isValid() ? moment(dob).format('MM/DD/YYYY') : '';
+
+  if (dob.isValid()) {
+      req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }).format(dob.toDate());
+  } else {
+      req.session.data['dateofbirth'] = '';
+  }
+
+  // Ensure 'today' is defined
+  var today = new Date();
+  var dobYrs = new Date(dateofbirthyear, dateofbirthmonth - 1, dateofbirthday);
+  var ageDate = new Date(today - dobYrs.getTime());
+  var yrs = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+  // Extract and format user details safely
+  var firstname = req.session.data['firstname']?.trim().toUpperCase() || '';
+  var lastname = req.session.data['lastname']?.trim().toUpperCase() || '';
+  var addressline1 = req.session.data['addressline1']?.trim().toUpperCase() || '';
+  var addressline2 = req.session.data['addressline2']?.trim().toUpperCase() || '';
+  var postcode = req.session.data['postcode']?.replace(/\s+/g, '').toUpperCase() || '';
+
+  // Merge address lines if first line is a number
+  const addressRegex = /^[0-9]+$/;
+  if (addressRegex.test(addressline1)) {
+      addressline1 = [addressline1, addressline2].join(" ").toUpperCase();
+  }
+
+  // Redirect based on age
+  if (yrs < 16) {
+      res.redirect('/current/apply/kickouts/confirmation-under-16');
+  } else {
+      res.redirect('/current/apply/national-insurance-number');
+  }
+});
+
+
+
+
+
+
+
+
   // What is your national insurance number?
-  
+
   router.post('/current/national-insurance-number', function (req, res) {
 
     var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-  
-    if (nationalinsurancenumber) {
-      res.redirect('/current/apply/check-your-answers-personal-details')
-    } else {
-      res.redirect('/current/apply/national-insurance-number')
-    }
+
+    res.redirect('/current/apply/check-your-answers-personal-details')
 
   })
+
+
+
+
+
+
 
     // Check your answers - personal details
 
     router.post('/current/cya-personal-details', (req, res) => {
+    //res.render('/current/cya-personal-details', { data: req.session.data }); //Ensure Data is Properly Passed (it works without this)
 
-      var dateofbirthday = req.session.data['dateofbirthday']
-      var dateofbirthmonth = req.session.data['dateofbirthmonth']
-      var dateofbirthyear = req.session.data['dateofbirthyear']
-    
+
+      // Ensure session data exists
+    if (!req.session.data) {
+      req.session.data = {};
+  }
+
+
+      // Extract and format user input safely
+      var firstname = req.session.data['firstname']?.trim().toUpperCase() || '';
+      var lastname = req.session.data['lastname']?.trim().toUpperCase() || '';
+      req.session.fullName = firstname + ' ' + lastname;
+
+
+      var addressline1 = req.session.data['addressline1']?.trim().toUpperCase() || '';
+      var addressline2 = req.session.data['addressline2']?.trim().toUpperCase() || '';
+      var postcode = req.session.data['postcode']?.replace(/\s+/g, '').toUpperCase() || '';
+      var nationalinsurancenumber = req.session.data['nationalinsurancenumber']?.toUpperCase().replace(/\s+/g, '') || '';
+
+
+
+      // Ensure date of birth is correctly processed
+      var dateofbirthday = req.session.data['dateofbirthday'] || '';
+      var dateofbirthmonth = req.session.data['dateofbirthmonth'] || '';
+      var dateofbirthyear = req.session.data['dateofbirthyear'] || '';
+
       var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
-      var dateofbirth = moment(dob).format('MM/DD/YYYY');
-    req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(dateofbirth))
-  
-      var dobYrs = new Date(dateofbirthyear, dateofbirthmonth, dateofbirthday);
-      var ageDate = new Date(today - dobYrs.getTime())
-      var temp = ageDate.getFullYear();
-      var yrs = Math.abs(temp - 1970);
-  
-      var firstname = req.session.data['firstname'].trim().toUpperCase()
-      var lastname = req.session.data['lastname'].trim().toUpperCase()
-      req.session.fullName = firstname + ' ' + lastname
-      var addressline1 = req.session.data['addressline1'].trim().toUpperCase()
-      var addressline2 = req.session.data['addressline2'].trim().toUpperCase()
-      var postcode = req.session.data['postcode'].replace(/\s+/g, '').toUpperCase()
-      var nationalinsurancenumber = req.session.data['nationalinsurancenumber'].toUpperCase().replace(/\s+/g, '');
-  
-      if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '02/02/1999' && postcode == 'NR334GT' && addressline1 == '49 PARK TERRACE') {
-        res.redirect('/current/apply/are-you-pregnant')
+      var dateofbirth = dob.isValid() ? moment(dob).format('MM/DD/YYYY') : '';
+
+      if (dob.isValid()) {
+          req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' }).format(dob.toDate());
+      }
+
+
+    // Correctly define dobYrs in this route
+    var dobYrs = new Date(dateofbirthyear, dateofbirthmonth - 1, dateofbirthday); // Make sure the month is zero-indexed
+    var yrs = moment().diff(moment(dobYrs), 'years'); // Calculate age
+
+
+
+
+      // Save address data to session to persist across pages
+      req.session.data['addressline1'] = addressline1;
+      req.session.data['addressline2'] = addressline2;
+
+
+
+      // Before rendering the HTML, log the session data
+      console.log("Session Data:", req.session.data);
+
+
+
+      if (firstname == 'RILEY' && lastname == 'JONES' && nationalinsurancenumber == 'CD654321B' && dateofbirth == '01/01/2000') {
+        res.redirect('/current/apply/kickouts/no-api-match-benefit')
       }
       else {
-        res.redirect('/current/apply/kickouts/confirmation-no-match')
+        res.redirect('/current/apply/are-you-pregnant')
       }
-      
+
     })
-  
+
+
+
+
   // Are you pregnant?
-  
+
   router.post('/current/are-you-pregnant', function (req, res) {
-  
+
     var pregnant = req.session.data['pregnant']
-  
+
     if (pregnant === "yes") {
       res.redirect('/current/apply/due-date')
     }
@@ -188,56 +281,53 @@ router.post('/current/name', function (req, res) {
     else {
       res.redirect('/current/apply/are-you-pregnant')
     }
-  
+
   })
-  
+
   // Are you pregnant? > Due Date
-  
+
   router.post('/current/due-date', function (req, res) {
-  
+
     var duedateday = req.session.data['duedateday']
     var duedatemonth = req.session.data['duedatemonth']
     var duedateyear = req.session.data['duedateyear']
-  
+
     var duedate = moment(duedateyear + '-' + duedatemonth + '-' + duedateday);
     req.session.data['duedate'] = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(duedate))
-  
+
     var today = moment();
-  
+
     var fulltermpregnancy = moment().add(42, 'weeks'); // 42 weeks from today is a full term pregnancy
     var tenweekspregnant = moment().add(32, 'weeks'); // 42 weeks from today is a full term pregnancy - 10 weeks = 32 weeks
-  
-    
-    if (duedateday && duedatemonth && duedateyear) {
-  
-      if (duedate < today) {
-        res.redirect('/current/apply/due-date')
-      } else if (duedate > fulltermpregnancy) {
-        res.redirect('/current/apply/due-date')
-      } else {
-  
-        if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
-          req.session.data.lessThanTenWeeksPregnant = true;
-        } else {
-          req.session.data.lessThanTenWeeksPregnant = false;
-        }
-  
-        res.redirect('/current/apply/children-under-four')
-      }
-  
-    }
-    else {
+
+
+    if (duedate < today) {
       res.redirect('/current/apply/due-date')
+    } else if (duedate > fulltermpregnancy) {
+      res.redirect('/current/apply/due-date')
+    } else {
+
+      if (duedate >= tenweekspregnant && duedate <= fulltermpregnancy) {
+        req.session.data.lessThanTenWeeksPregnant = true;
+      } else {
+        req.session.data.lessThanTenWeeksPregnant = false;
+      }
+
+      res.redirect('/current/apply/children-under-four')
     }
-  
+
+
   })
+
+
+
   // Do you have any children under the age of 4?
-  
+
   router.post('/current/children-under-four', function (req, res) {
-  
+
     var childrenunderfour = req.session.data['childrenunderfour']
     var pregnant = req.session.data['pregnant']
-  
+
     if (pregnant === "yes" && childrenunderfour === "no") {
       res.redirect('/current/apply/email-address')
     } else if (pregnant === "no" && childrenunderfour === "yes") {
@@ -245,16 +335,19 @@ router.post('/current/name', function (req, res) {
     } else if (pregnant === "yes" && childrenunderfour === "yes") {
       res.redirect('/current/apply/childs-first-name')
     } else if (childrenunderfour === "no" && pregnant ==="no") {
-      res.redirect('/current/apply/kickouts/not-eligible')
+      res.redirect('/current/apply/kickouts/not-pregnant-no-children')
     } else {
       res.redirect('/current/apply/children-under-four')
     }
-  
+
   })
+
+
+
   // Do you have any children under the age of 4? > Childs first name
-  
+
   router.post('/current/childs-first-name', function (req, res) {
-  
+
     var childsfirstname = req.session.data['childsfirstname']
     var childslastname = req.session.data['childslastname']
 
@@ -266,7 +359,9 @@ router.post('/current/name', function (req, res) {
     }
 
   })
-     
+
+
+
 
     // Do you have any children under the age of 4? > Childs date of birth
 
@@ -293,29 +388,29 @@ router.post('/current/name', function (req, res) {
             if (moment(childsdateofbirth).isAfter(fouryearsfromtoday)) {
 
               var childList = req.session.data.childList
-              
+
               // If no array exists, create one called 'childList'. If one already exists, do nothing.
-              
+
               childList = ( typeof childList != 'undefined' && childList instanceof Array ) ? childList : []
-              
+
               // Create a variable of the posted information
-              
+
               var childsfirstname = req.session.data['childsfirstname']
               var childslastname = req.session.data['childslastname']
-              
+
               // Add the posted information into the 'childList' array
-              
+
               childList.push({"ChildsFirstName": childsfirstname, "ChildsLastName": childslastname, "ChildsDOB": childsdateofbirthDisplay});
-              
+
               req.session.data.childList = childList;
-              
+
               console.log(childList)
-              
+
               console.log('Number of children:', childList.length)
-              
+
               // Redirect to the 'Do you get another?' page
-              
-              res.redirect('/current/apply/children-under-four-answers');          
+
+              res.redirect('/current/apply/children-under-four-answers');
 
 
 
@@ -326,7 +421,7 @@ router.post('/current/name', function (req, res) {
         } else {
           res.redirect('/current/apply/childs-date-of-birth')
         }
-        
+
       }
       else {
         res.redirect('/current/apply/childs-date-of-birth')
@@ -334,10 +429,14 @@ router.post('/current/name', function (req, res) {
 
 
     })
+
+
+
+
     // Do you have any children under the age of 4? > Do you have another child under four?
-  
+
     router.post('/current/children-under-four-answers', function (req, res) {
-  
+
       var childrenunderfouranswers = req.session.data['childrenunderfouranswers']
 
       var dateofbirthday = req.session.data['dateofbirthday']
@@ -349,8 +448,6 @@ router.post('/current/name', function (req, res) {
       var ageDate =  new Date(today - dob.getTime())
       var temp = ageDate.getFullYear();
       var yrs = Math.abs(temp - 1970);
-
-      var lastname = req.session.data['lastname'].trim().toUpperCase()
 
       if (childrenunderfouranswers === "yes") {
         res.redirect('/current/apply/childs-first-name')
@@ -364,41 +461,57 @@ router.post('/current/name', function (req, res) {
 
     })
 
-  
-  
+
+
   // What is your email address?
-  
+
   router.post('/current/email-address', function (req, res) {
-  
+
     var emailaddress = req.session.data['emailaddress']
-  
+
     res.redirect('/current/apply/mobile-phone-number')
-  
+
   })
-  
+
   // What is your mobile phone number?
-  
+
   router.post('/current/mobile-phone-number', function (req, res) {
-  
+
     var mobilePhoneNumber = req.session.data['mobilephonenumber']
-  
+
     res.redirect('/current/apply/check-your-answers')
-  
+
   })
-  
+
   // Feedback
-  
+
   router.post('/current/feedback', function (req, res) {
     res.redirect('/current/feedback')
   })
 
 
-// Current Check Your Answers
+// Final Check Your Answers
 
 // N.B ALL PERSONALISATION VARIABLES NEED TO BE THERE, IF THEY'RE NOT REQUIRED YOU STILL NEED TO SEND AN EMPTY STRING ""
 
 router.post('/current/check-your-answers', function (req, res) {
+
+        // Function to capitalize each word. Adding this because address appears all in cap
+        function capitalizeWords(str) {
+          return str
+              .split(' ') // Split into words
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter
+              .join(' '); // Join back
+        }
+
+        // Store formatted address in session
+        req.session.data['addressline1'] = capitalizeWords(req.session.data['addressline1'] || '');
+        req.session.data['addressline2'] = capitalizeWords(req.session.data['addressline2'] || '');
+        req.session.data['towncity'] = req.session.data['towncity']?.toUpperCase() || ''; // Keep town in uppercase
+        req.session.data['postcode'] = req.session.data['postcode']?.replace(/\s+/g, '').toUpperCase() || ''; // Keep postcode uppercase
+
+
   res.redirect('/current/apply/confirmation-successful');
 })
-  
+
 module.exports = router;

@@ -4,20 +4,38 @@
   <title></title>
 </head>
 <body>
-  {% extends 'layout.html' %} {% block pageTitle %} New children you're adding to your claim - Get help to buy food and milk (Healthy Start) - NHSBSA {% endblock %} {% block content %}
+  {% extends 'layout.html' %} {% block pageTitle %} New children you're adding to your claim - Get help to buy food and milk (Healthy Start) - NHSBSA {% endblock %}
+
+  {% block beforeContent %}
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Beta
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>
+    {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Go back"
+    }) }}
+  {% endblock %}
+
+  {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
       <h1 class="nhsuk-fieldset__legend--xl">Check your new children’s details</h1>
       <div class="nhsuk-hint" id="contact-hint">
         You do not need to tell us about any children you already get Healthy Start payments for.
         </div>
       {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
-      
+
       {% endif %}
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">New children's details</h2>
       <dl class="nhsuk-summary-list">
-          
+
         {% for item in data['childList'] %}
         <!--<div class="nhsuk-summary-list__row">
                       <dt class="nhsuk-summary-list__value">{{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}</dt>
@@ -25,16 +43,16 @@
                       <dd class="nhsuk-summary-list__actions" id="list">
                         {% if data['childList'] | length  == 0 %}
                         <a href="#" name="clearButton">Change<span class="nhsuk-u-visually-hidden"> child</span></a>
-                        {% else %} 
-                        
+                        {% else %}
+
                         <a href="childs-first-name-update">Change<span class ="nhsuk-u-visually-hidden"> child</span></a> | <a href="remove-child">Remove<span class="nhsuk-u-visually-hidden"> child</span></a>
                         {% endif %}
-                        
+
                       </dd>
         </div>-->
         <br>
         <h5>Child 1</h5>
-        
+
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Name
@@ -42,17 +60,17 @@
           <dd class="nhsuk-summary-list__value">
             {{ item.ChildsFirstName }} {{ item.ChildsMiddleName }} {{ item.ChildsLastName }}
           </dd>
-      
+
           <dd class="nhsuk-summary-list__actions">
-      
-            
+
+
             <a href="childs-first-name-update">
-                Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
-      
+                Change<span class="nhsuk-u-visually-hidden"> child</span></a>
+
           </dd>
-      
+
         </div>
-      
+
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Date of birth
@@ -60,22 +78,22 @@
           <dd class="nhsuk-summary-list__value">
             {{ item.ChildsDOB }}
           </dd>
-      
+
           <dd class="nhsuk-summary-list__actions">
-      
-             
+
+
             <a href="childs-date-of-birth-update">
-                Change<span class="nhsuk-u-visually-hidden"> child</span></a> 
-            
-            
+                Change<span class="nhsuk-u-visually-hidden"> child</span></a>
+
+
           </dd>
-      
+
         </div>
 
         <br>
         <a href="remove-child">
             Remove this child<span class="nhsuk-u-visually-hidden"> child</span></a>
-      
+
 
 
         {% endfor %}
@@ -84,10 +102,10 @@
 
 
 
-      <form method="post" action="v25/children-under-four-answers-update"> 
-        
+      <form method="post" action="v25/children-under-four-answers-update">
+
       <div class="nhsuk-form-group">
-      
+
         <fieldset class="nhsuk-fieldset">
 
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
@@ -114,13 +132,13 @@
                 </div>
             </div>
 
- 
+
         </fieldset>
 
       </div>
- 
 
-        
+
+
         <button class="nhsuk-button"
               type="submit">Continue
         </button>
@@ -128,7 +146,7 @@
 
     </div>
   </div>
-  
+
   {% endblock %}
 </body>
 </html>

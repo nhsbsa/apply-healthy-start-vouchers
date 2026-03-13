@@ -8,14 +8,30 @@
 
 
 <body>
-  {% extends 'layout.html' %} {% block pageTitle %} Pregnancy details you have told us about {% endblock %} {% block content %}
+  {% extends 'layout.html' %} {% block pageTitle %} Pregnancy details you have told us about {% endblock %}
+  {% block beforeContent %}
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Beta
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>
+    {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Go back"
+    }) }}
+  {% endblock %}
+  {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      {{ backLink({ "href": "javascript:history.go(-1)", "text": "Go back" }) }}
       <h1 class="nhsuk-fieldset__legend--xl">Check your answers</h1>
       {% if (data['firstname'] == 'Malia') and (data['lastname'] == 'Elba') %}
-        <p>To make sure you’re paid correctly, check you’ve entered pregnancy details exactly 
-        </p>  
+        <p>To make sure you’re paid correctly, check you’ve entered pregnancy details exactly
+        </p>
       {% endif %}
       <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Your details</h2>
       <dl class="nhsuk-summary-list">
@@ -28,7 +44,7 @@
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="#">
-              Change<span class="nhsuk-u-visually-hidden">National Insurance number</span></a> 
+              Change<span class="nhsuk-u-visually-hidden">National Insurance number</span></a>
               </a>
               </dd>
         </div>
@@ -52,17 +68,17 @@
         </div>
 
       </dl>
- 
+
           <!--<button class="nhsuk-button"
           type="submit">Continue
           </button>-->
-           
+
           <p><a href="/v25/apply/get-your-security-code" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
             Continue</a></p>
 
 
 
-    </div>  
+    </div>
   </div>
 </body>
 

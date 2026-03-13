@@ -4,14 +4,26 @@
 What is your national insurance number?
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <form action="v25/national-insurance-number-update-1" method="post">
 
@@ -32,10 +44,10 @@ What is your national insurance number?
 
             <div class="nhsuk-form-group">
                 <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-                    
+
                     <div class="nhsuk-checkboxes">
                         <div class="nhsuk-checkboxes__item">
-                            <input class="nhsuk-checkboxes__input" id="checkbox" name="checkbox" type="checkbox" 
+                            <input class="nhsuk-checkboxes__input" id="checkbox" name="checkbox" type="checkbox"
                                 value="donotremember">
                             <label class="nhsuk-label nhsuk-checkboxes__label" for="donotremember">
                                 I do not know my National Insurance number.
@@ -53,15 +65,15 @@ What is your national insurance number?
                   </span>
                 </summary>
                 <div class="nhsuk-details__text">
-                  <p>We use your National Insurance number to find the details of your Healthy Start claim.</p>                      
+                  <p>We use your National Insurance number to find the details of your Healthy Start claim.</p>
                 </div>
               </details>
-  
-  
-  
-  
-           
-              
+
+
+
+
+
+
             <br>
 
 

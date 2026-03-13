@@ -4,26 +4,38 @@
 Declaration - Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
-
         <h1>Declaration</h1>
         <div class="nhsuk-hint" id="example-with-hint-text-hint">
-          <p>When you submit this application, you confirm that you have read and understood the following terms and conditions. 
+          <p>When you submit this application, you confirm that you have read and understood the following terms and conditions.
           </p>
           <p>If you are completing this application on behalf of someone else, you confirm that they have read, or have had read to them, and understood the following terms and conditions.
-          </p></div> 
+          </p></div>
 
         <div class="nhsuk-warning-callout">
             <h3 class="nhsuk-warning-callout__label">Declaration</h3>
 
-  <!-- 
+  <!--
 
             <p>You confirm that this information is correct as of
               <script>
@@ -62,7 +74,7 @@ Declaration - Get help to buy food and milk (Healthy Start) - NHSBSA
               </script>.</p>
 
 -->
-              
+
             <ul>
               <li>My claim is correct, complete and up to date to the best of my knowledge.</li>
               <li>I do not have an existing Healthy Start claim for any children or pregnancies.</li>
@@ -71,14 +83,14 @@ Declaration - Get help to buy food and milk (Healthy Start) - NHSBSA
               <li>I am not aware of any existing Healthy Start claims for any children or pregnancies listed on this claim and have no reason to believe any could exist.</li>
               <li>I’ve read and understood the <a href="https://www.healthystart.nhs.uk/scheme-rules/" target="_blank"> rules of the Healthy Start scheme (opens in a new tab)</a>and agree to the terms of these rules.</li>
             </ul>
-             
-            <p>I understand that:</p>  
+
+            <p>I understand that:</p>
             <ul>
               <li>If I withhold information or provide false or misleading information, my Healthy Start payments may be refused or withdrawn and I may be liable for disciplinary action, civil proceedings or criminal prosecution.</li>
               <li>I need to update the NHS Business Services Authority (NHSBSA) if any of the details I’ve given on this application change.</li>
               <li>NHSBSA may use the information that I’ve provided in this application and may share it with the Department of Health and Social Care (DHSC) and the NHS Counter Fraud Authority (NHSCFA) for the purpose of the prevention, detection, loss measurement, investigation and prosecution of fraud and any other unlawful activity affecting the NHS.</li>
             </ul>
-              
+
             <!--
             <h2 class="nhsuk-heading-s">About your card</h2>
             <ul>

@@ -4,21 +4,33 @@
 Terms and Conditions – Get help to buy food and milk (Healthy Start) - NHSBSA
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <h1>Terms and conditions</h1>
 
         <div class="nhsuk-warning-callout">
             <h3 class="nhsuk-warning-callout__label">Declaration</h3>
 
-  <!-- 
+  <!--
 
             <p>You confirm that this information is correct as of
               <script>
@@ -67,13 +79,13 @@ Terms and Conditions – Get help to buy food and milk (Healthy Start) - NHSBSA
               <li>I understand that the NHSBSA may share the information I’ve provided for verification, investigation or measurement exercises with organisations including the NHSBSA Loss and Fraud Prevention Team (LFP), Department of Health and Social Care (DHSC), allpay, Department for Work and Pensions (DWP), HM Revenue and Customs (HMRC) and the NHS Counter Fraud Authority (NHSCFA).</li>
               <li>I declare the information I’ve given on this form is complete and accurate.</li>
               <li>I understand if I give false or misleading information, my Healthy Start payments may be stopped and I may be liable to criminal prosecution or civil proceedings.</li>
-              
-               
+
+
             </ul>
             <p>The <a href="https://www.nhsbsa.nhs.uk/our-policies/privacy" target="_blank">NHSBSA privacy notice (opens in a new tab)</a> sets out how we process and protect your personal data and your rights in respect of your own information. For more information, you can also email <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></p>
-          
-            
-            
+
+
+
             <!--
             <h2 class="nhsuk-heading-s">About your card</h2>
             <ul>
@@ -98,19 +110,19 @@ Terms and Conditions – Get help to buy food and milk (Healthy Start) - NHSBSA
           <!--<form>
 
             <div class="nhsuk-form-group">
-          
+
               <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                   <h1 class="nhsuk-fieldset__heading">
-                    
+
                   </h1>
                 </legend>
-          
+
                 <div class="nhsuk-hint" id="contact-hint">
-                  
+
                 </div>
                 <p>By entering your full name and checking the box, you’re agreeing to our terms and conditions.</p>
-          
+
                 <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
 
                   <div class="nhsuk-form-group">
@@ -119,30 +131,30 @@ Terms and Conditions – Get help to buy food and milk (Healthy Start) - NHSBSA
                     </label>
                     <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
                   </div>
-          
+
                   <div class="nhsuk-checkboxes__item">
                     <input class="nhsuk-checkboxes__input" id="contact-1" name="contact" type="checkbox" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-1">
                       I confirm I have read the terms and conditions
                     </label>
                   </div>
-          
+
                 </div>
               </fieldset>
-          
+
             </div>
-          
+
           </form>-->
 
- 
+
 
 
             <!--<p><a href="/v25/apply/kickouts/request-completed-child-ben" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
               Accept and send</a></p>
-              
-              May 2024 testing scenario--> 
-            
-            
+
+              May 2024 testing scenario-->
+
+
               <p><a href="/v25/apply/kickouts/duplicate-child" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
                 Accept and send</a></p>
 

@@ -10779,6 +10779,76 @@ b {
   margin-bottom: 8px;
 }
 
+.govuk-phase-banner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d8dde0;
+}
+
+.govuk-phase-banner__content {
+  font-family: “Frutiger W01”, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.1428571429;
+  color: #212b32;
+  display: table;
+  margin: 0;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-phase-banner__content {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+.govuk-tag {
+  display: inline-block;
+  outline: 2px solid rgba(0, 0, 0, 0);
+  outline-offset: -2px;
+  color: #fff;
+  background-color: #005eb8;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: “Frutiger W01”, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1;
+  padding-top: 5px;
+  padding-right: 8px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-tag {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1;
+  }
+}
+.govuk-phase-banner__content__tag {
+  margin-right: 10px;
+}
+
+.govuk-phase-banner__text {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.u-htbhf-focus:focus {
+  border: none;
+  background-color: #ffbf47;
+  outline: 3px solid #ffbf47;
+}
+
 .no-bottom-border dt, .no-bottom-border dd {
   border-bottom: none;
 }

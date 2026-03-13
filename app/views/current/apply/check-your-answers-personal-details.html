@@ -4,14 +4,26 @@
 Check your answers
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <h1 class="nhsuk-u-margin-bottom-5">
             Check your answers
@@ -27,7 +39,7 @@ Check your answers
                     Full name
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['firstname'] }} {{ data['lastname'] }}
+                    {% if data['firstname'] %}{{ data['firstname'] }}{% else %}Example{% endif %} {% if data['lastname'] %}{{ data['lastname'] }}{% else %}Name{% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="name#firstname">
@@ -35,16 +47,16 @@ Check your answers
                     </a>
                 </dd>
                 </div>
-            
+
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['addressline1'] }},<br>
+                    {% if data['addressline1'] %}{{ data['addressline1'] }}{% else %}Example house name{% endif %},<br>
                     {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                    {{ data['towncity'] }},<br>
-                    {{ data['postcode'] }}
+                    {% if data['towncity'] %}{{ data['towncity'] }}{% else %}Example town{% endif %}<br>
+                    {% if data['postcode'] %}{{ data['postcode'] }}{% else %}Example postcode{% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="address#addressline1">
@@ -52,13 +64,13 @@ Check your answers
                     </a>
                 </dd>
                 </div>
-            
+
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     Date of birth
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['dateofbirth'] }}
+                    {% if data['dateofbirth'] %}{{ data['dateofbirth'] }}{% else %}1 September 1985{% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="date-of-birth#dateofbirthday">
@@ -66,13 +78,13 @@ Check your answers
                     </a>
                 </dd>
                 </div>
-            
+
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
                     National insurance number
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['nationalinsurancenumber'] }}
+                    {% if data['nationalinsurancenumber'] %}{{ data['nationalinsurancenumber'] }}{% else %}Example NI number{% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
                     <a href="national-insurance-number#nationalinsurancenumber">
@@ -103,7 +115,7 @@ Check your answers
                             {% elseif data['benefits'] == "WTC" %}
                             Working Tax Credit<br>
                             {% else %}
-                            
+
                             {% endif %}
                         </dd>
 
@@ -117,11 +129,11 @@ Check your answers
 
                     </div>
                 {% endif %} -->
-                        
+
             </dl>
             <input class="nhsuk-button" type="submit" value="Continue">
         </form>
-        
+
     </div>
 </div>
 

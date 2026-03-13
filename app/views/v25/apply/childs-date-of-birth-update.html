@@ -4,14 +4,26 @@
 What is {{ data['childsfirstname'] }}’s date of birth?
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
             What is {{ data['childsfirstname'] }}’s date of birth?
@@ -24,7 +36,7 @@ What is {{ data['childsfirstname'] }}’s date of birth?
                       <span class="nhsuk-hint" id="hint">
                         For example, 11 7 2023
                       </span>
-                  
+
                       <div class="nhsuk-date-input">
                         <div class="nhsuk-date-input__item">
                           <div class="nhsuk-form-group">
@@ -52,7 +64,7 @@ What is {{ data['childsfirstname'] }}’s date of birth?
                         </div>
                       </div>
                     </fieldset>
-                  
+
                   </div>
 
                   <details class="nhsuk-details">
@@ -62,7 +74,7 @@ What is {{ data['childsfirstname'] }}’s date of birth?
                           </span>
                         </summary>
                         <div class="nhsuk-details__text">
-                          <p>We use your child’s date of birth to make sure you’re paid correctly.</p>                      
+                          <p>We use your child’s date of birth to make sure you’re paid correctly.</p>
                         </div>
                       </details>
 

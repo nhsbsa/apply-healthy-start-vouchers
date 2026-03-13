@@ -34,7 +34,8 @@ router.post('/clear-data', function (req, res) {
 // Route File Versions
 // ****************************************
 
-
+router.use('/v28/apply', require('./views/v28/_routes'));
+router.use('/v28', require('./views/v28/_routes'));
 router.use('/v27', require('./views/v27/_routes'));
 router.use('/v27/nhs-login', require('./views/v27/_routes'));
 router.use('/v27/apply', require('./views/v27/_routes'));
@@ -75,6 +76,7 @@ router.use('/account/v1/apply', require('./views/account/_routes'));
 
 router.use('/future/v1/apply', require('./views/future/_routes'));
 router.use('/current/apply', require('./views/current/_routes'));
+router.use('/current', require('./views/current/_routes'));
 
 router.use('/v1-error-and-fraud/apply', require('./views/v1-error-and-fraud/_routes'));
 
