@@ -4,14 +4,26 @@
 What are your bank or building society account details?
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-        {{ backLink({
-            "href": "javascript:history.go(-1)",
-            "text": "Go back"
-        }) }}
 
         <h1 class="nhsuk-fieldset__legend--xl">
             What are your bank or building society account details?
@@ -23,7 +35,7 @@ What are your bank or building society account details?
 
             <div class="nhsuk-form-group">
               <label class="nhsuk-label" for="accountname">
-                Name on account
+                Name on the account
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="accountname" name="accountname" type="text" spellcheck="false" value="{{ data['accountname'] }}">
             </div>
