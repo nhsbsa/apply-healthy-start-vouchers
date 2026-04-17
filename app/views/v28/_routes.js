@@ -15,8 +15,6 @@ const axios = require('axios');
 
 // CONSTANTS
 const today = new Date(Date.now());
-const { listenerCount } = require('gulp');
-
 // ********************************
 
 

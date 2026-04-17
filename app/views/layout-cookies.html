@@ -1,6 +1,6 @@
-<!-- 
+<!--
   This is the main layout where you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 <!-- Extends the layout from /docs/views/template.html -->
@@ -17,7 +17,9 @@
 
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   {% block headCSS %}
-  <link href="/css/main.css" rel="stylesheet">{% endblock %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  <link href="/assets/sass/main.css" rel="stylesheet">
+  {% endblock %}
   <!-- Set the page title inside the pageTitle block -->
   {% block pageTitle %} NHS.UK prototype kit {% endblock %}
   <!-- Header goes inside the header block -->
@@ -56,7 +58,7 @@
       },
       {
         "URL": "/clear-data",
-        "label": "Clear data"        
+        "label": "Clear data"
       }
     ]
   })}}
@@ -72,12 +74,11 @@
   </div>
   {% endblock %}
 
-{% block bodyEnd %}
-  {% block scripts %}
-    {% include "includes/scripts.html" %}
+  {% block bodyEnd %}
+    {{ super() }}
+    <script type="module" src="/assets/javascript/main.js"></script>
     {% block pageScripts %}{% endblock %}
   {% endblock %}
-{% endblock %}
 
 </body>
 

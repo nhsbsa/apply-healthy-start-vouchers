@@ -1,28 +1,10 @@
-// Gov Notify
-const { NotifyClient } = require('notifications-node-client');
-let notifyClient = null;
-
-if (process.env.NOTIFYAPIKEY) {
-  notifyClient = new NotifyClient(process.env.NOTIFYAPIKEY);
-};
-
-// External dependencies
 const express = require('express');
 const router = express.Router();
-const moment = require('moment');
-const stringSimilarity = require("string-similarity");
-const geolib = require('geolib');
-const https = require("https");
-
-// API
-
-const axios = require('axios');
 
 // CONSTANTS
 
 const today = new Date(Date.now());
 let vitaminProviders = require('./data/vitamin-locations');
-const { listenerCount } = require('gulp');
 
 // CLEAR DATA
 router.post('/clear-data', function (req, res) {

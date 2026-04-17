@@ -1,6 +1,6 @@
-<!-- 
+<!--
   This is the main layout where you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 <!-- Extends the layout from /docs/views/template.html -->
@@ -15,7 +15,9 @@
   {% extends "template.html" %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   {% block headCSS %}
-  <link href="/css/main.css" rel="stylesheet">{% endblock %}
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+  <link href="/assets/sass/main.css" rel="stylesheet">
+  {% endblock %}
   <!-- Set the page title inside the pageTitle block -->
   {% block pageTitle %} NHS.UK prototype kit {% endblock %}
   <!-- Header goes inside the header block -->
@@ -24,7 +26,7 @@
   {{ header({
     "transactionalService": {
         "name": "Get help to buy food and milk (Healthy Start)",
-        "href": "/account/v1/phase-1-option4" 
+        "href": "/account/v1/phase-1-option4"
       },
       "showNav": "false",
       "showSearch": "false"
@@ -60,7 +62,7 @@ meta: {
       },
       {
         "href": "/clear-data",
-        "text": "Clear data"        
+        "text": "Clear data"
       }
     ]}
   }) }}
@@ -77,19 +79,11 @@ meta: {
   {% endblock %}
 
 
-{% block bodyEnd %}
-  <script src="/nhsuk-frontend/nhsuk-frontend.min.js" type="module"></script>
-  <script type="module">
-    import { initAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
-    initAll()
-  </script>
-  {% block scripts %}
-    <!-- Custom JavaScript files can be added to this file -->
-    {% include "includes/scripts.html" %}
-    <!-- For adding page specific JavaScript -->
+  {% block bodyEnd %}
+    {{ super() }}
+    <script type="module" src="/assets/javascript/main.js"></script>
     {% block pageScripts %}{% endblock %}
   {% endblock %}
-{% endblock %}
 
 
 </body>
