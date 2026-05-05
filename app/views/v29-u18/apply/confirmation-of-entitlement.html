@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You are not eligible for help to get money off milk, food and vitamins
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+        
+        <div class="nhsuk-card" style="background: #005EB8; margin-top: 0;">
+            <div class="nhsuk-card__content">
+              <h1 class="nhsuk-card__heading" style="text-align: center; color: white;">
+                Application successful
+              </h1>
+              <h2 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+                You’re entitled to <strong>£3.10</strong> a week.<br>
+                Your first payment will be <strong>£12.40</strong>.
+              </h2>
+              <h3 class="nhsuk-card__heading nhsuk-u-font-weight-normal" style="text-align: center; color: white;">
+                Reference number: <span class="nhsuk-caption-xl nhsuk-caption--bottom nhsuk-u-font-weight-bold" style="color: white;">HDJ2123F</span>
+              </h3>
+            </div>
+        </div>
+
+
+        <h2 class="nhsuk-heading-m">What happens now</h2>
+
+        <p>We will ask for your contact details and which bank account you would like this paying into.</p>
+          
+        <p>We’ll then pay £12.40 into your account within 7 days.</p>
+
+        <p class="nhsuk-u-margin-bottom-5">You’ll then get a payment every 4 weeks after that.</p>
+
+        <p><a class="nhsuk-button" href="address">Continue</a></p>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
