@@ -44,9 +44,9 @@ What are your bank or building society account details?
               <label class="nhsuk-label" for="sortcode">
                 Sort code
               </label>
-              <span class="nhsuk-hint" id="sort-code-hint">
+              <div class="nhsuk-hint" id="sort-code-hint">
                 Must be 6 digits long
-              </span>
+              </div>
               <input class="nhsuk-input nhsuk-input--width-5" id="sortcode" name="sortcode" type="text" aria-describedby="sort-code-hint" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['sortcode'] }}">
             </div>
 
@@ -54,9 +54,9 @@ What are your bank or building society account details?
               <label class="nhsuk-label" for="accountnumber">
                 Account number
               </label>
-              <span class="nhsuk-hint" id="account-number-hint">
+              <div class="nhsuk-hint" id="account-number-hint">
                 Must be between 6 and 10 digits long
-              </span>
+              </div>
               <input class="nhsuk-input nhsuk-input--width-10" id="accountnumber" name="accountnumber" type="text" aria-describedby="account-number-hint" pattern="[0-9]*" inputmode="numeric" spellcheck="false" value="{{ data['accountnumber'] }}">
             </div>
 
@@ -64,9 +64,9 @@ What are your bank or building society account details?
               <label class="nhsuk-label" for="buildingsocietynumber">
                 Building society roll number (optional)
               </label>
-              <span class="nhsuk-hint" id="roll-number-hint">
+              <div class="nhsuk-hint" id="roll-number-hint">
                 You can find it on your card, statement or passbook
-              </span>
+              </div>
               <input class="nhsuk-input nhsuk-input--width-10" id="buildingsocietynumber" name="buildingsocietynumber" type="text" aria-describedby="roll-number-hint" spellcheck="false" value="{{ data['buildingsocietynumber'] }}">
             </div>
 

@@ -150,6 +150,7 @@ router.post('/v29-u18/name', function (req, res) {
   var dobYrs = new Date(dateofbirthyear, dateofbirthmonth - 1, dateofbirthday);
   var ageDate = new Date(today - dobYrs.getTime());
   var yrs = Math.abs(ageDate.getUTCFullYear() - 1970);
+  req.session.data['yrs'] = yrs;
 
   // Extract and format user details safely
   var firstname = req.session.data['firstname']?.trim().toUpperCase() || '';
@@ -263,24 +264,50 @@ router.post('/v29-u18/name', function (req, res) {
 
 
 
-  // Are you pregnant?
+    // Are you pregnant?
 
   router.post('/v29-u18/are-you-pregnant', function (req, res) {
 
-    var pregnant = req.session.data['pregnant']
+    // Ensure date of birth is correctly processed
+    var dateofbirthday = req.session.data['dateofbirthday'] || '';
+    var dateofbirthmonth = req.session.data['dateofbirthmonth'] || '';
+    var dateofbirthyear = req.session.data['dateofbirthyear'] || '';
+
+    var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+    var dateofbirth = dob.isValid() ? moment(dob).format('MM/DD/YYYY') : '';
+
+    if (dob.isValid()) {
+      req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }).format(dob.toDate());
+    }
+
+    // Calculate age
+    var dobYrs = new Date(dateofbirthyear, dateofbirthmonth - 1, dateofbirthday);
+    var yrs = moment().diff(moment(dobYrs), 'years');
+
+    var pregnant = req.session.data['pregnant'];
 
     if (pregnant === "yes") {
-      res.redirect('/v29-u18/apply/due-date')
+      res.redirect('/v29-u18/apply/due-date');
     }
     else if (pregnant === "no") {
+
+      // NEW LOGIC: 16–17 year olds who are not pregnant
+      if (yrs === 16 || yrs === 17) {
+        return res.redirect('/v29-u18/apply/kickouts/16-17-year-old-not-pregnant');
+      }
+
       req.session.data.lessThanTenWeeksPregnant = true;
-      res.redirect('/v29-u18/apply/children-under-four')
+      res.redirect('/v29-u18/apply/children-under-four');
     }
     else {
-      res.redirect('/v29-u18/apply/are-you-pregnant')
+      res.redirect('/v29-u18/apply/are-you-pregnant');
     }
 
-  })
+  });
 
   // Are you pregnant? > Due Date
 
@@ -323,20 +350,58 @@ router.post('/v29-u18/name', function (req, res) {
 
   router.post('/v29-u18/children-under-four', function (req, res) {
 
-    var childrenunderfour = req.session.data['childrenunderfour']
-    var pregnant = req.session.data['pregnant']
+    // Ensure date of birth is correctly processed
+    var dateofbirthday = req.session.data['dateofbirthday'] || '';
+    var dateofbirthmonth = req.session.data['dateofbirthmonth'] || '';
+    var dateofbirthyear = req.session.data['dateofbirthyear'] || '';
 
-    if (pregnant === "yes" && childrenunderfour === "no") {
-      res.redirect('/v29-u18/apply/email-address')
-    } else if (pregnant === "no" && childrenunderfour === "yes") {
-      res.redirect('/v29-u18/apply/childs-first-name')
-    } else if (pregnant === "yes" && childrenunderfour === "yes") {
-      res.redirect('/v29-u18/apply/childs-first-name')
-    } else if (childrenunderfour === "no" && pregnant ==="no") {
-      res.redirect('/v29-u18/apply/kickouts/not-pregnant-no-children')
-    } else {
-      res.redirect('/v29-u18/apply/children-under-four')
+    var dob = moment(dateofbirthday + '-' + dateofbirthmonth + '-' + dateofbirthyear, "DD-MM-YYYY");
+    var dateofbirth = dob.isValid() ? moment(dob).format('MM/DD/YYYY') : '';
+
+    if (dob.isValid()) {
+      req.session.data['dateofbirth'] = new Intl.DateTimeFormat('en-GB', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }).format(dob.toDate());
     }
+
+    // Calculate age
+    var dobYrs = new Date(dateofbirthyear, dateofbirthmonth - 1, dateofbirthday);
+    var yrs = moment().diff(moment(dobYrs), 'years');
+
+    var childrenunderfour = req.session.data['childrenunderfour'];
+    var pregnant = req.session.data['pregnant'];
+
+    // ✅ NEW LOGIC (put first so it takes priority)
+    if (yrs >= 16 && yrs <= 17 && pregnant === "yes" && childrenunderfour === "yes") {
+      return res.redirect('/v29-u18/apply/16-17-cannot-receive-child-payments');
+    }
+
+    if (yrs >= 16 && yrs <= 17 && pregnant === "yes" && childrenunderfour === "no") {
+      return res.redirect('/v29-u18/apply/bank-details');
+    }
+
+    // Existing logic
+    if (pregnant === "yes" && childrenunderfour === "no") {
+      res.redirect('/v29-u18/apply/email-address');
+    } else if (pregnant === "no" && childrenunderfour === "yes") {
+      res.redirect('/v29-u18/apply/childs-first-name');
+    } else if (pregnant === "yes" && childrenunderfour === "yes") {
+      res.redirect('/v29-u18/apply/childs-first-name');
+    } else if (childrenunderfour === "no" && pregnant === "no") {
+      res.redirect('/v29-u18/apply/kickouts/not-pregnant-no-children');
+    } else {
+      res.redirect('/v29-u18/apply/children-under-four');
+    }
+
+  });
+
+  // under 18 bank details entered
+
+  router.post('/v29-u18/bank-details', function (req, res) {
+
+    res.redirect('/v29-u18/apply/identity-evidence')
 
   })
 
@@ -494,22 +559,27 @@ router.post('/v29-u18/name', function (req, res) {
 
 router.post('/v29-u18/check-your-answers', function (req, res) {
 
-        // Function to capitalize each word. Adding this because address appears all in cap
-        function capitalizeWords(str) {
-          return str
-              .split(' ') // Split into words
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter
-              .join(' '); // Join back
-        }
+  // Function to capitalize each word. Adding this because address appears all in cap
+  function capitalizeWords(str) {
+    return str
+        .split(' ') // Split into words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize first letter
+        .join(' '); // Join back
+  }
 
-        // Store formatted address in session
-        req.session.data['addressline1'] = capitalizeWords(req.session.data['addressline1'] || '');
-        req.session.data['addressline2'] = capitalizeWords(req.session.data['addressline2'] || '');
-        req.session.data['towncity'] = req.session.data['towncity']?.toUpperCase() || ''; // Keep town in uppercase
-        req.session.data['postcode'] = req.session.data['postcode']?.replace(/\s+/g, '').toUpperCase() || ''; // Keep postcode uppercase
+  // Store formatted address in session
+  req.session.data['addressline1'] = capitalizeWords(req.session.data['addressline1'] || '');
+  req.session.data['addressline2'] = capitalizeWords(req.session.data['addressline2'] || '');
+  req.session.data['towncity'] = req.session.data['towncity']?.toUpperCase() || ''; // Keep town in uppercase
+  req.session.data['postcode'] = req.session.data['postcode']?.replace(/\s+/g, '').toUpperCase() || ''; // Keep postcode uppercase
 
+  var age = req.session.data['yrs'];
 
+  if (age === 16 || age === 17) {
+    return res.redirect('/v29-u18/apply/confirmation-submitted');
+  } else {
   res.redirect('/v29-u18/apply/confirmation-successful');
+  }
 })
 
 module.exports = router;
