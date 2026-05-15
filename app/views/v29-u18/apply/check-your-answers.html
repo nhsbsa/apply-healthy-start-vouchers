@@ -164,44 +164,41 @@ Check your answers
 
             </div>
 
-            {% if (data['emailaddress']) %}
-                    <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Email address
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['emailaddress'] | safe }}
-                        </dd>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['emailaddress'] | safe }}
+                </dd>
 
-                        <dd class="nhsuk-summary-list__actions">
+                <dd class="nhsuk-summary-list__actions">
 
-                            <a href="email-address">
-                                Change<span class="nhsuk-u-visually-hidden"> your email address</span>
-                            </a>
+                    <a href="email-address">
+                        Change<span class="nhsuk-u-visually-hidden"> your email address</span>
+                    </a>
 
-                        </dd>
+                </dd>
 
-                    </div>
-            {% endif %}
-            {% if (data['mobilephonenumber']) %}
-                    <div class="nhsuk-summary-list__row">
-                        <dt class="nhsuk-summary-list__key">
-                            Mobile phone number
-                        </dt>
-                        <dd class="nhsuk-summary-list__value">
-                            {{ data['mobilephonenumber'] | safe }}
-                        </dd>
+            </div>
 
-                        <dd class="nhsuk-summary-list__actions">
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Mobile phone number
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    {{ data['mobilephonenumber'] | safe }}
+                </dd>
 
-                            <a href="mobile-phone-number">
-                                Change<span class="nhsuk-u-visually-hidden"> your telephone number</span>
-                            </a>
+                <dd class="nhsuk-summary-list__actions">
 
-                        </dd>
+                    <a href="mobile-phone-number">
+                        Change<span class="nhsuk-u-visually-hidden"> your telephone number</span>
+                    </a>
 
-                    </div>
-            {% endif %}
+                </dd>
+
+            </div>
 
 
 
