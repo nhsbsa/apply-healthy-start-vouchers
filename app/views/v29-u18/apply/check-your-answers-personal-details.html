@@ -29,6 +29,18 @@ Check your answers
             Check your answers
         </h1>
 
+        <!--<div class="nhsuk-card nhsuk-card--warning">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">
+              <span role="text">
+                <span class="nhsuk-u-visually-hidden">Important:</span> Possible incorrect address
+              </span>
+            </h3>
+            <p class="nhsuk-card__description">Our checks identified your postcode as being in a different country. Check your address and country are correct before contiunuing.</p>
+          </div>
+        </div>-->
+
+
         <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-2">About you</h2>
 
         <form action="v29-u18/cya-personal-details" method="POST">
@@ -61,6 +73,24 @@ Check your answers
                 <dd class="nhsuk-summary-list__actions">
                     <a href="address#addressline1">
                     Change<span class="nhsuk-u-visually-hidden"> address</span>
+                    </a>
+                </dd>
+                </div>
+
+                <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    Country
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  {% if data['location'] %}
+                    {{ data['location'] | capitalize }}
+                  {% else %}
+                    Example country
+                  {% endif %}
+                </dd>
+                <dd class="nhsuk-summary-list__actions">
+                    <a href="../where-do-you-live">
+                    Change<span class="nhsuk-u-visually-hidden"> country</span>
                     </a>
                 </dd>
                 </div>
@@ -131,6 +161,13 @@ Check your answers
                 {% endif %} -->
 
             </dl>
+
+            <div class="nhsuk-inset-text">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+              <p>The postcode you’ve entered does not match the country you’ve selected. Your postcode must match the country you've selected to continue your application.</p>
+              <p>If you think this is incorrect, <a href="https://www.healthystart.nhs.uk/contact-us/" target="_blank">contact us (opens in a new tab)</a>.</p>
+            </div>
+
             <input class="nhsuk-button" type="submit" value="Continue">
         </form>
 
