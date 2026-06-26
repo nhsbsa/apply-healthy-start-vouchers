@@ -67,7 +67,7 @@ Check your answers
                 <dd class="nhsuk-summary-list__value">
                     {% if data['addressline1'] %}{{ data['addressline1'] }}{% else %}Example house name{% endif %},<br>
                     {% if data['addressline2'] %}{{ data['addressline2'] }},<br>{% endif %}
-                    {% if data['towncity'] %}{{ data['towncity'] }}{% else %}Example town{% endif %}<br>
+                    {% if data['towncity'] %}{{ data['towncity'] | capitalize }}{% else %}Example town{% endif %}<br>
                     {% if data['postcode'] %}{{ data['postcode'] }}{% else %}Example postcode{% endif %}
                 </dd>
                 <dd class="nhsuk-summary-list__actions">
