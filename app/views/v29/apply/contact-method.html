@@ -1,0 +1,193 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What is your mobile phone number?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<style>
+.nhsuk-checkboxes__input + .nhsuk-checkboxes__label::after {
+    left: 8px;
+    top: 9px;
+}
+</style>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <form action="v29/contact-method" method="post">
+
+            <!--<div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  How do you want to be contacted?
+                </h1>
+              </legend>
+              <p>We use this to send notifications about your application and payments.</p>
+              <div class="nhsuk-hint" id="contact-hint">
+                Select 1 option
+              </div>
+              <div class="nhsuk-radios" data-module="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact">
+                    Email
+                  </label>
+                </div>
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="email">
+                      Email address
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                  </div>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact-3" name="contact" type="radio" value="" data-aria-controls="conditional-contact-3">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
+                    Text message
+                  </label>
+                </div>
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-3">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="mobile">
+                      Mobile phone number
+                    </label>
+                    <input class="nhsuk-input nhsuk-u-width-two-thirds" id="mobile" name="mobile" type="text">
+                  </div>
+                </div>
+                <div class="nhsuk-radios__divider">or</div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="contact-4" name="contact" type="radio" value="" data-aria-controls="conditional-contact-4">
+                  <label class="nhsuk-label nhsuk-radios__label" for="contact-4">
+                    I do not have an email address or mobile phone number
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+            </div>
+
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    How do you want to be contacted?
+                  </h1>
+                </legend>
+                <p>We use this to send notifications about your application and payments.</p>
+                <div class="nhsuk-hint" id="contact-hint">
+                  Select all options that are relevant to you
+                </div>
+                <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contact">
+                      Email
+                    </label>
+                  </div>
+                  <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-contact">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label" for="email">
+                        Email address
+                      </label>
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                    </div>
+                  </div>
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text" data-aria-controls="conditional-contact-3">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-3">
+                      Text message
+                    </label>
+                  </div>
+                  <div class="nhsuk-checkboxes__conditional nhsuk-checkboxes__conditional--hidden" id="conditional-contact-3">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label" for="mobile">
+                        Mobile phone number
+                      </label>
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="mobile" name="mobile" type="text">
+                    </div>
+                  </div>
+                  <div class="nhsuk-radios__divider">or</div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="contact-4" name="contact" type="radio" value="" data-aria-controls="conditional-contact-4">
+                    <label class="nhsuk-label nhsuk-radios__label" for="contact-4">
+                      I do not have an email address or mobile phone number
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+
+            <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">
+                    How will I be contacted if I do not have an email address or mobile phone number
+                    </span>
+                </summary>
+                <div class="nhsuk-details__text">
+                    <p>You will be contacted by letter through the post.</p>
+                </div>
+            </details>
+-->
+
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+                  <h1 class="nhsuk-fieldset__heading">
+                    How do you want to be contacted by Healthy Start?
+                  </h1>
+                </legend>
+                <p>Due to additional cost and environmental cost we would prefer to email or text message you notifications over posting letters.</p>
+                <div class="nhsuk-hint" id="example-hints-hint">
+                  Select one option
+                </div>
+                <div class="nhsuk-radios" data-module="nhsuk-radios">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="contactMethod-email" name="contactMethod" type="radio" value="email">
+                    <label class="nhsuk-label nhsuk-radios__label" for="contactMethod-email">
+                      Email
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="contactMethod-text" name="contactMethod" type="radio" value="text">
+                    <label class="nhsuk-label nhsuk-radios__label" for="contactMethod-text">
+                      Text message
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="contactMethod-letter" name="contactMethod" type="radio" value="letter">
+                    <label class="nhsuk-label nhsuk-radios__label" for="contactMethod-letter">
+                      Letter
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

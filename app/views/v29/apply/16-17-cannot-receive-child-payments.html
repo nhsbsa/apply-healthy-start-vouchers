@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What are your bank or building society account details?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-panel nhsuk-panel--interruption">
+        <h1 class="nhsuk-panel__title nhsuk-panel__title--l">
+          You cannot receive payments for children under 4
+        </h1>
+        <div class="nhsuk-panel__body">
+          <p>Payments for children under 4 are only available to recipients of Universal Credit.</p>
+          <p>Our checks have not identified you as a recipient of Universal Credit, if correct Continue.</p>
+          <div class="nhsuk-button-group">
+            <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="bank-details" role="button" draggable="false">
+              Continue
+            </a>
+          </div>
+        </div>
+      </div>
+          <h2 class="nhsuk-heading-m">I do receive Universal Credits</h2>
+          <p>If you get Universal Credit or think there's been a mistake you can contact us by:</p>
+          <ul class="nhsuk-list">
+            <li>Telephone: 0300 330 7010</li>
+            <li>This phoneline is available Monday to Friday, 8am to 6pm (except public holidays).</li>
+          </ul>
+
+          <p>
+            <a class="nhsuk-link" href="hhttps://www.nhsbsa.nhs.uk/contact-us/call-charges-and-phone-numbers" target="_blank">Find out about call charges</a>
+          </p>
+
+          <ul class="nhsuk-list">
+            <li>Email: <a class="nhsuk-link" href="mailto:healthy.start@nhsbsa.nhs.uk">healthy.start@nhsbsa.nhs.uk</a></li>
+            <li>We aim to respond to your email within 2 working days.</li>
+          </ul>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

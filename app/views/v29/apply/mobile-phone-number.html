@@ -31,19 +31,38 @@ What is your mobile phone number?
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        <form action="v29-u18/mobile-phone-number" method="post">
+        <form action="v29/mobile-phone-number" method="post">
 
             <div class="nhsuk-form-group">
                 <h1 class="nhsuk-label-wrapper">
                     <label class="nhsuk-label nhsuk-label--xl nhsuk-u-margin-bottom-3" for="mobilephonenumber">
-                    What is your mobile phone number? (optional)
+                    What is your mobile phone number?{% if data['contactMethod'] != "text" %} (optional){% endif %}
                     </label>
                 </h1>
-                <p>We use this to send notifications about your application and payments.</p>
+                {% if data['contactMethod'] != "text" %}
+                  <div id="phone-hint" class="nhsuk-hint">Entering your mobile phone number allows you to update your details online in the future.</div>
+                {% else %}
+                  <div id="phone-hint" class="nhsuk-hint">We use this to send notifications about your Healthy Start payments.<br>Entering your mobile phone number also allows you to update your details online in the future.</div>
+                {% endif %}
                 <input class="nhsuk-input nhsuk-input--width-20" id="mobilephonenumber" name="mobilephonenumber" type="text" autocomplete="tel">
             </div>
 
-            <details class="nhsuk-details">
+            {% if data['contactMethod'] == "text" %}
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example" name="example" type="checkbox" value="email">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example">
+                      I do not have a mobile phone number
+                    </label>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+            <!--
+            <p><a href="check-your-answers">I do not have a mobile phone number</a></p>
+
+             <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
                     <span class="nhsuk-details__summary-text">
                     Why we ask for your mobile phone number
@@ -52,7 +71,7 @@ What is your mobile phone number?
                 <div class="nhsuk-details__text">
                     <p>We use this to send notifications about your application and payments.</p>
                 </div>
-            </details>
+            </details>-->
 
             <button class="nhsuk-button" type="submit">
                 Continue
