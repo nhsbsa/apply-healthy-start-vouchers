@@ -42,11 +42,11 @@ What is your mobile phone number?
                 {% if data['contactMethod'] != "text" %}
                   <div id="phone-hint" class="nhsuk-hint">Entering your mobile phone number allows you to update your details online in the future.</div>
                 {% else %}
-                  <div id="phone-hint" class="nhsuk-hint">We use this to send notifications about your Healthy Start payments.<br>Entering your mobile phone number also allows you to update your details online in the future.</div>
+                  <div id="phone-hint" class="nhsuk-hint">We use this to send updates about your Healthy Start application and payments. Entering your mobile phone number also allows you to update your details online in the future.</div>
                 {% endif %}
                 <input class="nhsuk-input nhsuk-input--width-20" id="mobilephonenumber" name="mobilephonenumber" type="text" autocomplete="tel">
             </div>
-
+            <!--
             {% if data['contactMethod'] == "text" %}
               <div class="nhsuk-form-group">
                 <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
@@ -59,9 +59,11 @@ What is your mobile phone number?
                 </div>
               </div>
             {% endif %}
+            -->
+            {% if data['contactMethod'] == "text" %}
+              <p><a href="check-your-answers">I do not have a mobile phone number</a></p>
+            {% endif %}
             <!--
-            <p><a href="check-your-answers">I do not have a mobile phone number</a></p>
-
              <details class="nhsuk-details">
                 <summary class="nhsuk-details__summary">
                     <span class="nhsuk-details__summary-text">

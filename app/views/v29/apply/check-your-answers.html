@@ -186,7 +186,7 @@ Check your answers
                     Email address
                 </dt>
                 <dd class="nhsuk-summary-list__value">
-                    {{ data['email'] | safe }}
+                    {% if (data['email']) %}{{ data['email'] | safe }}{% else %}Not provided{% endif %}
                 </dd>
 
                 <dd class="nhsuk-summary-list__actions">
