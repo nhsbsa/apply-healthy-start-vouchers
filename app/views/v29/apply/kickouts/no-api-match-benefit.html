@@ -9,14 +9,14 @@ Application unsuccessful
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <div class="nhsuk-panel nhsbsa-panel-grey nhsuk-u-padding-5 nhsuk-u-margin-bottom-5">
-            <h1 id="panel-title" class="nhsbsa-panel__title">Application unsuccessful</h1>
-
-            <span id="panel-body" class="nhsuk-caption-xl nhsuk-caption--bottom">
-                Check you've entered your details correctly
-            </span>
-
-    </div>
+      <div class="nhsuk-panel healthy-start-grey-panel">
+        <h1 class="nhsuk-panel__title">
+          Application unsuccessful
+        </h1>
+        <div class="nhsuk-panel__body">
+          Check you've entered your details correctly
+        </div>
+      </div>
 
       <p>We check your details with DWP to confirm your:</p>
         <ul>
@@ -33,9 +33,8 @@ Application unsuccessful
         <li>your monthly ‘take-home pay’ is £408 or less</li>
         <li>you’re entering your details on our application exactly as they're listed on your Universal Credit claim</li>
       </ul>
-
-      <!-- REMOVED BECAUSE 16-17 YEAR OLDS CAN APPLY ONLINE IN THIS Version
-        <h2 class="nhsuk-heading-m">If you’re under 18 or get a different benefit</h2>
+      <!-- This section will be removed if 16-17 YEAR OLDS CAN APPLY ONLINE -->
+      <h2 class="nhsuk-heading-m">If you’re under 18 or get a different benefit</h2>
       <p>You can only apply online if you get Universal Credit.</p>
 
       <div class="nhsuk-inset-text">
@@ -46,22 +45,17 @@ Application unsuccessful
       <p>If you’re under 18 and more than 10 weeks pregnant or you get a different qualifying benefit,
         you’ll need to <a class="nhsuk-link" href="https://www.healthystart.nhs.uk/contact-us/">contact us</a> to apply.</p>
 
-
-
-        <details class="nhsuk-details">
-          <summary class="nhsuk-details__summary">
-            <span class="nhsuk-details__summary-text">
-              Check if you get a qualifying benefit
-            </span>
-          </summary>
-          <div class="nhsuk-details__text">
-            <p>You can contact us to apply for Healthy Start if you’re more than 10 weeks pregnant or have at least one child under 4 years old and you get Pension Credit (including the child addition).</p>
-          </div>
-        </details>
-
-
-      -->
-
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Check if you get a qualifying benefit
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>You can contact us to apply for Healthy Start if you’re more than 10 weeks pregnant or have at least one child under 4 years old and you get Pension Credit (including the child addition).</p>
+        </div>
+      </details>
+      <!-- End of 16-17 year old removed section -->
       <h2 class="nhsuk-heading-m">Any problems</h2>
       <p>If you think there’s been a mistake, you can contact us by:</p>
       <ul>
@@ -79,18 +73,5 @@ Application unsuccessful
 
     </div>
   </div>
-
-<style>
-  .nhsbsa-panel-grey {
-    background-color: #4b6271;
-    color: #fff;
-    margin-top: 0;
-    text-align: center;
-  }
-  .nhsbsa-panel-grey>span {
-    color: #fff;
-    text-align: center;
-}
-</style>
 
 {% endblock %}
