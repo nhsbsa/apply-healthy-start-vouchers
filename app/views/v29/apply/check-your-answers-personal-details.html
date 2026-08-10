@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-Check your answers
+Check your details - Get help to buy food and milk (Healthy Start)
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,7 +26,7 @@ Check your answers
     <div class="nhsuk-grid-column-two-thirds">
 
         <h1 class="nhsuk-u-margin-bottom-5">
-            Check your answers
+            Check your details
         </h1>
 
         <!--<div class="nhsuk-card nhsuk-card--warning">
@@ -111,7 +111,7 @@ Check your answers
 
                 <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">
-                    National insurance number
+                    National Insurance number
                 </dt>
                 <dd class="nhsuk-summary-list__value">
                     {% if data['nationalinsurancenumber'] %}{{ data['nationalinsurancenumber'] }}{% else %}Example NI number{% endif %}
