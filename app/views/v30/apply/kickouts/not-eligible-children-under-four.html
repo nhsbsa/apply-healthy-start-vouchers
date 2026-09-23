@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot apply online yet
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Go back"
+        }) }}
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            You cannot apply online yet
+        </h1>
+
+        <!--
+        <p>
+            Only a small number of people are being invited to help us test our new service.
+        </p>
+        -->
+
+        <p>If you are pregnant and:</p>
+
+        <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>are on benefits, or</li>
+            <li>are under 18</li>
+        </ul>
+
+        <p>
+            Then you could still qualify <a target="_blank" href="https://www.healthystart.nhs.uk/">for Healthy Start vouchers</a>.
+        </p>
+
+
+    </div>
+</div>
+
+{% endblock %}

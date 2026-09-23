@@ -1,1 +1,3 @@
-// ES6 or Vanilla JavaScript
+import { initAll } from 'nhsuk-frontend'
+
+initAll()

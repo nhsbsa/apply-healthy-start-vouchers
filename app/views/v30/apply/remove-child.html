@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Do you want to remove this child?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+            Do you want to remove this child?
+        </h1>
+
+        <div class="nhsuk-inset-text nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p class="nhsuk-heading-m">{% if data['childsfirstname'] %}{{ data['childsfirstname'] }}{% else %}Simon{% endif %} {% if data['childslastname'] %}{{ data['childslastname'] }}{% else %}Garfunkel{% endif %}</p>
+        <p>Born on {% if data['childsdateofbirthday'] and data['childsdateofbirthmonth'] and data['childsdateofbirthyear']  %}{{ data['childsdateofbirthday'] }}/{{ data['childsdateofbirthmonth'] }}/{{ data['childsdateofbirthyear'] }}{% else %}01/04/2019{% endif %}</p>
+        </div>
+
+        <form action="children-under-four" method="post">
+
+            <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+                    <div class="nhsuk-radios nhsuk-radios--inline">
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="yes" name="removechild" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="no" name="removechild" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            </div>
+
+            <button class="nhsuk-button" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

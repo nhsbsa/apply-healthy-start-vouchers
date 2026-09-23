@@ -16,7 +16,8 @@ router.post('/clear-data', function (req, res) {
 // Route File Versions
 // ****************************************
 
-
+router.use('/v30/apply', require('./views/v30/_routes'));
+router.use('/v30', require('./views/v30/_routes'));
 router.use('/v29/apply', require('./views/v29/_routes'));
 router.use('/v29', require('./views/v29/_routes'));
 router.use('/v29-u18/apply', require('./views/v29-u18/_routes'));

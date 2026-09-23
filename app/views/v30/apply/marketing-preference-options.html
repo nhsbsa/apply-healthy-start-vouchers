@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+What would you like to hear more about? - Get help to buy food and milk (Healthy Start)
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-fieldset__legend--xl">
+          What would you like to hear more about?
+        </h1>
+
+        <form action="v30/marketing-preference-options" method="post">
+
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+              <div class="nhsuk-hint" id="example-hint">
+                Select the types of communications you’d like to get.
+              </div>
+
+              <div class="nhsuk-checkboxes" data-module="nhsuk-checkboxes">
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="example" name="communications" type="checkbox" value="charities" data-behaviour-group="communications-list">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="example">
+                    Extras you can get through Healthy Start
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="example-2" name="communications" type="checkbox" value="extras" data-behaviour-group="communications-list">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                    Information about healthy food and drink from charities
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="example-3" name="communications" type="checkbox" value="NHSBSA" data-behaviour-group="communications-list">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                    Information about more services in the NHSBSA
+                  </label>
+                </div>
+                <div class="nhsuk-checkboxes__divider">or</div>
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" id="symptoms-5" name="communications" type="checkbox" value="none" data-behaviour="exclusive" data-behaviour-group="communications-list">
+                  <label class="nhsuk-label nhsuk-checkboxes__label" for="symptoms-5">
+                    I do not want to get any extra communications
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <button class="nhsuk-button" type="submit">
+              Save and continue
+          </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

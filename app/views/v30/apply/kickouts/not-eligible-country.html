@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You cannot apply for Healthy Start
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">You cannot apply for Healthy Start</h1>
+      <p class="nhsuk-body">
+        This is because you do not live in England, Wales or Northern Ireland.
+      </p>
+      <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p>If you live in Scotland, you may be able to get help from <a class="nhsuk-link" href="https://www.mygov.scot/best-start-grant-best-start-foods">Best Start Foods</a> instead.</p>
+      </div>
+      <h2 id="give-feedback" class="nhsuk-heading-m">Give feedback</h2>
+      <p class="nhsuk-body">
+        <a id="snap-survey-link" href="https://online1.snapsurveys.com/interview/feced57a-91da-474b-82a2-c3307f4e12d8">What did you think of this service?</a> (takes 2 minutes).
+      </p>
+    </div>
+</div>
+
+{% endblock %}

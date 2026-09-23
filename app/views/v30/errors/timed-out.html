@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+You’ve been away from your device for 30 minutes
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">
+            You’ve been away from your device for 30 minutes
+        </h1>
+
+        <p>
+            For security reasons, we can't save what you have done so far.
+        </p>
+
+        <p>
+             You will need to start again.
+        </p>
+
+        <p>
+            <a class="nhsuk-button" href="../start">Start your application again</a>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

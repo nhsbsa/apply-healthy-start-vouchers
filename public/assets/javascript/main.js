@@ -1,1 +1,4 @@
-//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFtdLAogICJzb3VyY2VzQ29udGVudCI6IFtdLAogICJtYXBwaW5ncyI6ICIiLAogICJuYW1lcyI6IFtdCn0K
+// app/assets/javascript/main.js
+import { initAll } from "/nhsuk-frontend/nhsuk-frontend.min.js";
+initAll();
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsiLi4vLi4vLi4vYXBwL2Fzc2V0cy9qYXZhc2NyaXB0L21haW4uanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImltcG9ydCB7IGluaXRBbGwgfSBmcm9tICduaHN1ay1mcm9udGVuZCdcblxuaW5pdEFsbCgpXG4iXSwKICAibWFwcGluZ3MiOiAiO0FBQUEsU0FBUyxlQUFlO0FBRXhCLFFBQVE7IiwKICAibmFtZXMiOiBbXQp9Cg==

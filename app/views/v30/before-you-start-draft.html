@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+Get help to buy food and milk (Healthy Start)
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+  {{ backLink({
+      "href": "javascript:history.go(-1)",
+      "text": "Go back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1><span role="text">Before you start</span></h1>
+
+    </div>
+</div>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <p>The Get help to buy food and milk (Healthy Start) service uses government data sources to check your eligibility.</p>
+
+        <h2 class="nhsuk-heading-s">If you qualify you'll get:</h2>
+
+        <ul>
+            <li>£4.65 each week of your pregnancy from the 10th week</li>
+            <li>£9.30 each week for children from birth to 1 year old</li>
+            <li>£4.65 each week for children between 1 and 4 years old</li>
+        </ul>
+
+        <h2 class="nhsuk-heading-s">We'll ask for your:</h2>
+
+        <ul>
+            <li>name</li>
+            <li>address</li>
+            <li>date of birth</li>
+            <li>National Insurance number</li>
+            <li>baby’s due date (if you’re pregnant)</li>
+            <li>Universal Credit statement</li>
+        </ul>
+
+        <p>The details you use to apply for Healthy Start must match the details on your Universal Credit claim.</p>
+
+        <p>Make sure that your details are up to date with DWP. You may wish to contact them to check or update your details before you apply.</p>
+
+        <h2 class="nhsuk-heading-s">If we need more information about your application, we might ask you to send us copies of documents that prove your:</h2>
+        <ul>
+            <li>identity (for example, birth certificate, marriage certificate, passport, driving licence or immigration visa)</li>
+            <li>eligibility (Universal Credit statement)</li>
+            <li>children's eligibility (birth certificate)</li>
+        </ul>
+        <p>If we ask to see these, make sure you send copies of valid documents. We cannot accept expired documents.</p>
+
+        <p><a href="where-do-you-live" class="nhsuk-button nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">Start now</a></p>
+
+    </div>
+
+</div>
+{% endblock %}
