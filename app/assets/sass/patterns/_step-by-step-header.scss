@@ -8,7 +8,7 @@
   background: $color_nhsuk-grey-4;
   border-top: solid 1px $color_nhsuk-grey-2;
   border-bottom: solid 1px $color_nhsuk-grey-2;
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     padding: nhsuk-spacing(3);
   }
 }

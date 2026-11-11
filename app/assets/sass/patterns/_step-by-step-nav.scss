@@ -36,7 +36,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   font-weight: $weight;
   line-height: $line-height;
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     font-size: $tablet-size + px;
     line-height: $tablet-line-height;
   }
@@ -46,7 +46,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   margin-bottom: nhsuk-spacing(5);
 
   &.app-step-nav--large {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       margin-bottom: nhsuk-spacing(9);
     }
   }
@@ -121,7 +121,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   }
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       padding-left: nhsuk-spacing(9);
 
       &:after {
@@ -160,7 +160,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   }
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       &:before {
         margin-left: $number-circle-size-large / 4;
         width: $number-circle-size-large / 2;
@@ -197,7 +197,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   text-align: center;
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       top: nhsuk-spacing(5);
       width: $number-circle-size-large;
       height: $number-circle-size-large;
@@ -212,7 +212,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   .app-step-nav--large & {
     @include step-nav-font(16, $tablet-size: 19, $weight: bold, $line-height: 23px, $tablet-line-height: 30px);
 
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       border-width: $stroke-width-large;
     }
   }
@@ -275,7 +275,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   }
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       padding: nhsuk-spacing(5) 0;
     }
   }
@@ -326,14 +326,14 @@ $top-border: solid 1px $color_nhsuk-grey-2;
     margin-top: -5px;
 
     .app-step-nav--large & {
-      @include mq($from: tablet) {
+      @include nhsuk-media-query($from: tablet) {
         margin-top: -nhsuk-spacing(3);
       }
     }
   }
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       padding-bottom: nhsuk-spacing(5);
     }
   }
@@ -345,7 +345,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   list-style: none;
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       padding-bottom: 20px;
     }
   }
@@ -362,7 +362,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   }
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       .app-step-nav__list-item--active:before {
         left: -(nhsuk-spacing(9)) - $links-margin;
       }
@@ -406,7 +406,7 @@ $top-border: solid 1px $color_nhsuk-grey-2;
   }
 
   .app-step-nav--large & {
-    @include mq($from: tablet) {
+    @include nhsuk-media-query($from: tablet) {
       &:before {
         left: -(nhsuk-spacing(9));
         margin-left: ($number-circle-size-large / 2);

@@ -26,7 +26,7 @@
     @include nhsuk-font(19, $weight: bold, $line-height: 1.4);
     margin-top: nhsuk-spacing(4);
 
-    @include mq($until: tablet) {
+    @include nhsuk-media-query($until: tablet) {
       font-size: 19px;
     }
   }
@@ -40,7 +40,7 @@
   display: block;
   margin-bottom: nhsuk-spacing(3);
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     margin-bottom: nhsuk-spacing(1);
   }
 }
@@ -52,7 +52,7 @@
 .app-step-nav-related__link-item {
   margin-top: nhsuk-spacing(3);
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     margin-top: nhsuk-spacing(1);
   }
 }

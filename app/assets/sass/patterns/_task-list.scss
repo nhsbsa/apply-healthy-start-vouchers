@@ -5,7 +5,7 @@
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     min-width: 550px;
   }
 }
@@ -19,7 +19,7 @@
 .app-task-list__section-number {
   display: table-cell;
 
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     min-width: nhsuk-spacing(6);
     padding-right: 0;
   }
@@ -30,7 +30,7 @@
   @include nhsuk-responsive-margin(9, "bottom");
   list-style: none;
   padding-left: 0;
-  @include mq($from: tablet) {
+  @include nhsuk-media-query($from: tablet) {
     padding-left: nhsuk-spacing(6);
   }
 }
@@ -53,7 +53,7 @@
 
 .app-task-list__task-name {
   display: block;
-  @include mq($from: 450px) {
+  @include nhsuk-media-query($from: 450px) {
     float: left;
   }
 }
@@ -66,7 +66,7 @@
   margin-top: nhsuk-spacing(2);
   margin-bottom: nhsuk-spacing(1);
 
-  @include mq($from: 450px) {
+  @include nhsuk-media-query($from: 450px) {
     float: right;
     margin-top: 0;
     margin-bottom: 0;
