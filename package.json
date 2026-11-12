@@ -11,8 +11,8 @@
     "axios": "^1.15.0",
     "geolib": "^3.3.14",
     "moment": "^2.30.1",
-    "nhsuk-frontend": "^10.6.1",
-    "nhsuk-prototype-kit": "^8.5.0",
+    "nhsuk-frontend": "^10.7.2",
+    "nhsuk-prototype-kit": "^8.6.0",
     "notifications-node-client": "^8.3.2",
     "string-similarity": "^4.0.4"
   },

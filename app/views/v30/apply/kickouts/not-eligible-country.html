@@ -4,23 +4,24 @@
 You cannot apply for Healthy Start
 {% endblock %}
 
-{% block beforeContent %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        Beta
-      </strong>
-      <span class="govuk-phase-banner__text">
-        This is a new service – your <a class="nhsuk-link" href="https://online1.snapsurveys.com/Healthy_Start_Beta_Banner_Feedback">feedback</a> will help us to improve it.
-      </span>
-    </p>
-  </div>
-{% endblock %}
-
 {% block content %}
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <h1 class="nhsuk-heading-xl">You cannot apply for Healthy Start</h1>
+      <div class="nhsuk-form-group nhsuk-search-input">
+  <label class="nhsuk-label nhsuk-label--s" for="example">
+    Search
+  </label>
+  <div class="nhsuk-input-wrapper nhsuk-search-input__wrapper">
+    <input class="nhsuk-input nhsuk-input--width-10 nhsuk-search-input__input" id="example" name="example" type="search" autocomplete="off">
+    <button class="nhsuk-button nhsuk-button--icon nhsuk-button--small nhsuk-search-input__button" data-module="nhsuk-button" type="submit" aria-label="Search">
+      <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+        <path d="m20.7 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 10.6a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" />
+      </svg>
+    </button>
+  </div>
+</div>
+
       <p class="nhsuk-body">
         This is because you do not live in England, Wales or Northern Ireland.
       </p>
